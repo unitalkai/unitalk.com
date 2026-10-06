@@ -65,12 +65,12 @@ export function CreateBlock() {
             setUrl(e.target.value);
             setSubmitted(false);
           }}
-          className="min-w-0 flex-1 rounded-[6px] border border-ivory-line bg-ivory-sunk px-5 py-[18px] text-[1rem] text-ink outline-none transition-colors placeholder:text-muted/70 focus:border-ink"
+          className="min-w-0 flex-1 rounded-[6px] border border-ivory-line bg-ivory-sunk px-5 py-[18px] text-[1rem] text-ink outline-none transition-colors placeholder:text-muted focus:border-ink"
         />
         <button
           type="submit"
           disabled={!valid}
-          className="rounded-[6px] bg-ink px-7 py-[18px] text-[0.9375rem] font-medium text-ivory transition-colors hover:not-disabled:bg-signal disabled:cursor-not-allowed disabled:opacity-35"
+          className="rounded-[6px] bg-ink px-7 py-[18px] text-[0.9375rem] font-medium text-ivory transition-colors hover:not-disabled:bg-signal disabled:cursor-not-allowed disabled:bg-ivory-line disabled:text-ink/55"
         >
           Create my Collaborator →
         </button>

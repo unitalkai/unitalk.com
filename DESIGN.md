@@ -10,7 +10,7 @@ colors:
   ivory-line: "#DCD4C6"
   signal: "#E01B84"
   signal-deep: "#B01567"
-  muted: "#8A8172"
+  muted: "#6E6659"
   muted-ink: "#A39C90"
 typography:
   display:
@@ -116,6 +116,8 @@ The rule that matters: **signal magenta owns exactly one meaning — talking to 
 - Never more than one magenta element in the viewport at a time.
 
 Banned outright: blue AI gradients, purple neon, cyberpunk, glowing brains, circuit patterns, robot illustrations, animated gradients, stock AI imagery. The dark surfaces are warm-tinted (`#161514`, `#2A2724` — brown-black), never cold blue-grey.
+
+**Override — `cream-palette` (accepted).** Impeccable's detector flags the ivory background as a known AI tell, and it is right about the tell: cream + a bold serif is the signature of the last two years of generated landing pages. We ship it anyway, deliberately, because here the warmth is a product decision and not a default. The Collaborator is a black object; it needs a warm surface to be an object *in a room* rather than a card in a grid. The mitigation for the tell is everything around it: no rounded-pill SaaS furniture, no gradient meshes, no friendly 3D illustration, one editorial serif, and a single magenta signal that is spent on exactly one meaning. If the page ever starts reading as "AI beige", the palette is not the problem — the rest of the page has gone generic.
 
 ## Typography
 

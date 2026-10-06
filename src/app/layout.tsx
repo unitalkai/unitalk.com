@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Inter } from "next/font/google";
+import { Archivo, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 /* Display: a serif that carries identity. Body: a neutral sans that stays
@@ -12,7 +12,7 @@ const display = Instrument_Serif({
   display: "swap",
 });
 
-const body = Inter({
+const body = Archivo({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",

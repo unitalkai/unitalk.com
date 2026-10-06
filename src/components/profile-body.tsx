@@ -19,9 +19,12 @@ export function ProfileBody() {
         </h2>
         <div className="mt-4 space-y-4 text-[1rem] leading-[1.65] text-ink">
           <p>
-            I represent Patrick Chassany: his work, his companies and his
-            ideas. I answer from what is publicly known and I remember our
-            conversation. I can also take on real work — research, writing,
+            I represent Patrick Chassany: his work, his companies
+            and his ideas. I answer from what is publicly known,
+            and I remember our conversation.
+          </p>
+          <p>
+            I can also take on real work: research, writing,
             qualifying, following up.
           </p>
           <p className="text-muted">
@@ -75,7 +78,7 @@ export function ProfileBody() {
             <Metric n="7" label="qualified" accent />
             <Metric n="3" label="high potential" />
           </div>
-          <p className="eyebrow mt-5 border-t border-ink-line pt-4 text-muted-ink">
+          <p className="mt-5 border-t border-ink-line pt-4 text-[0.8125rem] text-muted-ink">
             Sample mission — shown to illustrate the format
           </p>
         </div>

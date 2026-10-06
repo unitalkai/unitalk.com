@@ -15,7 +15,7 @@ export function ProfileHeader() {
     <header className="reveal">
       {/* Banner: dark, structural, quiet. Not a photo, not a gradient mesh —
           a surface that makes the identity block read as attached to it. */}
-      <div className="relative h-32 overflow-hidden rounded-t-[14px] bg-ink sm:h-44">
+      <div className="relative h-24 overflow-hidden rounded-t-[14px] bg-ink sm:h-28">
         {/* One horizontal hairline, not a two-axis grid: the grid is the
             signature of an AI poster. A single line reads as a surface. */}
         <div
@@ -23,15 +23,12 @@ export function ProfileHeader() {
           style={{ opacity: 0.12 }}
           aria-hidden
         />
-        <span className="eyebrow absolute right-6 top-5 text-muted-ink sm:right-10">
-          Public profile
-        </span>
       </div>
 
-      <div className="relative rounded-b-[14px] border border-t-0 border-ivory-line bg-white px-6 py-7 sm:px-10 sm:py-8">
+      <div className="relative rounded-b-[14px] border border-t-0 border-ivory-line bg-white px-6 py-7 shadow-[0_18px_50px_-30px_rgba(10,10,10,0.35)] sm:px-10 sm:py-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:gap-7">
-          <div className="-mt-12 shrink-0 sm:-mt-14">
-            <div className="size-24 overflow-hidden rounded-[10px] border-4 border-white sm:size-28">
+          <div className="-mt-14 shrink-0 sm:-mt-16">
+            <div className="size-28 overflow-hidden rounded-[12px] border-4 border-white bg-ivory-sunk sm:size-32">
               <Portrait className="size-full" />
             </div>
           </div>
@@ -45,10 +42,13 @@ export function ProfileHeader() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 pb-1">
+          <div className="flex flex-wrap items-center gap-2.5 pb-1 sm:justify-end">
             <span className="inline-flex items-center gap-2 rounded-full border border-ivory-line px-3 py-1.5 text-[0.8125rem] text-muted">
               <span className="dot dot-live bg-muted" aria-hidden />
               Demo — answers are simulated
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-ivory-line px-3 py-1.5 text-[0.8125rem] text-muted">
+              Reaches web · voice · email
             </span>
           </div>
         </div>

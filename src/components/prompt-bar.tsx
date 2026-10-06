@@ -51,7 +51,7 @@ export function PromptBar() {
           e.preventDefault();
           submit(value);
         }}
-        className="group flex items-center gap-3 rounded-[6px] border border-ivory-line bg-white px-3 py-3 transition-colors focus-within:border-ink sm:px-4"
+        className="group flex items-center gap-3 rounded-[10px] border border-ivory-line bg-white px-3 py-3 shadow-[0_18px_50px_-32px_rgba(10,10,10,0.4)] transition-colors focus-within:border-ink sm:px-4"
       >
         <span
           className="grid size-9 flex-none place-items-center rounded-[3px] bg-ink text-ivory"
@@ -84,7 +84,7 @@ export function PromptBar() {
       </form>
 
       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-        <span className="eyebrow text-muted">Try</span>
+        <span className="eyebrow text-muted">Try asking</span>
         {SUGGESTIONS.map((s) => (
           <button
             key={s}

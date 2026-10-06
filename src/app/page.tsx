@@ -1,23 +1,25 @@
-import { CollaboratorCard } from "@/components/collaborator-card";
-import { CreateBlock } from "@/components/create-block";
+import { ActionRail } from "@/components/action-rail";
+import { ProfileBody } from "@/components/profile-body";
+import { ProfileHeader } from "@/components/profile-header";
+import { PromptBar } from "@/components/prompt-bar";
+import { WantOne } from "@/components/want-one";
 
 /* ─────────────────────────────────────────────────────────────────────────
    unitalk.com/@patrick-chassany — the public profile of an AI Collaborator.
 
-   One page, one dominant object, one sequence: MEET → TALK → WANT ONE →
-   CREATE. Nothing here explains Unitalk. The visitor meets someone, talks to
-   them, and then wants their own.
+   Structure, top to bottom: banner → identity → prompt bar → two columns.
+   The prompt bar sits *above the fold and above the columns* because talking
+   to the Collaborator is the primary action of the page, not a sidebar
+   widget. The right column is the rail of things you can actually do.
 
-   Deliberately absent: a feature list, a pricing table, an integration grid,
-   a hero with three CTAs, a footer with nine columns. Those are the things
-   that turn this into "a website that explains Unitalk" — the one outcome
-   the design principle forbids.
+   Still deliberately absent: a feature encyclopedia, a pricing table, an
+   integration grid, a nine-column footer, three competing hero CTAs.
    ───────────────────────────────────────────────────────────────────────── */
 
 export default function Home() {
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-[72rem] flex-col px-6 py-14 sm:px-10 sm:py-20">
-      <nav className="reveal flex items-center justify-between">
+    <main className="mx-auto w-full max-w-[76rem] px-5 py-8 sm:px-8 sm:py-12">
+      <nav className="reveal mb-6 flex items-center justify-between">
         <span className="font-display text-[1.125rem] tracking-[-0.02em]">
           Unitalk
         </span>
@@ -29,18 +31,23 @@ export default function Home() {
         </a>
       </nav>
 
-      <div className="mt-12 sm:mt-20">
-        <span className="eyebrow reveal text-muted">Public profile</span>
-        <div className="mt-8 max-w-[42rem]">
-          <CollaboratorCard />
+      <ProfileHeader />
+
+      {/* Talk first. Before the bio, before the rail, before any claim. */}
+      <PromptBar />
+
+      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-10">
+        <div className="space-y-8">
+          <ProfileBody />
+        </div>
+
+        <div className="space-y-4">
+          <ActionRail />
+          <WantOne />
         </div>
       </div>
 
-      <div className="max-w-[42rem]">
-        <CreateBlock />
-      </div>
-
-      <footer className="mt-20 flex flex-col gap-2 border-t border-ivory-line pt-6 text-[0.8125rem] text-muted sm:mt-28 sm:flex-row sm:items-center sm:justify-between">
+      <footer className="mt-16 flex flex-col gap-2 border-t border-ivory-line pt-6 text-[0.8125rem] text-muted sm:flex-row sm:items-center sm:justify-between">
         <p>
           <span className="text-ink">Own your intelligence.</span> The brain can
           change. The Collaborator remains yours.

@@ -10,7 +10,7 @@ export const publicTopics = ["AI Collaborators", "Entrepreneurship", "Unitalk", 
 
 export function publicDemoReply(text: string) {
   const query = text.toLowerCase();
-  if (/price|pricing|cost|€|tarif/.test(query)) return `The planned Collaborator subscription is ${COLLABORATOR_OFFER.monthly} per month or ${COLLABORATOR_OFFER.annual} per year. AI usage is separate. You can use Unitalk Credits, your API keys or your AI gateway.`;
+  if (/price|pricing|cost|€|tarif/.test(query)) return `The planned Collaborator subscription is ${COLLABORATOR_OFFER.monthly} per month or ${COLLABORATOR_OFFER.annual} per year. ${COLLABORATOR_OFFER.monthlyTokens} You can also use your own API keys or AI gateway; external provider fees stay separate.`;
   if (/linkedin|github|twitter|website|social|\bx\b/.test(query) && /link|find|where|url|profile/.test(query)) return "Patrick’s verified social links have not been added yet. You can continue the conversation here, or prepare a message for him.";
   if (/personal|opinion|confidential|private|send|pass|forward|contact|reach/.test(query)) return "I can help you put the request into words. If you’d like Patrick’s personal view, I can prepare it for him with the context of our conversation.";
   if (/away|available|busy|online/.test(query)) return "I don’t have Patrick’s live availability. We can clarify your request, explore his work or prepare a meeting together.";

@@ -6,15 +6,16 @@
    ──────────────────────────────────────────────────────────────────────── */
 
 :root {
-  --ink: #0a0a0a;
-  --ink-raised: #161514;
-  --ink-line: #2a2724;
-  --ivory: #f5f1ea;
-  --ivory-sunk: #ede7dc;
-  --ivory-line: #dcd4c6;
+  --ink: #1c1e21;
+  --ink-raised: #111b21;
+  --ink-line: #2a353d;
+  --ivory: #fcf5eb;
+  --ivory-sunk: #f4ece0;
+  --ivory-line: #e3dacb;
   --signal: #e01b84;
   --signal-deep: #b01567;
-  --muted: #6e6659;
+  --signal-wash: #fce8f2;
+  --muted: #5e5e5e;
   --muted-ink: #a39c90;
 
   --background: var(--ivory);
@@ -29,6 +30,8 @@
   --color-ink-line: var(--ink-line);
   --color-ivory: var(--ivory);
   --color-ivory-sunk: var(--ivory-sunk);
+  --color-signal-wash: var(--signal-wash);
+  --radius-pill: var(--radius-pill);
   --color-ivory-line: var(--ivory-line);
   --color-signal: var(--signal);
   --color-signal-deep: var(--signal-deep);
@@ -41,6 +44,7 @@
   --radius-sm: 3px;
   --radius-md: 6px;
   --radius-lg: 14px;
+  --radius-pill: 50px;
 }
 
 /* Dark mode is deliberately absent: this page is a warm ivory world holding

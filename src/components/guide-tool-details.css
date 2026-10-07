@@ -1,0 +1,9 @@
+.guide-tool-details { margin-top: 28px; border-block: 1px solid var(--ivory-line); }
+.guide-tool-details summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; list-style: none; min-height: 56px; font-size: var(--text-control); padding-block: 16px; }
+.guide-tool-details summary::-webkit-details-marker { display: none; }
+.guide-tool-details summary:hover { color: var(--signal-deep); }
+.guide-tool-details[open] summary svg { transform: rotate(45deg); }
+.guide-tool-details > p { font-size: var(--text-control); line-height: 1.65; margin-top: 16px; }
+.guide-tool-details > p:last-child { padding-bottom: 24px; }
+.guide-tool-details > div { display: flex; flex-wrap: wrap; gap: 16px 28px; margin-top: 16px; }
+.guide-tool-details .text-link { font-size: var(--text-control); }

@@ -32,10 +32,11 @@ export function WorkDemo({ initialExample = "follow-up", compact = false, langua
   return <div className={`work-demo${compact ? " work-demo-compact" : ""}`}>
     {!compact && <div className="work-demo-choices" aria-label={fr ? "Choisir un exemple de travail" : "Choose a work example"}>{WORK_EXAMPLES.map(item => <button type="button" key={item.id} aria-pressed={item.id === exampleId} onClick={() => choose(item.id)}>{getWorkExample(item.id, language).label}</button>)}</div>}
     <div className="work-demo-top"><span><Icon name="message" />{fr ? "Votre Collaborateur" : "Your Collaborator"}</span><span className="demo-label">{fr ? "Démo" : "Demo"}</span></div>
-    <div className="work-demo-request"><span>{fr ? "Vous" : "You"}</span><p>{example.request}</p></div>
+    <div className="work-demo-request"><span>{example.sender}</span><p>{example.request}</p></div>
     <div className="work-demo-delivery" key={exampleId} aria-live="polite">
       <div className="work-demo-delivery-heading"><Icon name="check" /><h3>{example.title}</h3></div>
       <p className="work-demo-context">{example.context}</p>
+      <dl className="work-demo-continuity"><div><dt>{fr ? "Compris" : "Understood"}</dt><dd>{example.classification}</dd></div><div><dt>{fr ? "Contexte" : "Context"}</dt><dd>{example.record}</dd></div><div><dt>{fr ? "Prochain pas" : "Next step"}</dt><dd>{example.nextStep}</dd></div></dl>
       <p className="work-demo-subject">{example.subject}</p>
       {editing ? <><label className="sr-only" htmlFor={compact ? "meet-work-draft" : "home-work-draft"}>{fr ? "Modifier le brouillon d’exemple" : "Edit the example draft"}</label><textarea id={compact ? "meet-work-draft" : "home-work-draft"} value={draft} maxLength={1500} onChange={event => { setDraft(event.target.value); setApproved(false); }} /></> : <p className="work-demo-draft">{draft}</p>}
     </div>

@@ -24,7 +24,7 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
     { href: marketingPath("/pricing", language), label: english ? "Pricing" : "Tarifs" },
     { href: marketingPath("/privacy", language), label: english ? "Privacy" : "Confidentialité" },
     { href: marketingPath("/store", language), label: english ? "Store" : "Boutique" },
-    { href: "https://unitalk.ai", label: english ? "For businesses" : "Pour les entreprises" },
+    { href: marketingPath("/for-businesses", language), label: english ? "For businesses" : "Pour les entreprises" },
   ] : [
     { href: "/", label: "Accueil" },
     { href: "/@patrick-chassany", label: "Le Collaborateur de Patrick" },
@@ -39,13 +39,13 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
       </nav>
       <div className="header-actions">
         {role ? <div className="account-pill"><span className="avatar avatar-small">{role === "patrick" ? "PC" : "V"}</span><span>{role === "patrick" ? "Patrick" : "Visiteur"}</span><span className="demo-label">Démo</span></div> : <Link href={marketingPath("/login", language)} className="button button-outline button-small customer-login" aria-current={pathname === marketingPath("/login", language) ? "page" : undefined}>{english ? "Log in" : "Se connecter"}</Link>}
-        <EncounterLink language={language} marketing={!role} className="button button-primary button-small header-create">{english ? "Meet yours" : "Rencontrer le mien"} <Icon name="arrow" /></EncounterLink>
+        <EncounterLink language={language} marketing={!role} className="button button-primary button-small header-create">{role ? "Rencontrer le mien" : english ? "Start for free" : "Commencer gratuitement"} <Icon name="arrow" /></EncounterLink>
         <button className="icon-button mobile-menu-toggle" aria-label={english ? (open ? "Close navigation" : "Open navigation") : (open ? "Fermer la navigation" : "Ouvrir la navigation")} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}><Icon name={open ? "close" : "menu"} /></button>
       </div>
     </div>
     {open && <nav id="mobile-navigation" className="mobile-navigation" aria-label={english ? "Mobile navigation" : "Navigation mobile"}>
       {links.map(link => <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>{link.label}<Icon name="arrow" /></Link>)}
-      <EncounterLink language={language} marketing={!role} onClick={() => setOpen(false)}>{english ? "Meet your Collaborator" : "Rencontrer mon Collaborateur"}<Icon name="arrow" /></EncounterLink>
+      <EncounterLink language={language} marketing={!role} onClick={() => setOpen(false)}>{role ? "Rencontrer mon Collaborateur" : english ? "Start for free" : "Commencer gratuitement"}<Icon name="arrow" /></EncounterLink>
       {!role && <Link href={marketingPath("/login", language)} onClick={() => setOpen(false)}>{english ? "Log in" : "Se connecter"}<Icon name="arrow" /></Link>}
     </nav>}
   </header>;

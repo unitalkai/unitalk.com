@@ -30,3 +30,12 @@ the 2026-10-07 verification:
 - GitHub: https://github.com/unitalkai
 
 Icon sources: https://github.com/simple-icons/simple-icons (CC0).
+
+## Conversation app ribbon and LinkedIn button
+
+The conversation section adds Gmail, Telegram, Discord and Google Meet marks
+from Simple Icons (`icons/gmail.svg`, `telegram.svg`, `discord.svg`,
+`googlemeet.svg`) to the existing WhatsApp, LinkedIn, Slack and email ribbon.
+The LinkedIn shape is shared by `linkedin-logo.tsx` and the hero button;
+white/current-color fill preserves contrast on the fuchsia action.
+These are decorative representations of intended channels, not live connections.

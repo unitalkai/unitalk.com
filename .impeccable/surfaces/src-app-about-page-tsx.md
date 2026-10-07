@@ -7,6 +7,8 @@ related_targets: ["src/app/fr/about/page.tsx", "src/components/marketing-about.t
 
 # About
 
+The intended architecture now also includes Twenty for contacts/opportunities and Chatwoot for support on a private server. Official links are provided, and the architecture note states that these services are not connected to this frontend. Homepage product explanation stays benefit-first while this page retains technical context.
+
 Mode: Read/Persuade. Bilingual founder vision using Patrick's supplied comparison: in 1999, his AMEN experience selling domain names and website hosting; today, making owned AI Collaborators accessible. 1999 describes his experience, not an invented company founding date.
 
 ## Direction contract

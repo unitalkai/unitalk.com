@@ -22,6 +22,6 @@ export function OwnershipOptions({ language }: { language?: "en" | "fr" }) {
       <div className="select-shell"><select id="intelligence-choice" value={intelligence} onChange={event => setPreferences(previous => ({ ...previous, intelligence: event.target.value as typeof intelligence }))}>{INTELLIGENCE_OPTIONS.map(option => <option key={option.value} value={option.value}>{intelligenceLabel(option.value, option.label, language)}</option>)}</select><Icon name="chevron" /></div>
       <p>{fr ? "Crédits, vos clés API ou une passerelle existante." : "Use credits, your API keys or an existing gateway."}</p>
     </div>
-    <EncounterLink className="button button-primary" language={language} marketing defaults={{ hosting: "unitalk", intelligence: "credits" }}>{fr ? "Rencontrer le mien avec ces choix" : "Meet yours with these choices"} <Icon name="arrow" /></EncounterLink>
+    <EncounterLink className="button button-primary" language={language} marketing defaults={{ hosting: "unitalk", intelligence: "credits" }}>{fr ? "Commencer gratuitement" : "Start for free"} <Icon name="arrow" /></EncounterLink>
   </div>;
 }

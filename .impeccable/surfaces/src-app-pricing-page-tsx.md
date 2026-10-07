@@ -7,6 +7,8 @@ related_targets: ["src/components/pricing-hosting.tsx"]
 
 # Pricing
 
+The offer panel now shows the short one-week/no-card reassurance before the encounter action, with token allowance and separate-AI-cost detail under `TrialDetails`. The 10 million tokens remain in the full offer and FAQ. Billing and explicit intelligence preference overrides are unchanged and verified in both languages; lint, TypeScript and production build passed.
+
 The shared composition now lives in `src/components/marketing-pricing.tsx`, rendered by `/pricing` and translated `/fr/pricing`. French price labels (9,99 € / mois and 99 € / an), billing controls, hosting/intelligence labels and CTAs retain the same allowlisted preferences and explicit override precedence. The bilingual shared footer has official social links and equivalent-route switching. Both languages and French pricing-to-encounter preference handoff passed checks at 1440, 1280 × 600, 390 and 320px; lint, TypeScript and production build passed.
 
 Mode: Persuade. One base offer and clear separate choices for intelligence and infrastructure. English page, inherited WhatsApp–fuchsia identity.

@@ -2,8 +2,9 @@ export const COLLABORATOR_OFFER = {
   monthly: "€9.99",
   annual: "€99",
   annualSaving: "2 months free",
-  trial: "One-week free trial. No credit card required.",
-  french: { monthly: "9,99 €", annual: "99 €", annualSaving: "2 mois offerts", trial: "Une semaine d’essai gratuit. Sans carte bancaire." },
+  trial: "One-week free trial. 10 million tokens included. No credit card required.",
+  trialShort: "One-week free trial. No credit card required.",
+  french: { monthly: "9,99 €", annual: "99 €", annualSaving: "2 mois offerts", trial: "Une semaine d’essai gratuit. 10 millions de tokens offerts. Sans carte bancaire.", trialShort: "Une semaine d’essai gratuit. Sans carte bancaire." },
 } as const;
 
 export const HOSTING_OPTIONS = [

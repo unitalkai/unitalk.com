@@ -3,6 +3,7 @@
 import { EncounterLink, useCollaboratorOffer } from "./collaborator-offer-context";
 import { Icon } from "./icons";
 import { localizedOffer } from "@/lib/marketing-language";
+import { TrialDetails } from "./trial-details";
 
 export function CollaboratorPricing({ showComponents = true, language }: { showComponents?: boolean; language?: "en" | "fr" }) {
   const { preferences, setPreferences } = useCollaboratorOffer();
@@ -20,7 +21,8 @@ export function CollaboratorPricing({ showComponents = true, language }: { showC
     <p className="pricing-subtitle">{fr ? "Votre propre Collaborateur IA." : "Your own AI Collaborator."}</p>
     {showComponents && <ul className="pricing-inclusions" aria-label={fr ? "Composants du Collaborateur" : "Collaborator components"}>{(fr ? ["Identité", "Mémoire", "Connaissances", "Compétences", "Outils", "Autorité"] : ["Identity", "Memory", "Knowledge", "Skills", "Tools", "Authority"]).map(item => <li key={item}>{item}</li>)}</ul>}
     <p className="pricing-yearly">{billing === "monthly" ? `${offer.annual} / ${fr ? "an" : "year"} — ${offer.annualSaving}` : `${offer.monthly} / ${fr ? "mois en facturation mensuelle" : "month with monthly billing"}`}<br /><span>{fr ? "Résiliable à tout moment." : "Cancel anytime."}</span></p>
-    <p className="pricing-usage-note">{fr ? "Usage IA séparé : achetez des crédits Unitalk ou utilisez votre fournisseur." : "AI usage is separate: buy Unitalk Credits or use your own provider."}</p>
-    <EncounterLink className="button button-primary" language={language} marketing defaults={{ billing: "monthly" }}>{fr ? "Rencontrer mon Collaborateur" : "Meet your Collaborator"} <Icon name="arrow" /></EncounterLink>
+    <p className="pricing-usage-note">{offer.trialShort}</p>
+    <EncounterLink className="button button-primary" language={language} marketing defaults={{ billing: "monthly" }}>{fr ? "Commencer gratuitement" : "Start for free"} <Icon name="arrow" /></EncounterLink>
+    <TrialDetails language={language} />
   </div>;
 }

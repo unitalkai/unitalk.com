@@ -90,6 +90,20 @@ A Collaborator receives a goal and performs work using its knowledge, skills and
 
 Multiple Collaborators working together. The user starts with one and adds more when needed — Sales, Research, Marketing, Operations, Development. Workforce is the natural expansion and is never the first-screen pitch: **the homepage sells the first Collaborator.**
 
+## Owner app scope and UX — wireframe v1.0
+
+The user-pinned owner app at `/dashboard/patrick` is a French operational experience. Its three navigation areas are **Accueil / People / Collaborator**, labelled **Accueil / People / Moi** in mobile bottom navigation. These are areas of one owner dashboard; the homepage, public Collaborator, owner dashboard and visitor dashboard remain four distinct product surfaces.
+
+- **Accueil = exceptions + proof of work.** “J’y travaille.” introduces the work, “Vous” shows three example situations requiring judgment: Sarah’s meeting slot, Acme’s proposed partnership response, and David’s missing priorities. First-person activity and a People preview follow. The exception count is contextual; there is no metrics grid or performance claim.
+- **Decide in context.** Each focused decision has a back control, context, recommendation, reasons and what the Collaborator can do. Choose Sarah’s slot, edit Acme’s draft, or supply David’s priorities. Local approval removes the exception, adds an activity outcome and updates the relationship’s next step and conversation. Resolving all three exposes the all-clear state.
+- **People = narrative relationships.** Search people or companies, read what is happening, the relationship history and next step, and inspect the simulated conversation. Take over, add a local owner reply, then let the Collaborator continue. Talking about a person opens the same owner conversation dialog, with predefined scenario responses.
+- **Authority is explicit.** Rules move between **DO IT / ASK ME / NEVER DO IT** and changes add local activity. **NEVER DO IT blocks the corresponding demo approval**; pause and relationship takeover also block it. Changing a rule to DO IT does not automatically resolve an existing exception: pending decisions still require explicit approval. Activity exposes pause/resume and labelled scenario states for working, waiting and needing the owner.
+- **Collaborator holds secondary controls.** Knowledge references can be added/removed without loading their contents; ChatGPT/Claude/OpenClaw history has a migration preview only. Capabilities and tools/MCP are planned, with local tool choices and per-channel permission previews. Memory is separate from knowledge and supports correction/deletion. Identity edits are local; opening/copying Patrick’s public URL leaves the public identity independent.
+- **Infrastructure and account stay secondary.** Hosting/intelligence and monthly/annual billing choices are previews using the existing offer. Export downloads the local demo preferences as JSON, not a durable Collaborator backup. Authentication, API keys, production backups and advanced configuration remain planned.
+- **Replay the owner onboarding.** The account menu opens a local first meeting: name, optional unanalysed website reference, mission and intended channels, then scripted work/results leading back to Patrick’s existing example relationships. LinkedIn and voice controls explain that they are planned. Replay creates no real Collaborator and does not personalize the dashboard’s scenario data.
+
+**Implementation boundary:** visibly labelled demo work, conversations and results; simulated owner role, no authentication/authorization, connected AI, external action, ingestion or durable persistence. Local state survives section changes within the mounted page and resets on reload. The owner app inherits the existing WhatsApp–fuchsia world and tokens; its composition and scoped `src/app/owner.css` extend that system.
+
 ## Offer
 
 - **Collaborator — €9.99 / month**, cancel anytime.

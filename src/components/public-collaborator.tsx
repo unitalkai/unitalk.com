@@ -50,7 +50,8 @@ export function PublicCollaborator() {
   const sequence = useRef(1);
   const opener = useRef<HTMLButtonElement | null>(null);
   const isBooking = stage !== "idle" && stage !== "confirmed";
-  const lastRequest = [...messages].reverse().find(message => message.role === "visitor")?.text;
+  const lastRequest = [...messages].reverse().find(message => message.role === "visitor" && message.kind !== "selection")?.text;
+  const handoffRequest = stage === "confirmed" ? `${meeting.reason}${meeting.context ? `\n${meeting.context}` : ""}` : lastRequest;
 
   useEffect(() => {
     const restore = setTimeout(() => setSaved(readPublicSession()), 0);
@@ -72,27 +73,31 @@ export function PublicCollaborator() {
     return () => cancelAnimationFrame(frame);
   }, [open, stage, handoff]);
 
-  function append(role: PublicMessage["role"], text: string) {
-    setMessages(previous => [...previous, { id: sequence.current++, role, text }]);
+  function append(role: PublicMessage["role"], text: string, kind?: PublicMessage["kind"]) {
+    const message = { id: sequence.current++, role, text, ...(kind ? { kind } : {}) };
+    setMessages(previous => [...previous, message]);
   }
 
-  function reveal(button?: HTMLButtonElement) {
+  function reveal(button?: HTMLButtonElement, restore = true) {
+    if (restore && !open && saved && messages.length === 1) {
+      setMessages(saved.messages);
+      sequence.current = Math.max(...saved.messages.map(message => message.id)) + 1;
+      setVisitorName(saved.name);
+    }
     if (button) opener.current = button;
     setOpen(true);
     requestAnimationFrame(() => conversation.current?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" }));
   }
 
   function startConversation(button: HTMLButtonElement, fresh = false) {
-    if (!open && saved && !fresh && messages.length === 1) {
-      setMessages(saved.messages);
-      sequence.current = Math.max(...saved.messages.map(message => message.id)) + 1;
-      setVisitorName(saved.name);
-    }
     if (fresh) {
-      setMessages([greeting]); setSaved(null); setVisitorName(""); setStage("idle"); setMeeting(emptyMeeting); setHandoff("idle");
+      if (timer.current) clearTimeout(timer.current);
+      timer.current = null; recognition.current?.abort(); recognition.current = null;
+      setPending(false); setListening(false); setInput(""); setError(""); setSlots([]); setShowWork(false);
+      setMessages([greeting]); setSaved(null); setVisitorName(""); setStage("idle"); setMeeting(emptyMeeting); setHandoff("idle"); setVoiceNotice(""); sequence.current = 1;
       try { sessionStorage.removeItem(PUBLIC_SESSION_KEY); } catch { /* Storage is optional. */ }
     }
-    reveal(button);
+    reveal(button, !fresh);
   }
 
   function respond(text: string) {
@@ -132,7 +137,7 @@ export function PublicCollaborator() {
   }
 
   function selectTime(slot: string) {
-    setMeeting(previous => ({ ...previous, slot })); append("visitor", slot);
+    setMeeting(previous => ({ ...previous, slot })); append("visitor", slot, "selection");
     append("collaborator", "Who should Patrick expect? Add your name and email to finish the meeting preview."); setStage("details");
   }
 
@@ -149,6 +154,7 @@ export function PublicCollaborator() {
 
   function closeConversation() {
     recognition.current?.abort(); setListening(false); setOpen(false);
+    if (messages.length > 1) setSaved({ messages, name: visitorName });
     requestAnimationFrame(() => opener.current?.focus({ preventScroll: true }));
   }
 
@@ -172,7 +178,9 @@ export function PublicCollaborator() {
 
   function topic(text: string, button: HTMLButtonElement) {
     if (pending) return;
-    reveal(button); setStage("idle"); setHandoff("idle"); submitText(`I’d like to talk about ${text}.`);
+    reveal(button); setStage("idle"); setHandoff("idle"); setInput("");
+    const request = `I’d like to talk about ${text}.`;
+    append("visitor", request); respond(request);
   }
 
   return <div className="public-presence" lang="en">
@@ -201,7 +209,7 @@ export function PublicCollaborator() {
             {stage === "time" && <fieldset className="presence-slots" id="public-meeting-times" tabIndex={-1}><legend>Example times · 30-minute meeting</legend>{slots.map(slot => <button type="button" key={slot} onClick={() => selectTime(slot)}>{slot}<Icon name="arrow" /></button>)}</fieldset>}
             {stage === "details" && <form className="presence-booking-form" onSubmit={confirmMeeting} noValidate><div><label htmlFor="public-meeting-name">Name</label><input id="public-meeting-name" autoComplete="name" maxLength={100} value={meeting.name} aria-invalid={Boolean(error && !meeting.name.trim())} aria-describedby={error ? "public-booking-error" : undefined} onChange={event => setMeeting(previous => ({ ...previous, name: event.target.value }))} required /></div><div><label htmlFor="public-meeting-email">Email</label><input id="public-meeting-email" type="email" autoComplete="email" maxLength={254} value={meeting.email} aria-invalid={Boolean(error && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(meeting.email.trim()))} aria-describedby={error ? "public-booking-error" : undefined} onChange={event => setMeeting(previous => ({ ...previous, email: event.target.value }))} required /></div>{error && <p id="public-booking-error" className="form-error" role="alert">{error}</p>}<p className="presence-session-note">Used for this local preview only. No invitation will be sent.</p><button type="submit" className="button button-primary">Confirm meeting <Icon name="check" /></button></form>}
             {stage === "confirmed" && <section className="presence-result" aria-label="Prepared meeting"><h3><Icon name="check" />Meeting preview</h3><dl><div><dt>Who</dt><dd>{meeting.name} · {meeting.email}</dd></div><div><dt>Why</dt><dd>{meeting.reason}</dd></div>{meeting.context && <div><dt>Context</dt><dd>{meeting.context}</dd></div>}<div><dt>When</dt><dd>{meeting.slot}</dd></div></dl><details><summary>Conversation included</summary>{messages.filter(message => message.role === "visitor").map(message => <p key={message.id}>{message.text}</p>)}</details><p className="presence-session-note">Prepared locally. Nothing has been booked with Patrick.</p><button type="button" className="presence-text-button" onClick={() => setStage("idle")}>Continue the conversation <Icon name="arrow" /></button></section>}
-            {handoff === "review" && <section className="presence-result" aria-labelledby="public-handoff-title"><h3 id="public-handoff-title" tabIndex={-1}>Send to Patrick</h3><p>Your conversation and this request will be included:</p><blockquote>{lastRequest}</blockquote><p className="presence-session-note">Demo only. Confirming prepares a local handoff; it does not contact Patrick.</p><div className="presence-actions"><button type="button" className="button button-primary" onClick={() => { setHandoff("prepared"); append("collaborator", "Your message is prepared for Patrick. I’ve kept the context in this browser tab. You don’t need to repeat yourself here.\n\nDemo only: nothing was sent to Patrick."); }}>Prepare handoff <Icon name="check" /></button><button type="button" className="presence-text-button" onClick={() => setHandoff("idle")}>Keep talking</button></div></section>}
+            {handoff === "review" && <section className="presence-result" aria-labelledby="public-handoff-title"><h3 id="public-handoff-title" tabIndex={-1}>Send to Patrick</h3><p>Your conversation and this request will be included:</p><blockquote>{handoffRequest}</blockquote><p className="presence-session-note">Demo only. Confirming prepares a local handoff; it does not contact Patrick.</p><div className="presence-actions"><button type="button" className="button button-primary" onClick={() => { setHandoff("prepared"); append("collaborator", "Your message is prepared for Patrick. I’ve kept the context in this browser tab. You don’t need to repeat yourself here.\n\nDemo only: nothing was sent to Patrick."); }}>Prepare handoff <Icon name="check" /></button><button type="button" className="presence-text-button" onClick={() => setHandoff("idle")}>Keep talking</button></div></section>}
             {(stage === "idle" || stage === "confirmed") && messages.length > 1 && handoff !== "review" && <div className="presence-next-actions" aria-label="Next useful actions"><button type="button" disabled={pending} onClick={() => submitText("Explain Unitalk")}>Explain Unitalk</button><button type="button" disabled={pending} onClick={() => startBooking()}>Book a meeting</button><button type="button" disabled={pending || !lastRequest} onClick={() => setHandoff("review")}>{handoff === "prepared" ? "Review another handoff" : "Send to Patrick"}</button></div>}
             {stage !== "time" && stage !== "details" && handoff !== "review" && <form className="presence-composer" onSubmit={send}><label className="sr-only" htmlFor="public-message">Write a message to Patrick’s Collaborator</label><textarea id="public-message" ref={composer} value={input} onChange={event => setInput(event.target.value)} onKeyDown={event => { if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); submitText(input); } }} maxLength={2000} rows={2} placeholder="Write a message…" /><div><button type="button" className={`icon-button${listening ? " is-listening" : ""}`} onClick={() => talk()} aria-label={listening ? "Stop voice input" : "Use voice input"} aria-pressed={listening}><Icon name={listening ? "pause" : "mic"} /></button><button type="submit" className="icon-button send-button" disabled={!input.trim() || pending} aria-label="Send message"><Icon name="arrow" /></button></div></form>}
             {voiceNotice && <p className="presence-voice-notice" role="status">{voiceNotice}</p>}

@@ -20,7 +20,7 @@ export function VisitorDashboard({ initialUrl, startEncounter = false, preferenc
     <section hidden={tab !== "conversations"}>
       <div className="dashboard-heading"><h1>Bienvenue.<br /><span>La conversation continue.</span></h1><p>Votre espace, vos échanges.<br />Rencontrez celui de Patrick, puis le vôtre.</p></div>
       <div className="visitor-workspace">
-        <aside className="visitor-conversations"><h2>Vos conversations</h2><div className="visitor-contact"><span className="avatar">PC</span><div><strong>Le Collaborateur de Patrick</strong><span>Conversation de démonstration</span></div></div><p>Un espace pour découvrir son travail et Unitalk.</p><Link className="text-link" href="/@patrick-chassany">Voir le profil public <Icon name="external" /></Link></aside>
+        <aside className="visitor-conversations"><h2>Vos conversations</h2><div className="visitor-contact"><span className="avatar">PC</span><div><strong>Le Collaborateur de Patrick</strong><span>Collaborateur IA public</span></div></div><p>Un espace pour découvrir son travail et Unitalk.</p><Link className="text-link" href="/@patrick-chassany">Voir le profil public <Icon name="external" /></Link></aside>
         <Conversation light hidden={tab !== "conversations"} />
       </div>
       <div className="visitor-create-invite"><h3>Et votre Collaborateur ?</h3><p>Une première rencontre.<br />Une mission que vous aimeriez lui confier.</p><button className="button button-outline" onClick={() => setTab("create")}>Rencontrer le mien <Icon name="arrow" /></button></div>

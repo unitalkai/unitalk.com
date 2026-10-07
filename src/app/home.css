@@ -41,7 +41,6 @@
 .work-start .hero-entry-alternative .text-link { color: var(--ink); }
 .work-start .hero-entry-alternative .text-link:hover { color: var(--signal-deep); }
 .work-start .hero-entry :focus-visible { outline-color: var(--signal-deep); }
-.home-entry-hint { font-size: var(--text-caption); color: var(--muted); line-height: 1.5; margin-top: 14px; }
 .work-example-anchor { scroll-margin-top: 104px; min-width: 0; }
 .work-demo { background: var(--white); color: var(--ink); border: 1px solid var(--ivory-line); border-radius: var(--radius-panel); padding: 28px; }
 .work-demo-choices { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--ivory-line); }
@@ -68,7 +67,7 @@
 .work-demo-actions .button { padding-inline: 20px; gap: 12px; font-size: var(--text-small); }
 .work-demo-edit { min-height: 44px; padding: 8px 0; background: transparent; border: 0; text-decoration: underline; text-underline-offset: 5px; font-size: var(--text-small); }
 .work-demo-edit:hover { color: var(--signal-deep); }
-.work-demo-truth { margin-top: 14px; min-height: 36px; font-size: var(--text-caption); line-height: 1.5; color: var(--muted); }
+.work-demo-truth { margin-top: 14px; font-size: var(--text-caption); line-height: 1.5; color: var(--muted); }
 .conversion-home .marketing-section { padding-block: 80px; }
 .conversion-home .patrick-proof { padding-top: 32px; }
 .conversion-home .history-illustration ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
@@ -127,7 +126,6 @@
 .meet-empty h2 { margin-top: 24px; font-size: var(--text-dashboard); line-height: 1.12; letter-spacing: -.04em; }
 .meet-empty h2 span { color: #ff6aba; }
 .meet-empty > p { margin-top: 20px; font-size: var(--text-control); line-height: 1.6; max-width: 32ch; }
-.meet-empty .meet-demo-note { color: var(--muted-ink); font-size: var(--text-caption); margin-top: 32px; }
 .meet-next { margin-top: 28px; }
 .meet-next h3 { font-size: var(--text-title); }
 .meet-next > p { margin-top: 14px; font-size: var(--text-small); color: var(--muted); line-height: 1.6; }

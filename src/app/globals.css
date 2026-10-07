@@ -722,11 +722,10 @@ button svg, a svg, summary svg { flex: none; }
 .marketing-footer .footer-inner nav svg { display: none; }
 .encounter-preferences { margin-top: 24px; padding: 20px; background: var(--signal-wash); border-radius: var(--radius-bubble); font-size: var(--text-small); }
 .encounter-preferences > p:first-child { font-weight: 500; }
-.encounter-preferences dl { margin: 14px 0; }
+.encounter-preferences dl { margin: 14px 0 0; }
 .encounter-preferences dl > div { display: flex; justify-content: space-between; gap: 16px; padding-block: 5px; }
 .encounter-preferences dt { color: var(--muted); }
 .encounter-preferences dd { margin: 0; text-align: right; }
-.encounter-preferences > p:last-child { color: var(--muted); font-size: var(--text-caption); }
 
 /* Keep both entry paths and the offer above the fold on short laptop viewports. */
 @media (min-width: 960px) and (max-height: 820px) {

@@ -19,6 +19,8 @@ STORY: Meet yours; see Patrick as direct proof without a case study; bring previ
 
 FIRST VIEWPORT: Cream navigation and rounded photographic hero. Keep the normal-weight headline, connection copy, domain field with Continue, LinkedIn encounter link and 20px price. A warmer professional conversation photograph occupies the right, with faces clear of the copy; the legibility overlay is concentrated on the left. A small, explicitly illustrative conversation sits below the faces. One responsive image moves below the form on mobile. Beneath the hero, two staggered ribbons of circular portraits and white/pink message bubbles frame the existing work-first copy, in the WhatsApp reference’s conversational grammar. Stock portraits represent illustrative relationships, with no names, customer claim or testimonial. Later sections and encounter behavior inherit the existing surface.
 
+LAPTOP HEIGHT: At desktop widths from 960px and viewport heights up to 820px, the hero adapts to available height. Use 16px top spacing, 20–32px vertical content padding, a height-aware 44–80px title and tighter copy/form spacing. Both the LinkedIn entry and the unchanged 20px monthly offer must be visible without scrolling. Chromium viewport checks passed at 1280×600, 1366×650, 1440×700 and 1536×754; at 1440×700 the price ends at 596px. Mobile copy, form and offer layout retains its existing behavior.
+
 FORM: User-pinned reference, no random direction seed. Code-led translation from the measured live reference.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

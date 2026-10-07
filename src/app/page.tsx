@@ -23,8 +23,6 @@ export default function Home() {
     <SiteHeader language="en" />
     <main id="main-content">
       <section className="home-hero work-hero english-hero" id="creer" aria-labelledby="home-title">
-        <Image src="/images/working-together.jpg" alt="" fill preload sizes="100vw" className="hero-photo" />
-        <div className="hero-shade" />
         <div className="hero-content">
           <h1 id="home-title">Your AI<br />Collaborator.<br /><span>It works for you.</span></h1>
           <p>Connect it to your website, email, WhatsApp, Slack, LinkedIn and more.</p>
@@ -32,13 +30,36 @@ export default function Home() {
           <HomeEntry />
           <p className="hero-price">{COLLABORATOR_OFFER.monthly} / month · Cancel anytime</p>
         </div>
-        <Image src="/images/working-together.jpg" alt="An illustrative working scene, not the Unitalk team." width={1800} height={1200} sizes="(max-width: 699px) 100vw, 1px" className="hero-mobile-photo" />
+        <div className="home-hero-media">
+          <Image src="/images/professional-conversation.jpg" alt="Two professionals exchanging ideas over a laptop." fill preload sizes="(max-width: 959px) 100vw, 68vw" className="home-hero-photo" />
+          <div className="home-hero-overlay" />
+          <div className="home-hero-conversation" role="group" aria-label="Illustrative conversation with an AI Collaborator">
+            <span className="home-hero-example">Illustrative conversation</span>
+            <p className="home-photo-message home-photo-question">Keep the conversation going.</p>
+            <p className="home-photo-message home-photo-answer"><Icon name="message" width="20" height="20" /><span>I’ll prepare the next step.</span></p>
+          </div>
+        </div>
       </section>
-      <div className="hero-caption"><span>Illustrative photograph · Unsplash</span></div>
 
-      <section className="marketing-section work-summary content-container" id="how-it-works" aria-labelledby="work-title">
-        <h2 id="work-title">It starts working<br /><span>when you connect it.</span></h2>
-        <div className="section-copy"><p>It reads your conversations, understands your relationships, organizes your contacts and opportunities, responds, follows up and acts.</p><p>When only you can decide, it asks you.</p><blockquote>You only get involved<br /><span>when you’re needed.</span></blockquote></div>
+      <section className="home-relationships" id="how-it-works" aria-labelledby="work-title">
+        <div className="relationship-ribbon relationship-ribbon-top" aria-hidden="true">
+          <Image src="/images/portrait-01.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 64px, 100px" className="relationship-portrait portrait-one" />
+          <span className="relationship-message relationship-message-white">Let’s find a time to talk.</span>
+          <Image src="/images/portrait-02.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 56px, 80px" className="relationship-portrait portrait-two" />
+          <span className="relationship-message relationship-message-pink">I’ll prepare the follow-up. <Icon name="check" width="18" height="18" /></span>
+          <Image src="/images/portrait-03.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 72px, 112px" className="relationship-portrait portrait-three" />
+        </div>
+        <div className="marketing-section work-summary content-container">
+          <h2 id="work-title">It starts working<br /><span>when you connect it.</span></h2>
+          <div className="section-copy"><p>It reads your conversations, understands your relationships, organizes your contacts and opportunities, responds, follows up and acts.</p><p>When only you can decide, it asks you.</p><blockquote>You only get involved<br /><span>when you’re needed.</span></blockquote></div>
+        </div>
+        <div className="relationship-ribbon relationship-ribbon-bottom" aria-hidden="true">
+          <span className="relationship-message relationship-message-pink">What should we do next?</span>
+          <Image src="/images/portrait-04.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 64px, 96px" className="relationship-portrait portrait-four" />
+          <span className="relationship-message relationship-message-white"><Icon name="message" width="20" height="20" />When it matters, I’ll ask you.</span>
+          <Image src="/images/portrait-05.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 64px, 88px" className="relationship-portrait portrait-five" />
+        </div>
+        <p className="relationship-caption">Illustrative portraits and conversations · Unsplash</p>
       </section>
 
       <section className="marketing-section collaborator-showcase patrick-proof content-container" id="patrick" aria-labelledby="patrick-title">

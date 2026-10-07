@@ -608,6 +608,36 @@ button svg, a svg, summary svg { flex: none; }
 .hero-entry-alternative .text-link:hover { color: #ff6aba; }
 .hero-entry :where(a, button, input):focus-visible { outline-color: #ff6aba; }
 .hero-entry .url-control :where(button, input):focus-visible { outline-color: var(--signal-deep); }
+.marketing-home .english-hero .hero-content { max-width: 700px; padding-right: 24px; }
+.home-hero-media { position: absolute; inset: 0 0 0 32%; }
+.home-hero-photo { object-fit: cover; object-position: 50% 45%; }
+.home-hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, var(--ink-raised) 0%, #111b21eb 12%, #111b2170 30%, #111b2100 58%), linear-gradient(0deg, #111b2199 0%, #111b2100 40%); }
+.home-hero-conversation { position: absolute; bottom: 48px; right: clamp(24px, 4vw, 64px); display: flex; flex-direction: column; align-items: flex-start; gap: 12px; width: 300px; }
+.home-hero-example { align-self: flex-end; color: var(--white); background: var(--ink-raised); border-radius: var(--radius-control); padding: 5px 10px; font-size: var(--text-caption); }
+.home-photo-message { color: var(--ink); border-radius: var(--radius-bubble); padding: 14px 18px; font-size: var(--text-control); line-height: 1.4; box-shadow: 0 4px 16px #111b2120; }
+.home-photo-question { align-self: flex-end; background: var(--signal-wash); border-top-right-radius: 3px; }
+.home-photo-answer { display: flex; align-items: center; gap: 10px; background: var(--white); border-top-left-radius: 3px; }
+.home-photo-answer > svg { color: var(--signal-deep); flex: none; }
+.home-relationships { padding: 76px 0 72px; }
+.relationship-ribbon { width: min(1120px, calc(100% - 96px)); margin-inline: auto; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.relationship-ribbon-top { min-height: 132px; }
+.relationship-portrait { display: block; flex: none; width: 96px; height: 96px; max-width: none; border-radius: 50%; object-fit: cover; }
+.portrait-one { width: 100px; height: 100px; transform: translateY(10px); }
+.portrait-two { width: 80px; height: 80px; transform: translateY(-22px); }
+.portrait-three { width: 112px; height: 112px; transform: translateY(18px); }
+.portrait-four { transform: translateY(16px); }
+.portrait-five { width: 88px; height: 88px; transform: translateY(-16px); }
+.relationship-message { display: inline-flex; align-items: center; gap: 12px; padding: 16px 22px; border-radius: var(--radius-bubble); font-size: var(--text-control); line-height: 1.4; box-shadow: 0 4px 16px #111b210d; }
+.relationship-message > svg { flex: none; color: var(--signal-deep); }
+.relationship-message-white { background: var(--white); border-top-left-radius: 3px; }
+.relationship-message-pink { background: var(--signal-wash); border-top-right-radius: 3px; }
+.relationship-ribbon-top .relationship-message-white { transform: translateY(-12px); }
+.relationship-ribbon-top .relationship-message-pink { transform: translateY(20px); }
+.home-relationships .work-summary { padding-block: 68px; }
+.relationship-ribbon-bottom { width: min(960px, calc(100% - 144px)); min-height: 116px; }
+.relationship-ribbon-bottom .relationship-message-pink { transform: translateY(-14px); }
+.relationship-ribbon-bottom .relationship-message-white { transform: translateY(12px); }
+.relationship-caption { margin: 36px 24px 0; text-align: center; color: var(--muted); font-size: var(--text-caption); }
 #home-domain { scroll-margin-top: 130px; }
 .marketing-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 100px; align-items: center; padding-block: 100px; }
 .marketing-home h2 { font-size: var(--text-headline); line-height: 1.06; letter-spacing: -.04em; }
@@ -714,6 +744,10 @@ button svg, a svg, summary svg { flex: none; }
 @media (max-width: 1199px) {
   .marketing-section { gap: 52px; }
   .marketing-header .desktop-nav a:last-child { display: block; }
+  .marketing-home .english-hero .hero-content { max-width: 600px; }
+  .home-hero-conversation { right: 24px; width: 280px; }
+  .relationship-ribbon { gap: 18px; }
+  .relationship-message { padding: 14px 18px; font-size: var(--text-small); }
 }
 @media (max-width: 959px) {
   .marketing-section { gap: 36px; padding-block: 72px; }
@@ -723,6 +757,22 @@ button svg, a svg, summary svg { flex: none; }
   .pricing-offer { padding: 28px; }
   .billing-choice label { flex-direction: column; gap: 2px; padding-inline: 8px; }
   .history-destination { font-size: var(--text-body); }
+  .marketing-home .english-hero { min-height: 0; padding-bottom: 0; }
+  .marketing-home .english-hero .hero-content { max-width: none; padding: 40px 36px 36px; }
+  .home-hero-media { position: relative; inset: auto; height: 380px; }
+  .home-hero-photo { object-position: 50% 45%; }
+  .home-hero-overlay { background: linear-gradient(0deg, #111b2180 0%, #111b2100 45%); }
+  .home-hero-conversation { bottom: 24px; }
+  .home-relationships { padding-block: 64px; }
+  .relationship-ribbon { width: calc(100% - 64px); gap: 16px; }
+  .relationship-ribbon-top { display: grid; grid-template-columns: 80px 1fr 96px; gap: 16px 24px; }
+  .portrait-one { width: 80px; height: 80px; grid-column: 1; grid-row: 1; }
+  .portrait-two { width: 64px; height: 64px; grid-column: 1; grid-row: 2; justify-self: end; transform: translateY(0); }
+  .portrait-three { width: 96px; height: 96px; grid-column: 3; grid-row: 1 / 3; }
+  .relationship-ribbon-top .relationship-message-white { grid-column: 2; grid-row: 1; justify-self: start; }
+  .relationship-ribbon-top .relationship-message-pink { grid-column: 2; grid-row: 2; justify-self: end; transform: translateY(0); }
+  .relationship-ribbon-bottom { flex-wrap: wrap; justify-content: center; gap: 20px 28px; }
+  .home-relationships .work-summary { padding-block: 52px; }
 }
 @media (max-width: 699px) {
   .marketing-home .english-hero { min-height: 0; }
@@ -760,6 +810,26 @@ button svg, a svg, summary svg { flex: none; }
   .marketing-footer .footer-inner nav { flex-wrap: wrap; gap: 8px 24px; }
   .encounter-preferences dl > div { flex-direction: column; gap: 3px; padding-block: 7px; }
   .encounter-preferences dd { text-align: left; }
+  .marketing-home .english-hero .hero-content { padding: 36px 24px 28px; }
+  .home-hero-media { height: 300px; }
+  .home-hero-photo { object-position: 55% 35%; }
+  .home-hero-conversation { width: calc(100% - 40px); right: 20px; bottom: 20px; gap: 9px; }
+  .home-photo-message { font-size: var(--text-small); padding: 12px 15px; }
+  .home-relationships { padding-block: 48px 52px; }
+  .relationship-ribbon { width: calc(100% - 40px); }
+  .relationship-ribbon-top { grid-template-columns: 64px minmax(0, 1fr) 72px; gap: 20px 12px; }
+  .relationship-message { padding: 12px 14px; font-size: var(--text-small); gap: 8px; }
+  .portrait-one { width: 64px; height: 64px; transform: translateY(0); }
+  .portrait-two { width: 56px; height: 56px; grid-column: 3; grid-row: 1; }
+  .portrait-three { width: 72px; height: 72px; grid-column: 3; grid-row: 2; justify-self: end; transform: translateY(8px); }
+  .relationship-ribbon-top .relationship-message-white { transform: translateY(0); }
+  .relationship-ribbon-top .relationship-message-pink { grid-column: 1 / 3; justify-self: end; }
+  .home-relationships .work-summary { padding-block: 48px 40px; }
+  .relationship-ribbon-bottom { display: grid; grid-template-columns: minmax(0, 1fr) 64px; gap: 20px 16px; }
+  .portrait-four, .portrait-five { width: 64px; height: 64px; transform: translateY(0); }
+  .relationship-ribbon-bottom .relationship-message-pink { justify-self: end; transform: translateY(0); }
+  .relationship-ribbon-bottom .relationship-message-white { transform: translateY(0); }
+  .relationship-caption { margin-top: 28px; }
 }
 
 /* Explanatory and offer pages extend the existing marketing family. */

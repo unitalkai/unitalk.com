@@ -48,8 +48,8 @@ export default function Home() {
 
       <section className="migration-section" id="history" aria-labelledby="history-title">
         <div className="marketing-section content-container">
-          <div><h2 id="history-title">Bring your<br /><span>AI history.</span></h2><p>Already using ChatGPT, Claude or OpenClaw?</p><p className="migration-promise">Import your history in one click.</p><p className="capability-note">History import is planned for these sources.<br />It isn’t available in this preview.</p></div>
-          <div className="history-illustration" aria-label="Your previous AI context, brought to your Collaborator"><ul>{["ChatGPT", "Claude", "OpenClaw"].map(source => <li key={source}><Icon name="message" /><span>{source}</span><Icon name="arrow" /></li>)}</ul><div className="history-destination"><Icon name="message" width="30" height="30" /><span>Your Collaborator</span></div><p>You don’t start from zero.</p></div>
+          <div><h2 id="history-title">Bring your<br /><span>AI history.</span></h2><p>Already using ChatGPT, Claude, OpenClaw, Gemini, Grok or Hermes?</p><p className="migration-promise">Import your history in one click.</p><p className="capability-note">History import is planned for these sources.<br />It isn’t available in this preview.</p></div>
+          <div className="history-illustration" aria-label="Your previous AI context, brought to your Collaborator"><ul>{["ChatGPT", "Claude", "OpenClaw", "Gemini", "Grok", "Hermes"].map(source => <li key={source}><Icon name="message" /><span>{source}</span><Icon name="arrow" /></li>)}</ul><div className="history-destination"><Icon name="message" width="30" height="30" /><span>Your Collaborator</span></div><p>You don’t start from zero.</p></div>
         </div>
       </section>
 

@@ -11,10 +11,10 @@ export async function generateMetadata({ params }: PageProps<"/[profile]">): Pro
   if (profile !== "@patrick-chassany" && profile !== "%40patrick-chassany") return {};
   return {
     title: { absolute: "Patrick Chassany — Here’s how to interact with me" },
-    description: "Meet Patrick’s public AI Collaborator. Ask a question, explore his work or prepare a meeting in this interactive demo.",
+    description: "Meet Patrick’s public AI Collaborator. Ask a question, explore his work or prepare a meeting.",
     alternates: { canonical: "/@patrick-chassany" },
-    openGraph: { type: "website", title: "Patrick Chassany — His public AI Collaborator", description: "Here’s how to interact with me. Meet Patrick’s Collaborator in an interactive demo.", url: "https://unitalk.com/@patrick-chassany", locale: "en_GB" },
-    twitter: { card: "summary", title: "Patrick Chassany — His public AI Collaborator", description: "Here’s how to interact with me. Meet Patrick’s Collaborator in an interactive demo." },
+    openGraph: { type: "website", title: "Patrick Chassany — His public AI Collaborator", description: "Here’s how to interact with me. Meet Patrick’s Collaborator.", url: "https://unitalk.com/@patrick-chassany", locale: "en_GB" },
+    twitter: { card: "summary", title: "Patrick Chassany — His public AI Collaborator", description: "Here’s how to interact with me. Meet Patrick’s Collaborator." },
   };
 }
 

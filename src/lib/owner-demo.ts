@@ -25,7 +25,7 @@ export const initialActivity: OwnerActivity[] = [
   { id: "a1", time: "09:18", day: "Aujourd’hui", title: "J’ai relancé Acme.", channel: "Email", kind: "conversations", person: "acme", detail: "J’ai repris le fil de la proposition de partenariat et demandé les précisions utiles au pilote." },
   { id: "a2", time: "08:51", day: "Aujourd’hui", title: "J’ai repéré une nouvelle opportunité.", channel: "LinkedIn", kind: "actions", detail: "Une conversation d’exemple concerne le suivi des relations en agence. J’ai préparé le contexte pour un prochain échange." },
   { id: "a3", time: "08:32", day: "Aujourd’hui", title: "J’ai repris le contexte de David.", channel: "Email", kind: "actions", person: "david", detail: "J’ai regroupé ses dernières questions et identifié celle qui a besoin de votre réponse personnelle." },
-  { id: "a4", time: "17:32", day: "Hier", title: "J’ai organisé le point avec Jean.", channel: "Calendrier", kind: "meetings", person: "jean", detail: "Un point vendredi a été ajouté au scénario de démonstration. Aucun calendrier réel n’a été modifié." },
+  { id: "a4", time: "17:32", day: "Hier", title: "J’ai organisé le point avec Jean.", channel: "Calendrier", kind: "meetings", person: "jean", detail: "Un point vendredi avec Jean." },
 ];
 
 export const initialAuthority: { id: string; label: string; level: AuthorityLevel }[] = [

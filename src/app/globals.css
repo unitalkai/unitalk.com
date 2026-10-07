@@ -161,7 +161,6 @@ button svg, a svg, summary svg { flex: none; }
 .chat-composer input { flex: 1; width: 0; border: 0; background: transparent; min-height: 44px; font-size: var(--text-small); }
 .send-button { border: 0; background: var(--signal); color: var(--white); }
 .send-button:hover:not(:disabled) { background: var(--signal-deep); }
-.conversation-disclaimer { color: var(--chat-muted); font-size: var(--text-caption); margin-top: 11px; text-align: center; }
 .conversation-light { --chat-border: var(--ivory-line); --chat-muted: var(--muted); background: var(--white); color: var(--ink); border: 1px solid var(--ivory-line); }
 .conversation-light .chat-message-collaborator { background: var(--ivory); }
 .conversation-light .chat-composer { background: var(--ivory); }
@@ -381,7 +380,6 @@ button svg, a svg, summary svg { flex: none; }
 .encounter-preview h3 { font-size: var(--text-title); margin-top: 28px; }
 .encounter-preview > .button { margin-top: 24px; white-space: normal; }
 .encounter-preview > .text-link { display: flex; border: 0; border-bottom: 2px solid var(--signal); background: transparent; color: var(--ink); margin-top: 12px; text-align: left; }
-.encounter-preview > .encounter-truth { margin-top: 28px; font-size: var(--text-caption); }
 
 @media (max-width: 1199px) {
   .work-section { gap: 52px; }

@@ -52,7 +52,7 @@ export function MeetCollaborator({ initialUrl, preferences, onContinue }: { init
       </form>
       <details className="optional-source"><summary>Ajouter une source publique <span>Facultatif</span></summary><CreateForm compact onPreview={url => { setSource(url); setMet(false); }} />{source && <p className="form-hint">Source indiquée : {new URL(source).hostname} · non analysée.</p>}</details>
     </div>
-    <section className="encounter-preview" aria-label="Première rencontre de démonstration" aria-live="polite">
+    <section className="encounter-preview" aria-label="Première rencontre" aria-live="polite">
       <div className="encounter-preview-top"><span className="avatar avatar-large">{name.trim() ? name.trim().slice(0, 2).toUpperCase() : <Icon name="message" width="30" height="30" />}</span><span className="demo-label">Démo</span></div>
       {met ? <>
         <h2 ref={responseHeading} tabIndex={-1}>Bonjour {name.trim()}.<br /><span>Commençons par vous.</span></h2>

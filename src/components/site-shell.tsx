@@ -32,7 +32,7 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
       <div className="header-actions">
         {role ? <div className="account-pill"><span className="avatar avatar-small">{role === "patrick" ? "PC" : "V"}</span><span>{role === "patrick" ? "Patrick" : "Visiteur"}</span><span className="demo-label">Démo</span></div> : <details className="account-menu">
           <summary className="button button-outline button-small">{english ? "Log in" : "Se connecter"} <Icon name="chevron" /></summary>
-          <div className="account-dropdown"><p>{english ? "Choose a demo workspace" : "Choisir un espace de démonstration"}</p><Link href="/dashboard/patrick">{english ? "Patrick’s workspace" : "Espace Patrick"} <Icon name="arrow" /></Link><Link href="/dashboard/visiteur">{english ? "Visitor workspace" : "Espace visiteur"} <Icon name="arrow" /></Link></div>
+          <div className="account-dropdown"><p>{english ? "Choose a workspace" : "Choisir un espace"} <span className="demo-label">{english ? "Demo" : "Démo"}</span></p><Link href="/dashboard/patrick">{english ? "Patrick’s workspace" : "Espace Patrick"} <Icon name="arrow" /></Link><Link href="/dashboard/visiteur">{english ? "Visitor workspace" : "Espace visiteur"} <Icon name="arrow" /></Link></div>
         </details>}
         <EncounterLink language={language} className="button button-primary button-small header-create">{english ? "Meet your Collaborator" : "Rencontrer le mien"} <Icon name="arrow" /></EncounterLink>
         <button className="icon-button mobile-menu-toggle" aria-label={english ? (open ? "Close navigation" : "Open navigation") : (open ? "Fermer la navigation" : "Ouvrir la navigation")} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}><Icon name={open ? "close" : "menu"} /></button>
@@ -52,9 +52,9 @@ export function SiteFooter({ language = "fr" }: { language?: "fr" | "en" }) {
     <div className="footer-inner"><div><Brand language="en" /><p>Create and deploy<br />AI Collaborators you own.</p></div><nav aria-label="Footer navigation"><Link href="/how-it-works">Product <Icon name="arrow" /></Link><Link href="/pricing">Pricing <Icon name="arrow" /></Link></nav></div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} Unitalk</span></div>
   </footer>;
-  return <footer className="site-footer"><div className="footer-inner"><div><Brand /><p>Il travaille pour vous.<br />Il vous appartient.</p></div><nav aria-label="Navigation de pied de page"><Link href="/@patrick-chassany">Le Collaborateur de Patrick <Icon name="arrow" /></Link><Link href="/dashboard/patrick">Dashboard Patrick <span>Démo</span></Link><Link href="/dashboard/visiteur">Dashboard visiteur <span>Démo</span></Link></nav></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Unitalk</span><span>Prototype interactif · fonctions IA simulées</span></div></footer>;
+  return <footer className="site-footer"><div className="footer-inner"><div><Brand /><p>Il travaille pour vous.<br />Il vous appartient.</p></div><nav aria-label="Navigation de pied de page"><Link href="/@patrick-chassany">Le Collaborateur de Patrick <Icon name="arrow" /></Link><Link href="/dashboard/patrick">Dashboard Patrick <span>Démo</span></Link><Link href="/dashboard/visiteur">Dashboard visiteur <span>Démo</span></Link></nav></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Unitalk</span></div></footer>;
 }
 
 export function DemoNotice({ role }: { role: "patrick" | "visiteur" }) {
-  return <div className="demo-notice"><span className="demo-label">Mode démo</span><span>Espace {role === "patrick" ? "Patrick" : "visiteur"} · connexion simulée, données d’exemple.</span><Link href="/">Quitter la démo <Icon name="arrow" /></Link></div>;
+  return <div className="demo-notice"><span className="demo-label">Démo</span><span>Espace {role === "patrick" ? "Patrick" : "visiteur"}</span><Link href="/">Accueil <Icon name="arrow" /></Link></div>;
 }

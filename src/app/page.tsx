@@ -33,7 +33,7 @@ export default function Home() {
           <p className="hero-explanation">Give it the work. Keep the final say.</p>
           <div className="hero-conversion-actions"><Link href="#work-example" className="button button-primary">See it do the work <Icon name="arrow" /></Link><EncounterLink className="hero-secondary-action" language="en">Meet yours <Icon name="arrow" /></EncounterLink></div>
           <p className="hero-price">{COLLABORATOR_OFFER.monthly} / month · Cancel anytime</p>
-          <p className="hero-usage">AI usage separate. Explore the demo without payment.</p>
+          <p className="hero-usage">AI usage separate.</p>
         </div>
         <div className="home-hero-media">
           <Image src="/images/professional-conversation.jpg" alt="Two professionals exchanging ideas over a laptop." fill preload sizes="(max-width: 959px) 100vw, 68vw" className="home-hero-photo" />

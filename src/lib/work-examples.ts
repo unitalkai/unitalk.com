@@ -9,7 +9,7 @@ export const WORK_EXAMPLES = [
     subject: "A clear next step",
     draft: "Thanks for the conversation. Shall we define the scope and priorities for a first project together next week?",
     boundary: "I’ll wait for your approval before sending.",
-    result: "Follow-up approved in this demo. Nothing was sent.",
+    result: "Follow-up approved.",
   },
   {
     id: "opportunity",
@@ -21,7 +21,7 @@ export const WORK_EXAMPLES = [
     subject: "Three questions before we meet",
     draft: "Thanks for reaching out. What outcome are you aiming for, what’s your timeline and who will be involved in the decision? That will help us prepare a useful conversation.",
     boundary: "I can prepare the questions. You decide whether to proceed.",
-    result: "Qualification draft approved in this demo. Nothing was sent.",
+    result: "Qualification draft approved.",
   },
   {
     id: "meeting",
@@ -33,7 +33,7 @@ export const WORK_EXAMPLES = [
     subject: "Your conversation brief",
     draft: "Goal: agree on a useful first project.\n\nAsk: What matters most? What would success look like? What constraints should we know?\n\nLeave with: one owner, one next step and a date to reconnect.",
     boundary: "The brief is ready. Commitments stay yours to make.",
-    result: "Meeting brief approved in this demo. No meeting was booked.",
+    result: "Meeting brief approved.",
   },
 ] as const;
 

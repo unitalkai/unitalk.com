@@ -29,10 +29,9 @@ export function HomeEntry() {
 
   return <div className="hero-entry">
     <form className="create-form" onSubmit={submit} noValidate>
-      <div className="url-control"><Icon name="link" /><input id="home-domain" name="domain" type="text" inputMode="url" autoComplete="url" aria-label="Enter your domain name" placeholder="Enter your domain name" value={domain} onChange={event => { setDomain(event.target.value); setError(""); }} aria-invalid={Boolean(error)} aria-describedby={error ? "home-domain-error" : "home-entry-hint"} disabled={pending} /><button className="button button-primary" type="submit" disabled={pending}>{pending ? "Opening…" : "Meet yours"}<Icon name="arrow" /></button></div>
+      <div className="url-control"><Icon name="link" /><input id="home-domain" name="domain" type="text" inputMode="url" autoComplete="url" aria-label="Enter your domain name" placeholder="Enter your domain name" value={domain} onChange={event => { setDomain(event.target.value); setError(""); }} aria-invalid={Boolean(error)} aria-describedby={error ? "home-domain-error" : undefined} disabled={pending} /><button className="button button-primary" type="submit" disabled={pending}>{pending ? "Opening…" : "Meet yours"}<Icon name="arrow" /></button></div>
       {error && <p id="home-domain-error" className="form-error" role="alert">{error}</p>}
     </form>
     <div className="hero-entry-alternative"><span>or</span><Link className="text-link" href={`${encounterLink(preferences, "en")}&channel=linkedin`}>Start with LinkedIn <Icon name="arrow" /></Link></div>
-    <p className="home-entry-hint" id="home-entry-hint">Website and LinkedIn connections are planned. Start a local demo today.</p>
   </div>;
 }

@@ -20,6 +20,5 @@ export function CollaboratorPricing({ showComponents = true, language }: { showC
     <p className="pricing-yearly">{billing === "monthly" ? `${COLLABORATOR_OFFER.annual} / year — ${COLLABORATOR_OFFER.annualSaving}` : `${COLLABORATOR_OFFER.monthly} / month with monthly billing`}<br /><span>Cancel anytime.</span></p>
     <p className="pricing-usage-note">AI usage is separate: buy Unitalk Credits or use your own provider.</p>
     <EncounterLink className="button button-primary" language={language} defaults={{ billing: "monthly" }}>Meet your Collaborator <Icon name="arrow" /></EncounterLink>
-    <p className="capability-note">Planned offer · try the demo today. No payment is taken.</p>
   </div>;
 }

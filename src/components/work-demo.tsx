@@ -29,7 +29,7 @@ export function WorkDemo({ initialExample = "follow-up", compact = false }: { in
 
   return <div className={`work-demo${compact ? " work-demo-compact" : ""}`}>
     {!compact && <div className="work-demo-choices" aria-label="Choose a work example">{WORK_EXAMPLES.map(item => <button type="button" key={item.id} aria-pressed={item.id === exampleId} onClick={() => choose(item.id)}>{item.label}</button>)}</div>}
-    <div className="work-demo-top"><span><Icon name="message" />Your Collaborator</span><span className="demo-label">Interactive demo</span></div>
+    <div className="work-demo-top"><span><Icon name="message" />Your Collaborator</span><span className="demo-label">Demo</span></div>
     <div className="work-demo-request"><span>You</span><p>{example.request}</p></div>
     <div className="work-demo-delivery" key={exampleId} aria-live="polite">
       <div className="work-demo-delivery-heading"><Icon name="check" /><h3>{example.title}</h3></div>
@@ -38,7 +38,7 @@ export function WorkDemo({ initialExample = "follow-up", compact = false }: { in
       {editing ? <><label className="sr-only" htmlFor={compact ? "meet-work-draft" : "home-work-draft"}>Edit the example draft</label><textarea id={compact ? "meet-work-draft" : "home-work-draft"} value={draft} maxLength={1500} onChange={event => { setDraft(event.target.value); setApproved(false); }} /></> : <p className="work-demo-draft">{draft}</p>}
     </div>
     <p className="work-demo-boundary"><Icon name="message" />{example.boundary}</p>
-    <div className="work-demo-actions"><button className="button button-primary" type="button" disabled={!draft.trim() || approved} onClick={() => { setApproved(true); setEditing(false); }}>{approved ? "Approved in demo" : "Approve this example"}<Icon name="check" /></button><button className="work-demo-edit" type="button" onClick={() => { setEditing(!editing); setApproved(false); }}>{editing ? "Keep my edits" : "Edit the draft"}</button></div>
-    <p className="work-demo-truth" role="status">{approved ? example.result : "Prewritten example. No account connected and nothing sent."}</p>
+    <div className="work-demo-actions"><button className="button button-primary" type="button" disabled={!draft.trim() || approved} onClick={() => { setApproved(true); setEditing(false); }}>{approved ? "Approved" : "Approve the draft"}<Icon name="check" /></button><button className="work-demo-edit" type="button" onClick={() => { setEditing(!editing); setApproved(false); }}>{editing ? "Keep my edits" : "Edit the draft"}</button></div>
+    {approved && <p className="work-demo-truth" role="status">{example.result}</p>}
   </div>;
 }

@@ -22,9 +22,9 @@ export function MarketingHome({ language = "en" }: { language?: "en" | "fr" }) {
     <main id="main-content">
       <section className="home-hero work-hero english-hero" id="creer" aria-labelledby="home-title">
         <div className="hero-content">
-          <h1 id="home-title"><span className="hero-title-line">{fr ? "Votre Collaborateur IA." : "Your AI Collaborator."}</span><span className="hero-title-promise">{fr ? "Il garde le fil de vos relations." : "It keeps your relationships moving."}</span></h1>
-          <p className="hero-outcome">{fr ? "Messages, appels, rendez-vous : il comprend le contexte et fait avancer la suite." : "Messages, calls, meetings: it understands the context and moves the next step forward."}</p>
-          <p className="hero-explanation">{fr ? "Vous gardez les décisions." : "You keep the decisions."}</p>
+          <h1 id="home-title"><span className="hero-title-line">{fr ? "Votre Collaborateur IA." : "Your AI Collaborator."}</span><span className="hero-title-promise"><span className="hero-title-highlight">{fr ? "Moins de relances. Plus d’échanges." : "Less chasing. More connecting."}</span></span></h1>
+          <p className="hero-outcome">{fr ? "Il s’occupe des réponses, des relances et de la préparation des rendez-vous." : "It handles replies, follow-ups and meeting prep."}</p>
+          <p className="hero-explanation">{fr ? "Vous intervenez là où ça compte." : "You stay involved where it matters."}</p>
           <div className="hero-conversion-actions"><EncounterLink className="button button-primary" language={language} marketing channel="linkedin"><LinkedInLogo className="linkedin-button-mark" /><span>{fr ? "Commencer gratuitement" : "Start for free"}</span><Icon name="arrow" /></EncounterLink><Link href={marketingPath("/how-it-works", language)} className="hero-secondary-action">{fr ? "Comment ça marche" : "How it works"} <Icon name="arrow" /></Link></div>
           <p className="hero-price">{offer.monthly} / {fr ? "mois · Résiliable à tout moment" : "month · Cancel anytime"}</p>
           <p className="hero-allowance">{offer.monthlyTokens}</p>

@@ -7,6 +7,8 @@ related_targets: []
 
 # How it works
 
+Current introduction is contact/relationship continuity. Core follow-up is explicitly included without a CRM purchase. Optional-app details distinguish hosted/managed Twenty or Chatwoot at +€9.99/month each from included Unitalk connection to an existing SaaS account, with external subscriptions separate.
+
 The tools step now leads with contact/history/next-step benefits. Native “The tools behind the follow-up” / “Les outils derrière le suivi” reveals Twenty CRM, Chatwoot support, private-server architecture and MCP references with official links. No connection to this frontend is claimed. Disclosure and responsive checks passed in both languages; lint, TypeScript and production build passed.
 
 The shared guide composition now lives in `src/components/marketing-guide.tsx`. English `/how-it-works` and French `/fr/how-it-works` render the same eight-step layout with translated copy, controls, navigation and metadata. The shared footer contains the pinned English tagline, official social links and an equivalent-route language selector. Both language routes passed responsive and language-switch checks at 1440, 1280 × 600, 390 and 320px; lint, TypeScript and production build passed.

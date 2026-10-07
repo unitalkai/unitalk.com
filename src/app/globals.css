@@ -939,6 +939,27 @@ button svg, a svg, summary svg { flex: none; }
 .closing-price > .closing-or { display: inline-block; padding-inline: 22px; }
 .pricing-page-close > .button { margin-top: 28px; }
 
+/* One fuchsia cartouche for emphasized headline text across the site. */
+.text-highlight,
+:is(.marketing-home, .marketing-meet) :is(h1, h2) > span:not(.hero-title-line):not(.hero-title-promise),
+.conversion-home .english-hero .hero-title-highlight,
+.dashboard-heading h1 > span,
+.encounter-preview h2 > span,
+.owner-app .owner-page-title h1 > span,
+.public-presence .presence-person-title > span {
+  background: var(--signal);
+  color: var(--white);
+  padding: .04em .13em .08em;
+  border-radius: 8px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+:is(.marketing-home, .marketing-meet) :is(h1, h2):has(> span:not(.hero-title-line):not(.hero-title-promise)),
+.dashboard-heading h1:has(> span),
+.encounter-preview h2:has(> span),
+.owner-app .owner-page-title h1:has(> span),
+.public-presence .presence-person-title:has(> span) { line-height: 1.24; }
+
 @media (max-width: 1199px) {
   .document-hero, .guide-step-inner { gap: 48px; }
   .guide-contents ol { gap: 8px 22px; }

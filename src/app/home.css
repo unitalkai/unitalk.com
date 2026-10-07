@@ -3,14 +3,13 @@
 @media (min-width: 960px) {
   .conversion-home .english-hero { display: flex; align-items: center; }
 }
-.conversion-home .english-hero .hero-content { max-width: 880px; padding: 64px 24px 64px clamp(40px, 5vw, 80px); }
+.conversion-home .english-hero .hero-content { max-width: 880px; padding: 64px 24px 104px clamp(40px, 5vw, 80px); }
 .conversion-home .english-hero .hero-content h1 { font-size: clamp(2.75rem, 4.8vw, 4.5rem); }
 .conversion-home .english-hero .hero-title-line { display: block; font-size: 1em; white-space: nowrap; }
-.conversion-home .english-hero .hero-title-promise { display: block; margin-top: 12px; font-size: .8em; }
+.conversion-home .english-hero .hero-title-promise { display: block; margin-top: 12px; font-size: .8em; line-height: 1.24; }
 .conversion-home .english-hero .hero-title-promise { max-width: 700px; }
 .conversion-home .english-hero .hero-content .hero-allowance { margin-top: 8px; font-size: var(--text-small); color: var(--muted-ink); }
-.marketing-home #work-title .work-title-highlight { background: var(--signal); color: var(--white); padding: .04em .13em .08em; border-radius: 8px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-.work-conversion-copy h2 { line-height: 1.24; }
+.marketing-home .work-conversion-copy h2 { font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.24; }
 .conversion-home .english-hero .hero-content .hero-outcome { margin-top: 26px; font-size: var(--text-body); }
 .conversion-home .english-hero .hero-content .hero-explanation { margin-top: 12px; color: var(--muted-ink); }
 .hero-conversion-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; margin-top: 30px; }
@@ -187,7 +186,7 @@
 .meet-next .text-link { background: transparent; border: 0; border-bottom: 2px solid var(--signal); margin-top: 14px; }
 @media (min-width: 960px) and (max-height: 820px) {
   .conversion-home .english-hero { min-height: max(490px, calc(100svh - 128px)); }
-  .conversion-home .english-hero .hero-content { padding-block: 28px; }
+  .conversion-home .english-hero .hero-content { padding-block: 28px 68px; }
   .conversion-home .english-hero .hero-content h1 { font-size: clamp(2.75rem, min(4.8vw, 7.5svh), 4.5rem); }
   .conversion-home .english-hero .hero-content .hero-outcome { margin-top: 18px; }
   .hero-conversion-actions { margin-top: 20px; }
@@ -204,7 +203,7 @@
 @media (max-width: 959px) {
   .conversion-home .english-hero .hero-title-line { white-space: normal; }
   .conversion-home .english-hero { min-height: 0; }
-  .conversion-home .english-hero .hero-content { max-width: none; padding: 36px; }
+  .conversion-home .english-hero .hero-content { max-width: none; padding: 36px 36px 76px; }
   .conversion-home .home-hero-media { height: auto; min-height: 360px; display: flex; align-items: flex-end; justify-content: flex-end; padding: 24px 32px; }
   .conversion-home .hero-work-proof { position: relative; width: min(410px, 100%); right: auto; bottom: auto; }
   .conversion-home .marketing-section, .conversion-home .authority-section { padding-block: 64px; }
@@ -216,7 +215,7 @@
   .authority-heading > p { margin-top: 24px; }
 }
 @media (max-width: 699px) {
-  .conversion-home .english-hero .hero-content { padding: 30px 24px 28px; }
+  .conversion-home .english-hero .hero-content { padding: 30px 24px 68px; }
   .conversion-home .english-hero .hero-content h1 { font-size: clamp(2.25rem, 10vw, 3rem); }
   .conversion-home .english-hero .hero-content .hero-outcome { margin-top: 20px; font-size: var(--text-control); }
   .conversion-home .english-hero .hero-content .hero-explanation { font-size: var(--text-control); }

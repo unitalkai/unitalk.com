@@ -144,6 +144,14 @@
   },
   "components": [
     {
+      "name": "Headline Cartouche",
+      "kind": "custom",
+      "refersTo": "text-highlight",
+      "description": "Shared fuchsia/white emphasis for headline fragments. Inline cloned decoration follows wrapped text; the enclosing heading uses 1.24 line height.",
+      "html": "<h2 class=\"ds-highlight-heading\">Your AI Collaborator.<br /><span class=\"ds-text-highlight\">Less chasing. More connecting.</span></h2>",
+      "css": ".ds-highlight-heading { font-family: var(--font-body), Arial, sans-serif; font-size: var(--text-headline); font-weight: 400; line-height: 1.24; letter-spacing: -.04em; } .ds-text-highlight { background: var(--signal); color: var(--white); padding: .04em .13em .08em; border-radius: 8px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }"
+    },
+    {
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",

@@ -79,6 +79,11 @@ spacing:
   section-mobile: "64px"
   section: "120px"
 components:
+  text-highlight:
+    backgroundColor: "{colors.signal}"
+    textColor: "{colors.white}"
+    rounded: "8px"
+    padding: "0.04em 0.13em 0.08em"
   button-primary:
     backgroundColor: "{colors.signal}"
     textColor: "{colors.white}"
@@ -235,6 +240,8 @@ Controls and chips use 50px pill radii. Major panels use 24px; the hero, convers
 Borders are usually 1px hairlines; navigation indicators deliberately use 2px for public links and 3px for dashboard sections. Keyboard outlines are 3px. These are distinct roles, not a universal one-pixel prohibition.
 
 ## Components
+
+- **Shared headline cartouche:** emphasized headline fragments use solid fuchsia (`--signal`) with white text, 8px corners and `.04em .13em .08em` padding. Inline `box-decoration-break: clone` repeats the background on wrapped lines; headings containing cartouches use 1.24 line height. The reusable `.text-highlight` and scoped headline selectors in `src/app/globals.css` cover both-language marketing pages and encounter, visitor headings, the owner People subtitle and the public Investor fragment. The highlighted homepage promise is **“Less chasing. More connecting.”** / **“Moins de relances. Plus d’échanges.”**. Homepage hero bottom padding increases by 40px: 104px on tall desktop, 68px on short desktop/mobile, 76px on tablet. Browser checks at 1440, 1280 × 600, 1024, 390 and 320px confirmed colors, wrapped-fragment containment, offer spacing, visible short-laptop offer, encounter result and dashboard/public styling without runtime errors. Desktop/mobile screenshots were inspected; lint and generated-route TypeScript checks passed. The detector's eleven advisories concern pre-existing public typography ranges documented in its surface brief.
 
 - **Relationship offer and exact-magenta emphasis:** the hero now makes ongoing relationship follow-up explicit, with base price, five million monthly tokens and one-week/no-card reassurance. TrialDetails is removed; usage conditions live on Pricing/FAQ. The work-section result phrase uses white text on `var(--signal)` (#E01B84), inline cloned background/padding, 8px corners and a route-local 32–48px title so desktop phrasing fits without a large enclosing panel. Shared pricing renders the monthly token inclusion in signal-deep. Optional application choices use flat hairline-separated Twenty/Chatwoot rows and native white pill selects with none/managed/existing modes, reused in a closed encounter disclosure. Local selected-app summaries and allowlisted query preference handoff retain the demo boundary. Existing SaaS/provider fees are distinct from the managed-app service.
 

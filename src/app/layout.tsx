@@ -1,16 +1,6 @@
 import type { Metadata } from "next";
-import { Archivo, Instrument_Serif } from "next/font/google";
+import { Archivo } from "next/font/google";
 import "./globals.css";
-
-/* Display: a serif that carries identity. Body: a neutral sans that stays
-   out of the way. Two families, one job each — see DESIGN.md. */
-
-const display = Instrument_Serif({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
 
 const body = Archivo({
   variable: "--font-body",
@@ -19,30 +9,29 @@ const body = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: "Patrick Chassany — AI Collaborator",
+  title: { default: "Unitalk — Votre Collaborateur IA", template: "%s | Unitalk" },
   description:
-    "Meet Patrick Chassany's AI Collaborator. Ask it about his work, his companies, or Unitalk. Or give it something to do.",
+    "Rencontrez le Collaborateur IA de Patrick Chassany. Commencez le vôtre avec une URL publique.",
   metadataBase: new URL("https://unitalk.com"),
-  alternates: { canonical: "/@patrick-chassany" },
   openGraph: {
-    type: "profile",
-    title: "Patrick Chassany — AI Collaborator",
+    type: "website",
+    title: "Unitalk — Votre Collaborateur IA",
     description:
-      "Meet Patrick Chassany's AI Collaborator. Ask it anything, or give it something to do.",
-    url: "https://unitalk.com/@patrick-chassany",
+      "Votre présence. Même quand vous n’êtes pas là. Rencontrez votre Collaborateur IA.",
+    url: "https://unitalk.com",
     siteName: "Unitalk",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Patrick Chassany — AI Collaborator",
-    description: "Meet Patrick's AI Collaborator. Or get your own.",
+    title: "Unitalk — Votre Collaborateur IA",
+    description: "Rencontrez le Collaborateur de Patrick. Créez le vôtre avec une URL.",
   },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} h-full`}>
-      <body className="min-h-full">{children}</body>
+    <html lang="fr" className={body.variable}>
+      <body><a className="skip-link" href="#main-content">Aller au contenu</a>{children}</body>
     </html>
   );
 }

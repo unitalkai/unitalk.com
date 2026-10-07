@@ -1,195 +1,236 @@
 ---
 name: Unitalk
-description: The public profile of a Public AI Collaborator.
+description: WhatsApp-derived warmth and conversational clarity, with fuchsia as the action color.
 colors:
-  ink: "#0A0A0A"
-  ink-raised: "#161514"
-  ink-line: "#2A2724"
-  ivory: "#F5F1EA"
-  ivory-sunk: "#EDE7DC"
-  ivory-line: "#DCD4C6"
+  ink: "#1C1E21"
+  ink-raised: "#111B21"
+  ink-line: "#35434A"
+  ivory: "#FCF5EB"
+  ivory-sunk: "#F4ECE0"
+  ivory-line: "#E3DACB"
   signal: "#E01B84"
   signal-deep: "#B01567"
-  muted: "#6E6659"
-  muted-ink: "#A39C90"
+  signal-light: "#FF6ABA"
+  signal-wash: "#FCE8F2"
+  muted: "#5E5E5E"
+  muted-ink: "#C9C8C5"
+  white: "#FFFFFF"
 typography:
   display:
-    fontFamily: "var(--font-display), Georgia, serif"
-    fontSize: "clamp(2.75rem, 7vw, 5.5rem)"
+    fontFamily: "Archivo, Arial, sans-serif"
+    fontSize: "clamp(3rem, 5.7vw, 5rem)"
     fontWeight: 400
-    lineHeight: 0.98
-    letterSpacing: "-0.03em"
+    lineHeight: 1
+    letterSpacing: "-0.04em"
   headline:
-    fontFamily: "var(--font-display), Georgia, serif"
-    fontSize: "clamp(1.75rem, 4vw, 2.75rem)"
+    fontFamily: "Archivo, Arial, sans-serif"
+    fontSize: "clamp(2.25rem, 4.2vw, 3.75rem)"
     fontWeight: 400
-    lineHeight: 1.08
-    letterSpacing: "-0.02em"
+    lineHeight: 1.04
+    letterSpacing: "-0.04em"
+  dashboard:
+    fontFamily: "Archivo, Arial, sans-serif"
+    fontSize: "clamp(2rem, 3.5vw, 3rem)"
+    fontWeight: 400
+    lineHeight: 1.1
+    letterSpacing: "-0.04em"
+  title:
+    fontFamily: "Archivo, Arial, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 400
+    lineHeight: 1.2
   body:
-    fontFamily: "var(--font-sans), system-ui, sans-serif"
-    fontSize: "1.0625rem"
+    fontFamily: "Archivo, Arial, sans-serif"
+    fontSize: "1.125rem"
     fontWeight: 400
-    lineHeight: 1.55
-    letterSpacing: "-0.011em"
-  label:
-    fontFamily: "var(--font-sans), system-ui, sans-serif"
-    fontSize: "0.6875rem"
+    lineHeight: 1.5
+  control:
+    fontFamily: "Archivo, Arial, sans-serif"
+    fontSize: "1rem"
     fontWeight: 500
     lineHeight: 1.2
-    letterSpacing: "0.12em"
+  small:
+    fontFamily: "Archivo, Arial, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  caption:
+    fontFamily: "Archivo, Arial, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 400
+    lineHeight: 1.25
 rounded:
-  sm: "3px"
-  md: "6px"
-  lg: "14px"
-  full: "9999px"
+  control: "50px"
+  panel: "24px"
+  panel-mobile: "20px"
+  menu: "16px"
+  bubble: "14px"
+  row: "12px"
+  tail: "3px"
 spacing:
+  micro: "4px"
   xs: "8px"
-  sm: "16px"
-  md: "32px"
-  lg: "64px"
-  xl: "128px"
+  sm: "12px"
+  md: "16px"
+  lg: "20px"
+  panel: "24px"
+  block: "32px"
+  gutter: "48px"
+  section-mobile: "64px"
+  section: "120px"
 components:
   button-primary:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.ivory}"
-    rounded: "{rounded.md}"
-    padding: "16px 28px"
+    backgroundColor: "{colors.signal}"
+    textColor: "{colors.white}"
+    typography: "{typography.control}"
+    rounded: "{rounded.control}"
+    padding: "15px 28px"
+    height: "53px"
   button-primary-hover:
-    backgroundColor: "{colors.signal}"
-    textColor: "{colors.ivory}"
-    rounded: "{rounded.md}"
-    padding: "16px 28px"
-  button-signal:
-    backgroundColor: "{colors.signal}"
-    textColor: "#FFFFFF"
-    rounded: "{rounded.md}"
-    padding: "16px 28px"
-  button-quiet:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.white}"
+  button-outline:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
-    rounded: "{rounded.md}"
-    padding: "16px 28px"
+    typography: "{typography.control}"
+    rounded: "{rounded.control}"
+    padding: "15px 28px"
+    height: "53px"
+  button-outline-hover:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.white}"
+  button-small:
+    rounded: "{rounded.control}"
+    padding: "12px 20px"
+    height: "46px"
+  field:
+    backgroundColor: "{colors.ivory}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.control}"
+    padding: "14px 20px"
+    height: "53px"
+  demo-chip:
+    backgroundColor: "transparent"
+    textColor: "{colors.muted}"
+    typography: "{typography.caption}"
+    rounded: "{rounded.control}"
+    padding: "4px 9px"
+  reading-panel:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.panel}"
+    padding: "30px"
+  conversation-panel:
+    backgroundColor: "{colors.ink-raised}"
+    textColor: "{colors.white}"
+    rounded: "{rounded.panel}"
+    padding: "24px"
+  conversation-panel-light:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.ink}"
+  message-collaborator:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.bubble}"
+    padding: "15px 17px 10px"
+  message-visitor:
+    backgroundColor: "{colors.signal-wash}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.bubble}"
+    padding: "15px 17px 10px"
   prompt-chip:
     backgroundColor: "transparent"
     textColor: "{colors.muted-ink}"
-    rounded: "{rounded.full}"
-    padding: "9px 16px"
-  field:
-    backgroundColor: "{colors.ink-raised}"
-    textColor: "{colors.ivory}"
-    rounded: "{rounded.md}"
-    padding: "18px 20px"
-  card:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.ivory}"
-    rounded: "{rounded.lg}"
-    padding: "40px"
-  card-raised:
-    backgroundColor: "{colors.ink-raised}"
-    textColor: "{colors.ivory}"
-    rounded: "{rounded.lg}"
-    padding: "40px"
+    rounded: "{rounded.control}"
+    padding: "10px 12px"
+    height: "44px"
+  selected-row:
+    backgroundColor: "{colors.signal-wash}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.row}"
+    padding: "23px 16px"
 ---
+
+# Design System: Unitalk
 
 ## Overview
 
-This is not a marketing site. It is the **public profile of a Public AI Collaborator** — the first one, Patrick Chassany's. The page has to feel like *meeting someone*, not like visiting a settings page or reading a product pitch.
+**Creative North Star: "WhatsApp website grammar, in fuchsia"**
 
-The page exists to carry the visitor through one sequence, in order: **MEET → TALK → WANT ONE → CREATE.** Nothing may interrupt it. No feature list, no explanation of the concept, no pricing table, no architecture diagram.
+The user-selected reference is whatsapp.com: warm cream, near-black ink, normal-weight sans-serif headings, photographic panels, pill controls and conversational bubbles. Fuchsia replaces its green. The visual authority is the implemented `src/app/globals.css`, with Archivo loaded in `src/app/layout.tsx`; this specification replaces the former serif, public-single-page system.
 
-Register: **brand** (persuade). Editorial, quiet, confident, slightly unconventional. The design must feel like Paul Graham's plainness with the craft of a premium magazine — never like enterprise SaaS, an AI dashboard, a crypto startup, a futuristic lab, a Web3 profile, or a chatbot directory. If it looks like any of those, stop and return to **Identity → Presence → Talk → Work → Create.**
+One reusable family supports four distinct surfaces: `/` (homepage), `/@patrick-chassany` (public AI Collaborator), `/dashboard/patrick` (owner demo) and `/dashboard/visiteur` (visitor demo). Public pages use expressive scale; role-specific dashboards use smaller, functional hierarchy and standard list/detail organization. These routes are implemented prototypes: role selection, responses, work and URL previews are simulated or local, with no real login, AI execution or crawl implied. Surface composition belongs in `.impeccable/surfaces/`.
 
-The test is not "does this explain Unitalk?" but **"does this make me want one?"**
+**Key Characteristics:**
+- Warm cream and dark tonal planes, with hairline separation.
+- Archivo throughout; large public headings and compact operational hierarchy.
+- Fuchsia actions, contextual accent text and pink selections.
+- Pill controls, generous panels and recognizable message silhouettes.
+- Visible demo labels and local illustrative photography.
 
 ## Colors
 
-Three colors, and only three, do the work.
+**Primary.** Signal is the solid action and identity color; primary controls use white text. White on signal is approximately **4.51:1**. Signal-deep supplies accent text on cream, error copy, focus outlines and the send control's hover. Signal-light supplies accent text on dark sections; it is currently a source literal, not a root custom property. Signal-wash marks visitor messages, selections, demo notices and invitation planes.
 
-- **Ink `#0A0A0A`** — structure, typography, and the Collaborator's own surface. The card is black because the Collaborator is an *object*, not a section of the page.
-- **Ivory `#F5F1EA`** — the world the object sits in. Warm, never pure white. Pure `#FFF` is banned.
-- **Signal `#E01B84`** — magenta. Action, identity, important moments. It is a **signal, not a decoration.**
+**Neutral.** Ivory is the page and header canvas; ivory-sunk is a quieter inset plane; ivory-line divides light surfaces. Ink is primary text and the standard button-hover fill. Ink-raised forms conversation and footer planes; ink-line divides their contents. Muted is supporting text on light surfaces, muted-ink on dark. White is intentionally used for controls, messages and reading panels.
 
-The rule that matters: **signal magenta owns exactly one meaning — talking to the Collaborator.** One accent serving two masters signals nothing. So:
+**The Contextual Accent Rule.** Use signal for solid actions, signal-deep for accent text on cream, and signal-light for accent text on dark. Pink wash carries selection without making every item a solid action.
 
-- Magenta is allowed on: the status dot, the primary *Talk* action when it is the dominant action, a live/working state, the single accent inside the Collaborator's identity.
-- Magenta is **not** used for generic links, borders, section eyebrows, or a second button competing with Talk. The *Create* CTA is ink-on-ivory, not magenta.
-- Never more than one magenta element in the viewport at a time.
-
-Banned outright: blue AI gradients, purple neon, cyberpunk, glowing brains, circuit patterns, robot illustrations, animated gradients, stock AI imagery. The dark surfaces are warm-tinted (`#161514`, `#2A2724` — brown-black), never cold blue-grey.
-
-**Override — `cream-palette` (accepted).** Impeccable's detector flags the ivory background as a known AI tell, and it is right about the tell: cream + a bold serif is the signature of the last two years of generated landing pages. We ship it anyway, deliberately, because here the warmth is a product decision and not a default. The Collaborator is a black object; it needs a warm surface to be an object *in a room* rather than a card in a grid. The mitigation for the tell is everything around it: no rounded-pill SaaS furniture, no gradient meshes, no friendly 3D illustration, one editorial serif, and a single magenta signal that is spent on exactly one meaning. If the page ever starts reading as "AI beige", the palette is not the problem — the rest of the page has gone generic.
+Selection uses signal with white text; the input caret uses signal; keyboard focus uses signal-deep. Page scrollbars use muted on ivory; chat scrollbars are thin, muted on transparent. The implementation has contextual light/dark planes, not a separate automatic dark-mode theme. Color ramps in the sidecar are synthesized swatch metadata, not additional shipping palette tokens.
 
 ## Typography
 
-Two families, each with one job. This is the whole type system — do not add a third.
+Archivo is the only font family, loaded through `next/font/google` into `--font-body`; `--font-display` aliases it. Both display and body use the same sans-serif, with Arial/sans-serif fallbacks. Headings are normal weight and balance their wrapping; weight 500 distinguishes controls and functional labels, and the wordmark uses 600.
 
-- **Display — a serif** (`--font-display`). Carries the Collaborator's name, the section headlines, the numbers in a work result. Editorial, human, slightly literary. Used at large sizes with tight tracking (`-0.03em`) for presence.
-- **Body — a sans** (`--font-sans`). Carries everything functional: conversation, form fields, prompts, copy, navigation. Reserved for reading and operating.
-- **Labels** — the sans in uppercase at `0.6875rem` / `0.12em` tracking. Only for eyebrows like `PUBLIC PROFILE`, `WORKING`, `DONE`.
+The reusable hierarchy is display / headline / dashboard / title / body / control / small / caption, bound to the eight `--text-*` variables in CSS. Public display, headline and the smaller large-heading tier reach **80 / 60 / 48px** respectively. Public line heights vary narrowly by component (1–1.1); the headline token records the dark section's 1.04. Dashboard headings reach 48px and become 32px on mobile. Panel titles are 24px, general body 18px, controls and desktop chat text 16px, compact copy 14px and captions 12px. Message text is weight 400, while buttons use 500; captions inherit 1.5 except the demo chip's 1.25.
 
-Hierarchy is built from **size, weight, spacing and position** — not from adding styles. Large headlines, short paragraphs, generous whitespace. Body copy is never justified, never centered when longer than two lines, and measures roughly 60–70 characters.
+**The Functional Scale Rule.** Carry the same sans-serif identity into dashboards, using the dashboard and title tiers instead of public hero scale. Keep ordinary prose at weight 400, and use size, spacing and position to establish hierarchy.
+
+Public copy commonly measures 34–42ch; dashboard summaries 27–45ch. Drafts preserve line breaks and use 1.65 line height. Messages wrap long content and preserve newlines. Activity numbers and counters use tabular figures. Mobile overrides are component-specific, including a fluid hero title and 44px public headline; do not replace them with one global shrink factor.
 
 ## Layout
 
-**One column. One dominant object.** The page is a portrait, not a dashboard.
+The sticky header is 80px on desktop, with a 1320px maximum inner width and 48px outer gutters. Main content is centered at a maximum of 1152px with the same gutters. The stylesheet's three responsive thresholds are maximum widths of **1199 / 959 / 699px**: header gutters first reduce to 32px, desktop navigation changes to mobile navigation at 959px, and content gutters reduce to 20px at 699px. The mobile header is 72px.
 
-- Container max-width `72rem`, with margins that stay large on every breakpoint (`24px` mobile → `64px`+ desktop). Whitespace is the primary material.
-- Content blocks stay short. If a section needs more than three sentences of prose, it is probably a section that should not exist.
-- The Collaborator card is centered and optically dominant at all times. Nothing beside it competes for weight.
-- Asymmetry is allowed and encouraged where it adds confidence — a headline set off-axis, a result block pulled left, an eyebrow offset from its heading. Symmetry everywhere reads as a template.
-- On mobile, everything collapses to full width, but **it is not a shrunken desktop**: the card goes edge-to-edge as a tactile object, the Talk action stays reachable by thumb, and the creation flow stays one step.
+Public pages use the user-pinned WhatsApp convention of two-column identity/copy and conversation/photo compositions. These grids are intentional. The homepage hero has 32px outer spacing and a photographic plane; generous section spacing reaches 120px. Role-specific dashboards use list/detail and conversation/creation workspaces with approximately 24–70px gaps, restrained rows and inline reading panels. Owner section buttons are sections of its dashboard, not substitutes for the four routes. At mobile width the principal workspaces stack, sections tighten toward 48–64px, tabs wrap, and compound URL fields put the action on its own row.
 
-Banned: dense grids, card forests, twelve-column marketing scaffolding, decorative borders, gratuitous containers. If a border or a wrapper does not carry information, delete it.
+Desktop control height is a minimum, not a fixed clipping constraint: standard actions are 53px, compact actions and icon controls 46px, and prompts at least 44px. Compound input wrappers have their own padding; reuse those patterns rather than forcing every field to the button's total height.
+
+Photography is local and illustrative. `public/images/working-together.jpg` is sourced from Unsplash, recorded in `public/images/SOURCES.md`, with embedded provenance and a visible illustration credit. It depicts a general working scene, not Patrick, Unitalk's team or a customer. PC initials provide Patrick's current identity representation. Gradients are photographic legibility overlays, not accent decoration.
 
 ## Elevation & Depth
 
-The system is **flat and tonal**, not shadowed.
+Depth is predominantly flat: cream, white, pink wash and dark planes do the work, with 1px hairlines where content needs separation. The shadow vocabulary has two implemented roles: illustrative hero bubbles (`0 4px 16px #111b2120`) and the account menu (`0 12px 30px #111b211a`). Ordinary conversation messages, buttons and reading panels have no shadow.
 
-Depth is expressed by **surface contrast and one quiet plane shift**: the black card sits on the ivory world; raised elements inside the card step to `#161514` rather than gaining a shadow. Hairlines (`#DCD4C6` on ivory, `#2A2724` on ink) separate where separation is real.
-
-Allowed sparingly: a single soft, wide, low-opacity shadow under the Collaborator card to seat it in the page — one shadow, once, at low intensity. Nothing else casts.
-
-Banned: drop shadows on buttons, glow effects, neon bloom, glassmorphism for its own sake, floating elements that suggest depth without meaning it.
+**The Tonal Depth Rule.** Establish depth with surface contrast and hairlines. Reserve shadows for illustrative message bubbles and the account dropdown.
 
 ## Shapes
 
-- Radii are **small and deliberate**: `3px` (chips, tags), `6px` (buttons, fields), `14px` (the card). Pills are `9999px` and reserved for prompt chips only.
-- The card's `14px` is the largest radius in the system. Nothing else approaches it — the Collaborator is the only "soft" object; the rest of the page is squared and precise.
-- Borders are **1px hairlines**, never thicker, never doubled, never used as decoration on an element that already has a surface.
-- No excessive rounded rectangles. If a rectangle has no content and no function, it is a border with ambition — remove it.
+Controls and chips use 50px pill radii. Major panels use 24px; the hero, conversation and decision panel reduce to 20px on mobile, while other panels retain their source-specific treatment. Menu and connection containers use 16px, message bubbles 14px, selected decision/person rows 12px. Message direction is expressed by a 3px upper corner: left for the Collaborator, right for the visitor. These corners form the tail cue; there is no extra triangular tail element. Avatars and icon buttons are circular.
+
+Borders are usually 1px hairlines; navigation indicators deliberately use 2px for public links and 3px for dashboard sections. Keyboard outlines are 3px. These are distinct roles, not a universal one-pixel prohibition.
 
 ## Components
 
-**Collaborator card** — the most important object on the page and the reason the site exists. Black `#0A0A0A` surface, `14px` radius, `40px` internal padding (reduced proportionally on mobile, never below `24px`). Contains, in order: avatar; name in display serif at headline scale; role in muted sans; a `AI Collaborator` label; the status line; the opening line in body; the dominant *Talk* action; and a row of prompt chips. It must read as a real identity with presence — never as a generic chat window.
+- **Primary action:** signal fill and border, white text, pill silhouette, minimum 53px height, 15px 28px padding and a 24px icon gap. Hover changes both fill and border to ink; outline actions change from transparent/ink to ink/white. The dark ownership section overrides primary hover to white/ink for contrast. Standard buttons transition color, fill and border over 200ms; their icons travel 3px horizontally. No button shadow or scale transform is implemented. Disabled controls use 0.55 opacity and a default cursor.
+- **Keyboard focus:** anchors, buttons, inputs, summaries and focusable elements receive a 3px signal-deep outline with 4px offset. Compound URL inputs reduce outline offset to zero. This is an outline, not a shadow. The skip link becomes visible on focus.
+- **Fields:** standalone identity fields use ivory fill, ink text, a light hairline, 50px radius and 14px 20px padding. URL and chat composers use light pill wrappers around borderless inputs and a trailing action; compact/mobile URL wrappers become 20px rounded stacks. Placeholder text is muted; the caret is signal. URL validation supplies a real inline message and `aria-invalid`; errors on the dark hero use white text on signal-deep. There is no separate implemented error-border style.
+- **Navigation:** desktop links are 16px normal weight with a 2px fuchsia underline revealed on hover or current page (220ms easing). Owner/visitor section buttons use muted text until current/hover, a 3px current indicator and pink count badges. Mobile navigation uses 53px minimum link rows, hairlines and an explicitly labelled expand/collapse control. The account menu's “Se connecter” entry opens demo role choices; it is not authentication.
+- **Demo chip:** compact outline pill, 12px text, 4px 9px padding and a current-color border. Muted on light, muted-ink on dark, signal-deep in the pink notice. It describes simulation, never online status. Role notices state simulated connection and example data; result captions continue to identify demo output.
+- **Panels and rows:** white reading panels use light hairlines and no shadow; dark conversation panels use ink-raised and ink-line. Selected decision and person rows use pink wash; unselected decision hover uses ivory-sunk. Selection is also exposed through `aria-pressed`, not color alone.
+- **Messages and prompts:** ordinary Collaborator bubbles are white on dark, ivory in the visitor's light conversation; visitor bubbles are pink wash in both. Chat padding is 15px 17px 10px, with 16px normal text, a right-aligned 12px caption and directional corners. Hero story bubbles are the shadowed, 18px illustrative variant. Prompt chips have outline borders, at least 44px height and a tonal hover; they fill the composer rather than navigate. The circular send action is signal/white and hovers to signal-deep.
 
-**Status** — a `7px` dot plus a label. States are visually distinct but minimal, and the dot is the *only* place color signals state:
-- `● Online` — signal magenta
-- `Working` — ink-raised dot with a slow, physical pulse; the label switches to a `WORKING` eyebrow
-- `Demo` — muted grey dot, with the label stating it plainly. Never a fake magenta "Online".
-
-**Primary action** — ink background, ivory text, `6px` radius, `16px 28px` padding. One per viewport. On hover it either shifts to signal (when talking is the action) or lifts one tonal step — never both, and never a scale transform.
-
-**Prompt chips** — transparent, `1px` hairline, pill-shaped, muted-ink text. They are invitations, not buttons: they must look like something you can say. They fill the input on click; they never navigate away.
-
-**URL field** — ink-raised surface, ivory text, mono-feeling placeholder in a muted tone. It is the single input of the creation moment. No label above it beyond `Start with a URL`, no helper text, no validation theatre.
-
-**Work result** — a delivery, not a console. Progress lines are a short vertical list with a single accent on the active line; the result is stated as three numbers in display serif, with a `DONE` eyebrow. Never a log, never a spinner-only state, never formatted like a terminal.
+Motion stays small and contextual: 200ms button transitions, 220ms link underlines and a 650ms hero reply arrival use the existing easing vocabulary. Reply arrival is enabled only with no reduced-motion preference. Reduced motion disables transitions and smooth scrolling. The sidecar includes nine self-contained HTML/CSS samples bound to native project variables; they illustrate appearance and CSS states, not React behavior or backend capabilities.
 
 ## Do's and Don'ts
 
-**Do**
-- Do show the product before explaining it. The visitor should meet the Collaborator before reading a single claim about Unitalk.
-- Do keep one dominant action per viewport, and let *Talk* be it.
-- Do let the Collaborator **work**: when given a task, shift from conversation to a result the visitor can read.
-- Do label anything simulated. A demo is allowed; an ambiguous demo is not. `Demo` state exists precisely so honesty is visual, not a footnote.
-- Do keep voice (when it exists) one tap away, and give every primary action a keyboard- and screen-reader-reachable path without it.
-- Do design mobile as a first-class target: native-feeling, thumb-reachable, one-step creation.
-
-**Don't**
-- Don't build a homepage that explains Unitalk. Build one that **is** Unitalk.
-- Don't turn the page into a feature encyclopedia, a chatbot comparison, a pricing-first SaaS page, an architecture page, an integration grid, or a manifesto. The page has exactly one job: **make someone want their own Public AI Collaborator.**
-- Don't use two magenta elements at once, and don't spend the accent on anything that is not the Collaborator's identity or action.
-- Don't fake online status, activity, results, testimonials or numbers. Trust is part of the product.
-- Don't write "Get Started", "Learn More", "Explore Platform", "Book a Demo" or "Contact Sales". Use concrete verbs: *Talk to it. Give it a job. Want one? Start with a URL.*
-- Don't use SaaS vocabulary: platform, ecosystem, seamless, next-generation, revolutionary, powerful, intelligent automation, all-in-one, end-to-end, unlock, transform your workflow.
-- Don't dress it in blue gradients, neon, circuits, robots or glowing brains. The novelty of the product is strong enough.
+- Do use the WhatsApp-derived cream, sans-serif, pill-control and conversational family consistently across all four surfaces.
+- Do preserve the smaller functional hierarchy and distinct owner/visitor navigation in dashboards.
+- Do use contextual fuchsia shades, pink wash, white panels and hairlines according to their roles.
+- Do keep keyboard focus visible and honor reduced motion.
+- Do label simulated responses, activity, validation and URL previews visibly; keep knowledge distinct from memory and use AI Collaborator terminology.
+- Do retain local illustrative assets, source records and embedded provenance without presenting them as real people or product evidence.
+- Don't restore the obsolete serif, single-column-only, white-ban or one-fuchsia-element constraints.
+- Don't add shadows to ordinary controls, chat messages or reading panels.
+- Don't describe demo role selection as real login, local previews as crawling or deployment, or predefined answers as live AI work.
+- Don't rename Patrick's AI Collaborator to Pacha or present owner sections as the four application surfaces.

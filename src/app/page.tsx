@@ -1,307 +1,34 @@
-"use client";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { SiteHeader, SiteFooter } from "@/components/site-shell";
+import { CreateForm } from "@/components/create-form";
+import { Conversation } from "@/components/conversation";
+import { Icon } from "@/components/icons";
 
-import { useState } from "react";
-
-/* ─────────────────────────────────────────────────────────────────────────
-   Unitalk — the Collaborator's app.
-
-   The Collaborator is not a feature of this app. It is the subject of it.
-   So it does not sit in a status bar: it sits at the top of every screen,
-   stated as an identity with a live state and a voice ("I'm on it."). The
-   application is what it *reports to you*, not what you operate.
-
-   Navigation, exactly four destinations and nothing else:
-     You           — what needs Patrick's attention
-     Me            — what the Collaborator already did
-     People        — who it works with
-     Collaborator  — what it knows, can do, and can decide
-
-   Deliberately absent from the navigation: Dashboard, CRM, Inbox,
-   Analytics, Automations, Knowledge. Those are not places the owner goes.
-   They are things the Collaborator runs.
-
-   The rule that shaped every screen:
-     If the Collaborator can do it, it is not shown as a task for the human.
-
-   Design system adapted from whatsapp.com, measured on the live site:
-     cream ground rgb(252,245,235) · sticky 80px bar, no shadow ·
-     pill controls radius 50px weight 500 with a 1px border · headlines in
-     the 48–80px range at weight 400, never bold · one saturated fill only.
-   Green rgb(37,211,102) → magenta, with the label flipped to white because
-   magenta on near-black fails contrast while the lime green passes.
-   ───────────────────────────────────────────────────────────────────────── */
-
-const TABS = ["You", "Me", "People", "Collaborator"] as const;
-type Tab = (typeof TABS)[number];
+export const metadata: Metadata = {
+  title: "Votre propre Collaborateur IA",
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
-  const [tab, setTab] = useState<Tab>("You");
+  return <>
+    <SiteHeader />
+    <main id="main-content">
+      <section className="home-hero" aria-labelledby="home-title">
+        <Image src="/images/working-together.jpg" alt="" fill preload sizes="100vw" className="hero-photo" />
+        <div className="hero-shade" />
+        <div className="hero-content"><h1 id="home-title">Votre présence.<br />Même quand<br />vous n’êtes<br />pas là.</h1><p>Un Collaborateur IA qui vous connaît.<br />Qui échange pour vous. Et qui travaille<br />avec vous.</p><div id="creer"><CreateForm /></div></div>
+        <div className="hero-story" aria-label="Exemple de collaboration"><span className="story-demo">Exemple de démonstration</span><div className="story-identity"><span className="avatar">PC</span><div>Le Collaborateur de Patrick<span>Collaborateur IA</span></div></div><div className="story-bubble story-question">Patrick est disponible pour parler de Unitalk ?<span>Exemple de message</span></div><div className="story-bubble story-reply">Il est occupé. Je peux déjà vous aider à découvrir Unitalk.<span>Réponse simulée <Icon name="check" width="14" height="14" /></span></div><div className="story-note"><Icon name="message" /><span>Une conversation qui continue.<br />Une présence qui reste.</span></div></div>
+      </section>
+      <div className="hero-caption"><span>Offre prévue : 7 jours ou 5M de tokens offerts. Sans carte bancaire.</span><span>Photo d’illustration · Unsplash</span></div>
 
-  return (
-    <div className="min-h-dvh bg-ivory">
-      <CollaboratorBar />
-      <Tabs tab={tab} setTab={setTab} />
-      <main className="mx-auto w-full max-w-[72rem] px-6 pb-24 pt-12 sm:px-10">
-        {tab === "You" && <You />}
-        {tab === "Me" && <Me />}
-        {tab === "People" && <People />}
-        {tab === "Collaborator" && <Collaborator />}
-      </main>
-    </div>
-  );
-}
+      <section className="intro-section" id="comment-ca-marche"><h2>Le Web vous a donné un site.<br />Les réseaux, un profil.<br /><span>Et si l’IA vous donnait<br className="mobile-break" /> un Collaborateur ?</span></h2><p>Pas une nouvelle fenêtre à ouvrir. Une identité qui vous appartient,<br className="desktop-break" /> avec ses connaissances, sa mémoire et une présence publique.</p></section>
 
-/* ── The Collaborator, stated first on every screen ───────────────────── */
+      <section className="meet-section content-container"><div className="meet-copy"><span className="avatar avatar-large">PC</span><h2>Patrick a<br />le sien.<br /><span>Rencontrez-le.</span></h2><p>Le Collaborateur IA de Patrick Chassany, fondateur de Unitalk. Ses idées, son travail, ses entreprises : commencez la conversation.</p><Link className="text-link" href="/@patrick-chassany">Ouvrir son profil public <Icon name="arrow" /></Link></div><Conversation compact /></section>
 
-function CollaboratorBar() {
-  return (
-    <header className="sticky top-0 z-20 border-b border-ivory-line bg-ivory">
-      <div className="mx-auto flex h-20 w-full max-w-[72rem] items-center justify-between gap-6 px-6 sm:px-10">
-        <div className="flex min-w-0 items-center gap-4">
-          <span
-            className="grid size-10 flex-none place-items-center rounded-full bg-signal text-[0.9375rem] font-medium text-white"
-            aria-hidden
-          >
-            PC
-          </span>
-          <span className="min-w-0">
-            <span className="eyebrow block text-muted">
-              Patrick&apos;s Collaborator
-            </span>
-            <span className="mt-1 flex items-center gap-2 text-[0.9375rem]">
-              <span className="dot dot-live bg-signal" aria-hidden />
-              Working
-            </span>
-          </span>
-        </div>
-
-        <p className="hidden shrink-0 text-[1.0625rem] sm:block">
-          I&apos;m on it.
-        </p>
-      </div>
-    </header>
-  );
-}
-
-/* ── Tabs ─────────────────────────────────────────────────────────────── */
-
-function Tabs({ tab, setTab }: { tab: Tab; setTab: (t: Tab) => void }) {
-  return (
-    <nav aria-label="Sections" className="border-b border-ivory-line bg-ivory">
-      <div className="mx-auto flex w-full max-w-[72rem] gap-1 overflow-x-auto px-6 sm:px-10">
-        {TABS.map((t) => {
-          const on = t === tab;
-          return (
-            <button
-              key={t}
-              type="button"
-              onClick={() => setTab(t)}
-              aria-current={on ? "page" : undefined}
-              className={`-mb-px whitespace-nowrap border-b-2 px-4 py-4 text-[0.9375rem] transition-colors ${
-                on
-                  ? "border-signal font-medium text-ink"
-                  : "border-transparent text-muted hover:text-ink"
-              }`}
-            >
-              {t}
-            </button>
-          );
-        })}
-      </div>
-    </nav>
-  );
-}
-
-/* ── YOU: only what needs a human ─────────────────────────────────────── */
-
-function You() {
-  const DECISIONS = [
-    { t: "Approve Acme proposal", m: "Drafted · waiting on you" },
-    { t: "Choose Sarah's meeting time", m: "Two slots proposed" },
-    { t: "Reply to investor", m: "Draft ready to send" },
-  ];
-
-  return (
-    <section>
-      <p className="eyebrow text-muted">What needs Patrick</p>
-      <h1 className="font-display mt-5 text-[clamp(2.75rem,8vw,5rem)] leading-[0.98] tracking-[-0.035em]">
-        3 decisions.
-      </h1>
-
-      <ul className="mt-12 max-w-[48rem]">
-        {DECISIONS.map((d) => (
-          <li key={d.t} className="border-b border-ivory-line last:border-0">
-            <button
-              type="button"
-              className="flex w-full items-baseline justify-between gap-6 py-6 text-left transition-colors hover:text-signal"
-            >
-              <span className="text-[1.25rem]">{d.t}</span>
-              <span className="shrink-0 text-right text-[0.875rem] text-muted">
-                {d.m}
-              </span>
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      <button
-        type="button"
-        className="mt-10 rounded-full bg-signal px-8 py-4 text-[1rem] font-medium text-white transition-colors hover:bg-signal-deep"
-      >
-        Review
-      </button>
-
-      {/* The rest of the rule, said out loud: everything else was handled. */}
-      <p className="mt-10 max-w-[48rem] text-[1.0625rem] text-muted">
-        Everything else it could do alone, it already did. That is why this
-        list is three lines long.
-      </p>
-    </section>
-  );
-}
-
-/* ── ME: what it already did ──────────────────────────────────────────── */
-
-function Me() {
-  const STATS = [
-    { n: "47", l: "conversations" },
-    { n: "18", l: "follow-ups" },
-    { n: "6", l: "opportunities" },
-    { n: "61", l: "contacts updated" },
-  ];
-
-  return (
-    <section>
-      <p className="eyebrow text-muted">What it has already done</p>
-      <h1 className="font-display mt-5 text-[clamp(2.75rem,8vw,5rem)] leading-[0.98] tracking-[-0.035em]">
-        132 handled.
-      </h1>
-
-      <dl className="mt-12 grid max-w-[48rem] gap-px overflow-hidden rounded-[1rem] border border-ivory-line bg-ivory-line sm:grid-cols-2">
-        {STATS.map((s) => (
-          <div key={s.l} className="bg-white px-7 py-8">
-            <dt className="font-display text-[2.75rem] leading-none tracking-[-0.03em]">
-              {s.n}
-            </dt>
-            <dd className="mt-3 text-[0.9375rem] text-muted">{s.l}</dd>
-          </div>
-        ))}
-      </dl>
-
-      <p className="font-display mt-12 text-[clamp(1.5rem,3.5vw,2.25rem)] leading-[1.1] tracking-[-0.02em]">
-        Nothing needs you.
-      </p>
-    </section>
-  );
-}
-
-/* ── PEOPLE: a relationship, never a CRM record ───────────────────────── */
-
-function People() {
-  const PEOPLE = [
-    { n: "Jean Dupont", r: "Client", s: "Active" },
-    { n: "Sarah Martin", r: "Prospect", s: "Hot" },
-    { n: "David Cohen", r: "Investor", s: "Watching" },
-  ];
-
-  return (
-    <section>
-      <p className="eyebrow text-muted">Who it works with</p>
-      <h1 className="font-display mt-5 text-[clamp(2.75rem,8vw,5rem)] leading-[0.98] tracking-[-0.035em]">
-        3 relationships.
-      </h1>
-
-      <ul className="mt-12 max-w-[48rem]">
-        {PEOPLE.map((p) => (
-          <li key={p.n} className="border-b border-ivory-line last:border-0">
-            <button
-              type="button"
-              className="flex w-full items-center gap-5 py-6 text-left transition-colors hover:text-signal"
-            >
-              <span
-                className="grid size-12 flex-none place-items-center rounded-full bg-ink text-[0.9375rem] text-ivory"
-                aria-hidden
-              >
-                {p.n
-                  .split(" ")
-                  .map((w) => w[0])
-                  .join("")}
-              </span>
-              <span className="min-w-0 flex-1">
-                <span className="block text-[1.25rem]">{p.n}</span>
-                <span className="block text-[0.875rem] text-muted">{p.r}</span>
-              </span>
-              <span className="shrink-0 text-[0.875rem] text-muted">
-                {p.s}
-              </span>
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      <p className="mt-10 max-w-[48rem] text-[1.0625rem] text-muted">
-        Each one is a relationship the Collaborator keeps, not a record in a
-        database.
-      </p>
-    </section>
-  );
-}
-
-/* ── COLLABORATOR: what it knows, does, and decides ───────────────────── */
-
-function Collaborator() {
-  const BLOCKS = [
-    {
-      h: "What I know",
-      items: ["Patrick's work", "The companies", "Open threads"],
-    },
-    {
-      h: "What I can do",
-      items: ["Research", "Write", "Qualify", "Follow up"],
-    },
-    {
-      h: "What I can decide",
-      items: ["Send a reply", "Book a slot", "Ask for a detail"],
-    },
-  ];
-
-  return (
-    <section>
-      <p className="eyebrow text-muted">The Collaborator itself</p>
-      <h1 className="font-display mt-5 text-[clamp(2.75rem,8vw,5rem)] leading-[0.98] tracking-[-0.035em]">
-        What I know,
-        <br />
-        and what I can do.
-      </h1>
-
-      <div className="mt-12 grid max-w-[48rem] gap-10 sm:grid-cols-3">
-        {BLOCKS.map((b) => (
-          <div key={b.h}>
-            <h2 className="eyebrow text-muted">{b.h}</h2>
-            <ul className="mt-4 space-y-2.5">
-              {b.items.map((i) => (
-                <li key={i} className="text-[1rem]">
-                  {i}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-14 max-w-[48rem] border-t border-ivory-line pt-6">
-        <h2 className="eyebrow text-muted">Connected</h2>
-        <ul className="mt-4 flex flex-wrap gap-2.5">
-          {["LinkedIn", "Email", "WhatsApp", "Calendar", "Phone"].map((c) => (
-            <li
-              key={c}
-              className="rounded-full border border-ivory-line bg-white px-4 py-2 text-[0.9375rem]"
-            >
-              {c}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
+      <section className="ownership-section"><div className="ownership-inner"><h2>Le cerveau<br />peut changer.<br /><span>Il reste le vôtre.</span></h2><div><p>Son identité. Ses connaissances. Sa mémoire. Le travail accompli ensemble.</p><p>Vous possédez votre Collaborateur.<br />Pas seulement une conversation.</p><Link className="button button-primary" href="#creer">Créer mon Collaborateur <Icon name="arrow" /></Link><span className="offer-note">Offre prévue · 9 € / mois après l’essai</span></div></div></section>
+    </main>
+    <SiteFooter />
+  </>;
 }

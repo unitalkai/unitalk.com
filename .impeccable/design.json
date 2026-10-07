@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-07T00:00:00Z",
+  "title": "Design System: Unitalk",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Primary Ink",
+        "canonical": "#1C1E21",
+        "tonalRamp": ["oklch(15% 0.007 258)", "oklch(26% 0.007 258)", "oklch(38% 0.007 258)", "oklch(49% 0.007 258)", "oklch(61% 0.007 258)", "oklch(72% 0.007 258)", "oklch(84% 0.007 258)", "oklch(95% 0.007 258)"]
+      },
+      "ink-raised": {
+        "role": "neutral",
+        "displayName": "Conversation Ink",
+        "canonical": "#111B21",
+        "tonalRamp": ["oklch(15% 0.019 235)", "oklch(26% 0.019 235)", "oklch(38% 0.019 235)", "oklch(49% 0.019 235)", "oklch(61% 0.019 235)", "oklch(72% 0.019 235)", "oklch(84% 0.019 235)", "oklch(95% 0.019 235)"]
+      },
+      "ink-line": {
+        "role": "neutral",
+        "displayName": "Dark Hairline",
+        "canonical": "#35434A",
+        "tonalRamp": ["oklch(15% 0.022 230)", "oklch(26% 0.022 230)", "oklch(38% 0.022 230)", "oklch(49% 0.022 230)", "oklch(61% 0.022 230)", "oklch(72% 0.022 230)", "oklch(84% 0.022 230)", "oklch(95% 0.022 230)"]
+      },
+      "ivory": {
+        "role": "neutral",
+        "displayName": "Warm Cream Canvas",
+        "canonical": "#FCF5EB",
+        "tonalRamp": ["oklch(15% 0.015 77)", "oklch(26% 0.015 77)", "oklch(38% 0.015 77)", "oklch(49% 0.015 77)", "oklch(61% 0.015 77)", "oklch(72% 0.015 77)", "oklch(84% 0.015 77)", "oklch(95% 0.015 77)"]
+      },
+      "ivory-sunk": {
+        "role": "neutral",
+        "displayName": "Inset Cream",
+        "canonical": "#F4ECE0",
+        "tonalRamp": ["oklch(15% 0.018 78)", "oklch(26% 0.018 78)", "oklch(38% 0.018 78)", "oklch(49% 0.018 78)", "oklch(61% 0.018 78)", "oklch(72% 0.018 78)", "oklch(84% 0.018 78)", "oklch(95% 0.018 78)"]
+      },
+      "ivory-line": {
+        "role": "neutral",
+        "displayName": "Cream Hairline",
+        "canonical": "#E3DACB",
+        "tonalRamp": ["oklch(15% 0.022 81)", "oklch(26% 0.022 81)", "oklch(38% 0.022 81)", "oklch(49% 0.022 81)", "oklch(61% 0.022 81)", "oklch(72% 0.022 81)", "oklch(84% 0.022 81)", "oklch(95% 0.022 81)"]
+      },
+      "signal": {
+        "role": "primary",
+        "displayName": "Action Fuchsia",
+        "canonical": "#E01B84",
+        "tonalRamp": ["oklch(15% 0.233 356)", "oklch(26% 0.233 356)", "oklch(38% 0.233 356)", "oklch(49% 0.233 356)", "oklch(61% 0.233 356)", "oklch(72% 0.233 356)", "oklch(84% 0.233 356)", "oklch(95% 0.233 356)"]
+      },
+      "signal-deep": {
+        "role": "primary",
+        "displayName": "Cream-Surface Fuchsia",
+        "canonical": "#B01567",
+        "tonalRamp": ["oklch(15% 0.194 356)", "oklch(26% 0.194 356)", "oklch(38% 0.194 356)", "oklch(49% 0.194 356)", "oklch(61% 0.194 356)", "oklch(72% 0.194 356)", "oklch(84% 0.194 356)", "oklch(95% 0.194 356)"]
+      },
+      "signal-light": {
+        "role": "primary",
+        "displayName": "Dark-Surface Fuchsia",
+        "canonical": "#FF6ABA",
+        "tonalRamp": ["oklch(15% 0.199 350)", "oklch(26% 0.199 350)", "oklch(38% 0.199 350)", "oklch(49% 0.199 350)", "oklch(61% 0.199 350)", "oklch(72% 0.199 350)", "oklch(84% 0.199 350)", "oklch(95% 0.199 350)"]
+      },
+      "signal-wash": {
+        "role": "primary",
+        "displayName": "Conversation Pink Wash",
+        "canonical": "#FCE8F2",
+        "tonalRamp": ["oklch(15% 0.025 346)", "oklch(26% 0.025 346)", "oklch(38% 0.025 346)", "oklch(49% 0.025 346)", "oklch(61% 0.025 346)", "oklch(72% 0.025 346)", "oklch(84% 0.025 346)", "oklch(95% 0.025 346)"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Light-Surface Supporting Text",
+        "canonical": "#5E5E5E",
+        "tonalRamp": ["oklch(15% 0 0)", "oklch(26% 0 0)", "oklch(38% 0 0)", "oklch(49% 0 0)", "oklch(61% 0 0)", "oklch(72% 0 0)", "oklch(84% 0 0)", "oklch(95% 0 0)"]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Dark-Surface Supporting Text",
+        "canonical": "#C9C8C5",
+        "tonalRamp": ["oklch(15% 0.004 91)", "oklch(26% 0.004 91)", "oklch(38% 0.004 91)", "oklch(49% 0.004 91)", "oklch(61% 0.004 91)", "oklch(72% 0.004 91)", "oklch(84% 0.004 91)", "oklch(95% 0.004 91)"]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Message and Control White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["oklch(15% 0 0)", "oklch(26% 0 0)", "oklch(38% 0 0)", "oklch(49% 0 0)", "oklch(61% 0 0)", "oklch(72% 0 0)", "oklch(84% 0 0)", "oklch(95% 0 0)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Public Display", "purpose": "Homepage hero; --text-display, normal-weight Archivo with an 80px desktop ceiling and component-specific responsive overrides." },
+      "headline": { "displayName": "Public Headline", "purpose": "Public identity and section headings; --text-headline, 60px ceiling. Line heights vary from 1 to 1.1; token uses the ownership heading's 1.04." },
+      "dashboard": { "displayName": "Operational Heading", "purpose": "Owner and visitor greetings; --text-dashboard, 48px ceiling, 32px on mobile. The public introduction also uses a related 48px tier." },
+      "title": { "displayName": "Panel Title", "purpose": "--text-title, 24px reading-panel and capability headings; normal weight." },
+      "body": { "displayName": "General Body", "purpose": "--text-body, 18px with 1.5 line height; public supporting copy and illustrative hero bubbles." },
+      "control": { "displayName": "Control Label", "purpose": "--text-control, 16px. Buttons use 500/1.2; navigation and ordinary message text use 400, messages with 1.5 line height." },
+      "small": { "displayName": "Compact Body", "purpose": "--text-small, 14px supporting text and mobile message text; generally 1.5 line height." },
+      "caption": { "displayName": "Caption and Demo Label", "purpose": "--text-caption, 12px message captions, notices and prompt labels; 1.25 in the demo chip, otherwise inherited 1.5." }
+    },
+    "shadows": [
+      { "name": "illustrative-bubble", "value": "0 4px 16px #111b2120", "purpose": "Homepage story bubbles only; ordinary chat messages remain flat." },
+      { "name": "account-menu", "value": "0 12px 30px #111b211a", "purpose": "Demo-role account dropdown." }
+    ],
+    "focus": [
+      { "name": "keyboard", "value": "outline: 3px solid var(--signal-deep); outline-offset: 4px", "purpose": "Focus-visible anchors, buttons, inputs, summaries and explicitly focusable elements." },
+      { "name": "compound-url-input", "value": "outline-offset: 0", "purpose": "URL input within its rounded compound wrapper; retains the same outline color and width." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "var(--ease-out)", "purpose": "Native easing token: cubic-bezier(.16, 1, .3, 1), used for link indicators, button icons and illustrative reply arrival." },
+      { "name": "control-color", "value": "200ms ease", "purpose": "Button background-color, color and border-color transitions." },
+      { "name": "control-icon", "value": "transform 200ms var(--ease-out)", "purpose": "Standard button icon translates 3px horizontally on enabled hover." },
+      { "name": "navigation-indicator", "value": "transform 220ms var(--ease-out)", "purpose": "Public link underline grows horizontally on hover and current page." },
+      { "name": "illustrative-reply", "value": "650ms var(--ease-out) both", "purpose": "Hero reply arrives from translateY(14px) with a clipped lower edge, only under prefers-reduced-motion: no-preference." },
+      { "name": "reduced-motion", "value": "@media (prefers-reduced-motion: reduce)", "purpose": "Disable transitions and smooth scrolling. Reply animation is already gated to no-preference." }
+    ],
+    "breakpoints": [
+      { "name": "desktop-tight-max", "value": "1199px" },
+      { "name": "mobile-navigation-max", "value": "959px" },
+      { "name": "stacked-mobile-max", "value": "699px" }
+    ],
+    "themeAffordances": {
+      "selection": "background: var(--signal); color: var(--white)",
+      "caret": "var(--signal)",
+      "pageScrollbar": "var(--muted) var(--ivory)",
+      "chatScrollbar": "var(--muted) transparent; scrollbar-width: thin",
+      "darkMode": "Contextual light/dark panels; no separate automatic dark-mode theme."
+    },
+    "tonalRamps": {
+      "method": "Synthesized OKLCH swatch ramps, dark to light, eight lightness steps from 15% to 95%, retaining each source color's approximate hue and chroma. CSS gamut mapping applies to out-of-gamut swatches.",
+      "purpose": "Panel metadata only. Canonical hex values remain the shipping authority; these ramps are not additional CSS tokens."
+    },
+    "source": {
+      "visualAuthority": "src/app/globals.css",
+      "fontLoader": "src/app/layout.tsx",
+      "fontBinding": "Archivo is --font-body; --font-display aliases --font-body.",
+      "literalAccent": "signal-light is #FF6ABA in the dark ownership heading; no --signal-light variable exists.",
+      "surfaces": ["/", "/@patrick-chassany", "/dashboard/patrick", "/dashboard/visiteur"],
+      "runtimeTruth": "Interactive local/demo prototypes; role selection is simulated, responses are predefined, and URLs are not crawled.",
+      "illustration": "public/images/working-together.jpg; Unsplash source in public/images/SOURCES.md, embedded provenance and a visible illustration credit."
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Fuchsia/white standard action; ink hover on the light canvas. Dark ownership-section hover overrides to white/ink.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Créer mon Collaborateur<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h16M13 5l7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 24px; min-height: 53px; padding: 15px 28px; border: 1px solid var(--signal); border-radius: var(--radius-control); background: var(--signal); color: var(--white); font-family: var(--font-body), Arial, sans-serif; font-size: var(--text-control); font-weight: 500; line-height: 1.2; white-space: nowrap; cursor: pointer; transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease; } .ds-btn-primary svg { flex: none; transition: transform 200ms var(--ease-out); } .ds-btn-primary:hover:not(:disabled) { background: var(--ink); border-color: var(--ink); } .ds-btn-primary:hover:not(:disabled) svg { transform: translateX(3px); } .ds-btn-primary:focus-visible { outline: 3px solid var(--signal-deep); outline-offset: 4px; } .ds-btn-primary:disabled { cursor: default; opacity: .55; } @media (prefers-reduced-motion: reduce) { .ds-btn-primary, .ds-btn-primary svg { transition: none; } }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Transparent ink outline action; fills ink with white text on hover.",
+      "html": "<button class=\"ds-btn-outline\" type=\"button\">Plus tard</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 24px; min-height: 53px; padding: 15px 28px; border: 1px solid var(--ink); border-radius: var(--radius-control); background: transparent; color: var(--ink); font-family: var(--font-body), Arial, sans-serif; font-size: var(--text-control); font-weight: 500; line-height: 1.2; white-space: nowrap; cursor: pointer; transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease; } .ds-btn-outline:hover { background: var(--ink); color: var(--white); } .ds-btn-outline:focus-visible { outline: 3px solid var(--signal-deep); outline-offset: 4px; } .ds-btn-outline:disabled { cursor: default; opacity: .55; } @media (prefers-reduced-motion: reduce) { .ds-btn-outline { transition: none; } }"
+    },
+    {
+      "name": "Identity Input",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Labelled standalone preview-name field with cream fill, hairline, fuchsia caret and keyboard outline.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-owner-name\">Votre nom</label><input class=\"ds-field-input\" id=\"ds-owner-name\" type=\"text\" maxlength=\"70\" placeholder=\"Comment vous appelez-vous ?\" /></div>",
+      "css": ".ds-field { width: 100%; font-family: var(--font-body), Arial, sans-serif; color: var(--ink); } .ds-field-label { display: block; margin-bottom: 8px; font-size: var(--text-small); line-height: 1.5; } .ds-field-input { width: 100%; min-width: 0; min-height: 53px; padding: 14px 20px; border: 1px solid var(--ivory-line); border-radius: var(--radius-control); background: var(--ivory); color: var(--ink); font-family: var(--font-body), Arial, sans-serif; font-size: var(--text-control); font-weight: 400; line-height: 1.5; caret-color: var(--signal); } .ds-field-input::placeholder { color: var(--muted); opacity: 1; } .ds-field-input:focus-visible { outline: 3px solid var(--signal-deep); outline-offset: 4px; } .ds-field-input::selection { background: var(--signal); color: var(--white); }"
+    },
+    {
+      "name": "Public Navigation",
+      "kind": "nav",
+      "description": "Public links with fuchsia current/hover underlines. Mobile sample uses the same hairline link-row treatment as the expanded menu.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navigation principale\"><a class=\"ds-nav-link\" href=\"/\" aria-current=\"page\">Accueil</a><a class=\"ds-nav-link\" href=\"/@patrick-chassany\">Rencontrer le Collaborateur</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 30px; font-family: var(--font-body), Arial, sans-serif; font-size: var(--text-control); font-weight: 400; line-height: 1.5; color: var(--ink); } .ds-nav-link { position: relative; padding-block: 12px; color: inherit; text-decoration: none; } .ds-nav-link::after { content: ''; position: absolute; bottom: 7px; left: 0; width: 100%; height: 2px; background: var(--signal); transform: scaleX(0); transform-origin: left; transition: transform 220ms var(--ease-out); } .ds-nav-link:hover::after, .ds-nav-link[aria-current]::after { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 3px solid var(--signal-deep); outline-offset: 4px; } @media (max-width: 959px) { .ds-nav { flex-direction: column; align-items: stretch; gap: 0; } .ds-nav-link { display: flex; align-items: center; min-height: 53px; border-bottom: 1px solid var(--ivory-line); } .ds-nav-link::after { display: none; } } @media (prefers-reduced-motion: reduce) { .ds-nav-link::after { transition: none; } }"
+    },
+    {
+      "name": "Demo Chip",
+      "kind": "chip",
+      "refersTo": "demo-chip",
+      "description": "Non-interactive outline label; dark-context sample shows its muted-ink variant without inventing an online state.",
+      "html": "<div class=\"ds-demo-samples\"><span class=\"ds-demo-chip\">Mode démo</span><div class=\"ds-demo-dark\"><span class=\"ds-demo-chip\">Démo</span></div></div>",
+      "css": ".ds-demo-samples { display: flex; align-items: center; gap: 16px; } .ds-demo-chip { display: inline-flex; align-items: center; padding: 4px 9px; border: 1px solid currentColor; border-radius: var(--radius-control); color: var(--muted); background: transparent; font-family: var(--font-body), Arial, sans-serif; font-size: var(--text-caption); font-weight: 400; line-height: 1.25; white-space: nowrap; } .ds-demo-dark { padding: 16px; background: var(--ink-raised); border-radius: var(--radius-bubble); } .ds-demo-dark .ds-demo-chip { color: var(--muted-ink); }"
+    },
+    {
+      "name": "Reading Panel",
+      "kind": "card",
+      "refersTo": "reading-panel",
+      "description": "Flat, hairline-framed reading panel with demo context and an operational title.",
+      "html": "<section class=\"ds-reading-panel\"><div class=\"ds-panel-top\"><span>Jean Dupont · Acme</span><span class=\"ds-panel-demo\">Brouillon démo</span></div><h2 class=\"ds-panel-title\">Une proposition prête à relire.</h2><p class=\"ds-panel-draft\">Bonjour Jean,\n\nVoici la proposition que nous avons préparée suite à notre échange.</p><p class=\"ds-panel-hint\">La validation est locale à cette démonstration.</p></section>",
+      "css": ".ds-reading-panel { padding: 30px; border: 1px solid var(--ivory-line); border-radius: var(--radius-panel); background: var(--white); color: var(--ink); font-family: var(--font-body), Arial, sans-serif; } .ds-panel-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; color: var(--muted); font-size: var(--text-small); line-height: 1.5; } .ds-panel-demo { padding: 4px 9px; border: 1px solid currentColor; border-radius: var(--radius-control); font-size: var(--text-caption); line-height: 1.25; white-space: nowrap; } .ds-panel-title { margin: 28px 0 0; font-size: var(--text-title); font-weight: 400; line-height: 1.2; text-wrap: balance; } .ds-panel-draft { margin: 24px 0 0; color: var(--muted); font-size: var(--text-control); line-height: 1.65; white-space: pre-wrap; } .ds-panel-hint { margin: 10px 0 0; color: var(--muted); font-size: var(--text-caption); line-height: 1.5; } @media (max-width: 959px) { .ds-reading-panel { padding: 24px; } } @media (max-width: 699px) { .ds-reading-panel { padding: 24px 20px; border-radius: 20px; } .ds-panel-title { font-size: 1.375rem; margin-top: 24px; } .ds-panel-draft { font-size: var(--text-small); } }"
+    },
+    {
+      "name": "Message Bubbles",
+      "kind": "custom",
+      "refersTo": "message-collaborator",
+      "description": "Ordinary flat chat bubbles: white Collaborator message and pink visitor message, with directional 3px upper corners and explicit demo captions.",
+      "html": "<div class=\"ds-message-plane\"><div class=\"ds-message ds-message-collaborator\"><p class=\"ds-message-text\">Bonjour, je suis le Collaborateur IA de Patrick. Cette conversation est une démo.</p><span class=\"ds-message-caption\">Réponse de démonstration</span></div><div class=\"ds-message ds-message-visitor\"><p class=\"ds-message-text\">Qu’est-ce que Unitalk ?</p><span class=\"ds-message-caption\">Vous</span></div></div>",
+      "css": ".ds-message-plane { padding: 24px; border-radius: var(--radius-panel); background: var(--ink-raised); font-family: var(--font-body), Arial, sans-serif; } .ds-message { width: fit-content; max-width: 92%; padding: 15px 17px 10px; margin-bottom: 16px; border-radius: var(--radius-bubble); background: var(--white); color: var(--ink); } .ds-message-collaborator { border-top-left-radius: 3px; } .ds-message-visitor { margin-left: auto; background: var(--signal-wash); border-top-right-radius: 3px; } .ds-message-text { margin: 0; font-size: var(--text-control); font-weight: 400; line-height: 1.5; overflow-wrap: anywhere; white-space: pre-wrap; } .ds-message-caption { display: block; margin-top: 7px; text-align: right; color: var(--muted); font-size: var(--text-caption); line-height: 1.5; } .ds-message-text::selection { background: var(--signal); color: var(--white); } @media (max-width: 699px) { .ds-message-plane { padding: 18px; border-radius: 20px; } .ds-message { max-width: 95%; } .ds-message-text { font-size: var(--text-small); } }"
+    },
+    {
+      "name": "Conversation Prompt",
+      "kind": "chip",
+      "refersTo": "prompt-chip",
+      "description": "Outlined question suggestion on a dark conversational plane. The application fills the composer; this snippet previews CSS states only.",
+      "html": "<div class=\"ds-prompt-plane\"><button class=\"ds-prompt\" type=\"button\">Que sais-tu de Patrick ?</button></div>",
+      "css": ".ds-prompt-plane { padding: 24px; border-radius: var(--radius-panel); background: var(--ink-raised); } .ds-prompt { min-height: 44px; padding: 10px 12px; border: 1px solid var(--ink-line); border-radius: var(--radius-control); background: transparent; color: var(--muted-ink); font-family: var(--font-body), Arial, sans-serif; font-size: var(--text-caption); font-weight: 400; line-height: 1.5; cursor: pointer; } .ds-prompt:hover:not(:disabled) { background: var(--ink-line); color: var(--white); } .ds-prompt:focus-visible { outline: 3px solid var(--signal-deep); outline-offset: 4px; } .ds-prompt:disabled { cursor: default; opacity: .55; }"
+    },
+    {
+      "name": "Selected Decision Row",
+      "kind": "custom",
+      "refersTo": "selected-row",
+      "description": "Pink-wash selected list item with semantic pressed state; unselected hover uses inset cream.",
+      "html": "<button class=\"ds-decision-row\" type=\"button\" aria-pressed=\"true\"><span class=\"ds-decision-index\">1</span><span class=\"ds-decision-copy\"><strong class=\"ds-decision-title\">Valider la proposition Acme</strong><span class=\"ds-decision-detail\">Proposition préparée</span></span><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 5 7 7-7 7\"/></svg></button>",
+      "css": ".ds-decision-row { width: 100%; display: flex; align-items: center; gap: 14px; padding: 23px 16px; border: 0; border-bottom: 1px solid var(--ivory-line); border-radius: 12px; background: transparent; color: var(--ink); text-align: left; font-family: var(--font-body), Arial, sans-serif; line-height: 1.5; cursor: pointer; } .ds-decision-row[aria-pressed='true'] { background: var(--signal-wash); border-color: transparent; } .ds-decision-row:hover { background: var(--ivory-sunk); } .ds-decision-row[aria-pressed='true']:hover { background: var(--signal-wash); } .ds-decision-row:focus-visible { outline: 3px solid var(--signal-deep); outline-offset: 4px; } .ds-decision-index { min-width: 16px; color: var(--muted); font-size: var(--text-small); font-variant-numeric: tabular-nums; } .ds-decision-copy { flex: 1; } .ds-decision-title { display: block; font-size: var(--text-control); font-weight: 500; } .ds-decision-detail { display: block; margin-top: 6px; color: var(--muted); font-size: var(--text-small); } .ds-decision-row svg { flex: none; } @media (max-width: 699px) { .ds-decision-row { padding: 20px 12px; gap: 10px; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "WhatsApp website grammar, in fuchsia",
+    "overview": "The user-selected reference is whatsapp.com: warm cream, near-black ink, normal-weight sans-serif headings, photographic panels, pill controls and conversational bubbles. Fuchsia replaces its green. The visual authority is the implemented `src/app/globals.css`, with Archivo loaded in `src/app/layout.tsx`; this specification replaces the former serif, public-single-page system.\n\nOne reusable family supports four distinct surfaces: `/` (homepage), `/@patrick-chassany` (public AI Collaborator), `/dashboard/patrick` (owner demo) and `/dashboard/visiteur` (visitor demo). Public pages use expressive scale; role-specific dashboards use smaller, functional hierarchy and standard list/detail organization. These routes are implemented prototypes: role selection, responses, work and URL previews are simulated or local, with no real login, AI execution or crawl implied. Surface composition belongs in `.impeccable/surfaces/`.",
+    "keyCharacteristics": [
+      "Warm cream and dark tonal planes, with hairline separation.",
+      "Archivo throughout; large public headings and compact operational hierarchy.",
+      "Fuchsia actions, contextual accent text and pink selections.",
+      "Pill controls, generous panels and recognizable message silhouettes.",
+      "Visible demo labels and local illustrative photography."
+    ],
+    "rules": [
+      { "name": "The Contextual Accent Rule", "body": "Use signal for solid actions, signal-deep for accent text on cream, and signal-light for accent text on dark. Pink wash carries selection without making every item a solid action.", "section": "colors" },
+      { "name": "The Functional Scale Rule", "body": "Carry the same sans-serif identity into dashboards, using the dashboard and title tiers instead of public hero scale. Keep ordinary prose at weight 400, and use size, spacing and position to establish hierarchy.", "section": "typography" },
+      { "name": "The Tonal Depth Rule", "body": "Establish depth with surface contrast and hairlines. Reserve shadows for illustrative message bubbles and the account dropdown.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use the WhatsApp-derived cream, sans-serif, pill-control and conversational family consistently across all four surfaces.",
+      "Do preserve the smaller functional hierarchy and distinct owner/visitor navigation in dashboards.",
+      "Do use contextual fuchsia shades, pink wash, white panels and hairlines according to their roles.",
+      "Do keep keyboard focus visible and honor reduced motion.",
+      "Do label simulated responses, activity, validation and URL previews visibly; keep knowledge distinct from memory and use AI Collaborator terminology.",
+      "Do retain local illustrative assets, source records and embedded provenance without presenting them as real people or product evidence."
+    ],
+    "donts": [
+      "Don't restore the obsolete serif, single-column-only, white-ban or one-fuchsia-element constraints.",
+      "Don't add shadows to ordinary controls, chat messages or reading panels.",
+      "Don't describe demo role selection as real login, local previews as crawling or deployment, or predefined answers as live AI work.",
+      "Don't rename Patrick's AI Collaborator to Pacha or present owner sections as the four application surfaces."
+    ]
+  }
+}

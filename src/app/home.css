@@ -10,6 +10,7 @@
 .conversion-home .english-hero .hero-content .hero-outcome { margin-top: 26px; font-size: var(--text-body); }
 .conversion-home .english-hero .hero-content .hero-explanation { margin-top: 12px; color: var(--muted-ink); }
 .hero-conversion-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; margin-top: 30px; }
+.hero-conversion-actions .button { white-space: normal; text-align: left; gap: 16px; max-width: 100%; }
 .hero-conversion-actions .button-primary:hover { background: var(--white); border-color: var(--white); color: var(--ink); }
 .hero-secondary-action { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; font-size: var(--text-control); border-bottom: 1px solid #ff6aba; }
 .hero-secondary-action:hover { color: #ff6aba; }

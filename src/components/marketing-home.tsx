@@ -9,7 +9,7 @@ import { AI_HISTORY_SOURCES, AIProviderLogo } from "@/components/ai-provider-log
 import { HeroWorkProof, WorkDemo } from "@/components/work-demo";
 import { EncounterLink } from "@/components/collaborator-offer-context";
 import { Icon } from "@/components/icons";
-import { localizedOffer } from "@/lib/marketing-language";
+import { localizedOffer, marketingPath } from "@/lib/marketing-language";
 import { MarketingFAQ } from "./marketing-faq";
 import "../app/home.css";
 
@@ -24,9 +24,9 @@ export function MarketingHome({ language = "en" }: { language?: "en" | "fr" }) {
           <h1 id="home-title"><span className="hero-title-line">{fr ? "Votre Collaborateur IA." : "Your AI Collaborator."}</span><span className="hero-title-promise">{fr ? "Il travaille pour vous." : "It works for you."}</span></h1>
           <p className="hero-outcome">{fr ? <>Le suivi. Le prochain rendez-vous.<br />L’opportunité à ne pas manquer.</> : <>The follow-up. The next meeting.<br />The opportunity you don’t want to miss.</>}</p>
           <p className="hero-explanation">{fr ? "Confiez-lui le travail. Gardez le dernier mot." : "Give it the work. Keep the final say."}</p>
-          <div className="hero-conversion-actions"><Link href="#work-example" className="button button-primary">{fr ? "Voir le travail" : "See it do the work"} <Icon name="arrow" /></Link><EncounterLink className="hero-secondary-action" language={language} marketing>{fr ? "Rencontrer le mien" : "Meet yours"} <Icon name="arrow" /></EncounterLink></div>
+          <div className="hero-conversion-actions"><EncounterLink className="button button-primary" language={language} marketing channel="linkedin">{fr ? "Se connecter avec LinkedIn" : "Connect with LinkedIn"} <Icon name="arrow" /></EncounterLink><Link href={marketingPath("/how-it-works", language)} className="hero-secondary-action">{fr ? "Comment ça marche" : "How it works"} <Icon name="arrow" /></Link></div>
           <p className="hero-price">{offer.monthly} / {fr ? "mois · Résiliable à tout moment" : "month · Cancel anytime"}</p>
-          <p className="hero-usage">{fr ? "Usage IA facturé séparément." : "AI usage separate."}</p>
+          <p className="hero-usage">{fr ? "Usage IA facturé séparément." : "AI usage billed separately."} {offer.trial}</p>
         </div>
         <div className="home-hero-media">
           <Image src="/images/professional-conversation.jpg" alt={fr ? "Deux professionnelles échangent autour d’un ordinateur." : "Two professionals exchanging ideas over a laptop."} fill preload sizes="(max-width: 959px) 100vw, 68vw" className="home-hero-photo" />
@@ -44,7 +44,7 @@ export function MarketingHome({ language = "en" }: { language?: "en" | "fr" }) {
           <Image src="/images/portrait-03.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 72px, 112px" className="relationship-portrait portrait-three" />
         </div>
         <div className="marketing-section work-summary content-container">
-          <div className="work-conversion-copy"><h2 id="work-title">{fr ? <>Moins de relances.<br /><span>Plus d’avancées.</span></> : <>Less chasing.<br /><span>More moving forward.</span></>}</h2><p>{fr ? "Un échange devient un prochain pas utile. Un suivi à relire. Une piste à qualifier. Une préparation avant le rendez-vous." : "Turn a conversation into a useful next step. A follow-up to review. A lead to qualify. A brief before you meet."}</p></div>
+          <div className="work-conversion-copy"><h2 id="work-title">{fr ? <>Transformez un échange<br /><span>en prochain pas utile.</span></> : <>Turn a conversation<br /><span>into a useful next step.</span></>}</h2><p>{fr ? "Emails, formulaires de contact, messages privés, SMS, appels et rendez-vous." : "Emails, contact forms, DMs, SMS, calls and meetings."}</p><p>{fr ? "Conçu pour analyser les messages entrants, les trier par priorité et les classer par sujet. Puis préparer une réponse, organiser un suivi ou vous solliciter lorsqu’une décision compte." : "Designed to analyse incoming messages, sort them by priority and classify them by topic. Then prepare a reply, organise a follow-up or bring you in when a decision matters."}</p></div>
           <div id="work-example" className="work-example-anchor"><WorkDemo language={language} /></div>
           <div className="work-start"><ChannelRibbon /><p className="work-connection-copy">{fr ? "Conçu pour votre site, email, WhatsApp, Slack, LinkedIn et plus encore." : "Designed for your website, email, WhatsApp, Slack, LinkedIn and more."}</p><HomeEntry language={language} /></div>
         </div>

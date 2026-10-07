@@ -119,6 +119,7 @@ The user-pinned owner app at `/dashboard/patrick` is a French operational experi
 
 ## Offer
 
+- **User-selected trial:** one week free, with no credit card required. The homepage shows this beside the separate-AI-usage qualification in English and French. No 10-million-token allowance was selected. This is offer copy; no trial activation, payment or AI-credit service is connected in this frontend.
 - **Collaborator — €9.99 / month**, cancel anytime.
 - **Annual — €99 / year**, marketed as **2 months free** compared with monthly billing.
 - One AI Collaborator: **Identity · Memory · Knowledge · Skills · Tools · Authority**.

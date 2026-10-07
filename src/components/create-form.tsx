@@ -36,8 +36,8 @@ export function CreateForm({ compact = false, onPreview }: { compact?: boolean; 
   }
 
   return <form className={`create-form${compact ? " create-form-compact" : ""}`} onSubmit={submit} noValidate>
-    <label htmlFor={compact ? "create-url-compact" : "create-url"}>Commencez avec votre URL</label>
-    <div className="url-control"><Icon name="link" /><input id={compact ? "create-url-compact" : "create-url"} name="url" type="text" inputMode="url" autoComplete="url" placeholder="votre-site.com" value={value} onChange={e => { setValue(e.target.value); setError(""); }} aria-invalid={Boolean(error)} aria-describedby={error ? "url-error" : "url-demo-hint"} disabled={pending} /><button className="button button-primary" type="submit" disabled={pending}>{pending ? "Ouverture…" : "Créer le mien"}<Icon name="arrow" /></button></div>
+    <label htmlFor={compact ? "create-url-compact" : "create-url"}>{onPreview ? "URL de la source publique" : "Votre source publique"}</label>
+    <div className="url-control"><Icon name="link" /><input id={compact ? "create-url-compact" : "create-url"} name="url" type="text" inputMode="url" autoComplete="url" placeholder="votre-site.com" value={value} onChange={e => { setValue(e.target.value); setError(""); }} aria-invalid={Boolean(error)} aria-describedby={error ? "url-error" : "url-demo-hint"} disabled={pending} /><button className="button button-primary" type="submit" disabled={pending}>{pending ? "Ouverture…" : onPreview ? "Ajouter la source" : "Préparer la rencontre"}<Icon name="arrow" /></button></div>
     {error ? <p className="form-error" id="url-error" role="alert">{error}</p> : <p className="form-hint" id="url-demo-hint">Aperçu de démonstration · aucune URL analysée.</p>}
   </form>;
 }

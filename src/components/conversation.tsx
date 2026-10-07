@@ -2,15 +2,17 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Icon } from "./icons";
+import { COLLABORATOR_OFFER } from "@/lib/collaborator-offer";
 
 type Message = { id: number; role: "collaborator" | "visitor"; text: string };
 const prompts = ["Qu’est-ce que Unitalk ?", "Que sais-tu de Patrick ?", "Comment créer le mien ?"];
 
 function demoReply(question: string) {
   const query = question.toLowerCase();
+  if (/prix|combien|tarif/.test(query)) return `L’offre prévue est de ${COLLABORATOR_OFFER.monthly} par mois, résiliable à tout moment, ou ${COLLABORATOR_OFFER.annual} par an. Elle comprend un Collaborateur avec son identité, sa mémoire, ses connaissances, ses compétences, ses outils et ses permissions. Aucun abonnement ni paiement n’est activé dans cette démo.`;
   if (/patrick|chassany|entreprise/.test(query)) return "Patrick Chassany est le fondateur de Unitalk. Son Collaborateur IA est destiné à représenter ses connaissances professionnelles publiques : son travail, ses entreprises et ses idées. Cet aperçu ne consulte pas ses données privées.";
-  if (/créer|creer|url|mien|prix|combien/.test(query)) return "Le principe : commencer avec une URL publique pour créer votre Collaborateur IA. L’offre prévue est de 9 € par mois, avec 7 jours ou 5 millions de tokens d’essai, sans carte bancaire. Dans ce prototype, vous pouvez essayer un aperçu local depuis « Créer le mien ».";
-  if (/unitalk|collaborateur|différence/.test(query)) return "Unitalk permet de créer et de posséder un Collaborateur IA public. Il est conçu pour communiquer, retenir le contexte et accomplir des missions. Ses connaissances sont ce qu’il sait ; sa mémoire est ce qu’il retient de ses échanges. Ici, les réponses sont des exemples prédéfinis.";
+  if (/créer|creer|url|mien|prix|combien/.test(query)) return "Commencez par « Rencontrer mon Collaborateur » : indiquez votre nom et une première mission. LinkedIn, email et WhatsApp sont les canaux de travail envisagés ; une URL publique peut fournir une source supplémentaire. Dans ce prototype, cette rencontre est un aperçu local et aucun compte n’est connecté.";
+  if (/unitalk|collaborateur|différence/.test(query)) return "Unitalk vous permet de rencontrer et de posséder un Collaborateur IA qui travaille pour vous. Il est conçu pour comprendre vos relations, organiser un CRM, préparer les suivis et agir selon vos permissions. Ses connaissances sont ce qu’il sait ; sa mémoire est ce qu’il retient. Les connexions et le travail sont encore simulés dans ce prototype.";
   return "Votre message a bien été ajouté à cette démonstration. Je ne suis pas encore relié à un modèle IA et je ne peux pas exécuter cette demande. Vous pouvez tester une question sur Patrick, Unitalk ou la création de votre Collaborateur.";
 }
 

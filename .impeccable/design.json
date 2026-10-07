@@ -84,8 +84,8 @@
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Public Display", "purpose": "Homepage hero; --text-display, normal-weight Archivo with an 80px desktop ceiling and component-specific responsive overrides." },
-      "headline": { "displayName": "Public Headline", "purpose": "Public identity and section headings; --text-headline, 60px ceiling. Line heights vary from 1 to 1.1; token uses the ownership heading's 1.04." },
+      "display": { "displayName": "Public Display", "purpose": "Homepage hero; --text-display, normal-weight Archivo with an 80px desktop ceiling and component-specific responsive overrides. English hero uses 1.04 line height and a 0.8em secondary line." },
+      "headline": { "displayName": "Public Headline", "purpose": "Public identity and section headings; --text-headline, 60px ceiling. Line heights vary from 1 to 1.1; token uses the retained ownership heading's 1.04, while English marketing headings use 1.06." },
       "dashboard": { "displayName": "Operational Heading", "purpose": "Owner and visitor greetings; --text-dashboard, 48px ceiling, 32px on mobile. The public introduction also uses a related 48px tier." },
       "title": { "displayName": "Panel Title", "purpose": "--text-title, 24px reading-panel and capability headings; normal weight." },
       "body": { "displayName": "General Body", "purpose": "--text-body, 18px with 1.5 line height; public supporting copy and illustrative hero bubbles." },
@@ -94,19 +94,21 @@
       "caption": { "displayName": "Caption and Demo Label", "purpose": "--text-caption, 12px message captions, notices and prompt labels; 1.25 in the demo chip, otherwise inherited 1.5." }
     },
     "shadows": [
-      { "name": "illustrative-bubble", "value": "0 4px 16px #111b2120", "purpose": "Homepage story bubbles only; ordinary chat messages remain flat." },
+      { "name": "illustrative-bubble", "value": "0 4px 16px #111b2120", "purpose": "Retained illustrative story-bubble CSS; the current homepage does not render these bubbles. Ordinary chat messages remain flat." },
       { "name": "account-menu", "value": "0 12px 30px #111b211a", "purpose": "Demo-role account dropdown." }
     ],
     "focus": [
-      { "name": "keyboard", "value": "outline: 3px solid var(--signal-deep); outline-offset: 4px", "purpose": "Focus-visible anchors, buttons, inputs, summaries and explicitly focusable elements." },
-      { "name": "compound-url-input", "value": "outline-offset: 0", "purpose": "URL input within its rounded compound wrapper; retains the same outline color and width." }
+      { "name": "keyboard", "value": "outline: 3px solid var(--signal-deep); outline-offset: 4px", "purpose": "Focus-visible anchors, buttons, inputs, textareas, selects, summaries and explicitly focusable elements." },
+      { "name": "compound-url-input", "value": "outline-offset: 0", "purpose": "URL input within its rounded compound wrapper; retains the same outline color and width." },
+      { "name": "ownership-and-footer", "value": "outline: 3px solid #ff6aba; outline-offset: 4px", "purpose": "Ownership links, buttons, selects and summaries, plus footer links, buttons and summaries, use the existing signal-light shade on their dark planes. Source scopes: .ownership-section :where(a, button, select, summary):focus-visible and .site-footer :where(a, button, summary):focus-visible." },
+      { "name": "billing-option", "value": "outline: 3px solid var(--signal-deep); outline-offset: 3px", "purpose": "Drawn on the enclosing label when its native radio is focus-visible; the transparent input's own outline is suppressed." }
     ],
     "motion": [
       { "name": "ease-out", "value": "var(--ease-out)", "purpose": "Native easing token: cubic-bezier(.16, 1, .3, 1), used for link indicators, button icons and illustrative reply arrival." },
       { "name": "control-color", "value": "200ms ease", "purpose": "Button background-color, color and border-color transitions." },
       { "name": "control-icon", "value": "transform 200ms var(--ease-out)", "purpose": "Standard button icon translates 3px horizontally on enabled hover." },
       { "name": "navigation-indicator", "value": "transform 220ms var(--ease-out)", "purpose": "Public link underline grows horizontally on hover and current page." },
-      { "name": "illustrative-reply", "value": "650ms var(--ease-out) both", "purpose": "Hero reply arrives from translateY(14px) with a clipped lower edge, only under prefers-reduced-motion: no-preference." },
+      { "name": "illustrative-reply", "value": "650ms var(--ease-out) both", "purpose": "Retained story-reply CSS arrives from translateY(14px) with a clipped lower edge, only under prefers-reduced-motion: no-preference. The current homepage does not render this reply." },
       { "name": "reduced-motion", "value": "@media (prefers-reduced-motion: reduce)", "purpose": "Disable transitions and smooth scrolling. Reply animation is already gated to no-preference." }
     ],
     "breakpoints": [
@@ -129,10 +131,15 @@
       "visualAuthority": "src/app/globals.css",
       "fontLoader": "src/app/layout.tsx",
       "fontBinding": "Archivo is --font-body; --font-display aliases --font-body.",
-      "literalAccent": "signal-light is #FF6ABA in the dark ownership heading; no --signal-light variable exists.",
+      "literalAccent": "signal-light is #FF6ABA in dark ownership headings and copy, runtime-link hover, ownership/footer control focus, the history destination icon and Patrick invitation; no --signal-light variable exists.",
       "surfaces": ["/", "/@patrick-chassany", "/dashboard/patrick", "/dashboard/visiteur"],
       "runtimeTruth": "Interactive local/demo prototypes; role selection is simulated, responses are predefined, and URLs are not crawled.",
-      "illustration": "public/images/working-together.jpg; Unsplash source in public/images/SOURCES.md, embedded provenance and a visible illustration credit."
+      "language": "src/app/page.tsx wraps the English homepage in lang=en; src/components/site-shell.tsx supplies English shell copy. The public Collaborator and both dashboards remain French.",
+      "preferenceFlow": "src/components/ownership-options.tsx supplies native hosting/intelligence selects; src/components/collaborator-pricing.tsx supplies native monthly/annual radios. Both update shared in-page preferences in src/components/collaborator-offer-context.tsx. Its EncounterLink merges explicit link defaults with shared choices, with user-selected values taking precedence, so every homepage encounter CTA preserves the combined selection. src/components/meet-collaborator.tsx shows the received preferences in a pink-wash definition list. src/lib/collaborator-offer.ts owns allowlisted values, encounter links and price labels; PRODUCT.md owns the intended offer. No provisioning, connection or payment occurs; history import and Hermes integration remain planned.",
+      "routeMetadata": "Route pages retain server-owned metadata; src/app/page.tsx composes the client CollaboratorOfferProvider around its homepage content and shared shell.",
+      "footerDisclosures": "src/components/site-shell.tsx uses native details/summary for English preview privacy and terms. Dark-plane hairline rows, muted body copy, signal-light keyboard outlines and a plus rotated 45 degrees when open; two columns stack at 699px.",
+      "illustration": "public/images/working-together.jpg; Unsplash source in public/images/SOURCES.md, embedded provenance and a visible illustration credit. Desktop photographic overlay; mobile in-flow 210px crop below the CTA.",
+      "encounterResult": "Successful submission focuses the response heading and scrolls it into view; instant for reduced motion, smooth otherwise. Errors remain at the form."
     }
   },
   "components": [
@@ -140,8 +147,8 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Fuchsia/white standard action; ink hover on the light canvas. Dark ownership-section hover overrides to white/ink.",
-      "html": "<button class=\"ds-btn-primary\" type=\"button\">Créer mon Collaborateur<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h16M13 5l7 7-7 7\"/></svg></button>",
+      "description": "Fuchsia/white standard action; this light-canvas sample uses ink hover and signal-deep focus. In the dark ownership section, hover overrides to white/ink and focus uses signal-light with the same 3px outline and 4px offset.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Rencontrer mon Collaborateur<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h16M13 5l7 7-7 7\"/></svg></button>",
       "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 24px; min-height: 53px; padding: 15px 28px; border: 1px solid var(--signal); border-radius: var(--radius-control); background: var(--signal); color: var(--white); font-family: var(--font-body), Arial, sans-serif; font-size: var(--text-control); font-weight: 500; line-height: 1.2; white-space: nowrap; cursor: pointer; transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease; } .ds-btn-primary svg { flex: none; transition: transform 200ms var(--ease-out); } .ds-btn-primary:hover:not(:disabled) { background: var(--ink); border-color: var(--ink); } .ds-btn-primary:hover:not(:disabled) svg { transform: translateX(3px); } .ds-btn-primary:focus-visible { outline: 3px solid var(--signal-deep); outline-offset: 4px; } .ds-btn-primary:disabled { cursor: default; opacity: .55; } @media (prefers-reduced-motion: reduce) { .ds-btn-primary, .ds-btn-primary svg { transition: none; } }"
     },
     {
@@ -156,8 +163,8 @@
       "name": "Identity Input",
       "kind": "input",
       "refersTo": "field",
-      "description": "Labelled standalone preview-name field with cream fill, hairline, fuchsia caret and keyboard outline.",
-      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-owner-name\">Votre nom</label><input class=\"ds-field-input\" id=\"ds-owner-name\" type=\"text\" maxlength=\"70\" placeholder=\"Comment vous appelez-vous ?\" /></div>",
+      "description": "Labelled standalone name field for the local demo encounter, with cream fill, hairline, fuchsia caret and keyboard outline.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-owner-name\">Comment vous appelez-vous ?</label><input class=\"ds-field-input\" id=\"ds-owner-name\" type=\"text\" autocomplete=\"name\" maxlength=\"70\" placeholder=\"Votre nom\" /></div>",
       "css": ".ds-field { width: 100%; font-family: var(--font-body), Arial, sans-serif; color: var(--ink); } .ds-field-label { display: block; margin-bottom: 8px; font-size: var(--text-small); line-height: 1.5; } .ds-field-input { width: 100%; min-width: 0; min-height: 53px; padding: 14px 20px; border: 1px solid var(--ivory-line); border-radius: var(--radius-control); background: var(--ivory); color: var(--ink); font-family: var(--font-body), Arial, sans-serif; font-size: var(--text-control); font-weight: 400; line-height: 1.5; caret-color: var(--signal); } .ds-field-input::placeholder { color: var(--muted); opacity: 1; } .ds-field-input:focus-visible { outline: 3px solid var(--signal-deep); outline-offset: 4px; } .ds-field-input::selection { background: var(--signal); color: var(--white); }"
     },
     {
@@ -206,11 +213,27 @@
       "description": "Pink-wash selected list item with semantic pressed state; unselected hover uses inset cream.",
       "html": "<button class=\"ds-decision-row\" type=\"button\" aria-pressed=\"true\"><span class=\"ds-decision-index\">1</span><span class=\"ds-decision-copy\"><strong class=\"ds-decision-title\">Valider la proposition Acme</strong><span class=\"ds-decision-detail\">Proposition préparée</span></span><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 5 7 7-7 7\"/></svg></button>",
       "css": ".ds-decision-row { width: 100%; display: flex; align-items: center; gap: 14px; padding: 23px 16px; border: 0; border-bottom: 1px solid var(--ivory-line); border-radius: 12px; background: transparent; color: var(--ink); text-align: left; font-family: var(--font-body), Arial, sans-serif; line-height: 1.5; cursor: pointer; } .ds-decision-row[aria-pressed='true'] { background: var(--signal-wash); border-color: transparent; } .ds-decision-row:hover { background: var(--ivory-sunk); } .ds-decision-row[aria-pressed='true']:hover { background: var(--signal-wash); } .ds-decision-row:focus-visible { outline: 3px solid var(--signal-deep); outline-offset: 4px; } .ds-decision-index { min-width: 16px; color: var(--muted); font-size: var(--text-small); font-variant-numeric: tabular-nums; } .ds-decision-copy { flex: 1; } .ds-decision-title { display: block; font-size: var(--text-control); font-weight: 500; } .ds-decision-detail { display: block; margin-top: 6px; color: var(--muted); font-size: var(--text-small); } .ds-decision-row svg { flex: none; } @media (max-width: 699px) { .ds-decision-row { padding: 20px 12px; gap: 10px; } }"
+    },
+    {
+      "name": "Ownership Select",
+      "kind": "input",
+      "refersTo": "native-select",
+      "description": "Native hosting/intelligence preference select: white pill on the dark ownership plane, inline chevron and signal-light focus shared by ownership controls. The application stores choices in shared homepage state; this standalone sample previews native selection only. No provisioning occurs.",
+      "html": "<div class=\"ds-select-plane\" lang=\"en\"><label class=\"ds-select-label\" for=\"ds-hosting-choice\">Hosting</label><div class=\"ds-select-shell\"><select class=\"ds-select\" id=\"ds-hosting-choice\" aria-describedby=\"ds-ownership-note\"><option value=\"unitalk\" selected>Unitalk Cloud</option><option value=\"ovh\">Your OVH server</option><option value=\"hostinger\">Your Hostinger server</option><option value=\"infrastructure\">Your infrastructure</option><option value=\"hermes\">Existing Hermes</option></select><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 5 7 7-7 7\"/></svg></div><p class=\"ds-select-note\" id=\"ds-ownership-note\">Explore your setup. These choices carry into the demo; deployment and Hermes integration are planned.</p></div>",
+      "css": ".ds-select-plane { padding: 24px; background: var(--ink-raised); color: var(--white); font-family: var(--font-body), Arial, sans-serif; line-height: 1.5; } .ds-select-label { display: block; margin-bottom: 14px; font-size: var(--text-title); font-weight: 400; } .ds-select-shell { position: relative; } .ds-select { box-sizing: border-box; appearance: none; width: 100%; min-height: 60px; padding: 16px 52px 16px 22px; background: var(--white); color: var(--ink); border: 1px solid var(--white); border-radius: var(--radius-control); cursor: pointer; font-family: var(--font-body), Arial, sans-serif; font-size: var(--text-control); font-weight: 400; line-height: 1.5; } .ds-select-shell > svg { position: absolute; right: 22px; top: 20px; transform: rotate(90deg); color: var(--ink); pointer-events: none; } .ds-select-plane :where(a, button, select, summary):focus-visible { outline: 3px solid #ff6aba; outline-offset: 4px; } .ds-select-note { margin: 14px 0 0; color: var(--muted-ink); font-size: var(--text-small); line-height: 1.6; }"
+    },
+    {
+      "name": "Billing Choice",
+      "kind": "input",
+      "refersTo": "billing-option",
+      "description": "Monthly/annual native radios in a pill enclosure, with pink-wash selection and label-level keyboard focus. The application shares the chosen period across homepage encounter CTAs. Checked-state CSS mirrors its selected class; this standalone sample changes selection only, not shared state, price or billing.",
+      "html": "<div class=\"ds-billing-plane\" lang=\"en\"><fieldset class=\"ds-billing-choice\"><legend class=\"ds-billing-legend\">Billing period</legend><label class=\"ds-billing-option\"><input class=\"ds-billing-radio\" type=\"radio\" name=\"ds-billing\" value=\"monthly\" checked />Monthly</label><label class=\"ds-billing-option\"><input class=\"ds-billing-radio\" type=\"radio\" name=\"ds-billing\" value=\"annual\" />Yearly <span class=\"ds-billing-saving\">2 months free</span></label></fieldset><p class=\"ds-billing-note\">Planned offer · try the demo today. No payment is taken.</p></div>",
+      "css": ".ds-billing-plane { padding: 36px; border-radius: var(--radius-panel); background: var(--white); color: var(--ink); font-family: var(--font-body), Arial, sans-serif; line-height: 1.5; } .ds-billing-choice { display: flex; align-items: stretch; min-width: 0; padding: 5px; gap: 4px; border: 1px solid var(--ivory-line); border-radius: var(--radius-control); margin: 0; font-size: var(--text-small); } .ds-billing-legend { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; } .ds-billing-option { box-sizing: border-box; position: relative; flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; min-height: 44px; padding: 10px 12px; border-radius: var(--radius-control); font-weight: 400; } .ds-billing-option:has(input:checked) { background: var(--signal-wash); color: var(--signal-deep); } .ds-billing-radio { position: absolute; opacity: 0; width: 100%; height: 100%; inset: 0; cursor: pointer; margin: 0; } .ds-billing-option:has(input:focus-visible) { outline: 3px solid var(--signal-deep); outline-offset: 3px; } .ds-billing-radio:focus-visible { outline: 0; } .ds-billing-saving { font-size: var(--text-caption); } .ds-billing-note { margin: 16px 0 0; color: var(--muted); font-size: var(--text-caption); } @media (max-width: 959px) { .ds-billing-plane { padding: 28px; } .ds-billing-option { flex-direction: column; gap: 2px; padding-inline: 8px; } } @media (max-width: 699px) { .ds-billing-plane { padding: 24px 20px; } .ds-billing-option { flex-direction: row; flex-wrap: wrap; gap: 4px 8px; } }"
     }
   ],
   "narrative": {
     "northStar": "WhatsApp website grammar, in fuchsia",
-    "overview": "The user-selected reference is whatsapp.com: warm cream, near-black ink, normal-weight sans-serif headings, photographic panels, pill controls and conversational bubbles. Fuchsia replaces its green. The visual authority is the implemented `src/app/globals.css`, with Archivo loaded in `src/app/layout.tsx`; this specification replaces the former serif, public-single-page system.\n\nOne reusable family supports four distinct surfaces: `/` (homepage), `/@patrick-chassany` (public AI Collaborator), `/dashboard/patrick` (owner demo) and `/dashboard/visiteur` (visitor demo). Public pages use expressive scale; role-specific dashboards use smaller, functional hierarchy and standard list/detail organization. These routes are implemented prototypes: role selection, responses, work and URL previews are simulated or local, with no real login, AI execution or crawl implied. Surface composition belongs in `.impeccable/surfaces/`.",
+    "overview": "The user-selected reference is whatsapp.com: warm cream, near-black ink, normal-weight sans-serif headings, photographic panels, pill controls and conversational bubbles. Fuchsia replaces its green. The visual authority is the implemented `src/app/globals.css`, with Archivo loaded in `src/app/layout.tsx`; this specification replaces the former serif, public-single-page system.\n\nOne reusable family supports four distinct surfaces: `/` (homepage), `/@patrick-chassany` (public AI Collaborator), `/dashboard/patrick` (owner demo) and `/dashboard/visiteur` (visitor demo). The homepage is English; the public Collaborator and both dashboards remain French, with language-aware shared shell components. Public pages use expressive scale; role-specific dashboards use smaller, functional hierarchy and standard list/detail organization. These routes are implemented prototypes: role selection, responses, work and URL previews are simulated or local, with no real login, AI execution or crawl implied. Surface composition belongs in `.impeccable/surfaces/`.",
     "keyCharacteristics": [
       "Warm cream and dark tonal planes, with hairline separation.",
       "Archivo throughout; large public headings and compact operational hierarchy.",

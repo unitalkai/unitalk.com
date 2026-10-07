@@ -483,7 +483,7 @@ button svg, a svg, summary svg { flex: none; }
   .brand { font-size: 1.5rem; }
   .brand > svg { width: 27px; }
   .header-actions { gap: 10px; }
-  .account-menu, .header-create { display: none; }
+  .account-menu, .customer-login, .header-create { display: none; }
   .account-pill { gap: 6px; }
   .account-pill > .avatar { display: none; }
   .account-pill > .demo-label { padding: 3px 6px; }

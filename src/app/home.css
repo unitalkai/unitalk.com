@@ -4,6 +4,7 @@
 .conversion-home .english-hero .hero-content .hero-outcome { margin-top: 26px; font-size: var(--text-body); }
 .conversion-home .english-hero .hero-content .hero-explanation { margin-top: 12px; color: var(--muted-ink); }
 .hero-conversion-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; margin-top: 30px; }
+.hero-conversion-actions .button-primary:hover { background: var(--white); border-color: var(--white); color: var(--ink); }
 .hero-secondary-action { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; font-size: var(--text-control); border-bottom: 1px solid #ff6aba; }
 .hero-secondary-action:hover { color: #ff6aba; }
 .hero-conversion-actions :focus-visible { outline-color: #ff6aba; }
@@ -72,7 +73,9 @@
 .conversion-home .patrick-proof { padding-top: 32px; }
 .conversion-home .history-illustration ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
 .conversion-home .history-illustration li { padding-block: 14px; font-size: var(--text-control); }
-.conversion-home .history-illustration li > svg:last-child { display: none; }
+.history-provider-logo { display: grid; place-items: center; flex: none; width: 32px; height: 32px; }
+.history-provider-logo svg { display: block; width: 26px; height: 26px; }
+.history-provider-logo .provider-hermes { width: 18px; height: 32px; }
 .runtime-details { margin-top: 28px; border-top: 1px solid var(--ink-line); max-width: 430px; font-size: var(--text-small); }
 .runtime-details summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-block: 18px; list-style: none; }
 .runtime-details summary::-webkit-details-marker { display: none; }

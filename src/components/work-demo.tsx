@@ -6,7 +6,7 @@ import { WORK_EXAMPLES, getWorkExample, type WorkExampleId } from "@/lib/work-ex
 
 export function HeroWorkProof() {
   return <div className="hero-work-proof" aria-label="Example work, not live activity">
-    <div className="work-proof-status"><span><Icon name="check" />Ready for your review</span><span className="demo-label">Demo</span></div>
+    <div className="work-proof-status"><span><Icon name="check" />Example follow-up</span></div>
     <p className="hero-proof-request">“Follow up after our meeting.”</p>
     <div className="hero-proof-delivery"><strong>A clear next step</strong><p>Thanks for the conversation. Shall we define the scope and priorities together next week?</p></div>
     <div className="hero-proof-boundary"><Icon name="message" /><span>Prepared for you.<br /><strong>Sent only with your approval.</strong></span></div>

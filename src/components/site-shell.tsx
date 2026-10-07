@@ -30,10 +30,7 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
         {!english && <Link href="/how-it-works">Comment ça marche</Link>}
       </nav>
       <div className="header-actions">
-        {role ? <div className="account-pill"><span className="avatar avatar-small">{role === "patrick" ? "PC" : "V"}</span><span>{role === "patrick" ? "Patrick" : "Visiteur"}</span><span className="demo-label">Démo</span></div> : <details className="account-menu">
-          <summary className="button button-outline button-small">{english ? "Log in" : "Se connecter"} <Icon name="chevron" /></summary>
-          <div className="account-dropdown"><p>{english ? "Choose a workspace" : "Choisir un espace"} <span className="demo-label">{english ? "Demo" : "Démo"}</span></p><Link href="/dashboard/patrick">{english ? "Patrick’s workspace" : "Espace Patrick"} <Icon name="arrow" /></Link><Link href="/dashboard/visiteur">{english ? "Visitor workspace" : "Espace visiteur"} <Icon name="arrow" /></Link></div>
-        </details>}
+        {role ? <div className="account-pill"><span className="avatar avatar-small">{role === "patrick" ? "PC" : "V"}</span><span>{role === "patrick" ? "Patrick" : "Visiteur"}</span><span className="demo-label">Démo</span></div> : <Link href="/login" className="button button-outline button-small customer-login" aria-current={pathname === "/login" ? "page" : undefined}>{english ? "Log in" : "Se connecter"}</Link>}
         <EncounterLink language={language} className="button button-primary button-small header-create">{english ? "Meet your Collaborator" : "Rencontrer le mien"} <Icon name="arrow" /></EncounterLink>
         <button className="icon-button mobile-menu-toggle" aria-label={english ? (open ? "Close navigation" : "Open navigation") : (open ? "Fermer la navigation" : "Ouvrir la navigation")} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}><Icon name={open ? "close" : "menu"} /></button>
       </div>
@@ -41,8 +38,7 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
     {open && <nav id="mobile-navigation" className="mobile-navigation" aria-label={english ? "Mobile navigation" : "Navigation mobile"}>
       {links.map(link => <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>{link.label}<Icon name="arrow" /></Link>)}
       <EncounterLink language={language} onClick={() => setOpen(false)}>{english ? "Meet your Collaborator" : "Rencontrer mon Collaborateur"}<Icon name="arrow" /></EncounterLink>
-      <Link href="/dashboard/patrick" onClick={() => setOpen(false)}>{english ? "Patrick’s workspace" : "Espace Patrick"} <span className="demo-label">{english ? "Demo" : "Démo"}</span></Link>
-      <Link href="/dashboard/visiteur" onClick={() => setOpen(false)}>{english ? "Visitor workspace" : "Espace visiteur"} <span className="demo-label">{english ? "Demo" : "Démo"}</span></Link>
+      {!role && <Link href="/login" onClick={() => setOpen(false)}>{english ? "Log in" : "Se connecter"}<Icon name="arrow" /></Link>}
     </nav>}
   </header>;
 }

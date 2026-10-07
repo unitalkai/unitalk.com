@@ -1,0 +1,16 @@
+.customer-login-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 80px; }
+.customer-login-main { min-height: calc(100svh - 80px); padding-block: 96px; }
+.customer-login-content { max-width: 560px; margin-inline: auto; }
+.customer-login-content h1 { font-size: var(--text-headline); line-height: 1.06; letter-spacing: -.04em; }
+.customer-login-content > p { margin-top: 20px; color: var(--muted); }
+.customer-login-status { margin-block: 40px 32px; padding-block: 28px; border-block: 1px solid var(--ivory-line); }
+.customer-login-status > svg { color: var(--signal-deep); }
+.customer-login-status h2 { margin-top: 16px; font-size: var(--text-title); line-height: 1.3; }
+.customer-login-status p { margin-top: 12px; font-size: var(--text-control); line-height: 1.6; color: var(--muted); max-width: 44ch; }
+@media (max-width: 699px) {
+  .customer-login-header { min-height: 72px; gap: 16px; }
+  .customer-login-header .text-link { font-size: var(--text-small); gap: 8px; }
+  .customer-login-main { min-height: calc(100svh - 72px); padding-block: 64px; }
+  .customer-login-content h1 { font-size: var(--text-dashboard); }
+  .customer-login-content > .button { white-space: normal; text-align: left; }
+}

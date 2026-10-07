@@ -151,6 +151,7 @@ Never call the Collaborator a "profile" — a profile is static, a Collaborator 
 
 ## Copy Principles
 
+- **UI notice refinement:** remove repetitive demo explanations, prewritten-reply footnotes, no-account/no-send disclaimers and prototype taglines across marketing, encounter, public and dashboard surfaces. Keep compact **Demo / Démo** chips on simulated interactions, work and results, and concise availability labels on planned capabilities. The hero qualification is now **“AI usage separate.”** Website/channel handoffs display **“Website reference”** and **“Preferred channel”**; draft approval reports the approved draft without claiming delivery. This supersedes earlier quoted UI notices above. The implementation remains local and simulated. Lint, route type generation, TypeScript and browser checks passed at 1440px, 390px and 320px across seven routes, including approval, public handoff and owner conversation states, with no horizontal overflow, broken visible `aria-describedby` references or runtime errors.
 - Be direct: short sentences, simple words, concrete claims.
 - Show, don't explain. If the product can demonstrate something, demonstrate it.
 - One idea per section. Never create a section just because a feature exists.

@@ -2,6 +2,7 @@ export const COLLABORATOR_OFFER = {
   monthly: "€9.99",
   annual: "€99",
   annualSaving: "2 months free",
+  french: { monthly: "9,99 €", annual: "99 €", annualSaving: "2 mois offerts" },
 } as const;
 
 export const HOSTING_OPTIONS = [

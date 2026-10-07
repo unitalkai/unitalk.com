@@ -13,7 +13,7 @@ export function equivalentMarketingPath(pathname: string, language: MarketingLan
 }
 
 export function localizedOffer(language: MarketingLanguage) {
-  return language === "fr" ? { monthly: "9,99 €", annual: "99 €", annualSaving: "2 mois offerts" } : COLLABORATOR_OFFER;
+  return language === "fr" ? COLLABORATOR_OFFER.french : COLLABORATOR_OFFER;
 }
 
 export function hostingLabel(value: string, fallback: string, language?: MarketingLanguage) {

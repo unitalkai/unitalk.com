@@ -11,7 +11,6 @@ import { Icon } from "@/components/icons";
 import { LinkedInLogo } from "./linkedin-logo";
 import { localizedOffer, marketingPath } from "@/lib/marketing-language";
 import { MarketingFAQ } from "./marketing-faq";
-import { TrialDetails } from "./trial-details";
 import { PublicDoorPreview } from "./public-door-preview";
 import "../app/home.css";
 
@@ -23,13 +22,13 @@ export function MarketingHome({ language = "en" }: { language?: "en" | "fr" }) {
     <main id="main-content">
       <section className="home-hero work-hero english-hero" id="creer" aria-labelledby="home-title">
         <div className="hero-content">
-          <h1 id="home-title"><span className="hero-title-line">{fr ? "Votre Collaborateur IA." : "Your AI Collaborator."}</span><span className="hero-title-promise">{fr ? "Il travaille pour vous." : "It works for you."}</span></h1>
-          <p className="hero-outcome">{fr ? "Messages, appels, rendez-vous : il garde le fil et prépare la suite." : "Messages, calls, meetings: it keeps the context and prepares the next step."}</p>
+          <h1 id="home-title"><span className="hero-title-line">{fr ? "Votre Collaborateur IA." : "Your AI Collaborator."}</span><span className="hero-title-promise">{fr ? "Il garde le fil de vos relations." : "It keeps your relationships moving."}</span></h1>
+          <p className="hero-outcome">{fr ? "Messages, appels, rendez-vous : il comprend le contexte et fait avancer la suite." : "Messages, calls, meetings: it understands the context and moves the next step forward."}</p>
           <p className="hero-explanation">{fr ? "Vous gardez les décisions." : "You keep the decisions."}</p>
           <div className="hero-conversion-actions"><EncounterLink className="button button-primary" language={language} marketing channel="linkedin"><LinkedInLogo className="linkedin-button-mark" /><span>{fr ? "Commencer gratuitement" : "Start for free"}</span><Icon name="arrow" /></EncounterLink><Link href={marketingPath("/how-it-works", language)} className="hero-secondary-action">{fr ? "Comment ça marche" : "How it works"} <Icon name="arrow" /></Link></div>
           <p className="hero-price">{offer.monthly} / {fr ? "mois · Résiliable à tout moment" : "month · Cancel anytime"}</p>
+          <p className="hero-allowance">{offer.monthlyTokens}</p>
           <p className="hero-usage">{offer.trialShort}</p>
-          <TrialDetails language={language} />
         </div>
         <div className="home-hero-media">
           <Image src="/images/professional-conversation.jpg" alt={fr ? "Deux professionnelles échangent autour d’un ordinateur." : "Two professionals exchanging ideas over a laptop."} fill preload sizes="(max-width: 959px) 100vw, 68vw" className="home-hero-photo" />
@@ -47,7 +46,7 @@ export function MarketingHome({ language = "en" }: { language?: "en" | "fr" }) {
           <Image src="/images/portrait-03.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 72px, 112px" className="relationship-portrait portrait-three" />
         </div>
         <div className="marketing-section work-summary content-container">
-          <div className="work-conversion-copy"><h2 id="work-title">{fr ? <>Transformez un échange<br /><span>en prochain pas utile.</span></> : <>Turn a conversation<br /><span>into a useful next step.</span></>}</h2><p>{fr ? "Une demande arrive. Un prospect appelle. Un client a besoin d’aide." : "An enquiry arrives. A prospect calls. A customer needs help."}</p><p>{fr ? "Il est conçu pour comprendre la demande, retrouver le contact et préparer la suite. Vous intervenez lorsqu’une décision compte." : "It is designed to understand the request, find the contact and prepare the next step. You step in when a decision matters."}</p></div>
+          <div className="work-conversion-copy"><h2 id="work-title">{fr ? <>Transformez un échange<br /><span className="work-title-highlight">en prochain pas utile.</span></> : <>Turn a conversation<br /><span className="work-title-highlight">into a useful next step.</span></>}</h2><p>{fr ? "Une demande arrive. Un prospect appelle. Un client a besoin d’aide." : "An enquiry arrives. A prospect calls. A customer needs help."}</p><p>{fr ? "Votre Collaborateur retrouve le contact, garde l’historique et suit les engagements. Vous intervenez lorsqu’une décision compte." : "Your Collaborator finds the contact, keeps the history and follows commitments. You step in when a decision matters."}</p></div>
           <div id="work-example" className="work-example-anchor"><WorkDemo language={language} /></div>
           <div className="work-start"><ChannelRibbon /><p className="work-connection-copy">{fr ? "Vos échanges, là où ils arrivent : email, site, WhatsApp, LinkedIn, Slack, Telegram, Discord et Google Meet." : "Your conversations, wherever they arrive: email, website, WhatsApp, LinkedIn, Slack, Telegram, Discord and Google Meet."}</p><p className="work-phone-copy"><Icon name="phone" /><span>{fr ? "Un numéro pour répondre aux appels et rappeler pour vous, selon vos permissions. Connexion téléphonique prévue." : "A number to receive calls and call back for you, with your permission. Phone connection planned."}</span></p></div>
         </div>
@@ -80,7 +79,7 @@ export function MarketingHome({ language = "en" }: { language?: "en" | "fr" }) {
       </section>
 
       <section className="pricing-section" id="pricing" aria-labelledby="pricing-title">
-        <div className="marketing-section content-container"><div><h2 id="pricing-title">{fr ? <>Un Collaborateur.<br /><span>À faire grandir.</span></> : <>One Collaborator.<br /><span>Yours to build on.</span></>}</h2><p>{fr ? "Identité, connaissances, mémoire, compétences, outils et autorité. Un Collaborateur qui garde le fil, façonné autour de votre travail." : "Identity, knowledge, memory, skills, tools and authority. One ongoing Collaborator, shaped around your work."}</p><p className="pricing-ownership-line">{fr ? <>Un abonnement pour votre Collaborateur.<br />L’usage de l’IA séparé, à votre façon.</> : <>A subscription for your Collaborator.<br />AI usage funded separately, your way.</>}</p></div><CollaboratorPricing language={language} /></div>
+        <div className="marketing-section content-container"><div><h2 id="pricing-title">{fr ? <>Vos relations.<br /><span>Un Collaborateur.</span></> : <>Your relationships.<br /><span>One Collaborator.</span></>}</h2><p>{fr ? "Vos contacts, leur histoire et les prochaines étapes. Un Collaborateur pour garder le fil, avec de l’IA incluse." : "Your contacts, their history and their next steps. One Collaborator to keep the thread, with AI included."}</p><p className="pricing-ownership-line">{fr ? "CRM et support en option, seulement si vous en avez besoin." : "Optional CRM and support apps, only when you need them."}</p><Link className="text-link" href={`${marketingPath("/pricing", language)}#applications`}>{fr ? "Voir les applications facultatives" : "Explore optional apps"}<Icon name="arrow" /></Link></div><CollaboratorPricing language={language} /></div>
       </section>
 
       <MarketingFAQ language={language} />

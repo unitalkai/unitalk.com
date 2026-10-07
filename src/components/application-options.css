@@ -1,0 +1,24 @@
+.optional-applications { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 72px; padding-block: 80px; }
+.optional-applications h2 { font-size: var(--text-headline); line-height: 1.08; letter-spacing: -.04em; }
+.optional-applications h2 span { color: var(--signal-deep); }
+.application-choices { min-width: 0; }
+.application-intro { font-size: var(--text-control); line-height: 1.65; max-width: 54ch; }
+.application-choice { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--ivory-line); }
+.application-choice > label { display: block; font-size: var(--text-title); }
+.application-choice > p { font-size: var(--text-control); margin-top: 12px; line-height: 1.6; }
+.application-choice .application-price { font-size: var(--text-small); color: var(--muted); }
+.application-choice select { width: 100%; min-height: 53px; border: 1px solid var(--ivory-line); border-radius: var(--radius-control); background: var(--white); color: var(--ink); padding: 12px 16px; font-size: var(--text-small); margin-top: 16px; }
+.application-note { font-size: var(--text-small); color: var(--muted); line-height: 1.65; margin-top: 24px; max-width: 64ch; }
+.meet-applications { margin-bottom: 24px; border-top: 1px solid var(--ivory-line); }
+.meet-applications summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; min-height: 56px; font-size: var(--text-small); list-style: none; }
+.meet-applications summary::-webkit-details-marker { display: none; }
+.meet-applications[open] summary svg { transform: rotate(45deg); }
+.meet-applications .application-choice > label { font-size: var(--text-body); }
+.meet-applications .application-note { font-size: var(--text-caption); }
+.pricing-allowance-details { margin-top: 32px; border-top: 1px solid var(--ivory-line); }
+.pricing-allowance-details summary { display: flex; justify-content: space-between; align-items: center; min-height: 56px; gap: 16px; list-style: none; font-size: var(--text-control); }
+.pricing-allowance-details summary::-webkit-details-marker { display: none; }
+.pricing-allowance-details[open] summary svg { transform: rotate(45deg); }
+.pricing-allowance-details p { margin-top: 16px; font-size: var(--text-control); line-height: 1.65; max-width: 64ch; }
+@media (max-width: 959px) { .optional-applications { gap: 40px; padding-block: 64px; } }
+@media (max-width: 699px) { .optional-applications { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 56px; } .optional-applications h2 { font-size: var(--text-dashboard); } }

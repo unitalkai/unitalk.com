@@ -7,6 +7,10 @@
 .conversion-home .english-hero .hero-content h1 { font-size: clamp(2.75rem, 4.8vw, 4.5rem); }
 .conversion-home .english-hero .hero-title-line { display: block; font-size: 1em; white-space: nowrap; }
 .conversion-home .english-hero .hero-title-promise { display: block; margin-top: 12px; font-size: .8em; }
+.conversion-home .english-hero .hero-title-promise { max-width: 700px; }
+.conversion-home .english-hero .hero-content .hero-allowance { margin-top: 8px; font-size: var(--text-small); color: var(--muted-ink); }
+.marketing-home #work-title .work-title-highlight { background: var(--signal); color: var(--white); padding: .04em .13em .08em; border-radius: 8px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.work-conversion-copy h2 { line-height: 1.24; }
 .conversion-home .english-hero .hero-content .hero-outcome { margin-top: 26px; font-size: var(--text-body); }
 .conversion-home .english-hero .hero-content .hero-explanation { margin-top: 12px; color: var(--muted-ink); }
 .hero-conversion-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; margin-top: 30px; }
@@ -157,6 +161,9 @@
 .meet-public-preview { margin-top: 32px; }
 .meet-public-preview h3 { font-size: var(--text-title); margin-bottom: 20px; }
 .meet-cloud-preference { margin-top: 24px; font-size: var(--text-small); color: var(--muted); }
+.meet-app-summary { padding-top: 24px; margin-top: 24px; border-top: 1px solid var(--ivory-line); }
+.meet-app-summary h3 { font-size: var(--text-body); }
+.meet-app-summary p { margin-top: 12px; font-size: var(--text-small); }
 .meet-preferences { border-top: 1px solid var(--ivory-line); margin-top: 26px; font-size: var(--text-small); }
 .meet-preferences summary { display: flex; justify-content: space-between; align-items: center; min-height: 53px; list-style: none; }
 .meet-preferences summary::-webkit-details-marker { display: none; }

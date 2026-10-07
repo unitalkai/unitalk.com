@@ -7,10 +7,9 @@ import { WORK_EXAMPLES, getWorkExample, type WorkExampleId } from "@/lib/work-ex
 export function HeroWorkProof({ language = "en" }: { language?: "en" | "fr" }) {
   const fr = language === "fr";
   return <div className="hero-work-proof" aria-label={fr ? "Exemple de travail" : "Example work, not live activity"}>
-    <div className="work-proof-status"><span><Icon name="check" />{fr ? "Exemple de suivi" : "Example follow-up"}</span></div>
-    <p className="hero-proof-request">{fr ? "« Prépare le suivi de notre rendez-vous. »" : "“Follow up after our meeting.”"}</p>
-    <div className="hero-proof-delivery"><strong>{fr ? "Un prochain pas clair" : "A clear next step"}</strong><p>{fr ? "Merci pour notre échange. Pourrions-nous définir ensemble le périmètre et les priorités la semaine prochaine ?" : "Thanks for the conversation. Shall we define the scope and priorities together next week?"}</p></div>
-    <div className="hero-proof-boundary"><Icon name="message" /><span>{fr ? "Préparé pour vous." : "Prepared for you."}<br /><strong>{fr ? "Envoyé uniquement avec votre accord." : "Sent only with your approval."}</strong></span></div>
+    <p className="hero-proof-request">{fr ? "« Garde le fil avec mes contacts importants. »" : "“Keep track of my important contacts.”"}</p>
+    <div className="hero-proof-delivery"><strong>{fr ? "Le bon moment pour reprendre contact." : "The right moment to reconnect."}</strong><p>{fr ? "Lors de votre dernier échange, ce contact avait demandé de reprendre le projet en octobre. J’ai préparé un message qui reprend là où vous en étiez." : "Last time, this contact asked to revisit the project in October. I’ve prepared a message that picks up where you left off."}</p></div>
+    <div className="hero-proof-boundary"><Icon name="message" /><strong>{fr ? "Prêt à relire et à approuver." : "Ready for your review."}</strong></div>
   </div>;
 }
 

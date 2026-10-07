@@ -8,7 +8,6 @@
 .conversion-home .english-hero .hero-title-line { display: block; font-size: 1em; white-space: nowrap; }
 .conversion-home .english-hero .hero-title-promise { display: block; margin-top: 12px; font-size: .8em; line-height: 1.24; }
 .conversion-home .english-hero .hero-title-promise { max-width: 700px; }
-.conversion-home .english-hero .hero-content .hero-allowance { margin-top: 8px; font-size: var(--text-small); color: var(--muted-ink); }
 .marketing-home .work-conversion-copy h2 { font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.24; }
 .conversion-home .english-hero .hero-content .hero-outcome { margin-top: 26px; font-size: var(--text-body); }
 .conversion-home .english-hero .hero-content .hero-explanation { margin-top: 12px; color: var(--muted-ink); }
@@ -20,7 +19,7 @@
 .hero-secondary-action { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; font-size: var(--text-control); border-bottom: 1px solid #ff6aba; }
 .hero-secondary-action:hover { color: #ff6aba; }
 .hero-conversion-actions :focus-visible { outline-color: #ff6aba; }
-.conversion-home .english-hero .hero-content .hero-price { margin-top: 22px; font-size: 1.25rem; }
+.conversion-home .english-hero .hero-content .hero-price { margin-top: 48px; font-size: 1.25rem; }
 .conversion-home .english-hero .hero-content .hero-usage { font-size: var(--text-small); margin-top: 6px; color: var(--muted-ink); }
 .hero-work-proof { position: absolute; width: min(390px, calc(100% - 48px)); right: clamp(24px, 4vw, 64px); bottom: 32px; background: var(--white); color: var(--ink); padding: 24px; border-radius: var(--radius-panel); }
 .work-proof-status { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: var(--text-small); }
@@ -190,7 +189,7 @@
   .conversion-home .english-hero .hero-content h1 { font-size: clamp(2.75rem, min(4.8vw, 7.5svh), 4.5rem); }
   .conversion-home .english-hero .hero-content .hero-outcome { margin-top: 18px; }
   .hero-conversion-actions { margin-top: 20px; }
-  .conversion-home .english-hero .hero-content .hero-price { margin-top: 16px; }
+  .conversion-home .english-hero .hero-content .hero-price { margin-top: 40px; }
   .hero-work-proof { width: 365px; bottom: 24px; padding: 20px; }
 }
 @media (max-width: 1199px) {

@@ -1,0 +1,18 @@
+# AI source marks
+
+The homepage renders decorative inline SVG marks in
+`src/components/ai-provider-logo.tsx`, beside visible provider names.
+They identify planned migration sources, not connected accounts or partnerships.
+
+| Mark | Source | Treatment |
+| --- | --- | --- |
+| ChatGPT / OpenAI | https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/openai.svg | Original path, ink fill. |
+| Claude | https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/claude.svg | Original path, brand terracotta. |
+| OpenClaw | https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/openclaw.svg | Original paths, red fill; unneeded full-viewport clip removed. |
+| Gemini | https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/gemini-color.svg | Original silhouette, source blue fill. |
+| Grok | https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/grok.svg | Original path, ink fill. |
+| Hermes | https://web-assets.nousresearch.com/nousnet-web/assets/hermes-landing/teams/hermes-wing.6ee276e9bff5a166.svg | Official Nous Research wing silhouette, source blue fill; duplicated texture layer omitted at icon scale. |
+
+The LobeHub paths are MIT licensed; see `LOBE-ICONS-LICENSE.txt`.
+Hermes' source asset is linked from https://hermes-agent.nousresearch.com.
+Product names and marks remain those of their respective owners.

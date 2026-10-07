@@ -6,6 +6,7 @@ import { OwnershipOptions } from "@/components/ownership-options";
 import { CollaboratorPricing } from "@/components/collaborator-pricing";
 import { HomeEntry } from "@/components/home-entry";
 import { ChannelRibbon } from "@/components/channel-ribbon";
+import { AI_HISTORY_SOURCES, AIProviderLogo } from "@/components/ai-provider-logo";
 import { HeroWorkProof, WorkDemo } from "@/components/work-demo";
 import { EncounterLink } from "@/components/collaborator-offer-context";
 import { Icon } from "@/components/icons";
@@ -60,7 +61,7 @@ export default function Home() {
       <section className="migration-section" id="history" aria-labelledby="history-title">
         <div className="marketing-section content-container">
           <div><h2 id="history-title">Your context.<br /><span>A head start.</span></h2><p>You’ve already explained your work to AI. Your Collaborator shouldn’t have to start from zero.</p><p className="migration-promise">Bring the history. Keep the context.</p><p className="capability-note">One-click import is planned for these sources.</p></div>
-          <div className="history-illustration" aria-label="Your previous AI context, brought to your Collaborator"><ul>{["ChatGPT", "Claude", "OpenClaw", "Gemini", "Grok", "Hermes"].map(source => <li key={source}><Icon name="message" /><span>{source}</span><Icon name="arrow" /></li>)}</ul><div className="history-destination"><Icon name="message" width="30" height="30" /><span>Your Collaborator</span></div><p>You don’t start from zero.</p></div>
+          <div className="history-illustration" aria-label="Your previous AI context, brought to your Collaborator"><ul>{AI_HISTORY_SOURCES.map(source => <li key={source}><span className="history-provider-logo"><AIProviderLogo provider={source} /></span><span>{source}</span></li>)}</ul><div className="history-destination"><Icon name="message" width="30" height="30" /><span>Your Collaborator</span></div><p>You don’t start from zero.</p></div>
         </div>
       </section>
 

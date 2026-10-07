@@ -73,7 +73,7 @@
 .conversion-home .patrick-proof { padding-top: 32px; }
 .conversion-home .history-illustration ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
 .conversion-home .history-illustration li { padding-block: 14px; font-size: var(--text-control); }
-.history-provider-logo { display: grid; place-items: center; flex: none; width: 32px; height: 32px; }
+.history-illustration .history-provider-logo { display: grid; place-items: center; flex: none; width: 32px; height: 32px; }
 .history-provider-logo svg { display: block; width: 26px; height: 26px; }
 .history-provider-logo .provider-hermes { width: 18px; height: 32px; }
 .runtime-details { margin-top: 28px; border-top: 1px solid var(--ink-line); max-width: 430px; font-size: var(--text-small); }

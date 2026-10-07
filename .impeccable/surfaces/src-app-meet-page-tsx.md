@@ -7,6 +7,8 @@ related_targets: ["src/components/english-encounter.tsx", "src/components/work-d
 
 # Meet your AI Collaborator
 
+**Superseded route:** the user renamed this acquisition destination signup. `/meet` and `/fr/meet` now permanently redirect to `/signup` and `/fr/signup`, preserving known query context and dropping `rencontre=1`. The active composition is `src/components/signup-form.tsx`; current guidance is `.impeccable/surfaces/src-app-signup-page-tsx.md`. Historical implementation/evidence below describes the earlier naming.
+
 Optional application choices are now a closed disclosure: Twenty CRM and Chatwoot Support with none/managed/existing modes, initialized from allowlisted query preferences. Managed is +€9.99/month each; existing SaaS connection is included on Unitalk’s side. Selections update shared marketing state and show a local selected-app summary after submitting. No order/installation/account connection follows. Pricing CTA handoff and language switching preserve twenty/chatwoot mode IDs; invalid IDs fall back to none. Both languages passed at 1440/1280×600/1024/390/320px, plus lint, TypeScript and build.
 
 The marketing form now uses Start for free / Commencer gratuitement. Its local result includes the public-door preview personalized from the supplied first name, with an example address that is not created/reserved. A closed, optional Unitalk Cloud managed-service selector is visible only for default/cloud hosting; its OVHcloud SecNumCloud option is planned with exact offering and surcharge unconfirmed. Selection adds a local preference note, not an order or deployment. Both-language CTA, preview and cloud/self-host visibility checks passed at 1440/1280×600/390/320px; lint, TypeScript and build passed.

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Icon } from "./icons";
+import { UnitalkMark } from "./unitalk-mark";
 import { EncounterLink } from "./collaborator-offer-context";
 import { FooterSocialLinks } from "./footer-social-links";
 import { FooterLanguage } from "./footer-language";
@@ -12,7 +13,10 @@ import "./site-footer.css";
 import "./marketing-resources.css";
 
 export function Brand({ language = "fr" }: { language?: "fr" | "en" }) {
-  return <Link className="brand" href={marketingPath("/", language)} aria-label={language === "en" ? "Unitalk — home" : "Unitalk — accueil"}><Icon name="message" width="31" height="31" /><span>unitalk</span></Link>;
+  return <Link className="brand" href={marketingPath("/", language)} aria-label={language === "en" ? "Unitalk — home" : "Unitalk — accueil"}>
+    <UnitalkMark />
+    <span>unitalk</span>
+  </Link>;
 }
 
 export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visiteur"; language?: "fr" | "en" }) {

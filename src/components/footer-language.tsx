@@ -13,7 +13,7 @@ export function FooterLanguage({ language }: { language: MarketingLanguage }) {
     const path = equivalentMarketingPath(pathname, next);
     const url = new URL(window.location.href);
     const query = new URLSearchParams();
-    for (const key of ["rencontre", "url", "channel", "hosting", "intelligence", "billing", "twenty", "chatwoot"]) {
+    for (const key of ["url", "channel", "hosting", "intelligence", "billing", "twenty", "chatwoot"]) {
       const value = url.searchParams.get(key);
       if (value) query.set(key, value);
     }

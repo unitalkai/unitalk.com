@@ -1,16 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Icon } from "./icons";
+import { UnitalkMark } from "./unitalk-mark";
 import { WORK_EXAMPLES, getWorkExample, type WorkExampleId } from "@/lib/work-examples";
 
 export function HeroWorkProof({ language = "en" }: { language?: "en" | "fr" }) {
   const fr = language === "fr";
-  return <div className="hero-work-proof" aria-label={fr ? "Exemple de travail" : "Example work, not live activity"}>
-    <p className="hero-proof-request">{fr ? "« Garde le fil avec mes contacts importants. »" : "“Keep track of my important contacts.”"}</p>
-    <div className="hero-proof-delivery"><strong>{fr ? "Le bon moment pour reprendre contact." : "The right moment to reconnect."}</strong><p>{fr ? "Lors de votre dernier échange, ce contact avait demandé de reprendre le projet en octobre. J’ai préparé un message qui reprend là où vous en étiez." : "Last time, this contact asked to revisit the project in October. I’ve prepared a message that picks up where you left off."}</p></div>
-    <div className="hero-proof-boundary"><Icon name="message" /><strong>{fr ? "Prêt à relire et à approuver." : "Ready for your review."}</strong></div>
-  </div>;
+  const [draft, setDraft] = useState(fr ? "Bonjour Sarah, reprenons notre échange sur le partenariat. Seriez-vous disponible jeudi pour en parler ?" : "Hi Sarah, picking up our conversation about the partnership. Would Thursday work for a quick call?");
+  const [editing, setEditing] = useState(false);
+  const [approved, setApproved] = useState(false);
+  const draftId = useId();
+  const draftInput = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (editing) draftInput.current?.focus();
+  }, [editing]);
+
+  return <aside className="hero-work-proof" aria-label={fr ? "Exemple de relance préparée" : "Example prepared follow-up"}>
+    <div className="hero-proof-top"><span><UnitalkMark />{fr ? "Exemple de relance" : "Example follow-up"}</span></div>
+    <div className="hero-proof-contact"><strong>Sarah</strong><span>{fr ? "Discussion de partenariat" : "Partnership discussion"}</span></div>
+    <p className="hero-proof-context">{fr ? "Il y a deux semaines : « Reparlons-en en octobre. »" : "Two weeks ago: “Let’s revisit this in October.”"}</p>
+    {editing ? <><label className="sr-only" htmlFor={draftId}>{fr ? "Modifier le brouillon de relance d’exemple" : "Edit the example follow-up draft"}</label><textarea ref={draftInput} id={draftId} className="hero-proof-draft hero-proof-input" value={draft} maxLength={1500} rows={4} onChange={event => { setDraft(event.target.value); setApproved(false); }} /></> : <blockquote className="hero-proof-draft">{draft}</blockquote>}
+    <div className="hero-proof-boundary" role="status"><Icon name="check" /><strong>{approved ? fr ? "Brouillon d’exemple approuvé." : "Example draft approved." : !draft.trim() ? fr ? "Ajoutez un message pour le valider." : "Add a message to approve this draft." : fr ? "À vous de valider." : "Ready for your review."}</strong></div>
+    <div className="hero-proof-actions"><button className="button button-primary" type="button" disabled={!draft.trim() || approved} onClick={() => { setApproved(true); setEditing(false); }}>{approved ? fr ? "Approuvé" : "Approved" : fr ? "Approuver" : "Approve draft"}<Icon name="check" /></button><button className="work-demo-edit" type="button" onClick={() => { setEditing(!editing); setApproved(false); }}>{editing ? fr ? "Conserver mes modifications" : "Keep my edits" : fr ? "Modifier" : "Edit draft"}</button></div>
+  </aside>;
 }
 
 export function WorkDemo({ initialExample = "follow-up", compact = false, language = "en" }: { initialExample?: WorkExampleId; compact?: boolean; language?: "en" | "fr" }) {

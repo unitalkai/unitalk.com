@@ -50,12 +50,21 @@ export function readCollaboratorPreferences(query: Record<string, string | strin
   };
 }
 
-export function encounterLink(preferences: CollaboratorPreferences = {}, language?: "en" | "fr", marketing = false) {
-  const query = new URLSearchParams({ rencontre: "1" });
+export function signupLink(preferences: CollaboratorPreferences = {}, language: "en" | "fr" = "en", context: { channel?: "linkedin"; url?: string } = {}) {
+  const query = new URLSearchParams();
   if (preferences.hosting) query.set("hosting", preferences.hosting);
   if (preferences.intelligence) query.set("intelligence", preferences.intelligence);
   if (preferences.billing) query.set("billing", preferences.billing);
   if (preferences.twenty) query.set("twenty", preferences.twenty);
   if (preferences.chatwoot) query.set("chatwoot", preferences.chatwoot);
-  return `${language === "en" ? "/meet" : marketing ? "/fr/meet" : "/dashboard/visiteur"}?${query.toString()}`;
+  if (context.channel) query.set("channel", context.channel);
+  if (context.url) query.set("url", context.url);
+  return `${language === "fr" ? "/fr/signup" : "/signup"}${query.size ? `?${query}` : ""}`;
+}
+
+export function encounterLink(preferences: CollaboratorPreferences = {}, language?: "en" | "fr", marketing = false) {
+  if (language === "en" || marketing) return signupLink(preferences, language ?? "fr");
+  const query = new URLSearchParams({ rencontre: "1" });
+  for (const [key, value] of Object.entries(preferences)) if (value) query.set(key, value);
+  return `/dashboard/visiteur?${query}`;
 }

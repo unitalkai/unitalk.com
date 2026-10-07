@@ -25,7 +25,7 @@ export function useCollaboratorOffer() {
 export function EncounterLink({ defaults, choices, language, marketing, channel, onClick, ...props }: Omit<ComponentProps<typeof Link>, "href"> & { defaults?: CollaboratorPreferences; choices?: CollaboratorPreferences; language?: "en" | "fr"; marketing?: boolean; channel?: "linkedin" }) {
   const context = useContext(CollaboratorOfferContext);
   const href = encounterLink({ ...defaults, ...context?.preferences, ...choices }, language, marketing);
-  return <Link {...props} href={`${href}${channel ? `&channel=${channel}` : ""}`} onClick={event => {
+  return <Link {...props} href={`${href}${channel ? `${href.includes("?") ? "&" : "?"}channel=${channel}` : ""}`} onClick={event => {
     onClick?.(event);
     if (!event.defaultPrevented && choices) context?.setPreferences(previous => ({ ...previous, ...choices }));
   }} />;

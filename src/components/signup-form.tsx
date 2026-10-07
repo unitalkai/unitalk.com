@@ -12,7 +12,7 @@ import { PublicDoorPreview } from "./public-door-preview";
 import { ApplicationChoices } from "./application-options";
 import { useCollaboratorOffer } from "./collaborator-offer-context";
 
-export function EnglishEncounter({ initialUrl, initialChannel, preferences, language = "en" }: { initialUrl?: string; initialChannel?: string; preferences: CollaboratorPreferences; language?: "en" | "fr" }) {
+export function SignupForm({ initialUrl, initialChannel, preferences, language = "en" }: { initialUrl?: string; initialChannel?: string; preferences: CollaboratorPreferences; language?: "en" | "fr" }) {
   const [name, setName] = useState("");
   const [example, setExample] = useState<WorkExampleId>("follow-up");
   const [met, setMet] = useState(false);
@@ -41,13 +41,13 @@ export function EnglishEncounter({ initialUrl, initialChannel, preferences, lang
       document.getElementById("meet-name")?.focus();
       return;
     }
-    if (!name.trim()) { setError(fr ? "Indiquez votre nom pour commencer la rencontre." : "Tell us your name to start the encounter."); return; }
+    if (!name.trim()) { setError(fr ? "Indiquez votre prénom pour commencer votre inscription." : "Enter your first name to start signup."); return; }
     setError("");
     setMet(true);
   }
 
   return <>
-    <div className="meet-heading"><Link href={`${marketingPath("/", language)}#work-example`} className="meet-back"><Icon name="arrow" />{fr ? "Revenir au travail" : "Back to the work"}</Link><h1>{fr ? <>Commencez gratuitement.<br /><span>Une mission suffit.</span></> : <>Start for free.<br /><span>Start with one mission.</span></>}</h1></div>
+    <div className="meet-heading"><Link href={marketingPath("/", language)} className="meet-back"><Icon name="arrow" />{fr ? "Revenir à l’accueil" : "Back to the homepage"}</Link><h1>{fr ? <>Inscrivez-vous.<br /><span>Commencez gratuitement.</span></> : <>Sign up.<br /><span>Start for free.</span></>}</h1></div>
     <div className="meet-workspace">
       <div className="meet-inputs">
         <h2>{fr ? <>Un peu de contexte.<br />Un premier pas utile.</> : <>A little context.<br />A useful first step.</>}</h2>
@@ -66,7 +66,7 @@ export function EnglishEncounter({ initialUrl, initialChannel, preferences, lang
         {(hosting || intelligence || preferences.billing) && <details className="meet-preferences"><summary>{fr ? "Vos choix de configuration" : "Your setup choices"} <Icon name="chevron" /></summary><dl>{hosting && <div><dt>{fr ? "Hébergement" : "Hosting"}</dt><dd>{hostingLabel(hosting.value, hosting.label, language)}</dd></div>}{intelligence && <div><dt>Intelligence</dt><dd>{intelligenceLabel(intelligence.value, intelligence.label, language)}</dd></div>}{preferences.billing && <div><dt>{fr ? "Préférence d’abonnement" : "Subscription preference"}</dt><dd>{preferences.billing === "annual" ? `${offer.annual} / ${fr ? "an" : "year"}` : `${offer.monthly} / ${fr ? "mois" : "month"}`}</dd></div>}</dl></details>}
         {met && (applications.twenty !== "none" || applications.chatwoot !== "none") && <div className="meet-app-summary"><h3>{fr ? "Vos applications choisies" : "Your selected apps"}</h3>{applications.twenty && applications.twenty !== "none" && <p>Twenty CRM — {applicationModeLabel(applications.twenty, language)}</p>}{applications.chatwoot && applications.chatwoot !== "none" && <p>Chatwoot Support — {applicationModeLabel(applications.chatwoot, language)}</p>}<p className="application-note">{fr ? "Préférences préparées. Aucune application commandée ou connectée." : "Preferences prepared. No app ordered or connected."}</p></div>}
       </div>
-      <section className="meet-result" aria-label={fr ? "Votre première rencontre" : "Your local encounter"} aria-live="polite">
+      <section className="meet-result" aria-label={fr ? "Aperçu de votre Collaborateur" : "Your Collaborator preview"} aria-live="polite">
         {met ? <><h2 ref={heading} tabIndex={-1}>{fr ? "Bonjour" : "Hi"} {name.trim()}.<br /><span>{fr ? "Facilitons le prochain pas." : "Let’s make the next step easier."}</span></h2><p>{fr ? "Relisez. Modifiez. Gardez le dernier mot." : "Review the draft. Edit it. Keep the final say."}</p><WorkDemo key={`${language}:${example}`} initialExample={example} language={language} compact /><div className="meet-public-preview"><h3>{fr ? "Votre porte d’entrée, à votre nom." : "Your front door, with your name."}</h3><PublicDoorPreview language={language} ownerName={name} /></div>{cloudOption === "secnumcloud" && <p className="meet-cloud-preference">{fr ? "Préférence préparée : service managé Unitalk Cloud — OVHcloud SecNumCloud. Option à venir, service et supplément à confirmer." : "Preference prepared: Unitalk Cloud — OVHcloud SecNumCloud managed service. Planned option; exact service and surcharge to be confirmed."}</p>}<div className="meet-next"><h3>{fr ? "La suite reste votre choix." : "Your next step stays yours."}</h3><button type="button" className="text-link" onClick={() => { setMet(false); document.getElementById("meet-name")?.focus(); }}>{fr ? "Essayer une autre mission" : "Try another mission"} <Icon name="arrow" /></button></div></> : <div className="meet-empty"><span className="demo-label">{fr ? "Démo" : "Demo"}</span><Icon name="message" width="44" height="44" /><h2>{fr ? <>Votre travail.<br /><span>Votre Collaborateur.</span></> : <>Your work.<br /><span>Your Collaborator.</span></>}</h2><p>{fr ? "Choisissez une mission. Découvrez un brouillon. Gardez le dernier mot." : "Choose a mission. See a prepared draft. Keep the final say."}</p></div>}
       </section>
     </div>

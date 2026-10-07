@@ -1,37 +1,49 @@
 /* Conversion composition within the established WhatsApp–fuchsia family. */
-.conversion-home .english-hero { min-height: 580px; }
-@media (min-width: 960px) {
-  .conversion-home .english-hero { display: flex; align-items: center; }
-}
-.conversion-home .english-hero .hero-content { max-width: 880px; padding: 64px 24px 104px clamp(40px, 5vw, 80px); }
-.conversion-home .english-hero .hero-content h1 { font-size: clamp(2.75rem, 4.8vw, 4.5rem); }
+.conversion-home .english-hero { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(320px, 1fr); gap: 48px; min-height: 580px; padding: 48px clamp(32px, 4.5vw, 64px) 64px; }
+.conversion-home .english-hero .hero-content { max-width: none; min-width: 0; padding: 0; }
+.conversion-home .english-hero .hero-content h1 { font-size: clamp(2.5rem, 3.8vw, 3.5rem); }
 .conversion-home .english-hero .hero-title-line { display: block; font-size: 1em; white-space: nowrap; }
-.conversion-home .english-hero .hero-title-promise { display: block; margin-top: 12px; font-size: .8em; line-height: 1.24; }
-.conversion-home .english-hero .hero-title-promise { max-width: 700px; }
+.conversion-home .english-hero .hero-title-promise { display: block; margin-top: 14px; font-size: .8em; line-height: 1.36; }
+.conversion-home .english-hero .hero-title-highlight { display: table; white-space: nowrap; }
+.conversion-home .english-hero .hero-title-highlight + .hero-title-highlight { margin-top: 6px; }
 .marketing-home .work-conversion-copy h2 { font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.24; }
-.conversion-home .english-hero .hero-content .hero-outcome { margin-top: 26px; font-size: var(--text-body); }
-.conversion-home .english-hero .hero-content .hero-explanation { margin-top: 12px; color: var(--muted-ink); }
-.hero-conversion-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; margin-top: 30px; }
+.conversion-home .english-hero .hero-outcome { margin-top: 24px; font-size: var(--text-body); line-height: 1.4; max-width: 43ch; }
+.conversion-home .english-hero .hero-explanation { margin-top: 10px; font-size: var(--text-control); color: var(--white); }
+.hero-conversion-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 28px; }
 .hero-conversion-actions .button { white-space: normal; text-align: left; gap: 16px; max-width: 100%; }
 .hero-conversion-actions .button-primary:hover { background: var(--white); border-color: var(--white); color: var(--ink); }
-.hero-conversion-actions .button .linkedin-button-mark { transition: none; transform: none; width: 24px; height: 24px; }
-.hero-conversion-actions .button-primary:hover .linkedin-button-mark { color: #0A66C2; }
 .hero-secondary-action { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; font-size: var(--text-control); border-bottom: 1px solid #ff6aba; }
 .hero-secondary-action:hover { color: #ff6aba; }
 .hero-conversion-actions :focus-visible { outline-color: #ff6aba; }
-.conversion-home .english-hero .hero-content .hero-price { margin-top: 48px; font-size: 1.25rem; }
-.conversion-home .english-hero .hero-content .hero-usage { font-size: var(--text-small); margin-top: 6px; color: var(--muted-ink); }
-.hero-work-proof { position: absolute; width: min(390px, calc(100% - 48px)); right: clamp(24px, 4vw, 64px); bottom: 32px; background: var(--white); color: var(--ink); padding: 24px; border-radius: var(--radius-panel); }
+.conversion-home .english-hero .hero-price { margin-top: 36px; font-size: 1.25rem; line-height: 1.4; }
+.conversion-home .english-hero .hero-usage { font-size: var(--text-small); line-height: 1.5; margin-top: 6px; color: var(--muted-ink); }
+.hero-work-proof { position: relative; z-index: 2; min-width: 0; width: 100%; max-width: 360px; justify-self: end; align-self: end; margin-bottom: 8px; background: var(--white); color: var(--ink); padding: 20px; border-radius: var(--radius-panel); }
+.hero-proof-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: var(--text-small); }
+.hero-proof-top > span:first-child { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+.hero-proof-top svg { width: 20px; height: 20px; flex: none; color: var(--signal); }
+.hero-proof-contact { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 10px; margin-top: 16px; }
+.hero-proof-contact strong { font-size: var(--text-title); font-weight: 400; letter-spacing: -.025em; }
+.hero-proof-contact > span { font-size: var(--text-small); color: var(--muted); }
+.hero-proof-context { margin-top: 8px; font-size: var(--text-small); line-height: 1.5; color: var(--muted); }
+.hero-proof-draft { margin: 12px 0 0; padding: 12px; background: var(--signal-wash); border-radius: var(--radius-bubble); border-top-left-radius: 3px; font-size: var(--text-small); line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
+.hero-proof-input { display: block; width: 100%; min-height: 140px; border: 1px solid var(--signal-deep); color: var(--ink); resize: vertical; }
+.hero-proof-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+.hero-proof-actions .button { min-height: 44px; padding: 10px 16px; font-size: var(--text-small); gap: 8px; }
 .work-proof-status { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: var(--text-small); }
 .work-proof-status > span:first-child { display: flex; align-items: center; gap: 8px; }
 .work-proof-status svg { color: var(--signal-deep); }
-.hero-proof-request { background: var(--signal-wash); padding: 12px 16px; border-radius: var(--radius-bubble); border-top-right-radius: 3px; margin: 20px 0 18px; font-size: var(--text-control); }
-.hero-proof-delivery strong { font-size: var(--text-body); font-weight: 500; }
-.hero-proof-delivery p { margin-top: 8px; font-size: var(--text-control); line-height: 1.5; }
-.hero-proof-boundary { display: flex; gap: 12px; align-items: center; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--ivory-line); font-size: var(--text-small); }
+.hero-proof-boundary { display: flex; gap: 8px; align-items: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--ivory-line); font-size: var(--text-small); }
 .hero-proof-boundary svg { color: var(--signal-deep); }
 .hero-proof-boundary strong { font-weight: 500; }
 .conversion-home .home-relationships { padding: 48px 0 40px; }
+.conversion-home .relationship-ribbon-top { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; min-height: 128px; padding-block: 24px; }
+.relationship-chat { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.relationship-chat-reply { flex-direction: row-reverse; transform: translateY(-12px); }
+.relationship-chat-thanks { justify-content: flex-end; transform: translateY(12px); }
+.conversion-home .relationship-profile { display: block; flex: none; width: 56px; height: 56px; padding: 3px; background: var(--white); border-radius: 50%; overflow: hidden; }
+.conversion-home .relationship-profile .relationship-portrait { width: 100%; height: 100%; object-fit: cover; }
+.conversion-home .relationship-chat-reply .relationship-profile { width: 48px; height: 48px; }
+.conversion-home .relationship-ribbon-top .relationship-message { min-width: 0; padding: 14px 18px; font-size: var(--text-small); gap: 8px; transform: none; }
 .conversion-home .home-relationships .work-summary { align-items: center; column-gap: 64px; row-gap: 0; padding-block: 48px; }
 .work-conversion-copy { grid-column: 1; grid-row: 1; align-self: end; }
 .work-start { grid-column: 1; grid-row: 2; align-self: start; margin-top: 24px; }
@@ -184,27 +196,33 @@
 .meet-next > p { margin-top: 14px; font-size: var(--text-small); color: var(--muted); line-height: 1.6; }
 .meet-next .text-link { background: transparent; border: 0; border-bottom: 2px solid var(--signal); margin-top: 14px; }
 @media (min-width: 960px) and (max-height: 820px) {
-  .conversion-home .english-hero { min-height: max(490px, calc(100svh - 128px)); }
-  .conversion-home .english-hero .hero-content { padding-block: 28px 68px; }
-  .conversion-home .english-hero .hero-content h1 { font-size: clamp(2.75rem, min(4.8vw, 7.5svh), 4.5rem); }
-  .conversion-home .english-hero .hero-content .hero-outcome { margin-top: 18px; }
+  .conversion-home .english-hero { min-height: 490px; padding-block: 28px 40px; }
+  .conversion-home .english-hero .hero-content h1 { font-size: clamp(2.25rem, min(3.5vw, 7svh), 2.75rem); }
+  .conversion-home .english-hero .hero-outcome { margin-top: 18px; font-size: var(--text-control); }
   .hero-conversion-actions { margin-top: 20px; }
-  .conversion-home .english-hero .hero-content .hero-price { margin-top: 40px; }
-  .hero-work-proof { width: 365px; bottom: 24px; padding: 20px; }
+  .conversion-home .english-hero .hero-price { margin-top: 40px; }
 }
 @media (max-width: 1199px) {
-  .conversion-home .english-hero .hero-content { max-width: 760px; padding-left: 48px; }
-  .hero-work-proof { width: 340px; right: 24px; }
+  .conversion-home .english-hero { gap: 32px; grid-template-columns: minmax(0, 1.2fr) minmax(300px, 1fr); }
+  .conversion-home .english-hero .hero-title-line { white-space: normal; }
   .conversion-home .home-relationships .work-summary { gap: 36px; }
   .work-demo { padding: 22px; }
   .meet-workspace { gap: 40px; }
 }
 @media (max-width: 959px) {
+  .conversion-home .relationship-ribbon-top { gap: 20px; }
+  .relationship-chat { gap: 8px; }
+  .conversion-home .relationship-ribbon-top .relationship-message { padding: 12px 14px; }
   .conversion-home .english-hero .hero-title-line { white-space: normal; }
-  .conversion-home .english-hero { min-height: 0; }
-  .conversion-home .english-hero .hero-content { max-width: none; padding: 36px 36px 76px; }
-  .conversion-home .home-hero-media { height: auto; min-height: 360px; display: flex; align-items: flex-end; justify-content: flex-end; padding: 24px 32px; }
-  .conversion-home .hero-work-proof { position: relative; width: min(410px, 100%); right: auto; bottom: auto; }
+  .conversion-home .english-hero { grid-template-columns: minmax(0, 1fr); min-height: 0; gap: 20px; padding: 36px; }
+  .conversion-home .english-hero .hero-content { display: contents; }
+  .hero-intro { position: relative; z-index: 2; grid-row: 1; }
+  .hero-conversion { position: relative; z-index: 2; grid-row: 3; }
+  .conversion-home .home-hero-media { display: none; }
+  .conversion-home .hero-work-proof { grid-row: 2; margin: 0; align-self: auto; }
+  .hero-conversion-actions { margin-top: 0; }
+  .conversion-home .english-hero .hero-price { margin-top: 28px; }
+  .conversion-home .hero-work-proof { padding: 16px; }
   .conversion-home .marketing-section, .conversion-home .authority-section { padding-block: 64px; }
   .conversion-home .home-relationships .work-summary { grid-template-columns: 1fr; gap: 32px; }
   .work-conversion-copy, .work-start, .work-example-anchor { grid-column: 1; grid-row: auto; }
@@ -214,25 +232,33 @@
   .authority-heading > p { margin-top: 24px; }
 }
 @media (max-width: 699px) {
-  .conversion-home .english-hero .hero-content { padding: 30px 24px 68px; }
-  .conversion-home .english-hero .hero-content h1 { font-size: clamp(2.25rem, 10vw, 3rem); }
-  .conversion-home .english-hero .hero-content .hero-outcome { margin-top: 20px; font-size: var(--text-control); }
-  .conversion-home .english-hero .hero-content .hero-explanation { font-size: var(--text-control); }
-  .hero-conversion-actions { gap: 10px 20px; margin-top: 24px; }
-  .hero-conversion-actions .button { padding-inline: 20px; }
-  .conversion-home .english-hero .hero-content .hero-usage { font-size: var(--text-caption); }
-  .conversion-home .home-hero-media { min-height: 320px; padding: 16px; }
+  .conversion-home .english-hero { gap: 10px; padding: 16px 16px 20px; }
+  .conversion-home .english-hero .hero-content h1 { font-size: clamp(1.75rem, 7.8vw, 2.75rem); }
+  .conversion-home .english-hero .hero-title-promise { margin-top: 10px; font-size: .9em; line-height: 1.25; }
+  .conversion-home .english-hero .hero-title-highlight { display: inline; white-space: normal; }
+  .conversion-home .english-hero .hero-outcome { margin-top: 12px; font-size: var(--text-small); }
+  .conversion-home .english-hero .hero-explanation { margin-top: 6px; font-size: var(--text-small); }
+  .hero-conversion-actions { gap: 6px 16px; }
+  .hero-conversion-actions .button { padding-inline: 18px; gap: 12px; }
+  .hero-secondary-action { font-size: var(--text-small); }
+  .conversion-home .english-hero .hero-price { margin-top: 12px; font-size: var(--text-control); }
+  .conversion-home .english-hero .hero-usage { font-size: var(--text-caption); }
   .home-hero-photo { object-position: 50% 25%; }
-  .conversion-home .hero-work-proof { width: 100%; padding: 20px; border-radius: 20px; }
+  .conversion-home .hero-work-proof { padding: 10px; border-radius: 20px; }
+  .hero-proof-top { font-size: var(--text-caption); gap: 8px; }
+  .hero-proof-contact { margin-top: 10px; }
+  .hero-proof-contact strong { font-size: var(--text-body); }
+  .hero-proof-contact > span, .hero-proof-context { font-size: var(--text-caption); }
+  .hero-proof-context { margin-top: 4px; }
+  .hero-proof-draft { margin-top: 10px; }
+  .hero-proof-boundary { margin-top: 12px; padding-top: 10px; gap: 8px; font-size: var(--text-caption); }
   .work-proof-status { font-size: var(--text-caption); }
-  .hero-proof-request { font-size: var(--text-small); margin-top: 16px; }
-  .hero-proof-delivery p { font-size: var(--text-small); }
   .conversion-home .home-relationships { padding-top: 32px; }
-  .conversion-home .relationship-ribbon-top { min-height: 0; }
-  .conversion-home .relationship-ribbon-top .portrait-two, .conversion-home .relationship-ribbon-top .relationship-message-white { display: none; }
-  .conversion-home .relationship-ribbon-top { grid-template-columns: 64px minmax(0, 1fr); gap: 14px; }
-  .conversion-home .relationship-ribbon-top .portrait-three { display: none; }
-  .conversion-home .relationship-ribbon-top .relationship-message-pink { grid-column: 2; grid-row: 1; }
+  .conversion-home .relationship-ribbon-top { width: min(360px, calc(100% - 40px)); min-height: 0; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-block: 0; }
+  .relationship-chat { gap: 10px; }
+  .relationship-chat-reply, .relationship-chat-thanks { transform: none; }
+  .relationship-chat-thanks { justify-content: flex-start; }
+  .conversion-home .relationship-profile, .conversion-home .relationship-chat-reply .relationship-profile { width: 44px; height: 44px; padding: 2px; }
   .conversion-home .home-relationships .work-summary { padding-block: 32px; }
   .conversion-home .marketing-section, .conversion-home .authority-section { padding-block: 56px; }
   .conversion-home .patrick-proof { padding-top: 12px; }

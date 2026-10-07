@@ -8,7 +8,6 @@ import { AI_HISTORY_SOURCES, AIProviderLogo } from "@/components/ai-provider-log
 import { HeroWorkProof, WorkDemo } from "@/components/work-demo";
 import { EncounterLink } from "@/components/collaborator-offer-context";
 import { Icon } from "@/components/icons";
-import { LinkedInLogo } from "./linkedin-logo";
 import { localizedOffer, marketingPath } from "@/lib/marketing-language";
 import { MarketingFAQ } from "./marketing-faq";
 import { PublicDoorPreview } from "./public-door-preview";
@@ -22,32 +21,43 @@ export function MarketingHome({ language = "en" }: { language?: "en" | "fr" }) {
     <main id="main-content">
       <section className="home-hero work-hero english-hero" id="creer" aria-labelledby="home-title">
         <div className="hero-content">
-          <h1 id="home-title"><span className="hero-title-line">{fr ? "Votre Collaborateur IA." : "Your AI Collaborator."}</span><span className="hero-title-promise"><span className="hero-title-highlight">{fr ? "Moins de relances. Plus d’échanges." : "Less chasing. More connecting."}</span></span></h1>
-          <p className="hero-outcome">{fr ? "Il s’occupe des réponses, des relances et de la préparation des rendez-vous." : "It handles replies, follow-ups and meeting prep."}</p>
-          <p className="hero-explanation">{fr ? "Vous intervenez là où ça compte." : "You stay involved where it matters."}</p>
-          <div className="hero-conversion-actions"><EncounterLink className="button button-primary" language={language} marketing channel="linkedin"><LinkedInLogo className="linkedin-button-mark" /><span>{fr ? "Commencer gratuitement" : "Start for free"}</span><Icon name="arrow" /></EncounterLink><Link href={marketingPath("/how-it-works", language)} className="hero-secondary-action">{fr ? "Comment ça marche" : "How it works"} <Icon name="arrow" /></Link></div>
-          <p className="hero-price">{offer.monthly} / {fr ? "mois · Résiliable à tout moment" : "month · Cancel anytime"}</p>
-          <p className="hero-usage">{offer.trialShort}</p>
+          <div className="hero-intro">
+<h1 id="home-title"><span className="hero-title-line">{fr ? "Votre Collaborateur IA." : "Your AI Collaborator."}</span><span className="hero-title-promise"><span className="hero-title-highlight">{fr ? "Moins de relances." : "Less chasing."}</span>{" "}<span className="hero-title-highlight">{fr ? "Plus d'échanges." : "More connecting."}</span></span></h1>
+            <p className="hero-outcome">{fr ? "Il s'occupe des réponses, des relances et de la préparation des rendez-vous." : "It handles replies, follow-ups and meeting prep."}</p>
+            <p className="hero-explanation">{fr ? "Vous intervenez là où ça compte." : "You stay involved where it matters."}</p>
+          </div>
+          <div className="hero-conversion">
+            <div className="hero-conversion-actions"><EncounterLink className="button button-primary" language={language} marketing><span>{fr ? "Commencer gratuitement" : "Start for free"}</span><Icon name="arrow" /></EncounterLink><a href="#work-example" className="hero-secondary-action">{fr ? "Voir un exemple" : "See an example"} <Icon name="arrow" /></a></div>
+            <p className="hero-price">{offer.monthly} / {fr ? "mois · Résiliable à tout moment" : "month · Cancel anytime"}</p>
+            <p className="hero-usage">{offer.trialShort}</p>
+          </div>
         </div>
         <div className="home-hero-media">
-          <Image src="/images/professional-conversation.jpg" alt={fr ? "Deux professionnelles échangent autour d’un ordinateur." : "Two professionals exchanging ideas over a laptop."} fill preload sizes="(max-width: 959px) 100vw, 68vw" className="home-hero-photo" />
+          <Image src="/images/professional-conversation.jpg" alt={fr ? "Deux professionnelles échangent autour d’un ordinateur." : "Two professionals exchanging ideas over a laptop."} fill preload sizes="(max-width: 959px) 100vw, 60vw" className="home-hero-photo" />
           <div className="home-hero-overlay" />
-          <HeroWorkProof language={language} />
         </div>
+        <HeroWorkProof key={language} language={language} />
       </section>
 
       <section className="home-relationships" id="how-it-works" aria-labelledby="work-title">
         <div className="relationship-ribbon relationship-ribbon-top" aria-hidden="true">
-          <Image src="/images/portrait-01.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 64px, 100px" className="relationship-portrait portrait-one" />
-          <span className="relationship-message relationship-message-white">{fr ? "Trouvons un moment pour échanger." : "Let’s find a time to talk."}</span>
-          <Image src="/images/portrait-02.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 56px, 80px" className="relationship-portrait portrait-two" />
-          <span className="relationship-message relationship-message-pink">{fr ? "Je prépare le suivi." : "I’ll prepare the follow-up."} <Icon name="check" width="18" height="18" /></span>
-          <Image src="/images/portrait-03.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 72px, 112px" className="relationship-portrait portrait-three" />
+          <div className="relationship-chat">
+            <span className="relationship-profile"><Image src="/images/portrait-01.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 40px, 50px" className="relationship-portrait" /></span>
+            <span className="relationship-message relationship-message-white">{fr ? "Trouvons un moment pour échanger." : "Let’s find a time to talk."}</span>
+          </div>
+          <div className="relationship-chat relationship-chat-reply">
+            <span className="relationship-profile"><Image src="/images/portrait-02.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 40px, 42px" className="relationship-portrait" /></span>
+            <span className="relationship-message relationship-message-pink">{fr ? "Je prépare le suivi." : "I’ll prepare the follow-up."} <Icon name="check" width="16" height="16" /></span>
+          </div>
+          <div className="relationship-chat relationship-chat-thanks">
+            <span className="relationship-profile"><Image src="/images/portrait-03.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 40px, 50px" className="relationship-portrait" /></span>
+            <span className="relationship-message relationship-message-white">{fr ? "Merci, ça me convient." : "Thanks, that works."}</span>
+          </div>
         </div>
         <div className="marketing-section work-summary content-container">
-          <div className="work-conversion-copy"><h2 id="work-title">{fr ? <>Transformez un échange<br /><span className="work-title-highlight">en prochain pas utile.</span></> : <>Turn a conversation<br /><span className="work-title-highlight">into a useful next step.</span></>}</h2><p>{fr ? "Une demande arrive. Un prospect appelle. Un client a besoin d’aide." : "An enquiry arrives. A prospect calls. A customer needs help."}</p><p>{fr ? "Votre Collaborateur retrouve le contact, garde l’historique et suit les engagements. Vous intervenez lorsqu’une décision compte." : "Your Collaborator finds the contact, keeps the history and follows commitments. You step in when a decision matters."}</p></div>
+          <div className="work-conversion-copy"><h2 id="work-title">{fr ? <>Transformez un échange<br /><span className="work-title-highlight">en prochain pas utile.</span></> : <>Turn a conversation<br /><span className="work-title-highlight">into a useful next step.</span></>}</h2><p>{fr ? "Votre Collaborateur retrouve le contact, garde l’historique et suit les engagements. Vous intervenez lorsqu’une décision compte." : "Your Collaborator finds the contact, keeps the history and follows commitments. You step in when a decision matters."}</p></div>
           <div id="work-example" className="work-example-anchor"><WorkDemo language={language} /></div>
-          <div className="work-start"><ChannelRibbon /><p className="work-connection-copy">{fr ? "Vos échanges, là où ils arrivent : email, site, WhatsApp, LinkedIn, Slack, Telegram, Discord et Google Meet." : "Your conversations, wherever they arrive: email, website, WhatsApp, LinkedIn, Slack, Telegram, Discord and Google Meet."}</p><p className="work-phone-copy"><Icon name="phone" /><span>{fr ? "Un numéro pour répondre aux appels et rappeler pour vous, selon vos permissions. Connexion téléphonique prévue." : "A number to receive calls and call back for you, with your permission. Phone connection planned."}</span></p></div>
+          <div className="work-start"><ChannelRibbon /><p className="work-connection-copy">{fr ? "Vos échanges, là où ils arrivent : email, site, WhatsApp, LinkedIn, Slack, Telegram, Discord et Google Meet." : "Your conversations, wherever they arrive: email, website, WhatsApp, LinkedIn, Slack, Telegram, Discord and Google Meet."}</p><p className="work-phone-copy"><Icon name="phone" /><span>{fr ? "Un numéro pour répondre aux appels et rappeler pour vous, selon vos permissions." : "A number to receive calls and call back for you, with your permission."}</span></p></div>
         </div>
       </section>
 

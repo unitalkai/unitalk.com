@@ -1,8 +1,16 @@
 import type { SVGProps } from "react";
 
-type IconName = "arrow" | "chevron" | "message" | "check" | "plus" | "link" | "send" | "menu" | "close" | "external";
+type IconName = "arrow" | "chevron" | "message" | "check" | "plus" | "link" | "send" | "menu" | "close" | "external" | "home" | "people" | "settings" | "search" | "mic" | "pause" | "play" | "trash";
 
 const paths: Record<IconName, React.ReactNode> = {
+  home: <><path d="m3 10 9-7 9 7v10H3Z" /><path d="M9 20v-7h6v7" /></>,
+  people: <><circle cx="9" cy="8" r="3" /><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5v2" /></>,
+  settings: <><circle cx="12" cy="12" r="3" /><path d="m9 3-1 3-3 1-2 5 2 5 3 1 1 3h6l1-3 3-1 2-5-2-5-3-1-1-3Z" /></>,
+  search: <><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></>,
+  mic: <><rect x="9" y="3" width="6" height="12" rx="3" /><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8" /></>,
+  pause: <><path d="M8 5v14M16 5v14" /></>,
+  play: <path d="m7 4 13 8-13 8Z" />,
+  trash: <><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7" /></>,
   arrow: <><path d="M4 12h16M13 5l7 7-7 7" /></>,
   chevron: <path d="m9 5 7 7-7 7" />,
   message: <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5a9 9 0 0 1-.9-4A8.5 8.5 0 0 1 12.5 3H13a8.5 8.5 0 0 1 8 8v.5Z" />,

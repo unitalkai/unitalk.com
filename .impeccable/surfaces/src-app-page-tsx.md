@@ -17,7 +17,7 @@ OWN-WORLD: User-pinned whatsapp.com: warm cream, near-black, light sans-serif di
 
 STORY: Meet yours; see Patrick as direct proof without a case study; bring previous AI context; choose hosting and intelligence; set authority boundaries; discover a public front door; choose the €9.99 monthly or €99 annual offer. Hermes is the supporting open-source runtime in the ownership section, never the product headline.
 
-FIRST VIEWPORT: Cream navigation with How it works, Pricing, Privacy, Log in and Get your Collaborator. Rounded photographic hero, normal-weight “Your AI Collaborator. It works for you.”, short connection copy, Meet your Collaborator and €9.99/month. Mobile uses the existing in-flow photo. Later hosting/intelligence selects and a billing choice carry validated preferences into the local encounter; no keys or payment details are requested.
+FIRST VIEWPORT: Cream navigation with How it works, Pricing, Privacy, Log in and Get your Collaborator. Rounded photographic hero, normal-weight “Your AI Collaborator. It works for you.”, connection copy naming website, email, WhatsApp, Slack, LinkedIn and more, an “Enter your domain name” field with Continue, and an alternative “Connect with LinkedIn” link into the local encounter. The €9.99/month · Cancel anytime line is enlarged to 20px. The former hero product-preview sentence is removed; simulations remain labelled in the encounter and later homepage sections. Mobile uses the existing in-flow photo and stacks the domain action. Later hosting/intelligence selects and a billing choice carry validated preferences into the local encounter; no keys or payment details are requested.
 
 FORM: User-pinned reference, no random direction seed. Code-led translation from the measured live reference.
 

@@ -599,8 +599,16 @@ button svg, a svg, summary svg { flex: none; }
 .english-hero .hero-content h1 > span { font-size: .8em; }
 .english-hero .hero-content > p { max-width: 41ch; }
 .english-hero .hero-content .hero-explanation { margin-top: 14px; }
-.english-hero .hero-content .hero-price { font-size: var(--text-small); margin-top: 16px; }
-.english-hero .hero-content .hero-capability-note { color: var(--muted-ink); margin-top: 10px; }
+.english-hero .hero-content .hero-price { font-size: 1.25rem; margin-top: 20px; }
+.hero-entry { max-width: 520px; margin-top: 30px; }
+.hero-entry label { font-size: var(--text-control); }
+.hero-entry .url-control input { min-width: 0; }
+.hero-entry-alternative { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-top: 16px; font-size: var(--text-control); }
+.hero-entry-alternative .text-link { color: var(--white); margin-top: 0; }
+.hero-entry-alternative .text-link:hover { color: #ff6aba; }
+.hero-entry :where(a, button, input):focus-visible { outline-color: #ff6aba; }
+.hero-entry .url-control :where(button, input):focus-visible { outline-color: var(--signal-deep); }
+#home-domain { scroll-margin-top: 130px; }
 .marketing-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 100px; align-items: center; padding-block: 100px; }
 .marketing-home h2 { font-size: var(--text-headline); line-height: 1.06; letter-spacing: -.04em; }
 .marketing-home h2 > span { color: var(--signal-deep); }

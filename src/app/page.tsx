@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SiteHeader, SiteFooter } from "@/components/site-shell";
 import { OwnershipOptions } from "@/components/ownership-options";
 import { CollaboratorPricing } from "@/components/collaborator-pricing";
-import { EncounterLink } from "@/components/collaborator-offer-context";
+import { HomeEntry } from "@/components/home-entry";
 import { Icon } from "@/components/icons";
 import { COLLABORATOR_OFFER } from "@/lib/collaborator-offer";
 
@@ -27,11 +27,10 @@ export default function Home() {
         <div className="hero-shade" />
         <div className="hero-content">
           <h1 id="home-title">Your AI<br />Collaborator.<br /><span>It works for you.</span></h1>
-          <p>Connect it to your LinkedIn, email and WhatsApp.</p>
+          <p>Connect it to your website, email, WhatsApp, Slack, LinkedIn and more.</p>
           <p className="hero-explanation">It learns who you are, understands your relationships, and handles the work you give it.</p>
-          <EncounterLink className="button button-primary hero-meet-action">Meet your Collaborator <Icon name="arrow" /></EncounterLink>
+          <HomeEntry />
           <p className="hero-price">{COLLABORATOR_OFFER.monthly} / month · Cancel anytime</p>
-          <p className="hero-capability-note">Product preview · connections and paid plans are coming.</p>
         </div>
         <Image src="/images/working-together.jpg" alt="An illustrative working scene, not the Unitalk team." width={1800} height={1200} sizes="(max-width: 699px) 100vw, 1px" className="hero-mobile-photo" />
       </section>
@@ -76,7 +75,7 @@ export default function Home() {
         <div className="marketing-section content-container"><div><h2 id="pricing-title">Your own<br />AI Collaborator.<br /><span>One simple price.</span></h2><p>Identity. Memory. Knowledge.<br />Skills. Tools. Authority.</p><p className="pricing-ownership-line">The work it does.<br />The context you build.<br />Yours.</p></div><CollaboratorPricing /></div>
       </section>
 
-      <section className="closing-section content-container"><h2>You don’t have to<br />be everywhere.<br /><span>Your Collaborator can.</span></h2><p>Own your intelligence.</p><EncounterLink className="text-link">Meet your Collaborator <Icon name="arrow" /></EncounterLink></section>
+      <section className="closing-section content-container"><h2>You don’t have to<br />be everywhere.<br /><span>Your Collaborator can.</span></h2><p>Own your intelligence.</p><Link className="text-link" href="#home-domain">Enter your domain name <Icon name="arrow" /></Link></section>
     </main>
     <SiteFooter language="en" />
   </div>;

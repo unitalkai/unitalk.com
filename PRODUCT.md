@@ -36,7 +36,7 @@ The first promise is concrete: **someone who can manage your professional relati
 
 The intended mechanism is **connect → understand relationships → work → involve the owner when needed**, with one persistent, owned Collaborator across channels.
 
-- The first experience is a meeting. LinkedIn, email and WhatsApp are intended connection sources. A public URL can help seed knowledge, but is no longer the homepage's primary CTA. Connection and authority setup follow the encounter.
+- The first experience is a meeting. Website, email, WhatsApp, Slack and LinkedIn are intended connection sources. The homepage now starts with “Enter your domain name” or “Connect with LinkedIn”; both lead into the local encounter. Domain input supplies an unanalysed public source, and the LinkedIn entry does not connect an account. Connection and authority setup follow the encounter.
 - Ownership applies to the Collaborator's identity, memory, knowledge, skills, tools, authority and work. A recurring Unitalk service plan must not turn that into a rented, disposable conversation. The user chooses where it runs and what powers it.
 - **A chatbot answers. A Collaborator works.** A Collaborator receives a goal and executes it using its knowledge, skills and tools, showing meaningful progress and delivering a result.
 
@@ -116,7 +116,7 @@ Never call the Collaborator a "profile" — a profile is static, a Collaborator 
 - Banned SaaS language: platform, ecosystem, seamless, next-generation, revolutionary, powerful, intelligent automation, all-in-one, end-to-end, unlock, transform your workflow.
 - Never oversell. The novelty of the product is strong enough.
 
-English homepage primary CTA: **“Meet your Collaborator”**. Header/pricing CTA: **“Get your Collaborator”**. Ownership CTA: **“Create my Collaborator”**. Patrick's proof CTA: **“Talk to Patrick's Collaborator”**. French encounter CTA remains **“Rencontrer mon Collaborateur”**. A URL remains an optional source inside the visitor experience.
+English homepage entry: **“Enter your domain name”** with **“Continue”**, or **“Connect with LinkedIn”**. Header/pricing CTA: **“Get your Collaborator”**. Ownership CTA: **“Create my Collaborator”**. Supporting guide CTA: **“Meet your Collaborator”**. Patrick's proof CTA: **“Talk to Patrick's Collaborator”**. French encounter CTA remains **“Rencontrer mon Collaborateur”**. A URL also remains an optional source inside the visitor experience.
 
 ## Constraints
 

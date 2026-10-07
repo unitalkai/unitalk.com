@@ -11,10 +11,10 @@ They identify planned migration sources, not connected accounts or partnerships.
 | OpenClaw | https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/openclaw.svg | Original paths, red fill; unneeded full-viewport clip removed. |
 | Gemini | https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/gemini-color.svg | Original silhouette, source blue fill. |
 | Grok | https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/grok.svg | Original path, ink fill. |
-| Hermes | https://web-assets.nousresearch.com/nousnet-web/assets/hermes-landing/teams/hermes-wing.6ee276e9bff5a166.svg | Official Nous Research wing silhouette, source blue fill; duplicated texture layer omitted at icon scale. |
+| Hermes Agent | https://github.com/NousResearch/hermes-agent/blob/main/website/static/img/favicon-32x32.png | Official 32px Hermes Agent icon embedded unchanged in local `hermes-agent.svg`; source recorded in SVG metadata. Replaces the rejected wing mark. |
 
 The LobeHub paths are MIT licensed; see `LOBE-ICONS-LICENSE.txt`.
-Hermes' source asset is linked from https://hermes-agent.nousresearch.com.
+Hermes Agent's icon comes from its official Nous Research repository.
 Product names and marks remain those of their respective owners.
 
 ## Footer social marks and destinations

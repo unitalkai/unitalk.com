@@ -9,6 +9,7 @@ import { FooterSocialLinks } from "./footer-social-links";
 import { FooterLanguage } from "./footer-language";
 import { marketingPath } from "@/lib/marketing-language";
 import "./site-footer.css";
+import "./marketing-resources.css";
 
 export function Brand({ language = "fr" }: { language?: "fr" | "en" }) {
   return <Link className="brand" href={marketingPath("/", language)} aria-label={language === "en" ? "Unitalk — home" : "Unitalk — accueil"}><Icon name="message" width="31" height="31" /><span>unitalk</span></Link>;
@@ -21,13 +22,16 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
   const links = !role ? [
     { href: marketingPath("/how-it-works", language), label: english ? "How it works" : "Comment ça marche" },
     { href: marketingPath("/pricing", language), label: english ? "Pricing" : "Tarifs" },
+    { href: marketingPath("/privacy", language), label: english ? "Privacy" : "Confidentialité" },
+    { href: marketingPath("/store", language), label: english ? "Store" : "Boutique" },
+    { href: "https://unitalk.ai", label: english ? "For businesses" : "Pour les entreprises" },
   ] : [
     { href: "/", label: "Accueil" },
     { href: "/@patrick-chassany", label: "Le Collaborateur de Patrick" },
   ];
 
   return <header className="site-header">
-    <div className={`header-inner${!role ? " marketing-header" : ""}`}>
+    <div className={`header-inner${!role ? " marketing-header marketing-header-expanded" : ""}`}>
       <Brand language={language} />
       <nav className="desktop-nav" aria-label={english ? "Main navigation" : "Navigation principale"}>
         {links.map(link => <Link key={link.href} href={link.href} aria-current={pathname === link.href ? "page" : undefined}>{link.label}</Link>)}
@@ -35,7 +39,7 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
       </nav>
       <div className="header-actions">
         {role ? <div className="account-pill"><span className="avatar avatar-small">{role === "patrick" ? "PC" : "V"}</span><span>{role === "patrick" ? "Patrick" : "Visiteur"}</span><span className="demo-label">Démo</span></div> : <Link href={marketingPath("/login", language)} className="button button-outline button-small customer-login" aria-current={pathname === marketingPath("/login", language) ? "page" : undefined}>{english ? "Log in" : "Se connecter"}</Link>}
-        <EncounterLink language={language} marketing={!role} className="button button-primary button-small header-create">{english ? "Meet your Collaborator" : "Rencontrer le mien"} <Icon name="arrow" /></EncounterLink>
+        <EncounterLink language={language} marketing={!role} className="button button-primary button-small header-create">{english ? "Meet yours" : "Rencontrer le mien"} <Icon name="arrow" /></EncounterLink>
         <button className="icon-button mobile-menu-toggle" aria-label={english ? (open ? "Close navigation" : "Open navigation") : (open ? "Fermer la navigation" : "Ouvrir la navigation")} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}><Icon name={open ? "close" : "menu"} /></button>
       </div>
     </div>
@@ -50,7 +54,13 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
 export function SiteFooter({ language = "fr" }: { language?: "fr" | "en" }) {
   const english = language === "en";
   return <footer className="site-footer marketing-footer">
-    <div className="footer-inner"><div className="footer-identity"><Brand language={language} /><p className="footer-tagline" lang="en">Own your<br />intelligence.</p><EncounterLink language={language} marketing className="button button-primary">{english ? "Meet yours" : "Rencontrer le mien"}<Icon name="arrow" /></EncounterLink></div><div className="footer-navigation"><nav aria-label={english ? "Explore Unitalk" : "Découvrir Unitalk"}><h2>{english ? "Explore" : "Découvrir"}</h2><Link href={marketingPath("/how-it-works", language)}>{english ? "How it works" : "Comment ça marche"}</Link><Link href={marketingPath("/pricing", language)}>{english ? "Pricing" : "Tarifs"}</Link><Link href={`${marketingPath("/", language)}#faq`}>{english ? "FAQ" : "Questions fréquentes"}</Link></nav><nav aria-label={english ? "About Unitalk" : "À propos de Unitalk"}><h2>Unitalk</h2><Link href="/@patrick-chassany">{english ? "Meet Patrick’s Collaborator" : "Le Collaborateur de Patrick"}</Link><a href="https://unitalk.ai">{english ? "For businesses" : "Pour les entreprises"}<Icon name="external" width="16" height="16" /></a><Link href={marketingPath("/login", language)}>{english ? "Customer login" : "Connexion client"}</Link></nav></div></div>
+    <div className="footer-inner">
+      <div className="footer-identity"><Brand language={language} /><p className="footer-tagline" lang="en">Own your<br />intelligence.</p><EncounterLink language={language} marketing className="button button-primary">{english ? "Meet yours" : "Rencontrer le mien"}<Icon name="arrow" /></EncounterLink></div>
+      <div className="footer-navigation">
+        <nav aria-label={english ? "Explore Unitalk" : "Découvrir Unitalk"}><h2>{english ? "Explore" : "Découvrir"}</h2><Link href={marketingPath("/how-it-works", language)}>{english ? "How it works" : "Comment ça marche"}</Link><Link href={marketingPath("/pricing", language)}>{english ? "Pricing" : "Tarifs"}</Link><Link href={marketingPath("/store", language)}>{english ? "Store" : "Boutique"}</Link><Link href={`${marketingPath("/", language)}#faq`}>{english ? "FAQ" : "Questions fréquentes"}</Link></nav>
+        <nav aria-label={english ? "About Unitalk" : "À propos de Unitalk"}><h2>Unitalk</h2><Link href="/@patrick-chassany">{english ? "Meet Patrick’s Collaborator" : "Le Collaborateur de Patrick"}</Link><Link href={marketingPath("/privacy", language)}>{english ? "Privacy" : "Confidentialité"}</Link><a href="https://unitalk.ai">{english ? "For businesses" : "Pour les entreprises"}<Icon name="external" width="16" height="16" /></a><Link href={marketingPath("/login", language)}>{english ? "Customer login" : "Connexion client"}</Link></nav>
+      </div>
+    </div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} Unitalk</span><FooterSocialLinks language={language} /><FooterLanguage language={language} /></div>
   </footer>;
 }

@@ -1,6 +1,9 @@
 /* Conversion composition within the established WhatsApp–fuchsia family. */
 .conversion-home .english-hero { min-height: 660px; }
-.conversion-home .english-hero .hero-content { max-width: 690px; padding-block: 48px; }
+.conversion-home .english-hero .hero-content { max-width: 880px; padding-block: 48px; }
+.conversion-home .english-hero .hero-content h1 { font-size: clamp(2.75rem, 4.8vw, 4.5rem); }
+.conversion-home .english-hero .hero-title-line { display: block; font-size: 1em; white-space: nowrap; }
+.conversion-home .english-hero .hero-title-promise { display: block; margin-top: 12px; font-size: .8em; }
 .conversion-home .english-hero .hero-content .hero-outcome { margin-top: 26px; font-size: var(--text-body); }
 .conversion-home .english-hero .hero-content .hero-explanation { margin-top: 12px; color: var(--muted-ink); }
 .hero-conversion-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; margin-top: 30px; }
@@ -75,7 +78,7 @@
 .conversion-home .history-illustration li { padding-block: 14px; font-size: var(--text-control); }
 .history-illustration .history-provider-logo { display: grid; place-items: center; flex: none; width: 32px; height: 32px; }
 .history-provider-logo svg { display: block; width: 26px; height: 26px; }
-.history-provider-logo .provider-hermes { width: 18px; height: 32px; }
+.history-provider-logo .provider-hermes { width: 28px; height: 28px; }
 .runtime-details { margin-top: 28px; border-top: 1px solid var(--ink-line); max-width: 430px; font-size: var(--text-small); }
 .runtime-details summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-block: 18px; list-style: none; }
 .runtime-details summary::-webkit-details-marker { display: none; }
@@ -138,20 +141,21 @@
 @media (min-width: 960px) and (max-height: 820px) {
   .conversion-home .english-hero { min-height: max(490px, calc(100svh - 128px)); }
   .conversion-home .english-hero .hero-content { padding-block: 28px; }
-  .conversion-home .english-hero .hero-content h1 { font-size: clamp(2.75rem, min(5.7vw, 7.5svh), 5rem); }
+  .conversion-home .english-hero .hero-content h1 { font-size: clamp(2.75rem, min(4.8vw, 7.5svh), 4.5rem); }
   .conversion-home .english-hero .hero-content .hero-outcome { margin-top: 18px; }
   .hero-conversion-actions { margin-top: 20px; }
   .conversion-home .english-hero .hero-content .hero-price { margin-top: 16px; }
   .hero-work-proof { width: 365px; bottom: 24px; padding: 20px; }
 }
 @media (max-width: 1199px) {
-  .conversion-home .english-hero .hero-content { max-width: 570px; padding-left: 48px; }
+  .conversion-home .english-hero .hero-content { max-width: 760px; padding-left: 48px; }
   .hero-work-proof { width: 340px; right: 24px; }
   .conversion-home .home-relationships .work-summary { gap: 36px; }
   .work-demo { padding: 22px; }
   .meet-workspace { gap: 40px; }
 }
 @media (max-width: 959px) {
+  .conversion-home .english-hero .hero-title-line { white-space: normal; }
   .conversion-home .english-hero { min-height: 0; }
   .conversion-home .english-hero .hero-content { max-width: none; padding: 36px; }
   .home-hero-media { height: 480px; }

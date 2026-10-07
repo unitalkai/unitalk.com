@@ -1,0 +1,58 @@
+.marketing-header-expanded { gap: 20px; }
+.marketing-header-expanded .desktop-nav { gap: 24px; white-space: nowrap; }
+@media (max-width: 1279px) and (min-width: 960px) {
+  .marketing-header-expanded .desktop-nav { display: none; }
+  .marketing-header-expanded .mobile-menu-toggle { display: grid; }
+  .marketing-header-expanded + .mobile-navigation { display: flex; flex-direction: column; padding: 12px 32px 24px; border-top: 1px solid var(--ivory-line); }
+  .marketing-header-expanded + .mobile-navigation a { display: flex; justify-content: space-between; align-items: center; min-height: 53px; border-bottom: 1px solid var(--ivory-line); font-size: var(--text-control); }
+}
+.resource-hero { padding-block: 80px 64px; }
+.resource-hero h1 { font-size: var(--text-display); line-height: 1.06; letter-spacing: -.04em; }
+.resource-hero h1 > span { color: var(--signal-deep); }
+.resource-hero > p { max-width: 54ch; color: var(--muted); margin-top: 24px; }
+.resource-hero .button { margin-top: 28px; }
+.privacy-principles { padding-block: 8px 80px; }
+.privacy-principle { display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; border-top: 1px solid var(--ivory-line); padding-block: 36px; }
+.privacy-principle h2 { font-size: var(--text-title); line-height: 1.25; }
+.privacy-principle p { max-width: 58ch; font-size: var(--text-control); line-height: 1.65; }
+.privacy-principle .privacy-detail { margin-top: 16px; font-size: var(--text-small); color: var(--muted); }
+.privacy-controls { background: var(--white); border-radius: var(--radius-panel); padding: 28px; margin-top: 20px; }
+.privacy-controls h2 { font-size: var(--text-title); margin-bottom: 20px; }
+.privacy-controls ul { list-style: none; padding: 0; margin: 0; }
+.privacy-controls li { padding-block: 14px; border-top: 1px solid var(--ivory-line); font-size: var(--text-control); }
+.privacy-controls strong { font-weight: 500; }
+.store-directory { padding-bottom: 80px; }
+.store-filter { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding-bottom: 24px; border-bottom: 1px solid var(--ivory-line); }
+.store-filter button { background: transparent; color: var(--muted); border: 1px solid var(--ivory-line); min-height: 46px; border-radius: var(--radius-control); padding: 10px 20px; font-size: var(--text-control); }
+.store-filter button[aria-pressed="true"] { background: var(--signal-wash); color: var(--signal-deep); border-color: var(--signal-wash); }
+.store-filter button:hover { color: var(--ink); border-color: var(--ink); }
+.store-results-count { font-size: var(--text-small); color: var(--muted); padding-block: 20px 4px; }
+.store-entry { display: grid; grid-template-columns: 200px minmax(0, 1fr) auto; align-items: start; gap: 32px; padding-block: 32px; border-bottom: 1px solid var(--ivory-line); }
+.store-entry-category { display: flex; align-items: center; gap: 10px; font-size: var(--text-small); color: var(--muted); padding-top: 5px; }
+.store-entry-category svg { color: var(--signal-deep); }
+.store-entry h2 { font-size: var(--text-title); line-height: 1.3; }
+.store-entry p { font-size: var(--text-control); line-height: 1.65; margin-top: 12px; max-width: 56ch; }
+.store-entry .store-entry-origin { color: var(--muted); font-size: var(--text-caption); margin-top: 10px; }
+.store-entry .text-link { font-size: var(--text-small); min-height: 44px; }
+.store-empty { padding: 48px 0; }
+.store-empty h2 { font-size: var(--text-title); }
+.store-empty p { margin-top: 16px; font-size: var(--text-control); color: var(--muted); }
+.store-empty a { margin-top: 20px; }
+@media (max-width: 959px) {
+  .resource-hero { padding-block: 64px 48px; }
+  .privacy-principle { gap: 40px; }
+  .store-entry { grid-template-columns: 150px minmax(0, 1fr); gap: 16px 24px; }
+  .store-entry > .text-link { grid-column: 2; justify-self: start; }
+}
+@media (max-width: 699px) {
+  .resource-hero { padding-block: 48px 40px; }
+  .resource-hero h1 { font-size: var(--text-headline); }
+  .resource-hero > p { font-size: var(--text-control); }
+  .privacy-principle { grid-template-columns: minmax(0, 1fr); gap: 18px; padding-block: 28px; }
+  .privacy-principles, .store-directory { padding-bottom: 56px; }
+  .privacy-controls { padding: 22px; }
+  .store-filter { gap: 8px; }
+  .store-filter button { padding-inline: 14px; font-size: var(--text-small); }
+  .store-entry { grid-template-columns: minmax(0, 1fr); gap: 14px; padding-block: 28px; }
+  .store-entry > .text-link { grid-column: 1; }
+}

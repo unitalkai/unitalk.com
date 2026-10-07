@@ -21,7 +21,7 @@ export function MarketingHome({ language = "en" }: { language?: "en" | "fr" }) {
     <main id="main-content">
       <section className="home-hero work-hero english-hero" id="creer" aria-labelledby="home-title">
         <div className="hero-content">
-          <h1 id="home-title">{fr ? <>Votre Collaborateur<br />IA.<br /><span>Il travaille pour vous.</span></> : <>Your AI<br />Collaborator.<br /><span>It works for you.</span></>}</h1>
+          <h1 id="home-title"><span className="hero-title-line">{fr ? "Votre Collaborateur IA." : "Your AI Collaborator."}</span><span className="hero-title-promise">{fr ? "Il travaille pour vous." : "It works for you."}</span></h1>
           <p className="hero-outcome">{fr ? <>Le suivi. Le prochain rendez-vous.<br />L’opportunité à ne pas manquer.</> : <>The follow-up. The next meeting.<br />The opportunity you don’t want to miss.</>}</p>
           <p className="hero-explanation">{fr ? "Confiez-lui le travail. Gardez le dernier mot." : "Give it the work. Keep the final say."}</p>
           <div className="hero-conversion-actions"><Link href="#work-example" className="button button-primary">{fr ? "Voir le travail" : "See it do the work"} <Icon name="arrow" /></Link><EncounterLink className="hero-secondary-action" language={language} marketing>{fr ? "Rencontrer le mien" : "Meet yours"} <Icon name="arrow" /></EncounterLink></div>

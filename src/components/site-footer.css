@@ -5,7 +5,7 @@
 .marketing-footer .footer-identity .button:hover { background: var(--white); color: var(--ink); border-color: var(--white); }
 .marketing-footer .footer-navigation { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; flex: 1; }
 .marketing-footer .footer-navigation nav { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
-.marketing-footer .footer-navigation h2 { color: var(--muted-ink); font-size: var(--text-small); margin-bottom: 18px; }
+.site-footer.marketing-footer .footer-navigation h2 { color: var(--muted-ink); font-size: var(--text-small); line-height: 1.5; letter-spacing: 0; margin-bottom: 18px; }
 .marketing-footer .footer-navigation a { font-size: var(--text-control); min-height: 44px; padding-block: 10px; white-space: normal; line-height: 1.5; }
 .marketing-footer .footer-navigation a:hover { color: #ff6aba; }
 .marketing-footer .footer-navigation svg { display: block; }

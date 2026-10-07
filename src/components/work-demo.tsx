@@ -6,7 +6,7 @@ import { WORK_EXAMPLES, getWorkExample, type WorkExampleId } from "@/lib/work-ex
 
 export function HeroWorkProof({ language = "en" }: { language?: "en" | "fr" }) {
   const fr = language === "fr";
-  return <div className="hero-work-proof" aria-label="Example work, not live activity">
+  return <div className="hero-work-proof" aria-label={fr ? "Exemple de travail" : "Example work, not live activity"}>
     <div className="work-proof-status"><span><Icon name="check" />{fr ? "Exemple de suivi" : "Example follow-up"}</span></div>
     <p className="hero-proof-request">{fr ? "« Prépare le suivi de notre rendez-vous. »" : "“Follow up after our meeting.”"}</p>
     <div className="hero-proof-delivery"><strong>{fr ? "Un prochain pas clair" : "A clear next step"}</strong><p>{fr ? "Merci pour notre échange. Pourrions-nous définir ensemble le périmètre et les priorités la semaine prochaine ?" : "Thanks for the conversation. Shall we define the scope and priorities together next week?"}</p></div>

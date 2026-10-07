@@ -9,6 +9,7 @@ import { HeroWorkProof, WorkDemo } from "@/components/work-demo";
 import { EncounterLink } from "@/components/collaborator-offer-context";
 import { Icon } from "@/components/icons";
 import { COLLABORATOR_OFFER } from "@/lib/collaborator-offer";
+import "./home.css";
 
 const description = "Your AI Collaborator. It works for you. Follow-ups prepared. Opportunities clarified. Meetings ready. See the work, meet yours, and keep the final say.";
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <div lang="en" className="marketing-home">
+  return <div lang="en" className="marketing-home conversion-home">
     <SiteHeader language="en" />
     <main id="main-content">
       <section className="home-hero work-hero english-hero" id="creer" aria-labelledby="home-title">
@@ -49,21 +50,10 @@ export default function Home() {
           <Image src="/images/portrait-03.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 72px, 112px" className="relationship-portrait portrait-three" />
         </div>
         <div className="marketing-section work-summary content-container">
-          <div className="work-conversion-copy"><h2 id="work-title">Less chasing.<br /><span>More moving forward.</span></h2><p>Turn a conversation into a useful next step. A follow-up to review. A lead to qualify. A brief before you meet.</p><p className="work-connection-copy">Designed for your website, email, WhatsApp, Slack, LinkedIn and more.</p><HomeEntry /></div>
+          <div className="work-conversion-copy"><h2 id="work-title">Less chasing.<br /><span>More moving forward.</span></h2><p>Turn a conversation into a useful next step. A follow-up to review. A lead to qualify. A brief before you meet.</p></div>
           <div id="work-example" className="work-example-anchor"><WorkDemo /></div>
+          <div className="work-start"><p className="work-connection-copy">Designed for your website, email, WhatsApp, Slack, LinkedIn and more.</p><HomeEntry /></div>
         </div>
-        <div className="relationship-ribbon relationship-ribbon-bottom" aria-hidden="true">
-          <span className="relationship-message relationship-message-pink">What should we do next?</span>
-          <Image src="/images/portrait-04.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 64px, 96px" className="relationship-portrait portrait-four" />
-          <span className="relationship-message relationship-message-white"><Icon name="message" width="20" height="20" />When it matters, I’ll ask you.</span>
-          <Image src="/images/portrait-05.jpg" alt="" width={480} height={480} sizes="(max-width: 699px) 64px, 88px" className="relationship-portrait portrait-five" />
-        </div>
-        <p className="relationship-caption">Illustrative portraits and conversations · Unsplash</p>
-      </section>
-
-      <section className="marketing-section collaborator-showcase patrick-proof content-container" id="patrick" aria-labelledby="patrick-title">
-        <div><h2 id="patrick-title">Patrick already<br />has one.<br /><span>Meet his Collaborator.</span></h2><Link className="button button-primary" href="/@patrick">Talk to Patrick’s Collaborator <Icon name="arrow" /></Link></div>
-        <div className="patrick-invitation"><div className="invitation-identity"><span className="avatar">PC</span><div><strong>Patrick’s Collaborator</strong><span>Public AI Collaborator</span></div></div><blockquote>Hi. I’m Patrick’s<br />Collaborator.<br /><span>What brings you here?</span></blockquote><p><span className="demo-label">Interactive demo</span></p></div>
       </section>
 
       <section className="migration-section" id="history" aria-labelledby="history-title">
@@ -76,7 +66,7 @@ export default function Home() {
       <section className="ownership-section ownership-config" id="ownership" aria-labelledby="ownership-title">
         <div className="marketing-section content-container">
           <div><h2 id="ownership-title">Yours.<br /><span>On your terms.</span></h2><p className="runtime-copy">Your identity. Your knowledge. Your memory.<br />Choose where your Collaborator runs and what powers it.</p><details className="runtime-details"><summary>Built for portability <Icon name="plus" /></summary><p>Designed to run on <a href="https://github.com/NousResearch/hermes-agent" className="runtime-link">Hermes <Icon name="external" width="16" height="16" /></a>, an open-source runtime. Integration is planned.</p></details></div>
-          <OwnershipOptions />
+          <OwnershipOptions language="en" />
         </div>
       </section>
 
@@ -86,8 +76,8 @@ export default function Home() {
       </section>
 
       <section className="marketing-section collaborator-showcase public-door content-container" id="public-presence" aria-labelledby="door-title">
-        <div><h2 id="door-title">Your public<br /><span>front door.</span></h2><p>One link. A useful first conversation.</p><p>Let people reach your Collaborator from your website, LinkedIn or email signature. You step in when you’re needed.</p><Link className="button button-primary" href="/@patrick">See Patrick’s front door <Icon name="arrow" /></Link></div>
-        <div className="patrick-invitation"><div className="invitation-identity"><span className="avatar">PC</span><div><strong>Patrick’s Collaborator</strong><span>A public way to reach me.</span></div></div><blockquote>Here’s how to<br /><span>interact with me.</span></blockquote><Link href="/@patrick" className="public-address"><Icon name="link" /><span>unitalk.com/@patrick</span><Icon name="arrow" /></Link></div>
+        <div><h2 id="door-title">Your public<br /><span>front door.</span></h2><p>One link. A useful first conversation.</p><p>Let people reach your Collaborator from your website, LinkedIn or email signature. You step in when you’re needed.</p><Link className="button button-primary" href="/@patrick">Talk to Patrick’s Collaborator <Icon name="arrow" /></Link></div>
+        <div className="patrick-invitation"><div className="invitation-identity"><span className="avatar">PC</span><div><strong>Patrick’s Collaborator</strong><span>Patrick Chassany · Founder Unitalk</span></div></div><blockquote>Here’s how to<br /><span>interact with me.</span></blockquote><Link href="/@patrick" className="public-address"><Icon name="link" /><span>unitalk.com/@patrick</span><Icon name="arrow" /></Link></div>
       </section>
 
       <section className="pricing-section" id="pricing" aria-labelledby="pricing-title">

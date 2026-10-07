@@ -22,9 +22,9 @@ export function useCollaboratorOffer() {
   return context;
 }
 
-export function EncounterLink({ defaults, choices, onClick, ...props }: Omit<ComponentProps<typeof Link>, "href"> & { defaults?: CollaboratorPreferences; choices?: CollaboratorPreferences }) {
+export function EncounterLink({ defaults, choices, language, onClick, ...props }: Omit<ComponentProps<typeof Link>, "href"> & { defaults?: CollaboratorPreferences; choices?: CollaboratorPreferences; language?: "en" | "fr" }) {
   const context = useContext(CollaboratorOfferContext);
-  return <Link {...props} href={encounterLink({ ...defaults, ...context?.preferences, ...choices })} onClick={event => {
+  return <Link {...props} href={encounterLink({ ...defaults, ...context?.preferences, ...choices }, language)} onClick={event => {
     onClick?.(event);
     if (!event.defaultPrevented && choices) context?.setPreferences(previous => ({ ...previous, ...choices }));
   }} />;

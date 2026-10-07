@@ -34,13 +34,13 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
           <summary className="button button-outline button-small">{english ? "Log in" : "Se connecter"} <Icon name="chevron" /></summary>
           <div className="account-dropdown"><p>{english ? "Choose a demo workspace" : "Choisir un espace de démonstration"}</p><Link href="/dashboard/patrick">{english ? "Patrick’s workspace" : "Espace Patrick"} <Icon name="arrow" /></Link><Link href="/dashboard/visiteur">{english ? "Visitor workspace" : "Espace visiteur"} <Icon name="arrow" /></Link></div>
         </details>}
-        <EncounterLink className="button button-primary button-small header-create">{english ? "Get your Collaborator" : "Rencontrer le mien"} <Icon name="arrow" /></EncounterLink>
+        <EncounterLink language={language} className="button button-primary button-small header-create">{english ? "Meet your Collaborator" : "Rencontrer le mien"} <Icon name="arrow" /></EncounterLink>
         <button className="icon-button mobile-menu-toggle" aria-label={english ? (open ? "Close navigation" : "Open navigation") : (open ? "Fermer la navigation" : "Ouvrir la navigation")} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}><Icon name={open ? "close" : "menu"} /></button>
       </div>
     </div>
     {open && <nav id="mobile-navigation" className="mobile-navigation" aria-label={english ? "Mobile navigation" : "Navigation mobile"}>
       {links.map(link => <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>{link.label}<Icon name="arrow" /></Link>)}
-      <EncounterLink onClick={() => setOpen(false)}>{english ? "Get your Collaborator" : "Rencontrer mon Collaborateur"}<Icon name="arrow" /></EncounterLink>
+      <EncounterLink language={language} onClick={() => setOpen(false)}>{english ? "Meet your Collaborator" : "Rencontrer mon Collaborateur"}<Icon name="arrow" /></EncounterLink>
       <Link href="/dashboard/patrick" onClick={() => setOpen(false)}>{english ? "Patrick’s workspace" : "Espace Patrick"} <span className="demo-label">{english ? "Demo" : "Démo"}</span></Link>
       <Link href="/dashboard/visiteur" onClick={() => setOpen(false)}>{english ? "Visitor workspace" : "Espace visiteur"} <span className="demo-label">{english ? "Demo" : "Démo"}</span></Link>
     </nav>}

@@ -31,7 +31,7 @@ export function WorkDemo({ initialExample = "follow-up", compact = false }: { in
     {!compact && <div className="work-demo-choices" aria-label="Choose a work example">{WORK_EXAMPLES.map(item => <button type="button" key={item.id} aria-pressed={item.id === exampleId} onClick={() => choose(item.id)}>{item.label}</button>)}</div>}
     <div className="work-demo-top"><span><Icon name="message" />Your Collaborator</span><span className="demo-label">Interactive demo</span></div>
     <div className="work-demo-request"><span>You</span><p>{example.request}</p></div>
-    <div className="work-demo-delivery" aria-live="polite">
+    <div className="work-demo-delivery" key={exampleId} aria-live="polite">
       <div className="work-demo-delivery-heading"><Icon name="check" /><h3>{example.title}</h3></div>
       <p className="work-demo-context">{example.context}</p>
       <p className="work-demo-subject">{example.subject}</p>

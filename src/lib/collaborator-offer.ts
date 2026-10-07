@@ -32,10 +32,10 @@ export function readCollaboratorPreferences(query: Record<string, string | strin
   };
 }
 
-export function encounterLink(preferences: CollaboratorPreferences = {}) {
+export function encounterLink(preferences: CollaboratorPreferences = {}, language?: "en" | "fr") {
   const query = new URLSearchParams({ rencontre: "1" });
   if (preferences.hosting) query.set("hosting", preferences.hosting);
   if (preferences.intelligence) query.set("intelligence", preferences.intelligence);
   if (preferences.billing) query.set("billing", preferences.billing);
-  return `/dashboard/visiteur?${query.toString()}`;
+  return `${language === "en" ? "/meet" : "/dashboard/visiteur"}?${query.toString()}`;
 }

@@ -39,6 +39,13 @@ export const WORK_EXAMPLES = [
 
 export type WorkExampleId = (typeof WORK_EXAMPLES)[number]["id"];
 
-export function getWorkExample(id?: string) {
-  return WORK_EXAMPLES.find(example => example.id === id) ?? WORK_EXAMPLES[0];
+const frenchExamples = {
+  "follow-up": { label: "Préparer un suivi", mission: "Préparer mes suivis", request: "Garder le fil après mes rendez-vous.", title: "Un suivi, prêt à relire.", context: "Rendez-vous d’exemple · une collaboration possible", subject: "Un prochain pas clair", draft: "Merci pour notre échange. Pourrions-nous définir ensemble le périmètre et les priorités d’un premier projet la semaine prochaine ?", boundary: "J’attends votre accord avant d’envoyer.", result: "Suivi approuvé." },
+  opportunity: { label: "Qualifier une piste", mission: "Qualifier mes opportunités", request: "M’aider à choisir les opportunités qui méritent un échange.", title: "Une opportunité, avec le bon contexte.", context: "Demande d’exemple · un client potentiel", subject: "Trois questions avant notre échange", draft: "Merci de nous avoir contactés. Quel résultat recherchez-vous, quel est votre calendrier et qui participera à la décision ? Cela nous aidera à préparer un échange utile.", boundary: "Je prépare les questions. Vous décidez de la suite.", result: "Brouillon de qualification approuvé." },
+  meeting: { label: "Préparer un rendez-vous", mission: "Préparer mes rendez-vous", request: "Arriver à chaque rendez-vous avec un prochain pas clair.", title: "Un rendez-vous préparé, sans précipitation.", context: "Rendez-vous d’exemple · un premier projet", subject: "Votre préparation d’entretien", draft: "Objectif : définir un premier projet utile.\n\nQuestions : Qu’est-ce qui compte le plus ? À quoi ressemble la réussite ? Quelles contraintes faut-il connaître ?\n\nRepartir avec : un responsable, un prochain pas et une date pour se retrouver.", boundary: "La préparation est prête. Les engagements restent les vôtres.", result: "Préparation de rendez-vous approuvée." },
+};
+
+export function getWorkExample(id?: string, language: "en" | "fr" = "en") {
+  const example = WORK_EXAMPLES.find(example => example.id === id) ?? WORK_EXAMPLES[0];
+  return language === "fr" ? { ...example, ...frenchExamples[example.id] } : example;
 }

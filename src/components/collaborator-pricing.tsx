@@ -1,6 +1,5 @@
 "use client";
 
-import { COLLABORATOR_OFFER } from "@/lib/collaborator-offer";
 import { EncounterLink, useCollaboratorOffer } from "./collaborator-offer-context";
 import { Icon } from "./icons";
 

@@ -55,11 +55,8 @@ export function SiteFooter({ language = "fr" }: { language?: "fr" | "en" }) {
   const english = language === "en";
   return <footer className="site-footer marketing-footer">
     <div className="footer-inner">
-      <div className="footer-identity"><Brand language={language} /><p className="footer-tagline" lang="en">Own your<br />intelligence.</p><EncounterLink language={language} marketing className="button button-primary">{english ? "Meet yours" : "Rencontrer le mien"}<Icon name="arrow" /></EncounterLink></div>
-      <div className="footer-navigation">
-        <nav aria-label={english ? "Explore Unitalk" : "Découvrir Unitalk"}><h2>{english ? "Explore" : "Découvrir"}</h2><Link href={marketingPath("/how-it-works", language)}>{english ? "How it works" : "Comment ça marche"}</Link><Link href={marketingPath("/pricing", language)}>{english ? "Pricing" : "Tarifs"}</Link><Link href={marketingPath("/store", language)}>{english ? "Store" : "Boutique"}</Link><Link href={`${marketingPath("/", language)}#faq`}>{english ? "FAQ" : "Questions fréquentes"}</Link></nav>
-        <nav aria-label={english ? "About Unitalk" : "À propos de Unitalk"}><h2>Unitalk</h2><Link href="/@patrick-chassany">{english ? "Meet Patrick’s Collaborator" : "Le Collaborateur de Patrick"}</Link><Link href={marketingPath("/privacy", language)}>{english ? "Privacy" : "Confidentialité"}</Link><a href="https://unitalk.ai">{english ? "For businesses" : "Pour les entreprises"}<Icon name="external" width="16" height="16" /></a><Link href={marketingPath("/login", language)}>{english ? "Customer login" : "Connexion client"}</Link></nav>
-      </div>
+      <div className="footer-identity"><Brand language={language} /><p className="footer-tagline" lang="en">Own your intelligence.</p></div>
+      <nav className="footer-navigation" aria-label={english ? "Footer navigation" : "Navigation de pied de page"}><Link href={marketingPath("/how-it-works", language)}>{english ? "How it works" : "Comment ça marche"}</Link><Link href={marketingPath("/pricing", language)}>{english ? "Pricing" : "Tarifs"}</Link><Link href={marketingPath("/store", language)}>{english ? "Store" : "Boutique"}</Link><Link href={marketingPath("/privacy", language)}>{english ? "Privacy" : "Confidentialité"}</Link><Link href={marketingPath("/about", language)}>{english ? "About" : "À propos"}</Link></nav>
     </div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} Unitalk</span><FooterSocialLinks language={language} /><FooterLanguage language={language} /></div>
   </footer>;

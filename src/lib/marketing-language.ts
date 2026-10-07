@@ -9,7 +9,7 @@ export function marketingPath(path: string, language: MarketingLanguage) {
 
 export function equivalentMarketingPath(pathname: string, language: MarketingLanguage) {
   const path = pathname === "/fr" ? "/" : pathname.startsWith("/fr/") ? pathname.slice(3) : pathname;
-  return marketingPath(["/", "/how-it-works", "/pricing", "/privacy", "/store", "/meet", "/login"].includes(path) ? path : "/", language);
+  return marketingPath(["/", "/how-it-works", "/pricing", "/privacy", "/store", "/about", "/meet", "/login"].includes(path) ? path : "/", language);
 }
 
 export function localizedOffer(language: MarketingLanguage) {

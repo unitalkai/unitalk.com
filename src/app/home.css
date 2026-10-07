@@ -1,6 +1,6 @@
 /* Conversion composition within the established WhatsApp–fuchsia family. */
-.conversion-home .english-hero { min-height: 660px; }
-.conversion-home .english-hero .hero-content { max-width: 880px; padding-block: 48px; }
+.conversion-home .english-hero { min-height: 580px; align-items: start; }
+.conversion-home .english-hero .hero-content { max-width: 880px; padding: 64px 24px 64px clamp(40px, 5vw, 80px); }
 .conversion-home .english-hero .hero-content h1 { font-size: clamp(2.75rem, 4.8vw, 4.5rem); }
 .conversion-home .english-hero .hero-title-line { display: block; font-size: 1em; white-space: nowrap; }
 .conversion-home .english-hero .hero-title-promise { display: block; margin-top: 12px; font-size: .8em; }
@@ -13,7 +13,7 @@
 .hero-conversion-actions :focus-visible { outline-color: #ff6aba; }
 .conversion-home .english-hero .hero-content .hero-price { margin-top: 22px; font-size: 1.25rem; }
 .conversion-home .english-hero .hero-content .hero-usage { font-size: var(--text-small); margin-top: 6px; color: var(--muted-ink); }
-.hero-work-proof { position: absolute; width: min(410px, calc(100% - 48px)); right: clamp(24px, 4vw, 64px); bottom: 32px; background: var(--white); color: var(--ink); padding: 24px; border-radius: var(--radius-panel); }
+.hero-work-proof { position: absolute; width: min(390px, calc(100% - 48px)); right: clamp(24px, 4vw, 64px); bottom: 32px; background: var(--white); color: var(--ink); padding: 24px; border-radius: var(--radius-panel); }
 .work-proof-status { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: var(--text-small); }
 .work-proof-status > span:first-child { display: flex; align-items: center; gap: 8px; }
 .work-proof-status svg { color: var(--signal-deep); }
@@ -158,8 +158,8 @@
   .conversion-home .english-hero .hero-title-line { white-space: normal; }
   .conversion-home .english-hero { min-height: 0; }
   .conversion-home .english-hero .hero-content { max-width: none; padding: 36px; }
-  .home-hero-media { height: 480px; }
-  .hero-work-proof { width: 410px; right: 32px; bottom: 24px; }
+  .conversion-home .home-hero-media { height: auto; min-height: 360px; display: flex; align-items: flex-end; justify-content: flex-end; padding: 24px 32px; }
+  .conversion-home .hero-work-proof { position: relative; width: min(410px, 100%); right: auto; bottom: auto; }
   .conversion-home .marketing-section, .conversion-home .authority-section { padding-block: 64px; }
   .conversion-home .home-relationships .work-summary { grid-template-columns: 1fr; gap: 32px; }
   .work-conversion-copy, .work-start, .work-example-anchor { grid-column: 1; grid-row: auto; }
@@ -176,9 +176,9 @@
   .hero-conversion-actions { gap: 10px 20px; margin-top: 24px; }
   .hero-conversion-actions .button { padding-inline: 20px; }
   .conversion-home .english-hero .hero-content .hero-usage { font-size: var(--text-caption); }
-  .home-hero-media { height: 375px; }
+  .conversion-home .home-hero-media { min-height: 320px; padding: 16px; }
   .home-hero-photo { object-position: 50% 25%; }
-  .hero-work-proof { width: calc(100% - 32px); right: 16px; bottom: 16px; padding: 20px; border-radius: 20px; }
+  .conversion-home .hero-work-proof { width: 100%; padding: 20px; border-radius: 20px; }
   .work-proof-status { font-size: var(--text-caption); }
   .hero-proof-request { font-size: var(--text-small); margin-top: 16px; }
   .hero-proof-delivery p { font-size: var(--text-small); }

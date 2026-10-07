@@ -17,7 +17,6 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
   const links = english ? [
     { href: "/how-it-works", label: "How it works" },
     { href: "/pricing", label: "Pricing" },
-    { href: "#privacy", label: "Privacy" },
   ] : [
     { href: "/", label: "Accueil" },
     { href: "/@patrick-chassany", label: "Le Collaborateur de Patrick" },
@@ -50,12 +49,8 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
 
 export function SiteFooter({ language = "fr" }: { language?: "fr" | "en" }) {
   if (language === "en") return <footer className="site-footer marketing-footer">
-    <div className="footer-inner"><div><Brand language="en" /><p>Create and deploy<br />AI Collaborators you own.</p></div><nav aria-label="Footer navigation"><Link href="/how-it-works">Product <Icon name="arrow" /></Link><Link href="/pricing">Pricing <Icon name="arrow" /></Link><Link href="#privacy">Privacy <Icon name="arrow" /></Link><Link href="#terms">Terms <Icon name="arrow" /></Link></nav></div>
-    <div className="footer-information">
-      <section id="privacy"><details><summary>Privacy in this preview <Icon name="plus" /></summary><p>Conversations and encounter inputs are held in the page’s memory. This prototype does not connect to your LinkedIn, email, WhatsApp or AI accounts, and it does not import your history. Hosting and billing preferences may appear in the page URL; never enter secrets there. Normal page requests are still handled by the website host.</p></details></section>
-      <section id="terms"><details><summary>About this product preview <Icon name="plus" /></summary><p>The listed plans and deployment choices describe the intended offer. This demo does not take payment, start a subscription or deploy an AI runtime. Commercial terms for the paid service are not yet published here.</p></details></section>
-    </div>
-    <div className="footer-bottom"><span>© {new Date().getFullYear()} Unitalk</span><span>Interactive prototype · AI activity is simulated</span></div>
+    <div className="footer-inner"><div><Brand language="en" /><p>Create and deploy<br />AI Collaborators you own.</p></div><nav aria-label="Footer navigation"><Link href="/how-it-works">Product <Icon name="arrow" /></Link><Link href="/pricing">Pricing <Icon name="arrow" /></Link></nav></div>
+    <div className="footer-bottom"><span>© {new Date().getFullYear()} Unitalk</span></div>
   </footer>;
   return <footer className="site-footer"><div className="footer-inner"><div><Brand /><p>Il travaille pour vous.<br />Il vous appartient.</p></div><nav aria-label="Navigation de pied de page"><Link href="/@patrick-chassany">Le Collaborateur de Patrick <Icon name="arrow" /></Link><Link href="/dashboard/patrick">Dashboard Patrick <span>Démo</span></Link><Link href="/dashboard/visiteur">Dashboard visiteur <span>Démo</span></Link></nav></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Unitalk</span><span>Prototype interactif · fonctions IA simulées</span></div></footer>;
 }

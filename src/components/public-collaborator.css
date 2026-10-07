@@ -1,0 +1,160 @@
+.presence-container { width: min(1120px, calc(100% - 96px)); margin-inline: auto; }
+.presence-hero { padding-top: clamp(32px, 5vh, 64px); padding-bottom: 64px; min-height: 100svh; }
+.presence-name { font-size: clamp(1.25rem, 2vw, 1.75rem); text-transform: uppercase; letter-spacing: -.025em; }
+.presence-hero h1 { margin-top: 24px; font-size: clamp(3.5rem, 6.7vw, 6rem); line-height: 1; letter-spacing: -.04em; text-transform: uppercase; text-wrap: initial; }
+.presence-collaborator { width: min(640px, 100%); margin: clamp(44px, 7vh, 76px) auto 0; scroll-margin-top: 28px; }
+.presence-conversation-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.presence-conversation-heading h2 { display: flex; align-items: center; gap: 12px; font-size: var(--text-control); font-weight: 500; text-transform: uppercase; }
+.presence-dot { display: inline-block; width: 8px; height: 8px; flex: none; background: var(--signal); border-radius: 50%; }
+.presence-greeting { position: relative; margin: 24px 0 28px; padding: 28px 32px; border-radius: var(--radius-panel); border-top-left-radius: 3px; background: var(--white); font-size: clamp(1.375rem, 2.2vw, 1.875rem); letter-spacing: -.025em; line-height: 1.4; }
+.presence-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.presence-actions > .button { min-width: 204px; }
+.presence-voice, .presence-text-button { display: inline-flex; align-items: center; gap: 12px; border: 0; background: transparent; padding: 12px 0; min-height: 44px; font-size: var(--text-small); color: var(--ink); text-align: left; }
+.presence-voice { margin-top: 16px; font-size: var(--text-control); }
+.presence-text-button:hover:not(:disabled), .presence-voice:hover { color: var(--signal-deep); text-decoration: underline; }
+.presence-availability { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: var(--text-caption); }
+.presence-collaborator > .presence-availability { margin-top: 16px; }
+.presence-demo { margin-left: 12px; padding-left: 12px; border-left: 1px solid var(--ivory-line); }
+.presence-close { display: grid; place-items: center; height: 44px; width: 44px; border: 1px solid var(--ivory-line); border-radius: 50%; background: transparent; color: var(--muted); }
+.presence-close:hover { background: var(--white); color: var(--ink); }
+.presence-session-note, .presence-section-note { font-size: var(--text-caption); color: var(--muted); line-height: 1.6; }
+.presence-collaborator > .presence-session-note { margin-top: 8px; }
+.presence-log { max-height: min(440px, 50svh); min-height: 160px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--muted) transparent; padding: 24px 4px 0; margin-inline: -4px; }
+.presence-message { width: fit-content; max-width: 94%; padding: 20px 24px; margin-bottom: 16px; border-radius: var(--radius-bubble); font-size: var(--text-control); line-height: 1.6; background: var(--white); border-top-left-radius: 3px; }
+.presence-message p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.presence-message-visitor { margin-left: auto; background: var(--signal-wash); border-top-left-radius: var(--radius-bubble); border-top-right-radius: 3px; }
+.presence-message:first-child { font-size: 1.375rem; letter-spacing: -.025em; }
+.presence-thinking { display: flex; gap: 8px; align-items: center; padding-block: 8px 16px; font-size: var(--text-small); color: var(--muted); }
+.presence-suggestions, .presence-next-actions { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 16px; }
+.presence-suggestions button, .presence-next-actions button { min-height: 44px; border: 1px solid var(--ivory-line); border-radius: var(--radius-control); background: transparent; color: var(--ink); padding: 10px 16px; font-size: var(--text-small); }
+.presence-suggestions button:hover:not(:disabled), .presence-next-actions button:hover:not(:disabled) { background: var(--signal-wash); border-color: var(--signal-deep); }
+.presence-composer { display: flex; align-items: flex-end; gap: 8px; padding: 12px; border: 1px solid var(--ivory-line); border-radius: var(--radius-panel); background: var(--white); }
+.presence-composer textarea { width: 100%; flex: 1; background: transparent; border: 0; resize: vertical; max-height: 200px; padding: 8px; font-size: var(--text-control); line-height: 1.5; }
+.presence-composer > div { display: flex; gap: 6px; }
+.presence-composer .icon-button { width: 44px; height: 44px; }
+.presence-composer .is-listening { background: var(--signal-wash); color: var(--signal-deep); }
+.presence-session-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; column-gap: 16px; margin-top: 12px; }
+.presence-session-bottom .presence-text-button { font-size: var(--text-caption); color: var(--muted); }
+.presence-voice-notice { margin-top: 12px; font-size: var(--text-small); color: var(--signal-deep); }
+.presence-slots { padding: 0; margin: 20px 0; border: 0; min-width: 0; }
+.presence-slots legend { margin-bottom: 8px; font-size: var(--text-small); color: var(--muted); }
+.presence-slots button { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; padding: 16px 0; background: transparent; border: 0; border-bottom: 1px solid var(--ivory-line); text-align: left; font-size: var(--text-control); font-variant-numeric: tabular-nums; }
+.presence-slots button:hover { color: var(--signal-deep); }
+.presence-booking-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-block: 16px; }
+.presence-booking-form label { display: block; margin-bottom: 8px; font-size: var(--text-small); }
+.presence-booking-form input { width: 100%; min-height: 53px; padding: 14px 20px; background: var(--white); border: 1px solid var(--ivory-line); border-radius: var(--radius-control); font-size: var(--text-control); }
+.presence-booking-form > p, .presence-booking-form > button { grid-column: 1 / -1; }
+.presence-booking-form > button { justify-self: start; }
+.presence-booking-form .form-error { margin: 0; font-size: var(--text-small); }
+.presence-result { padding: 24px 0; margin-top: 16px; border-block: 1px solid var(--ivory-line); }
+.presence-result h3 { display: flex; align-items: center; gap: 10px; font-size: var(--text-title); margin-bottom: 16px; }
+.presence-result h3 svg { color: var(--signal-deep); }
+.presence-result dl { margin: 0; font-size: var(--text-small); }
+.presence-result dl > div { display: grid; grid-template-columns: 80px 1fr; gap: 12px; padding-block: 8px; }
+.presence-result dt { color: var(--muted); }
+.presence-result dd { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.presence-result > p { margin-block: 12px; }
+.presence-result blockquote { margin: 16px 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.presence-result details { margin-block: 16px; font-size: var(--text-small); }
+.presence-result summary { min-height: 44px; padding-block: 10px; text-decoration: underline; }
+.presence-result details p { padding-block: 8px; overflow-wrap: anywhere; white-space: pre-wrap; }
+.presence-return-context { margin: -12px 0 24px; font-size: var(--text-small); overflow-wrap: anywhere; max-width: 60ch; color: var(--muted); }
+.presence-return-context span { display: block; margin-top: 8px; font-size: var(--text-caption); }
+.presence-section { padding-block: 100px; border-top: 1px solid var(--ivory-line); }
+.presence-section > h2 { margin-bottom: 40px; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -.025em; text-transform: uppercase; }
+.presence-capabilities { display: grid; grid-template-columns: 1fr 2fr; column-gap: 64px; }
+.presence-capabilities dl { margin: 0; }
+.presence-capabilities dl > div { display: grid; grid-template-columns: 160px 1fr; gap: 32px; padding-block: 12px; }
+.presence-capabilities dt { font-size: var(--text-title); letter-spacing: -.025em; }
+.presence-capabilities dd { margin: 0; align-self: center; font-size: var(--text-control); color: var(--muted); max-width: 36ch; }
+.presence-capabilities > .presence-section-note { grid-column: 2; margin-top: 24px; max-width: 60ch; }
+.presence-person { display: grid; grid-template-columns: 1fr 1fr; gap: 0 80px; }
+.presence-person > h2 { grid-column: 1 / -1; }
+.presence-person-title { font-size: clamp(3rem, 6.4vw, 5.5rem); letter-spacing: -.04em; line-height: 1.05; }
+.presence-person-title > span { color: var(--signal-deep); }
+.presence-person-copy { align-self: end; }
+.presence-person-copy > p:first-child { max-width: 29ch; font-size: var(--text-title); line-height: 1.5; }
+.presence-companies { margin-top: 28px; font-size: var(--text-control); }
+.presence-person-copy > button { margin-top: 16px; }
+.presence-timeline { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin: 72px 0 0; }
+.presence-timeline > div { border-top: 1px solid var(--ivory-line); padding-top: 24px; }
+.presence-timeline dt { font-size: var(--text-title); text-transform: uppercase; }
+.presence-timeline dd { margin: 16px 0 0; color: var(--muted); font-size: var(--text-control); }
+.presence-timeline dd > span { display: block; color: var(--ink); margin-bottom: 8px; }
+.presence-topics { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; }
+.presence-topics > h2 { max-width: 12ch; }
+.presence-topics > div { margin-top: -16px; }
+.presence-topics button { display: flex; width: 100%; gap: 24px; align-items: center; justify-content: space-between; padding-block: 20px; min-height: 72px; background: transparent; border: 0; border-bottom: 1px solid var(--ivory-line); font-size: clamp(1.5rem, 3vw, 2.25rem); letter-spacing: -.025em; text-align: left; line-height: 1.2; }
+.presence-topics button:hover:not(:disabled) { color: var(--signal-deep); }
+.presence-work > div { display: flex; flex-wrap: wrap; gap: 64px; }
+.presence-work h3 { font-size: var(--text-title); margin-bottom: 12px; }
+.presence-work > .presence-section-note { margin-top: 32px; }
+.presence-away > h2 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.06; letter-spacing: -.04em; text-transform: none; margin-bottom: 24px; }
+.presence-away-preview { max-width: 640px; margin: 32px 0 0 auto; }
+.presence-away-preview blockquote { margin: 24px 0 32px; font-size: var(--text-title); letter-spacing: -.025em; }
+.presence-away-preview blockquote span { display: block; margin-top: 16px; font-size: var(--text-body); letter-spacing: normal; }
+.presence-away-preview > .presence-section-note { margin-top: 24px; }
+.presence-social { padding-block: 40px; border-top: 1px solid var(--ivory-line); }
+.presence-social h2 { font-size: var(--text-control); margin-bottom: 8px; }
+.presence-social button { color: var(--muted); }
+.presence-footer { display: flex; justify-content: center; padding: 40px 24px 48px; }
+.presence-footer .brand { font-size: 1.125rem; color: var(--muted); }
+.presence-footer .brand svg { width: 22px; height: 22px; }
+.presence-footer .brand:hover { color: var(--signal-deep); }
+@media (prefers-reduced-motion: no-preference) {
+  .presence-thinking .presence-dot, .presence-composer .is-listening svg { animation: presence-breathe 1.4s ease-in-out infinite; }
+  @keyframes presence-breathe { 50% { opacity: .4; } }
+}
+@media (max-width: 959px) {
+  .presence-container { width: calc(100% - 64px); }
+  .presence-hero h1 { font-size: clamp(3rem, 7.1vw, 4.5rem); }
+  .presence-capabilities, .presence-topics { grid-template-columns: 1fr 2fr; gap: 32px; }
+  .presence-capabilities dl > div { grid-template-columns: 120px 1fr; gap: 24px; }
+  .presence-person { gap: 0 40px; }
+  .presence-timeline { gap: 24px; }
+}
+@media (max-width: 699px) {
+  .presence-container { width: calc(100% - 40px); }
+  .presence-hero { padding-top: 32px; padding-bottom: 56px; }
+  .presence-name { font-size: var(--text-control); }
+  .presence-hero h1 { font-size: clamp(2.4rem, 10.1vw, 4.2rem); line-height: 1.03; margin-top: 24px; }
+  .presence-desktop-break { display: none; }
+  .presence-collaborator { margin-top: 48px; scroll-margin-top: 16px; }
+  .presence-conversation-heading h2 { font-size: var(--text-small); gap: 10px; }
+  .presence-greeting { font-size: 1.375rem; padding: 24px; margin-block: 24px; }
+  .presence-actions { flex-direction: column; align-items: stretch; }
+  .presence-actions > .button { width: 100%; min-width: 0; }
+  .presence-actions > .button-primary { justify-content: space-between; }
+  .presence-voice { margin-top: 16px; }
+  .presence-collaborator > .presence-availability { margin-top: 12px; }
+  .presence-log { max-height: 45svh; }
+  .presence-message { padding: 16px 20px; }
+  .presence-message:first-child { font-size: var(--text-body); }
+  .presence-composer { gap: 4px; padding: 8px; }
+  .presence-composer > div { flex-direction: column; }
+  .presence-composer textarea { align-self: stretch; }
+  .presence-slots button { font-size: var(--text-small); }
+  .presence-booking-form { grid-template-columns: 1fr; }
+  .presence-booking-form > button { width: 100%; }
+  .presence-section { padding-block: 64px; }
+  .presence-section > h2 { font-size: var(--text-title); margin-bottom: 32px; }
+  .presence-capabilities, .presence-topics, .presence-person { display: block; }
+  .presence-capabilities dl > div { grid-template-columns: 1fr; gap: 8px; padding-block: 16px; }
+  .presence-capabilities dt { font-size: var(--text-title); }
+  .presence-capabilities dd { max-width: 32ch; }
+  .presence-capabilities > .presence-section-note { margin-top: 24px; }
+  .presence-person-title { font-size: clamp(3.25rem, 12vw, 5rem); }
+  .presence-person-copy { margin-top: 32px; }
+  .presence-person-copy > p:first-child { font-size: var(--text-body); }
+  .presence-timeline { grid-template-columns: 1fr; margin-top: 48px; gap: 32px; }
+  .presence-timeline > div { display: grid; grid-template-columns: 1fr 1.4fr; gap: 16px; }
+  .presence-timeline dd { margin-top: 0; font-size: var(--text-small); }
+  .presence-topics > h2 { max-width: none; }
+  .presence-topics > div { margin-top: 0; }
+  .presence-topics button { font-size: 1.5rem; padding-block: 18px; }
+  .presence-work > div { flex-direction: column; gap: 32px; }
+  .presence-away > h2 { font-size: clamp(2.5rem, 10vw, 4rem); }
+  .presence-away-preview { margin-top: 32px; }
+  .presence-away-preview blockquote { font-size: var(--text-title); }
+  .presence-social { padding-block: 32px; }
+}

@@ -619,7 +619,7 @@ button svg, a svg, summary svg { flex: none; }
 .section-copy blockquote > span { color: var(--signal-deep); }
 .marketing-home .capability-note { color: var(--muted); font-size: var(--text-small); line-height: 1.5; }
 .patrick-proof { padding-top: 28px; }
-.patrick-proof .patrick-invitation blockquote { font-size: clamp(1.5rem, 2.7vw, 2.5rem); }
+.collaborator-showcase .patrick-invitation blockquote { font-size: clamp(1.5rem, 2.7vw, 2.5rem); }
 .patrick-proof .patrick-invitation > p { margin-top: 0; }
 .patrick-proof .patrick-invitation .demo-label { margin-bottom: 0; }
 .migration-section { background: var(--signal-wash); }
@@ -661,13 +661,10 @@ button svg, a svg, summary svg { flex: none; }
 .authority-levels dd { margin: 14px 0 0; font-size: var(--text-control); color: var(--muted); }
 .authority-section blockquote { font-size: clamp(1.5rem, 2.7vw, 2.25rem); line-height: 1.4; margin: 0; max-width: 44ch; letter-spacing: -.025em; }
 .public-door { border-top: 1px solid var(--ivory-line); }
-.public-door-preview { padding: 40px; border: 1px solid var(--ivory-line); background: var(--white); border-radius: var(--radius-panel); }
-.public-door-preview > p { font-size: var(--text-title); }
-.public-door-subtitle { display: block; color: var(--muted); margin-top: 8px; font-size: var(--text-control); }
-.public-address { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--ivory-line); margin-top: 32px; padding-top: 24px; font-size: var(--text-control); }
+.public-address { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--ink-line); margin-top: 32px; padding-top: 24px; font-size: var(--text-control); }
 .public-address > span { flex: 1; overflow-wrap: anywhere; }
-.public-address:hover { color: var(--signal-deep); }
-.public-door blockquote { margin: 28px 0 10px; font-size: var(--text-title); color: var(--signal-deep); }
+.public-address:hover { color: #ff6aba; }
+.public-address:focus-visible { outline-color: #ff6aba; }
 .pricing-section { background: var(--ivory-sunk); }
 .pricing-ownership-line { color: var(--muted); }
 .pricing-offer { background: var(--white); border-radius: var(--radius-panel); padding: 36px; }
@@ -693,12 +690,6 @@ button svg, a svg, summary svg { flex: none; }
 .closing-section .text-link { margin-top: 24px; }
 .marketing-footer .footer-inner nav { display: flex; flex-direction: row; gap: 32px; }
 .marketing-footer .footer-inner nav svg { display: none; }
-.footer-information { max-width: 1152px; margin: 40px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-.footer-information section { border-top: 1px solid var(--ink-line); scroll-margin-top: 100px; }
-.footer-information summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 0; font-size: var(--text-small); list-style: none; }
-.footer-information summary::-webkit-details-marker { display: none; }
-.footer-information details[open] summary svg { transform: rotate(45deg); }
-.footer-information p { font-size: var(--text-small); color: var(--muted-ink); line-height: 1.6; }
 .encounter-preferences { margin-top: 24px; padding: 20px; background: var(--signal-wash); border-radius: var(--radius-bubble); font-size: var(--text-small); }
 .encounter-preferences > p:first-child { font-weight: 500; }
 .encounter-preferences dl { margin: 14px 0; }
@@ -716,7 +707,7 @@ button svg, a svg, summary svg { flex: none; }
   .marketing-home h2 { font-size: 2.75rem; }
   .english-hero .hero-content h1 { font-size: 4rem; }
   .authority-section { padding-block: 72px; }
-  .public-door-preview, .pricing-offer { padding: 28px; }
+  .pricing-offer { padding: 28px; }
   .billing-choice label { flex-direction: column; gap: 2px; padding-inline: 8px; }
   .history-destination { font-size: var(--text-body); }
 }
@@ -732,8 +723,8 @@ button svg, a svg, summary svg { flex: none; }
   .marketing-section > div > p { font-size: var(--text-control); }
   .marketing-section > div > .button { margin-top: 24px; }
   .patrick-proof { padding-top: 0; }
-  .patrick-proof .button { width: 100%; justify-content: space-between; padding-inline: 20px; }
-  .patrick-proof .patrick-invitation blockquote { font-size: 1.75rem; }
+  .collaborator-showcase .button { width: 100%; justify-content: space-between; padding-inline: 20px; }
+  .collaborator-showcase .patrick-invitation blockquote { font-size: 1.75rem; }
   .history-illustration { max-width: none; }
   .history-illustration > p { font-size: var(--text-title) !important; }
   .history-destination { padding: 20px; }
@@ -746,10 +737,7 @@ button svg, a svg, summary svg { flex: none; }
   .authority-levels > div:last-child { border-bottom: 1px solid var(--ivory-line); }
   .authority-levels dd { margin-top: 8px; }
   .authority-section blockquote { font-size: var(--text-title); }
-  .public-door > div:first-child { order: 2; }
-  .public-door-preview { padding: 26px 20px; }
   .public-address { gap: 10px; font-size: var(--text-small); }
-  .public-door blockquote { font-size: var(--text-body); }
   .pricing-offer { padding: 24px 20px; }
   .pricing-offer > .pricing-subtitle { font-size: var(--text-title); }
   .pricing-offer > .capability-note { font-size: var(--text-caption); }
@@ -757,7 +745,6 @@ button svg, a svg, summary svg { flex: none; }
   .billing-choice label { flex-direction: row; flex-wrap: wrap; gap: 4px 8px; }
   .closing-section { padding-block: 72px; }
   .marketing-footer .footer-inner nav { flex-wrap: wrap; gap: 8px 24px; }
-  .footer-information { grid-template-columns: 1fr; gap: 0; margin-top: 32px; }
   .encounter-preferences dl > div { flex-direction: column; gap: 3px; padding-block: 7px; }
   .encounter-preferences dd { text-align: left; }
 }

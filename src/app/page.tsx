@@ -41,7 +41,7 @@ export default function Home() {
         <div className="section-copy"><p>It reads your conversations, understands your relationships, organizes your contacts and opportunities, responds, follows up and acts.</p><p>When only you can decide, it asks you.</p><blockquote>You only get involved<br /><span>when you’re needed.</span></blockquote></div>
       </section>
 
-      <section className="marketing-section patrick-proof content-container" id="patrick" aria-labelledby="patrick-title">
+      <section className="marketing-section collaborator-showcase patrick-proof content-container" id="patrick" aria-labelledby="patrick-title">
         <div><h2 id="patrick-title">Patrick already<br />has one.<br /><span>Meet his Collaborator.</span></h2><Link className="button button-primary" href="/@patrick">Talk to Patrick’s Collaborator <Icon name="arrow" /></Link></div>
         <div className="patrick-invitation"><div className="invitation-identity"><span className="avatar">PC</span><div><strong>Patrick’s Collaborator</strong><span>Public AI Collaborator</span></div></div><blockquote>Hi. I’m Patrick’s<br />Collaborator.<br /><span>What brings you here?</span></blockquote><p><span className="demo-label">Interactive demo</span></p></div>
       </section>
@@ -66,9 +66,9 @@ export default function Home() {
         <blockquote>“Handle my inbound. Book meetings. Qualify opportunities. Ask me before anything important.”</blockquote>
       </section>
 
-      <section className="marketing-section public-door content-container" id="public-presence" aria-labelledby="door-title">
-        <div className="public-door-preview"><span className="avatar avatar-large">PC</span><p>Patrick’s Collaborator</p><span className="public-door-subtitle">A public way to reach me.</span><Link href="/@patrick" className="public-address"><Icon name="link" /><span>unitalk.com/@patrick</span><Icon name="arrow" /></Link></div>
-        <div><h2 id="door-title">Your public<br /><span>front door.</span></h2><p>Your Collaborator has its own identity and URL.</p><p>Put it on LinkedIn, your email signature, website or QR code.</p><blockquote>Here’s how to interact with me.</blockquote><Link className="text-link" href="/@patrick">See a public Collaborator <Icon name="arrow" /></Link></div>
+      <section className="marketing-section collaborator-showcase public-door content-container" id="public-presence" aria-labelledby="door-title">
+        <div><h2 id="door-title">Your public<br /><span>front door.</span></h2><p>Your Collaborator has its own identity and URL.</p><p>Put it on LinkedIn, your email signature, website or QR code.</p><Link className="button button-primary" href="/@patrick">See a public Collaborator <Icon name="arrow" /></Link></div>
+        <div className="patrick-invitation"><div className="invitation-identity"><span className="avatar">PC</span><div><strong>Patrick’s Collaborator</strong><span>A public way to reach me.</span></div></div><blockquote>Here’s how to<br /><span>interact with me.</span></blockquote><Link href="/@patrick" className="public-address"><Icon name="link" /><span>unitalk.com/@patrick</span><Icon name="arrow" /></Link></div>
       </section>
 
       <section className="pricing-section" id="pricing" aria-labelledby="pricing-title">

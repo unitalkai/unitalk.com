@@ -2,23 +2,23 @@
 version: 1
 slug: "src-app-profile-page-tsx"
 primary_target: "src/app/[profile]/page.tsx"
-related_targets: []
+related_targets: ["src/components/public-collaborator.tsx", "src/lib/public-collaborator-demo.ts", "src/components/public-collaborator.css"]
 ---
 
 # Patrick's public Collaborator
 
-Mode: Operate. A visitor meets the AI Collaborator and tries a clearly marked demo conversation. Public knowledge stays distinct from Patrick's private owner workspace.
+Mode: Operate. English, interaction-first public presence. Visitors speak freely, prepare a meeting or prepare a handoff, within a visibly labelled local demo. Public knowledge stays distinct from Patrick's private workspace.
 
 ## Direction contract
 
-THESIS: Meet an identity and speak to it; the public profile is an interaction, not the owner's task list.
+THESIS: “Here’s how to interact with me.” The Collaborator is the first experience and prepares the relationship before Patrick joins it.
 
-OWN-WORLD: User-pinned WhatsApp website grammar: cream world, near-black conversational surface, lightweight sans-serif, fuchsia action and pill controls.
+OWN-WORLD: Inherit Archivo, ivory, black, magenta and pill actions. Editorial scale and generous whitespace replace the former two-column profile-and-chat composition. No enclosing chat-widget card.
 
-STORY: Understand who the Collaborator represents, what public topics it can discuss, and submit a demo question. Creation remains available after meeting it.
+STORY: Speak or prepare a meeting first; discover capabilities, Patrick and his companies later. Topics and relevant work invitations return to the same conversation. No Unitalk marketing block.
 
-FIRST VIEWPORT: Public navigation above a two-column identity introduction and fully usable chat demo. Identity includes PC initials rather than an invented portrait. Conversation starts with a truthful statement of its simulated behavior.
+FIRST VIEWPORT: Patrick’s name, oversized uppercase statement, then the Collaborator’s identity and white greeting. Exactly two main actions, Send a message and Book a meeting; quieter voice affordance and demo availability. No navigation, photo, initials avatar, banner or biography. Opening a conversation expands this same focal point in place.
 
-FORM: User-pinned reference; code-led. On mobile identity precedes chat and the input remains reachable.
+FORM: User-pinned final master layout; code-led, no seed required. Mobile preserves the sequence and stacks the two actions. Native inline inputs, local conversational booking and explicitly simulated handoff. A real editorial portrait and verified social URLs are not supplied; never substitute stock people or invented links.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

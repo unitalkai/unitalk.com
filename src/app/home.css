@@ -1,5 +1,8 @@
 /* Conversion composition within the established WhatsApp–fuchsia family. */
-.conversion-home .english-hero { min-height: 580px; align-items: start; }
+.conversion-home .english-hero { min-height: 580px; }
+@media (min-width: 960px) {
+  .conversion-home .english-hero { display: flex; align-items: center; }
+}
 .conversion-home .english-hero .hero-content { max-width: 880px; padding: 64px 24px 64px clamp(40px, 5vw, 80px); }
 .conversion-home .english-hero .hero-content h1 { font-size: clamp(2.75rem, 4.8vw, 4.5rem); }
 .conversion-home .english-hero .hero-title-line { display: block; font-size: 1em; white-space: nowrap; }

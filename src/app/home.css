@@ -28,6 +28,15 @@
 .conversion-home .relationship-caption { margin-top: 12px; }
 .work-conversion-copy > p { margin-top: 22px; }
 .work-start .work-connection-copy { color: var(--muted); font-size: var(--text-small); }
+.channel-ribbon { display: flex; align-items: center; gap: 14px; min-height: 84px; margin-bottom: 16px; }
+.channel-orb { display: grid; place-items: center; flex: none; width: 64px; height: 64px; border-radius: 50%; background: var(--white); }
+.channel-orb svg { width: 30px; height: 30px; }
+.channel-whatsapp { color: #25D366; align-self: start; }
+.channel-linkedin { color: #0A66C2; width: 56px; height: 56px; align-self: end; }
+.channel-linkedin svg { width: 26px; height: 26px; }
+.channel-message { display: grid; place-items: center; flex: none; width: 44px; height: 38px; border-radius: var(--radius-bubble); border-top-right-radius: 3px; background: var(--signal-wash); color: var(--signal-deep); }
+.channel-slack { align-self: start; margin-top: 8px; }
+.channel-email { color: var(--signal-deep); width: 56px; height: 56px; align-self: end; }
 .work-start .hero-entry { margin-top: 24px; }
 .work-start .hero-entry-alternative .text-link { color: var(--ink); }
 .work-start .hero-entry-alternative .text-link:hover { color: var(--signal-deep); }
@@ -176,6 +185,12 @@
   .conversion-home .marketing-section, .conversion-home .authority-section { padding-block: 56px; }
   .conversion-home .patrick-proof { padding-top: 12px; }
   .work-start .hero-entry { margin-top: 24px; }
+  .channel-ribbon { gap: 10px; min-height: 66px; margin-bottom: 14px; }
+  .channel-orb { width: 48px; height: 48px; }
+  .channel-orb svg { width: 24px; height: 24px; }
+  .channel-linkedin, .channel-email { width: 44px; height: 44px; }
+  .channel-linkedin svg { width: 22px; height: 22px; }
+  .channel-message { width: 36px; height: 32px; }
   .work-demo { padding: 20px; border-radius: 20px; }
   .work-demo-choices { gap: 4px; margin-bottom: 20px; }
   .work-demo-choices button { padding-inline: 9px; font-size: var(--text-caption); }

@@ -5,6 +5,7 @@ import { SiteHeader, SiteFooter } from "@/components/site-shell";
 import { OwnershipOptions } from "@/components/ownership-options";
 import { CollaboratorPricing } from "@/components/collaborator-pricing";
 import { HomeEntry } from "@/components/home-entry";
+import { ChannelRibbon } from "@/components/channel-ribbon";
 import { HeroWorkProof, WorkDemo } from "@/components/work-demo";
 import { EncounterLink } from "@/components/collaborator-offer-context";
 import { Icon } from "@/components/icons";
@@ -52,7 +53,7 @@ export default function Home() {
         <div className="marketing-section work-summary content-container">
           <div className="work-conversion-copy"><h2 id="work-title">Less chasing.<br /><span>More moving forward.</span></h2><p>Turn a conversation into a useful next step. A follow-up to review. A lead to qualify. A brief before you meet.</p></div>
           <div id="work-example" className="work-example-anchor"><WorkDemo /></div>
-          <div className="work-start"><p className="work-connection-copy">Designed for your website, email, WhatsApp, Slack, LinkedIn and more.</p><HomeEntry /></div>
+          <div className="work-start"><ChannelRibbon /><p className="work-connection-copy">Designed for your website, email, WhatsApp, Slack, LinkedIn and more.</p><HomeEntry /></div>
         </div>
       </section>
 

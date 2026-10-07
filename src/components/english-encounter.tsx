@@ -26,6 +26,12 @@ export function EnglishEncounter({ initialUrl, initialChannel, preferences }: { 
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (met) {
+      setMet(false);
+      setError("");
+      document.getElementById("meet-name")?.focus();
+      return;
+    }
     if (!name.trim()) { setError("Tell us your name to start the encounter."); return; }
     setError("");
     setMet(true);

@@ -16,3 +16,17 @@ They identify planned migration sources, not connected accounts or partnerships.
 The LobeHub paths are MIT licensed; see `LOBE-ICONS-LICENSE.txt`.
 Hermes' source asset is linked from https://hermes-agent.nousresearch.com.
 Product names and marks remain those of their respective owners.
+
+## Footer social marks and destinations
+
+`src/components/footer-social-links.tsx` uses monochrome SVG silhouettes from
+Simple Icons (LinkedIn, X, YouTube, GitHub), beside accessible network names.
+The user supplied `unitalkai`; the following pages resolved to Unitalk during
+the 2026-10-07 verification:
+
+- LinkedIn: https://www.linkedin.com/company/unitalkai/
+- X / Twitter: https://x.com/unitalkai
+- YouTube: https://www.youtube.com/@unitalkai
+- GitHub: https://github.com/unitalkai
+
+Icon sources: https://github.com/simple-icons/simple-icons (CC0).

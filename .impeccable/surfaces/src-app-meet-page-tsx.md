@@ -7,6 +7,8 @@ related_targets: ["src/components/english-encounter.tsx", "src/components/work-d
 
 # Meet your AI Collaborator
 
+The shared encounter now also accepts French at `/fr/meet`, independently of the French visitor dashboard. All visible form, mission, example, error, approval and preference copy is translated. The shared footer switches between `/meet` and `/fr/meet` while preserving source/channel/offer query values; switching language remounts the route’s in-memory form/example. The longer French submit button wraps, and mobile columns use `minmax(0, 1fr)` to prevent 320px overflow. French approval and API-key/billing handoff plus both language routes passed browser checks at 1440, 1280 × 600, 390 and 320px; lint, TypeScript and production build passed.
+
 Mode: Persuade. An English marketing encounter for a prospective owner arriving from the homepage, How it works or Pricing. Job: choose one mission and experience a useful draft with the final decision still theirs. This local preview is independent of Patrick's public interaction and the French owner/visitor dashboards.
 
 ## Direction contract

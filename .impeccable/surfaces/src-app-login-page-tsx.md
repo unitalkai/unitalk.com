@@ -7,6 +7,8 @@ related_targets: ["src/app/login/login.css", "src/components/site-shell.tsx"]
 
 # Customer login
 
+`src/components/customer-login.tsx` now supplies the shared English `/login` and French `/fr/login` composition. Translated unavailable-state copy retains the same unconnected-authentication boundary. The bilingual footer contains official Unitalk social links, the pinned English tagline and equivalent-route switching. Both languages passed checks at 1440, 1280 × 600, 390 and 320px; lint, TypeScript and production build passed.
+
 Mode: Operate. Existing customers reach `/login` directly from the shared header or mobile menu. The user supplied this route. The repository has no authentication service or existing customer endpoint, so the page currently presents an unavailable state without collecting credentials or granting dashboard access.
 
 ## Direction contract

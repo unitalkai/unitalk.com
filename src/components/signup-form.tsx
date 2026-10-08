@@ -1,74 +1,121 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "./icons";
-import { WorkDemo } from "./work-demo";
+import { UnitalkMark } from "./unitalk-mark";
+import { LinkedInLogo } from "./linkedin-logo";
 import { parsePublicUrl } from "./create-form";
-import { WORK_EXAMPLES, getWorkExample, type WorkExampleId } from "@/lib/work-examples";
-import { HOSTING_OPTIONS, INTELLIGENCE_OPTIONS, applicationModeLabel, type CollaboratorPreferences } from "@/lib/collaborator-offer";
-import { hostingLabel, intelligenceLabel, localizedOffer, marketingPath } from "@/lib/marketing-language";
+import { type CollaboratorPreferences } from "@/lib/collaborator-offer";
+import { localizedOffer, marketingPath } from "@/lib/marketing-language";
 import { PublicDoorPreview } from "./public-door-preview";
-import { ApplicationChoices } from "./application-options";
-import { useCollaboratorOffer } from "./collaborator-offer-context";
+
+const MISSION_SUGGESTIONS = {
+  en: [
+    { label: "Follow-ups", text: "Keep track of my important contacts and prepare follow-ups." },
+    { label: "Qualify", text: "Qualify incoming leads and flag the promising ones." },
+    { label: "Support", text: "Handle customer support requests and prepare replies." },
+  ],
+  fr: [
+    { label: "Relances", text: "Suivre mes contacts importants et préparer les relances." },
+    { label: "Qualifier", text: "Qualifier les demandes entrantes et me signaler les plus prometteuses." },
+    { label: "Support", text: "Traiter les demandes de support client et préparer les réponses." },
+  ],
+} as const;
 
 export function SignupForm({ initialUrl, initialChannel, preferences, language = "en" }: { initialUrl?: string; initialChannel?: string; preferences: CollaboratorPreferences; language?: "en" | "fr" }) {
   const [name, setName] = useState("");
-  const [example, setExample] = useState<WorkExampleId>("follow-up");
-  const [met, setMet] = useState(false);
+  const [mission, setMission] = useState("");
+  const [email, setEmail] = useState("");
+  const [step, setStep] = useState<"identity" | "mission">("identity");
   const [error, setError] = useState("");
-  const [cloudOption, setCloudOption] = useState("standard");
-  const [applications, setApplications] = useState<CollaboratorPreferences>({ twenty: preferences.twenty ?? "none", chatwoot: preferences.chatwoot ?? "none" });
-  const { setPreferences } = useCollaboratorOffer();
   const heading = useRef<HTMLHeadingElement>(null);
   const source = initialUrl ? parsePublicUrl(initialUrl) : null;
-  const hosting = HOSTING_OPTIONS.find(option => option.value === preferences.hosting);
-  const intelligence = INTELLIGENCE_OPTIONS.find(option => option.value === preferences.intelligence);
   const fr = language === "fr";
   const offer = localizedOffer(language);
+  const suggestions = MISSION_SUGGESTIONS[language];
 
   useEffect(() => {
-    if (!met) return;
+    if (step !== "mission") return;
     heading.current?.focus({ preventScroll: true });
     heading.current?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
-  }, [met]);
+  }, [step]);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (met) {
-      setMet(false);
+    if (step === "identity") {
+      if (!email.trim()) { setError(fr ? "Indiquez votre adresse e-mail." : "Enter your email address."); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) { setError(fr ? "Cette adresse e-mail n'est pas valide." : "That email address isn't valid."); return; }
       setError("");
-      document.getElementById("meet-name")?.focus();
+      setStep("mission");
       return;
     }
-    if (!name.trim()) { setError(fr ? "Indiquez votre prénom pour commencer votre inscription." : "Enter your first name to start signup."); return; }
+    if (!name.trim()) { setError(fr ? "Indiquez votre prénom." : "Enter your first name."); return; }
+    if (!mission.trim()) { setError(fr ? "Décrivez ce que vous voulez confier à votre Collaborateur." : "Describe what you'd like your Collaborator to handle."); return; }
     setError("");
-    setMet(true);
   }
 
-  return <>
-    <div className="meet-heading"><Link href={marketingPath("/", language)} className="meet-back"><Icon name="arrow" />{fr ? "Revenir à l’accueil" : "Back to the homepage"}</Link><h1>{fr ? <>Inscrivez-vous.<br /><span>Commencez gratuitement.</span></> : <>Sign up.<br /><span>Start for free.</span></>}</h1></div>
-    <div className="meet-workspace">
-      <div className="meet-inputs">
-        <h2>{fr ? <>Un peu de contexte.<br />Un premier pas utile.</> : <>A little context.<br />A useful first step.</>}</h2>
-        {source && <div className="meet-source"><Icon name="link" /><div><strong>{fr ? "Site de référence" : "Website reference"}: {source.hostname}</strong></div></div>}
-        {initialUrl && !source && <p className="form-error" role="alert">{fr ? "Ce site n’est pas valide. Vous pouvez commencer par une mission." : "That website reference isn’t valid. You can still start with a mission."}</p>}
-        {initialChannel && <div className="meet-source"><Icon name="message" /><div><strong>{fr ? "Canal souhaité" : "Preferred channel"}: {initialChannel}</strong></div></div>}
-        <form className="meet-form" onSubmit={submit} noValidate>
-          <label htmlFor="meet-name">{fr ? "Comment votre Collaborateur doit-il vous appeler ?" : "What should your Collaborator call you?"}</label>
-          <input id="meet-name" autoComplete="name" placeholder={fr ? "Votre prénom" : "Your first name"} maxLength={70} value={name} onChange={event => { setName(event.target.value); setError(""); setMet(false); }} aria-invalid={Boolean(error)} aria-describedby={error ? "meet-error" : undefined} />
-          <fieldset><legend>{fr ? "Qu’aimeriez-vous lui confier ?" : "What would you like off your plate?"}</legend>{WORK_EXAMPLES.map(item => <label className="meet-mission" key={item.id}><input type="radio" name="mission" value={item.id} checked={example === item.id} onChange={() => { setExample(item.id); setMet(false); }} /><span>{getWorkExample(item.id, language).mission}</span></label>)}</fieldset>
-          <details className="meet-applications"><summary>{fr ? "Applications facultatives" : "Optional apps"}<Icon name="plus" /></summary><ApplicationChoices language={language} preferences={applications} idPrefix="meet-app" onChange={choices => { setApplications(previous => ({ ...previous, ...choices })); setPreferences(previous => ({ ...previous, ...choices })); setMet(false); }} /></details>
-          {(!preferences.hosting || preferences.hosting === "unitalk") && <details className="meet-cloud-option"><summary>{fr ? "Options Unitalk Cloud · facultatif" : "Unitalk Cloud options · optional"}<Icon name="plus" /></summary><label htmlFor="meet-cloud-option">{fr ? "Service managé" : "Managed service"}</label><select id="meet-cloud-option" value={cloudOption} onChange={event => { setCloudOption(event.target.value); setMet(false); }} aria-describedby="meet-cloud-option-note"><option value="standard">Unitalk Cloud</option><option value="secnumcloud">{fr ? "Unitalk Cloud — OVHcloud SecNumCloud · option à venir" : "Unitalk Cloud — OVHcloud SecNumCloud · planned option"}</option></select><p id="meet-cloud-option-note">{fr ? "Option de service managé sur une offre OVHcloud qualifiée SecNumCloud. Service précis et supplément à confirmer. Ce choix prépare une préférence ; il ne commande ni ne déploie un hébergement." : "Managed-service option on a SecNumCloud-qualified OVHcloud offering. Exact service and surcharge to be confirmed. This records a preference; it does not order or deploy hosting."}</p></details>}
-          {error && <p id="meet-error" className="form-error" role="alert">{error}</p>}
-          <button className="button button-primary" type="submit">{met ? fr ? "Recommencer" : "Start again" : fr ? "Commencer gratuitement" : "Start for free"}<Icon name="arrow" /></button>
-        </form>
-        {(hosting || intelligence || preferences.billing) && <details className="meet-preferences"><summary>{fr ? "Vos choix de configuration" : "Your setup choices"} <Icon name="chevron" /></summary><dl>{hosting && <div><dt>{fr ? "Hébergement" : "Hosting"}</dt><dd>{hostingLabel(hosting.value, hosting.label, language)}</dd></div>}{intelligence && <div><dt>Intelligence</dt><dd>{intelligenceLabel(intelligence.value, intelligence.label, language)}</dd></div>}{preferences.billing && <div><dt>{fr ? "Préférence d’abonnement" : "Subscription preference"}</dt><dd>{preferences.billing === "annual" ? `${offer.annual} / ${fr ? "an" : "year"}` : `${offer.monthly} / ${fr ? "mois" : "month"}`}</dd></div>}</dl></details>}
-        {met && (applications.twenty !== "none" || applications.chatwoot !== "none") && <div className="meet-app-summary"><h3>{fr ? "Vos applications choisies" : "Your selected apps"}</h3>{applications.twenty && applications.twenty !== "none" && <p>Twenty CRM — {applicationModeLabel(applications.twenty, language)}</p>}{applications.chatwoot && applications.chatwoot !== "none" && <p>Chatwoot Support — {applicationModeLabel(applications.chatwoot, language)}</p>}<p className="application-note">{fr ? "Préférences préparées. Aucune application commandée ou connectée." : "Preferences prepared. No app ordered or connected."}</p></div>}
-      </div>
-      <section className="meet-result" aria-label={fr ? "Aperçu de votre Collaborateur" : "Your Collaborator preview"} aria-live="polite">
-        {met ? <><h2 ref={heading} tabIndex={-1}>{fr ? "Bonjour" : "Hi"} {name.trim()}.<br /><span>{fr ? "Facilitons le prochain pas." : "Let’s make the next step easier."}</span></h2><p>{fr ? "Relisez. Modifiez. Gardez le dernier mot." : "Review the draft. Edit it. Keep the final say."}</p><WorkDemo key={`${language}:${example}`} initialExample={example} language={language} compact /><div className="meet-public-preview"><h3>{fr ? "Votre porte d’entrée, à votre nom." : "Your front door, with your name."}</h3><PublicDoorPreview language={language} ownerName={name} /></div>{cloudOption === "secnumcloud" && <p className="meet-cloud-preference">{fr ? "Préférence préparée : service managé Unitalk Cloud — OVHcloud SecNumCloud. Option à venir, service et supplément à confirmer." : "Preference prepared: Unitalk Cloud — OVHcloud SecNumCloud managed service. Planned option; exact service and surcharge to be confirmed."}</p>}<div className="meet-next"><h3>{fr ? "La suite reste votre choix." : "Your next step stays yours."}</h3><button type="button" className="text-link" onClick={() => { setMet(false); document.getElementById("meet-name")?.focus(); }}>{fr ? "Essayer une autre mission" : "Try another mission"} <Icon name="arrow" /></button></div></> : <div className="meet-empty"><span className="demo-label">{fr ? "Démo" : "Demo"}</span><Icon name="message" width="44" height="44" /><h2>{fr ? <>Votre travail.<br /><span>Votre Collaborateur.</span></> : <>Your work.<br /><span>Your Collaborator.</span></>}</h2><p>{fr ? "Choisissez une mission. Découvrez un brouillon. Gardez le dernier mot." : "Choose a mission. See a prepared draft. Keep the final say."}</p></div>}
-      </section>
+  function pickSuggestion(text: string) { setMission(text); setError(""); }
+
+  return <div className="signup-layout">
+    <div className="signup-form-pane">
+      <div className="signup-brand"><Link href={marketingPath("/", language)} className="signup-logo" aria-label="Unitalk"><UnitalkMark /></Link></div>
+
+      {source && <div className="signup-source"><Icon name="link" /><div><strong>{fr ? "Site de référence" : "Website reference"}: {source.hostname}</strong></div></div>}
+      {initialUrl && !source && <p className="form-error" role="alert">{fr ? "Ce site n'est pas valide. Vous pouvez continuer." : "That website reference isn't valid. You can still continue."}</p>}
+      {initialChannel && <div className="signup-source"><Icon name="message" /><div><strong>{fr ? "Canal souhaité" : "Preferred channel"}: {initialChannel}</strong></div></div>}
+
+      {step === "identity" && <form className="signup-create" onSubmit={submit} noValidate>
+        <h1>{fr ? "Créez votre compte." : "Create your account."}</h1>
+        <p className="signup-subtitle">{fr ? "Une semaine offerte. Sans carte bancaire." : "One week free. No credit card required."}</p>
+
+        <div className="signup-sso">
+          <button type="button" className="signup-sso-button" onClick={() => { setEmail("demo@google.account"); setError(""); setStep("mission"); }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" /><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" /><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" /><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" /></svg>
+            {fr ? "Continuer avec Google" : "Continue with Google"}
+          </button>
+          <button type="button" className="signup-sso-button" onClick={() => { setEmail("demo@linkedin.account"); setError(""); setStep("mission"); }}>
+            <LinkedInLogo className="signup-sso-linkedin" />
+            {fr ? "Continuer avec LinkedIn" : "Continue with LinkedIn"}
+          </button>
+        </div>
+
+        <div className="signup-separator"><span>{fr ? "ou" : "or"}</span></div>
+
+        <label htmlFor="signup-email">{fr ? "Adresse e-mail" : "Email address"}</label>
+        <input id="signup-email" type="email" autoComplete="email" placeholder={fr ? "vous@entreprise.com" : "you@company.com"} maxLength={254} value={email} onChange={event => { setEmail(event.target.value); setError(""); }} aria-invalid={Boolean(error)} aria-describedby={error ? "signup-error" : undefined} />
+
+        {error && <p id="signup-error" className="form-error" role="alert">{error}</p>}
+        <button className="signup-submit" type="submit">{fr ? "Continuer" : "Continue"} <Icon name="arrow" /></button>
+
+        <div className="signup-login-row"><span>{fr ? "Déjà inscrit ?" : "Already have an account?"}</span><Link href={marketingPath("/login", language)} className="button button-outline button-small">{fr ? "Se connecter" : "Log in"}</Link></div>
+      </form>}
+
+      {step === "mission" && <form className="signup-mission" onSubmit={submit} noValidate>
+        <h1 ref={heading} tabIndex={-1}>{fr ? "Que voulez-vous lui confier ?" : "What would you like to hand over?"}</h1>
+        <p className="signup-subtitle">{fr ? "Une mission. Pas une liste de tâches." : "One mission. Not a to-do list."}</p>
+
+        <label htmlFor="signup-name">{fr ? "Votre prénom" : "Your first name"}</label>
+        <input id="signup-name" autoComplete="name" placeholder={fr ? "Comment votre Collaborateur doit-il vous appeler ?" : "What should your Collaborator call you?"} maxLength={70} value={name} onChange={event => { setName(event.target.value); setError(""); }} />
+
+        <label htmlFor="signup-mission">{fr ? "Sa première mission" : "Its first mission"}</label>
+        <textarea id="signup-mission" rows={3} maxLength={600} value={mission} onChange={event => { setMission(event.target.value); setError(""); }} placeholder={fr ? "Par exemple : suivre mes contacts importants, préparer les relances et me demander quand une décision est nécessaire." : "e.g. Keep track of my important contacts, prepare follow-ups and ask me when a decision is needed."} aria-invalid={Boolean(error)} aria-describedby={error ? "signup-mission-error" : undefined} />
+        <div className="signup-suggestions" aria-label={fr ? "Suggestions de mission" : "Mission suggestions"}>{suggestions.map(item => <button type="button" key={item.label} onClick={() => pickSuggestion(item.text)}>{item.label}</button>)}</div>
+
+        {error && <p id="signup-mission-error" className="form-error" role="alert">{error}</p>}
+        <button className="signup-submit" type="submit">{fr ? "Continuer" : "Continue"} <Icon name="arrow" /></button>
+        <button type="button" className="signup-back" onClick={() => { setStep("identity"); setError(""); }}>{fr ? "← Modifier mon e-mail" : "← Change my email"}</button>
+      </form>}
     </div>
-  </>;
+
+    <aside className="signup-preview-pane">
+      <Image src="/images/professional-conversation.jpg" alt="" fill sizes="50vw" className="signup-preview-photo" />
+      <div className="signup-preview-overlay" />
+      <div className="signup-door-preview">
+        <h2>{fr ? <>Votre porte d&apos;entrée.<br /><span>À votre nom.</span></> : <>Your front door.<br /><span>With your name.</span></>}</h2>
+        <PublicDoorPreview language={language} ownerName={name} />
+      </div>
+    </aside>
+  </div>;
 }

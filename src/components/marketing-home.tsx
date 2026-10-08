@@ -22,21 +22,21 @@ export function MarketingHome({ language = "en" }: { language?: "en" | "fr" }) {
       <section className="home-hero work-hero english-hero" id="creer" aria-labelledby="home-title">
         <div className="hero-content">
           <div className="hero-intro">
-<h1 id="home-title"><span className="hero-title-line">{fr ? "Votre Collaborateur IA." : "Your AI Collaborator."}</span><span className="hero-title-promise"><span className="hero-title-highlight">{fr ? "Moins de relances." : "Less chasing."}</span>{" "}<span className="hero-title-highlight">{fr ? "Plus d'échanges." : "More connecting."}</span></span></h1>
+            <h1 id="home-title"><span className="hero-title-line">{fr ? "Votre Collaborateur IA." : "Your AI Collaborator."}</span><span className="hero-title-promise"><span className="hero-title-highlight">{fr ? "Moins de relances." : "Less chasing."}</span>{" "}<span className="hero-title-highlight">{fr ? "Plus d'échanges." : "More connecting."}</span></span></h1>
             <p className="hero-outcome">{fr ? "Il s'occupe des réponses, des relances et de la préparation des rendez-vous." : "It handles replies, follow-ups and meeting prep."}</p>
             <p className="hero-explanation">{fr ? "Vous intervenez là où ça compte." : "You stay involved where it matters."}</p>
           </div>
-          <div className="hero-conversion">
-            <div className="hero-conversion-actions"><EncounterLink className="button button-primary" language={language} marketing><span>{fr ? "Commencer gratuitement" : "Start for free"}</span><Icon name="arrow" /></EncounterLink><a href="#work-example" className="hero-secondary-action">{fr ? "Voir un exemple" : "See an example"} <Icon name="arrow" /></a></div>
-            <p className="hero-price">{offer.monthly} / {fr ? "mois · Résiliable à tout moment" : "month · Cancel anytime"}</p>
-            <p className="hero-usage">{offer.trialShort}</p>
-          </div>
         </div>
         <div className="home-hero-media">
-          <Image src="/images/professional-conversation.jpg" alt={fr ? "Deux professionnelles échangent autour d’un ordinateur." : "Two professionals exchanging ideas over a laptop."} fill preload sizes="(max-width: 959px) 100vw, 60vw" className="home-hero-photo" />
+          <Image src="/images/working-together.jpg" alt={fr ? "Des professionnels travaillent ensemble autour d’une table." : "Professionals working together around a table."} fill preload sizes="100vw" className="home-hero-photo" />
           <div className="home-hero-overlay" />
         </div>
-        <HeroWorkProof key={language} language={language} />
+        <HeroWorkProof key={language} language={language} carousel />
+        <div className="hero-conversion">
+          <div className="hero-conversion-actions"><EncounterLink className="button button-primary" language={language} marketing><span>{fr ? "Commencer gratuitement" : "Start for free"}</span><Icon name="arrow" /></EncounterLink></div>
+          <p className="hero-price">{offer.monthly} / {fr ? "mois · Résiliable à tout moment" : "month · Cancel anytime"}</p>
+          <p className="hero-usage">{offer.trialShort}</p>
+        </div>
       </section>
 
       <section className="home-relationships" id="how-it-works" aria-labelledby="work-title">

@@ -1,8 +1,9 @@
 import type { SVGProps } from "react";
 
-type IconName = "arrow" | "chevron" | "message" | "check" | "plus" | "link" | "send" | "menu" | "close" | "external" | "home" | "people" | "settings" | "search" | "mic" | "pause" | "play" | "trash" | "lock" | "globe" | "phone";
+type IconName = "arrow" | "chevron" | "message" | "check" | "plus" | "link" | "send" | "menu" | "close" | "external" | "home" | "people" | "profile" | "settings" | "search" | "mic" | "pause" | "play" | "trash" | "lock" | "globe" | "phone";
 
 const paths: Record<IconName, React.ReactNode> = {
+  profile: <><circle cx="12" cy="8" r="4" /><path d="M4 21v-2a8 8 0 0 1 16 0v2" /></>,
   phone: <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7 12.8 12.8 0 0 0 .7 2.8 2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5 12.8 12.8 0 0 0 2.8.7 2 2 0 0 1 1.8 2.1Z" />,
   globe: <><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c5 5 5 13 0 18-5-5-5-13 0-18Z" /></>,
   lock: <><rect x="5" y="10" width="14" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3M12 15v2" /></>,

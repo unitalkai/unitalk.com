@@ -1,10 +1,15 @@
 .marketing-header-expanded { gap: 20px; }
 .marketing-header-expanded .desktop-nav { gap: 24px; white-space: nowrap; }
-@media (max-width: 1279px) and (min-width: 960px) {
+.header-sales { display: inline-flex; align-items: center; min-height: 44px; font-size: var(--text-small); white-space: nowrap; text-decoration: underline; text-underline-offset: 5px; }
+.header-sales:hover { color: var(--signal-deep); }
+@media (max-width: 1399px) and (min-width: 960px) {
   .marketing-header-expanded .desktop-nav { display: none; }
   .marketing-header-expanded .mobile-menu-toggle { display: grid; }
   .marketing-header-expanded + .mobile-navigation { display: flex; flex-direction: column; padding: 12px 32px 24px; border-top: 1px solid var(--ivory-line); }
   .marketing-header-expanded + .mobile-navigation a { display: flex; justify-content: space-between; align-items: center; min-height: 53px; border-bottom: 1px solid var(--ivory-line); font-size: var(--text-control); }
+}
+@media (max-width: 959px) {
+  .header-sales { display: none; }
 }
 .resource-hero { padding-block: 80px 64px; }
 .resource-hero h1 { font-size: var(--text-display); line-height: 1.06; letter-spacing: -.04em; }

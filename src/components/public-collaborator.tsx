@@ -1,234 +1,194 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
-import { Brand } from "./site-shell";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 import { Icon } from "./icons";
-import { emptyMeeting, exampleMeetingSlots, meetingTopics, PUBLIC_SESSION_KEY, publicDemoReply, publicTopics, readPublicSession, startingPoints, type Meeting, type MeetingStage, type PublicMessage, type PublicSession } from "@/lib/public-collaborator-demo";
+import { EncounterLink } from "./collaborator-offer-context";
+import { PATRICK_LINKEDIN, PUBLIC_SESSION_KEY, publicDemoReply, readPublicSession, type PublicMessage, type PublicSession } from "@/lib/public-collaborator-demo";
+import { publicText, type PublicLanguage } from "@/lib/public-collaborator-language";
+import { PublicMeeting, PublicMessageForm, usePublicLinkedin } from "./public-linkedin-tools";
 import "./public-collaborator.css";
 
+const greeting: PublicMessage = { id: 0, role: "collaborator", text: "Hey, I'm Patrick's AI Collaborator. Ask me anything, book a call, or send him a message — I've got it." };
+
 type VoiceRecognition = {
-  lang: string;
-  continuous: boolean;
-  interimResults: boolean;
+  lang: string; continuous: boolean; interimResults: boolean;
   onresult: ((event: { results: ArrayLike<ArrayLike<{ transcript: string }>> }) => void) | null;
   onerror: ((event: { error: string }) => void) | null;
   onend: (() => void) | null;
-  start: () => void;
-  abort: () => void;
+  start: () => void; abort: () => void;
 };
 type VoiceWindow = Window & { SpeechRecognition?: new () => VoiceRecognition; webkitSpeechRecognition?: new () => VoiceRecognition };
-const greeting: PublicMessage = { id: 0, role: "collaborator", text: "Hi. I’m Patrick’s Collaborator.\nWhat brings you here?" };
-const abilities = [
-  ["Answer", "Questions about Patrick, Unitalk and his work."],
-  ["Understand", "Why you are here and what you need."],
-  ["Introduce", "Connect the right person with Patrick."],
-  ["Book", "Find a suitable time and prepare the meeting."],
-  ["Escalate", "Bring Patrick in when his personal input matters."],
-];
 
 export function PublicCollaborator() {
-  const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<PublicMessage[]>([greeting]);
+  const searchParams = useSearchParams();
+  const context = useMemo(() => {
+    const name = (searchParams.get("name") ?? "").trim().slice(0, 70);
+    const company = (searchParams.get("company") ?? "").trim().slice(0, 70);
+    const topic = (searchParams.get("context") ?? "").trim().slice(0, 120);
+    if (!name) return null;
+    return { name, company, topic };
+  }, [searchParams]);
+
+  const [language, setLanguage] = useState<PublicLanguage>("en");
+  const t = (text: string) => publicText(language, text);
+  const linkedin = usePublicLinkedin();
+  const [messages, setMessages] = useState<PublicMessage[]>(() => {
+    if (!context) return [greeting];
+    const intro = context.company
+      ? `Hi ${context.name} from ${context.company}. ${context.topic ? `Let's talk about ${context.topic}.` : "What brings you here today?"}`
+      : `Hi ${context.name}. ${context.topic ? `Let's talk about ${context.topic}.` : "What brings you here today?"}`;
+    return [greeting, { id: 1, role: "collaborator", text: intro }];
+  });
   const [input, setInput] = useState("");
   const [pending, setPending] = useState(false);
-  const [stage, setStage] = useState<MeetingStage>("idle");
-  const [meeting, setMeeting] = useState<Meeting>(emptyMeeting);
-  const [slots, setSlots] = useState<string[]>([]);
-  const [error, setError] = useState("");
-  const [handoff, setHandoff] = useState<"idle" | "review" | "prepared">("idle");
   const [listening, setListening] = useState(false);
   const [voiceNotice, setVoiceNotice] = useState("");
   const [saved, setSaved] = useState<PublicSession | null>(null);
   const [visitorName, setVisitorName] = useState("");
-  const [showWork, setShowWork] = useState(false);
-  const [away, setAway] = useState(false);
-  const conversation = useRef<HTMLDivElement>(null);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [showMessageForm, setShowMessageForm] = useState(false);
   const composer = useRef<HTMLTextAreaElement>(null);
   const log = useRef<HTMLDivElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const recognition = useRef<VoiceRecognition | null>(null);
   const sequence = useRef(1);
-  const opener = useRef<HTMLButtonElement | null>(null);
-  const isBooking = stage !== "idle" && stage !== "confirmed";
-  const lastRequest = [...messages].reverse().find(message => message.role === "visitor" && message.kind !== "selection")?.text;
-  const handoffRequest = stage === "confirmed" ? `${meeting.reason}${meeting.context ? `\n${meeting.context}` : ""}` : lastRequest;
+
 
   useEffect(() => {
     const restore = setTimeout(() => setSaved(readPublicSession()), 0);
     return () => { clearTimeout(restore); if (timer.current) clearTimeout(timer.current); recognition.current?.abort(); };
   }, []);
   useEffect(() => {
-    if (!open || messages.length < 2) return;
-    try { sessionStorage.setItem(PUBLIC_SESSION_KEY, JSON.stringify({ messages: messages.slice(-80), name: visitorName })); } catch { /* Conversation remains usable when browser storage is unavailable. */ }
-  }, [messages, open, visitorName]);
-  useEffect(() => { if (log.current) log.current.scrollTop = log.current.scrollHeight; }, [messages, pending, stage, handoff]);
+    if (messages.length < 2) return;
+    try { sessionStorage.setItem(PUBLIC_SESSION_KEY, JSON.stringify({ messages: messages.slice(-80), name: visitorName })); } catch { /* Tab storage is optional. */ }
+  }, [messages, visitorName]);
   useEffect(() => {
-    if (!open) return;
-    const frame = requestAnimationFrame(() => {
-      if (stage === "details") document.getElementById("public-meeting-name")?.focus({ preventScroll: true });
-      else if (stage === "time") document.getElementById("public-meeting-times")?.focus({ preventScroll: true });
-      else if (handoff === "review") document.getElementById("public-handoff-title")?.focus({ preventScroll: true });
-      else composer.current?.focus({ preventScroll: true });
-    });
-    return () => cancelAnimationFrame(frame);
-  }, [open, stage, handoff]);
+    if (log.current) log.current.scrollTop = log.current.scrollHeight;
+  }, [messages, pending]);
 
-  function append(role: PublicMessage["role"], text: string, kind?: PublicMessage["kind"]) {
-    const message = { id: sequence.current++, role, text, ...(kind ? { kind } : {}) };
-    setMessages(previous => [...previous, message]);
+  function restoreConversation() {
+    if (!saved || messages.length !== 1) return;
+    setMessages(saved.messages); setVisitorName(saved.name);
+    sequence.current = Math.max(...saved.messages.map(m => m.id)) + 1;
+    setSaved(null);
+    requestAnimationFrame(() => composer.current?.focus());
   }
 
-  function reveal(button?: HTMLButtonElement, restore = true) {
-    if (restore && !open && saved && messages.length === 1) {
-      setMessages(saved.messages);
-      sequence.current = Math.max(...saved.messages.map(message => message.id)) + 1;
-      setVisitorName(saved.name);
-    }
-    if (button) opener.current = button;
-    setOpen(true);
-    requestAnimationFrame(() => conversation.current?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" }));
-  }
-
-  function startConversation(button: HTMLButtonElement, fresh = false) {
-    if (fresh) {
-      if (timer.current) clearTimeout(timer.current);
-      timer.current = null; recognition.current?.abort(); recognition.current = null;
-      setPending(false); setListening(false); setInput(""); setError(""); setSlots([]); setShowWork(false);
-      setMessages([greeting]); setSaved(null); setVisitorName(""); setStage("idle"); setMeeting(emptyMeeting); setHandoff("idle"); setVoiceNotice(""); sequence.current = 1;
-      try { sessionStorage.removeItem(PUBLIC_SESSION_KEY); } catch { /* Storage is optional. */ }
-    }
-    reveal(button, !fresh);
-  }
-
-  function respond(text: string) {
-    setPending(true);
-    timer.current = setTimeout(() => {
-      append("collaborator", publicDemoReply(text));
-      setPending(false);
-      if (/work|advisory|speak|agency|partner|unitalk|invest/i.test(text)) setShowWork(true);
-    }, 550);
+  function append(role: PublicMessage["role"], text: string) {
+    setMessages(prev => [...prev, { id: sequence.current++, role, text }]);
   }
 
   function submitText(text: string) {
     if (!text.trim() || pending || text.length > 2000) return;
-    setInput(""); setError(""); append("visitor", text.trim());
-    if (stage === "reason") {
-      setMeeting(previous => ({ ...previous, reason: text.trim() }));
-      append("collaborator", "Anything Patrick should know before the meeting?"); setStage("context");
-    } else if (stage === "context") {
-      setMeeting(previous => ({ ...previous, context: text.trim() })); offerTimes();
-    } else respond(text.trim());
+    restoreConversation();
+    setInput(""); append("visitor", text.trim()); setPending(true);
+    timer.current = setTimeout(() => {
+      const reply = publicDemoReply(text.trim(), language);
+      append("collaborator", reply); setPending(false); timer.current = null;
+
+      // Keep the requested tool inline with this conversation.
+      const lower = text.toLowerCase();
+      if (/book|meet|call|rendez-vous|appel|créneau|calendrier/.test(lower)) {
+        setShowCalendar(true); setShowMessageForm(false);
+      } else if (/message|send|write|écrire|envoyer|transmettre|contact/.test(lower)) {
+        setShowMessageForm(true); setShowCalendar(false);
+      } else {
+        setShowCalendar(false); setShowMessageForm(false);
+      }
+    }, 550);
   }
 
-  function send(event: FormEvent<HTMLFormElement>) { event.preventDefault(); submitText(input); }
-
-  function startBooking(button?: HTMLButtonElement) {
-    if (pending) return;
-    reveal(button);
-    if (isBooking) return;
-    setHandoff("idle"); setMeeting(emptyMeeting); setError(""); setInput("");
-    append("collaborator", "What would you like to discuss with Patrick?"); setStage("reason");
-  }
-
-  function offerTimes() {
-    setSlots(exampleMeetingSlots());
-    append("collaborator", "Let’s find a time. Which of these example slots would suit you?");
-    setStage("time");
-  }
-
-  function selectTime(slot: string) {
-    setMeeting(previous => ({ ...previous, slot })); append("visitor", slot, "selection");
-    append("collaborator", "Who should Patrick expect? Add your name and email to finish the meeting preview."); setStage("details");
-  }
-
-  function confirmMeeting(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!meeting.name.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(meeting.email.trim())) {
-      setError("Add your name and a valid email address to complete the preview.");
-      document.getElementById(!meeting.name.trim() ? "public-meeting-name" : "public-meeting-email")?.focus(); return;
-    }
-    setError(""); setVisitorName(meeting.name.trim());
-    append("collaborator", `Meeting preview prepared, ${meeting.name.trim()}.\n${meeting.slot}\n\nYour discussion and context are included below.`);
-    setStage("confirmed");
-  }
-
-  function closeConversation() {
-    recognition.current?.abort(); setListening(false); setOpen(false);
-    if (messages.length > 1) setSaved({ messages, name: visitorName });
-    requestAnimationFrame(() => opener.current?.focus({ preventScroll: true }));
-  }
-
-  function talk(button?: HTMLButtonElement) {
-    reveal(button);
+  function talk() {
     if (listening) { recognition.current?.abort(); setListening(false); return; }
     const browser = window as VoiceWindow;
     const Speech = browser.SpeechRecognition ?? browser.webkitSpeechRecognition;
-    if (!Speech) { setVoiceNotice("Voice input isn’t supported in this browser. You can write in the same conversation below."); return; }
+    if (!Speech) { setVoiceNotice(t("Voice input isn't supported in this browser. You can write your question instead.")); return; }
     const speech = new Speech(); recognition.current = speech;
-    speech.lang = "en-GB"; speech.continuous = false; speech.interimResults = false;
+    speech.lang = language === "fr" ? "fr-FR" : "en-GB"; speech.continuous = false; speech.interimResults = false;
     speech.onresult = event => {
-      setInput(Array.from(event.results).map(result => result[0].transcript).join(" ").slice(0, 2000));
-      setVoiceNotice("Your words are in the message box. Review them, then send."); composer.current?.focus();
+      setInput(Array.from(event.results).map(r => r[0].transcript).join(" ").slice(0, 2000));
+      setVoiceNotice(t("Your words are in the message box. Review them, then send.")); composer.current?.focus();
     };
-    speech.onerror = event => { setListening(false); setVoiceNotice(event.error === "not-allowed" ? "Microphone access was not allowed. You can enable it in your browser or write your message." : "Voice input stopped. Try again or write your message below."); };
+    speech.onerror = event => { setListening(false); setVoiceNotice(t(event.error === "not-allowed" ? "Microphone access was not allowed. Enable it in your browser or write your question." : "Voice input stopped. Try again or write your question.")); };
     speech.onend = () => setListening(false);
-    try { speech.start(); setListening(true); setVoiceNotice("Listening through your browser. Speak, then review your message before sending."); }
-    catch { setListening(false); setVoiceNotice("Voice input couldn’t start. Try again or write your message below."); }
+    try { speech.start(); setListening(true); setVoiceNotice(t("Listening. Speak, then review your draft before sending.")); }
+    catch { setListening(false); setVoiceNotice(t("Voice input couldn't start. Try again or write your question.")); }
   }
 
-  function topic(text: string, button: HTMLButtonElement) {
-    if (pending) return;
-    reveal(button); setStage("idle"); setHandoff("idle"); setInput("");
-    const request = `I’d like to talk about ${text}.`;
-    append("visitor", request); respond(request);
+  function stopVoice() { recognition.current?.abort(); setListening(false); setVoiceNotice(""); }
+
+  function changeLanguage(next: PublicLanguage) {
+    recognition.current?.abort(); setListening(false); setVoiceNotice(""); setLanguage(next);
   }
 
-  return <div className="public-presence" lang="en">
+  return <div className="public-presence" lang={language}>
+    <header className="site-header public-header">
+      <div className="header-inner">
+        <span className="public-header-owner">
+          <Image src="/images/patrick-chassany.jpg" width={36} height={36} alt="" className="public-header-avatar" />
+          <span className="public-header-name">Patrick Chassany</span>
+        </span>
+        <div className="header-actions public-header-actions">
+          <EncounterLink language={language} marketing className="button button-primary button-small">{language === "fr" ? "Commencer gratuitement" : "Start for free"} <Icon name="arrow" /></EncounterLink>
+        </div>
+      </div>
+    </header>
+
     <main id="main-content">
-      <section className="presence-hero presence-container" aria-labelledby="presence-title">
-        <p className="presence-name">Patrick Chassany</p>
-        <h1 id="presence-title">Here’s how to<br className="presence-desktop-break" /> interact with me.</h1>
-        <div className={`presence-collaborator${open ? " is-open" : ""}`} ref={conversation}>
-          <div className="presence-conversation-heading"><h2><span className="presence-dot" />Patrick’s Collaborator</h2>{open && <button type="button" className="presence-close" onClick={closeConversation} aria-label="Close conversation"><Icon name="close" /></button>}</div>
-          {!open ? <>
-            <blockquote className="presence-greeting">{saved ? <>{saved.name ? `Hi ${saved.name}.` : "Welcome back."} Good to see you again.<br /><span>Would you like to continue?</span></> : <>Hi. I’m Patrick’s Collaborator.<br />What can I help you with?</>}</blockquote>
-            {saved && <p className="presence-return-context">Last time: {saved.messages.filter(message => message.role === "visitor").at(-1)?.text.slice(0, 180)}<span>Remembered in this browser tab only.</span></p>}
-            <div className="presence-actions"><button type="button" className="button button-primary" onClick={event => startConversation(event.currentTarget)}>{saved ? "Continue conversation" : "Send a message"}<Icon name="arrow" /></button><button type="button" className="button button-outline" onClick={event => startBooking(event.currentTarget)}>Book a meeting</button></div>
-            {saved && <button type="button" className="presence-text-button" onClick={event => startConversation(event.currentTarget, true)}>Something else</button>}
-            <button type="button" className="presence-voice" onClick={event => talk(event.currentTarget)}>Talk instead <Icon name="mic" /></button>
-            <p className="presence-availability"><span className="presence-dot" />Available <span className="presence-demo">Demo</span></p>
-          </> : <>
-            <div className="presence-log" ref={log} role="log" aria-label="Conversation with Patrick’s Collaborator" aria-live="polite" aria-relevant="additions">
-              {messages.map(message => <div key={message.id} className={`presence-message presence-message-${message.role}`}><span className="sr-only">{message.role === "visitor" ? "You: " : "Patrick’s Collaborator: "}</span><p>{message.text}</p></div>)}
-              {pending && <p className="presence-thinking" role="status"><span className="presence-dot" />Thinking</p>}
+      <section className="public-hero" aria-labelledby="public-title">
+        <div className="public-hero-copy">
+          <h1 id="public-title">{language === "fr" ? <>Le Collaborateur IA<br />de Patrick.</> : <>Patrick&apos;s<br />AI Collaborator.</>}</h1>
+          <p className="public-hero-intro">{t("One conversation. Ask a question, book a call, or send a message — I'll handle it.")}</p>
+          <p className="public-hero-signature">{t("Unitalk gives you a public AI Collaborator that works for you. It remembers your context, handles entrusted work and involves you when your judgment matters. One conversation. Ask a question, book a call, or send a message — I'll handle it.")}</p>
+          <div className="public-hero-actions">
+            <EncounterLink language={language} marketing className="button button-primary">{language === "fr" ? "Créer le vôtre" : "Create yours"} <Icon name="arrow" /></EncounterLink>
+          </div>
+        </div>
+
+        <div className="public-workspace">
+          {saved && messages.length === 1 && <div className="public-return"><p>{saved.name ? language === "fr" ? `Heureux de vous revoir, ${saved.name}.` : `Welcome back, ${saved.name}.` : t("Welcome back.")} {t("Your previous conversation is in this browser tab.")}</p><button type="button" className="presence-text-button" onClick={restoreConversation}>{t("Continue conversation")} <Icon name="arrow" /></button></div>}
+
+          <div className="presence-log" ref={log} role="log" aria-label={t("Conversation with Patrick's AI Collaborator")} aria-live="polite" aria-relevant="additions">
+            {messages.map(message => <div key={message.id} className={`presence-message presence-message-${message.role}`}><span className="sr-only">{t(message.role === "visitor" ? "You: " : "Patrick's AI Collaborator: ")}</span><p>{message.id === 0 ? t(greeting.text) : message.text}</p></div>)}
+            {pending && <p className="presence-thinking" role="status"><span className="presence-dot" />{t("Preparing a reply…")}</p>}
+          </div>
+
+          {messages.length === 1 && !saved && <div className="presence-suggestions" aria-label={t("Suggested")}>
+            {["What is Unitalk?", "I'd like to book a call", "Send a message to Patrick", "Why do you need an AI Collaborator?"].map(prompt => <button key={prompt} type="button" disabled={pending} onClick={() => submitText(t(prompt))}>{t(prompt)}<Icon name="arrow" width="16" height="16" /></button>)}
+          </div>}
+
+          <form className="presence-composer" onSubmit={event => { event.preventDefault(); submitText(input); }}>
+            <label className="sr-only" htmlFor="public-message">{t("Type your message")}</label>
+            <textarea id="public-message" ref={composer} value={input} onChange={event => setInput(event.target.value)} onKeyDown={event => { if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); submitText(input); } }} maxLength={2000} rows={2} placeholder={t("Type anything — a question, a request, an idea…")} />
+            <div>
+              <button type="button" className={`icon-button${listening ? " is-listening" : ""}`} onClick={listening ? stopVoice : talk} aria-label={t(listening ? "Stop voice input" : "Use voice input")} aria-pressed={listening}><Icon name={listening ? "pause" : "mic"} /></button>
+              <button type="submit" className="icon-button send-button" disabled={!input.trim() || pending} aria-label={t("Send")}><Icon name="arrow" /></button>
             </div>
-            {stage === "idle" && messages.length === 1 && <div className="presence-suggestions" aria-label="Suggested starting points">{startingPoints.map(prompt => <button type="button" key={prompt} onClick={() => submitText(prompt)}>{prompt}</button>)}</div>}
-            {stage === "reason" && <div className="presence-suggestions" aria-label="Meeting topics">{meetingTopics.map(prompt => <button type="button" key={prompt} onClick={() => submitText(prompt)}>{prompt}</button>)}</div>}
-            {stage === "context" && <button type="button" className="presence-text-button" onClick={offerTimes}>Nothing to add — show example times <Icon name="arrow" /></button>}
-            {stage === "time" && <fieldset className="presence-slots" id="public-meeting-times" tabIndex={-1}><legend>Example times · 30-minute meeting</legend>{slots.map(slot => <button type="button" key={slot} onClick={() => selectTime(slot)}>{slot}<Icon name="arrow" /></button>)}</fieldset>}
-            {stage === "details" && <form className="presence-booking-form" onSubmit={confirmMeeting} noValidate><div><label htmlFor="public-meeting-name">Name</label><input id="public-meeting-name" autoComplete="name" maxLength={100} value={meeting.name} aria-invalid={Boolean(error && !meeting.name.trim())} aria-describedby={error ? "public-booking-error" : undefined} onChange={event => setMeeting(previous => ({ ...previous, name: event.target.value }))} required /></div><div><label htmlFor="public-meeting-email">Email</label><input id="public-meeting-email" type="email" autoComplete="email" maxLength={254} value={meeting.email} aria-invalid={Boolean(error && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(meeting.email.trim()))} aria-describedby={error ? "public-booking-error" : undefined} onChange={event => setMeeting(previous => ({ ...previous, email: event.target.value }))} required /></div>{error && <p id="public-booking-error" className="form-error" role="alert">{error}</p>}<button type="submit" className="button button-primary">Prepare meeting <Icon name="check" /></button></form>}
-            {stage === "confirmed" && <section className="presence-result" aria-label="Prepared meeting"><h3><Icon name="check" />Meeting preview <span className="presence-demo">Demo</span></h3><dl><div><dt>Who</dt><dd>{meeting.name} · {meeting.email}</dd></div><div><dt>Why</dt><dd>{meeting.reason}</dd></div>{meeting.context && <div><dt>Context</dt><dd>{meeting.context}</dd></div>}<div><dt>When</dt><dd>{meeting.slot}</dd></div></dl><details><summary>Conversation included</summary>{messages.filter(message => message.role === "visitor").map(message => <p key={message.id}>{message.text}</p>)}</details><button type="button" className="presence-text-button" onClick={() => setStage("idle")}>Continue the conversation <Icon name="arrow" /></button></section>}
-            {handoff === "review" && <section className="presence-result" aria-labelledby="public-handoff-title"><h3 id="public-handoff-title" tabIndex={-1}>Prepare a message for Patrick <span className="presence-demo">Demo</span></h3><p>Your conversation and this request will be included:</p><blockquote>{handoffRequest}</blockquote><div className="presence-actions"><button type="button" className="button button-primary" onClick={() => { setHandoff("prepared"); append("collaborator", "Your message is prepared for Patrick, with the context of our conversation."); }}>Prepare handoff <Icon name="check" /></button><button type="button" className="presence-text-button" onClick={() => setHandoff("idle")}>Keep talking</button></div></section>}
-            {(stage === "idle" || stage === "confirmed") && messages.length > 1 && handoff !== "review" && <div className="presence-next-actions" aria-label="Next useful actions"><button type="button" disabled={pending} onClick={() => submitText("Explain Unitalk")}>Explain Unitalk</button><button type="button" disabled={pending} onClick={() => startBooking()}>Book a meeting</button><button type="button" disabled={pending || !lastRequest} onClick={() => setHandoff("review")}>{handoff === "prepared" ? "Review another handoff" : "Prepare a message for Patrick"}</button></div>}
-            {stage !== "time" && stage !== "details" && handoff !== "review" && <form className="presence-composer" onSubmit={send}><label className="sr-only" htmlFor="public-message">Write a message to Patrick’s Collaborator</label><textarea id="public-message" ref={composer} value={input} onChange={event => setInput(event.target.value)} onKeyDown={event => { if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); submitText(input); } }} maxLength={2000} rows={2} placeholder="Write a message…" /><div><button type="button" className={`icon-button${listening ? " is-listening" : ""}`} onClick={() => talk()} aria-label={listening ? "Stop voice input" : "Use voice input"} aria-pressed={listening}><Icon name={listening ? "pause" : "mic"} /></button><button type="submit" className="icon-button send-button" disabled={!input.trim() || pending} aria-label="Send message"><Icon name="arrow" /></button></div></form>}
-            {voiceNotice && <p className="presence-voice-notice" role="status">{voiceNotice}</p>}
-            <div className="presence-session-bottom"><p className="presence-availability"><span className="presence-dot" />{listening ? "Listening" : pending ? "Thinking" : "Available"}<span className="presence-demo">Demo</span></p>{isBooking && <button type="button" className="presence-text-button" onClick={() => { setStage("idle"); setError(""); append("collaborator", "We can come back to the meeting. What else would you like to discuss?"); }}>Return to conversation</button>}<button type="button" className="presence-text-button" onClick={() => { if (timer.current) clearTimeout(timer.current); setPending(false); recognition.current?.abort(); setListening(false); startConversation(opener.current ?? document.activeElement as HTMLButtonElement, true); }}>Clear conversation</button></div>
-          </>}
+          </form>
+          {voiceNotice && <p className="presence-voice-notice" role="status">{voiceNotice}</p>}
+
+          <PublicMeeting language={language} linkedin={linkedin} active={showCalendar} />
+          <PublicMessageForm language={language} linkedin={linkedin} conversationContext={messages.filter(message => message.role === "visitor").map(message => message.text)} active={showMessageForm} />
         </div>
       </section>
-
-      <section className="presence-capabilities presence-container presence-section" aria-labelledby="presence-can"><h2 id="presence-can">I can</h2><dl>{abilities.map(([name, description]) => <div key={name}><dt>{name}</dt><dd>{description}</dd></div>)}</dl></section>
-
-      <section className="presence-person presence-container presence-section" aria-labelledby="presence-patrick"><h2 id="presence-patrick">Patrick Chassany</h2><p className="presence-person-title">Founder.<br />Builder.<br /><span>Investor.</span></p><div className="presence-person-copy"><p>Patrick has spent 37+ years building internet companies and products.</p><p className="presence-companies">Amen · Fotolia · Unitalk</p><button type="button" className="presence-text-button" disabled={pending} onClick={event => topic("Patrick’s work", event.currentTarget)}>More about Patrick <Icon name="arrow" /></button></div><dl className="presence-timeline"><div><dt>Amen</dt><dd><span>1998</span>Internet infrastructure.</dd></div><div><dt>Fotolia</dt><dd><span>Co-founder</span>Acquired by Adobe.</dd></div><div><dt>Unitalk</dt><dd><span>Today</span>AI Collaborators you own.</dd></div></dl></section>
-
-      <section className="presence-topics presence-container presence-section" aria-labelledby="presence-topics-title"><h2 id="presence-topics-title">Talk to Patrick about</h2><div>{publicTopics.map(name => <button type="button" key={name} disabled={pending} onClick={event => topic(name, event.currentTarget)}>{name}<Icon name="arrow" width="28" height="28" /></button>)}</div></section>
-
-      {showWork && <section className="presence-work presence-container presence-section" aria-labelledby="presence-work-title"><h2 id="presence-work-title">Work with Patrick</h2><div>{[["Advisory", "Discuss"], ["Speaking", "Invite Patrick"], ["Unitalk", "Discover Unitalk"]].map(([name, label]) => <div key={name}><h3>{name}</h3><button type="button" className="presence-text-button" disabled={pending} onClick={event => topic(name, event.currentTarget)}>{label}<Icon name="arrow" /></button></div>)}</div></section>}
-
-      <section className="presence-away presence-container presence-section" aria-labelledby="presence-away-title"><h2 id="presence-away-title">Presence without<br />being present.</h2><button type="button" className="presence-text-button" aria-expanded={away} onClick={() => setAway(!away)}>{away ? "Close away preview" : "When Patrick is away"}<Icon name={away ? "close" : "plus"} /></button>{away && <div className="presence-away-preview"><p className="presence-availability"><span className="presence-dot" />Patrick is away <span className="presence-demo">Demo</span></p><blockquote>You don’t need to wait.<br /><span>I can answer questions, understand what you need and get Patrick involved when necessary.</span></blockquote><div className="presence-actions"><button type="button" className="button button-primary" onClick={event => startConversation(event.currentTarget)}>Send a message <Icon name="arrow" /></button><button type="button" className="button button-outline" onClick={event => startBooking(event.currentTarget)}>Book a meeting</button></div></div>}</section>
-
-      <section className="presence-social presence-container" aria-label="Patrick’s social links"><h2>Patrick</h2><button type="button" className="presence-text-button" disabled={pending} onClick={event => topic("Patrick’s social links", event.currentTarget)}>Ask for Patrick’s links <Icon name="arrow" /></button></section>
     </main>
-    <footer className="presence-footer"><Brand language="en" /></footer>
+
+    <footer className="public-footer">
+      <Link href={language === "fr" ? "/fr" : "/"} className="public-powered">{t("Powered by")} <span>Unitalk</span></Link>
+      <div className="public-footer-controls">
+        <a className="public-social-link" href={PATRICK_LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label={t("Patrick Chassany on LinkedIn")}><LinkedInMark /><span className="sr-only">{t("Opens a new tab")}</span></a>
+        <div className="public-language-toggle">
+          <button type="button" aria-pressed={language === "en"} onClick={() => changeLanguage("en")} lang="en">EN</button>
+          <button type="button" aria-pressed={language === "fr"} onClick={() => changeLanguage("fr")} lang="fr">FR</button>
+        </div>
+      </div>
+    </footer>
   </div>;
+}
+
+function LinkedInMark() {
+  return <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>;
 }

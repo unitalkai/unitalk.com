@@ -42,6 +42,7 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
         {role && <Link href="/fr/how-it-works">Comment ça marche</Link>}
       </nav>
       <div className="header-actions">
+        {!role && <Link href="/@patrick-chassany" className="header-sales" title={english ? "Talk to Patrick’s AI Collaborator" : "Parler au Collaborateur IA de Patrick"}>{english ? "Talk to sales" : "Contacter les ventes"}</Link>}
         {role ? <div className="account-pill"><span className="avatar avatar-small">{role === "patrick" ? "PC" : "V"}</span><span>{role === "patrick" ? "Patrick" : "Visiteur"}</span><span className="demo-label">Démo</span></div> : <Link href={marketingPath("/login", language)} className="button button-outline button-small customer-login" aria-current={pathname === marketingPath("/login", language) ? "page" : undefined}>{english ? "Log in" : "Se connecter"}</Link>}
         <EncounterLink language={language} marketing={!role} className="button button-primary button-small header-create">{role ? "Rencontrer le mien" : english ? "Start for free" : "Commencer gratuitement"} <Icon name="arrow" /></EncounterLink>
         <button className="icon-button mobile-menu-toggle" aria-label={english ? (open ? "Close navigation" : "Open navigation") : (open ? "Fermer la navigation" : "Ouvrir la navigation")} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}><Icon name={open ? "close" : "menu"} /></button>
@@ -50,6 +51,7 @@ export function SiteHeader({ role, language = "fr" }: { role?: "patrick" | "visi
     {open && <nav id="mobile-navigation" className="mobile-navigation" aria-label={english ? "Mobile navigation" : "Navigation mobile"}>
       {links.map(link => <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>{link.label}<Icon name="arrow" /></Link>)}
       <EncounterLink language={language} marketing={!role} onClick={() => setOpen(false)}>{role ? "Rencontrer mon Collaborateur" : english ? "Start for free" : "Commencer gratuitement"}<Icon name="arrow" /></EncounterLink>
+      {!role && <Link href="/@patrick-chassany" onClick={() => setOpen(false)} title={english ? "Talk to Patrick’s AI Collaborator" : "Parler au Collaborateur IA de Patrick"}>{english ? "Talk to sales" : "Contacter les ventes"}<Icon name="arrow" /></Link>}
       {!role && <Link href={marketingPath("/login", language)} onClick={() => setOpen(false)}>{english ? "Log in" : "Se connecter"}<Icon name="arrow" /></Link>}
     </nav>}
   </header>;
@@ -60,7 +62,7 @@ export function SiteFooter({ language = "fr" }: { language?: "fr" | "en" }) {
   return <footer className="site-footer marketing-footer">
     <div className="footer-inner">
       <div className="footer-identity"><Brand language={language} /><p className="footer-tagline" lang="en">Own your intelligence.</p></div>
-      <nav className="footer-navigation" aria-label={english ? "Footer navigation" : "Navigation de pied de page"}><Link href={marketingPath("/how-it-works", language)}>{english ? "How it works" : "Comment ça marche"}</Link><Link href={marketingPath("/pricing", language)}>{english ? "Pricing" : "Tarifs"}</Link><Link href={marketingPath("/store", language)}>{english ? "Store" : "Boutique"}</Link><Link href={marketingPath("/privacy", language)}>{english ? "Privacy" : "Confidentialité"}</Link><Link href={marketingPath("/about", language)}>{english ? "About" : "À propos"}</Link></nav>
+      <nav className="footer-navigation" aria-label={english ? "Footer navigation" : "Navigation de pied de page"}><Link href={marketingPath("/how-it-works", language)}>{english ? "How it works" : "Comment ça marche"}</Link><Link href={marketingPath("/pricing", language)}>{english ? "Pricing" : "Tarifs"}</Link><Link href={marketingPath("/store", language)}>{english ? "Store" : "Boutique"}</Link><Link href={marketingPath("/privacy", language)}>{english ? "Privacy" : "Confidentialité"}</Link><Link href={marketingPath("/compare", language)}>{english ? "Compare" : "Comparer"}</Link><Link href={marketingPath("/about", language)}>{english ? "About" : "À propos"}</Link><Link href="/@patrick-chassany" lang="en">Talk to Patrick</Link></nav>
     </div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} Unitalk</span><FooterSocialLinks language={language} /><FooterLanguage language={language} /></div>
   </footer>;

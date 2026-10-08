@@ -1,10 +1,23 @@
 # Illustration
 
+## Patrick Chassany’s profile photo
+
+`patrick-chassany.jpg`: Patrick’s actual 200 × 200 LinkedIn profile photograph,
+retrieved on 2026-10-07 from the user-supplied profile:
+https://www.linkedin.com/in/patrickchassany/
+
+Image origin:
+https://media.licdn.com/dms/image/v2/D4E03AQENBRb09IxreQ/profile-displayphoto-scale_200_200/B4EaB0uTmgH0Ac-/0/1788664692224?e=2147483647&v=beta&t=nHnKMUe5iqeNMkdhWTnegZozCoP3kUp6vKx6VPW28jg
+
+Served locally as the circular avatar beside the public Ask heading. This is
+Patrick’s portrait, not stock or generated imagery. Origin is embedded in the JPEG.
+
 `working-together.jpg`: illustrative workplace photograph from Unsplash,
 https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=85
 
-Former homepage hero illustration: a general working scene, not a photograph
-of Patrick Chassany, Unitalk's team, or a customer. Retained for provenance.
+Current homepage hero illustration, reused from the existing local asset:
+a general working scene, not a photograph of Patrick Chassany, Unitalk's
+team, or a customer. Full-width responsive crop with a translucent overlay.
 
 ## Homepage hero and portraits
 

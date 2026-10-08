@@ -1,0 +1,81 @@
+/* Signup — WhatsApp-fuchsia, two-pane with atmospheric photo. */
+.signup-page { background: var(--ivory); min-height: 100svh; display: flex; }
+
+.signup-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); width: 100%; min-height: 100svh; }
+
+/* Left: clean form */
+.signup-form-pane { display: flex; flex-direction: column; justify-content: center; padding: 64px clamp(40px, 6vw, 96px) 64px clamp(40px, 6vw, 96px); max-width: 620px; margin-left: auto; width: 100%; }
+
+.signup-brand { margin-bottom: 56px; }
+.signup-logo { display: inline-flex; align-items: center; color: var(--signal); }
+.signup-logo svg { width: 42px; height: 42px; }
+
+.signup-create h1, .signup-mission h1 { font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.08; letter-spacing: -.04em; margin-bottom: 12px; }
+.signup-subtitle { font-size: var(--text-body); color: var(--muted); margin-bottom: 40px; }
+
+.signup-sso { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.signup-sso-button { display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 14px 22px; border: 1px solid var(--ivory-line); border-radius: var(--radius-control); background: var(--white); color: var(--ink); font-size: var(--text-control); font-weight: 500; cursor: pointer; box-shadow: 0 1px 3px #1c1e2108; }
+.signup-sso-button:hover { border-color: var(--ink); box-shadow: 0 2px 8px #1c1e2110; }
+.signup-sso-button svg:first-child { width: 22px; height: 22px; flex: none; }
+.signup-sso-linkedin { width: 20px; height: 20px; color: #0A66C2; flex: none; }
+
+.signup-separator { display: flex; align-items: center; gap: 20px; margin-bottom: 28px; font-size: var(--text-small); color: var(--muted); }
+.signup-separator::before, .signup-separator::after { content: ""; flex: 1; border-top: 1px solid var(--ivory-line); }
+
+.signup-source { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 28px; padding: 16px 20px; background: var(--signal-wash); border-radius: var(--radius-bubble); border-top-left-radius: 3px; font-size: var(--text-small); }
+.signup-source svg { flex: none; color: var(--signal-deep); margin-top: 2px; }
+.signup-source strong { font-weight: 500; }
+
+.signup-create label, .signup-mission label { display: block; font-size: var(--text-small); font-weight: 500; margin-bottom: 8px; }
+.signup-create label { margin-top: 24px; }
+.signup-mission label { margin-top: 28px; }
+.signup-create label:first-of-type, .signup-mission label:first-of-type { margin-top: 0; }
+.signup-create input, .signup-mission input, .signup-mission textarea { width: 100%; border: 1px solid var(--ivory-line); border-radius: var(--radius-control); padding: 14px 20px; font-size: var(--text-control); min-height: 53px; background: var(--white); color: var(--ink); }
+.signup-mission textarea { min-height: 120px; padding: 16px 20px; resize: vertical; border-radius: 16px; line-height: 1.6; }
+.signup-create input:focus, .signup-mission input:focus, .signup-mission textarea:focus { outline: 3px solid var(--signal-deep); outline-offset: 4px; border-color: var(--signal-deep); }
+
+.signup-suggestions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.signup-suggestions button { min-height: 38px; padding: 6px 16px; border: 1px solid var(--ivory-line); border-radius: var(--radius-control); background: var(--white); color: var(--muted); font-size: var(--text-caption); cursor: pointer; }
+.signup-suggestions button:hover { border-color: var(--signal-deep); color: var(--signal-deep); background: var(--signal-wash); }
+
+.signup-submit { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 53px; margin-top: 32px; padding: 14px 28px; border: 0; border-radius: var(--radius-control); background: var(--signal); color: var(--white); font-size: var(--text-control); font-weight: 500; cursor: pointer; }
+.signup-submit:hover { background: var(--ink); }
+.signup-submit svg { transition: transform 200ms var(--ease-out); }
+.signup-submit:hover svg { transform: translateX(3px); }
+
+.signup-back { display: inline-flex; align-items: center; min-height: 44px; margin-top: 16px; padding: 0; border: 0; background: transparent; color: var(--muted); font-size: var(--text-small); cursor: pointer; }
+.signup-back:hover { color: var(--signal-deep); }
+
+.signup-login-row { display: flex; align-items: center; gap: 16px; margin-top: 32px; font-size: var(--text-small); color: var(--muted); }
+.signup-login-row .button { border-color: var(--ivory-line); }
+.signup-login-row .button:hover { border-color: var(--ink); }
+
+.form-error { color: var(--signal-deep); font-size: var(--text-small); margin-top: 10px; }
+
+/* Right: atmospheric photo + proof */
+.signup-preview-pane { position: relative; background: var(--ink-raised); overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 64px 48px; }
+.signup-preview-photo { position: absolute; inset: 0; object-fit: cover; opacity: .35; }
+.signup-preview-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, #111b2130 0%, #111b2195 70%); }
+
+.signup-door-preview { position: relative; z-index: 1; width: 100%; max-width: 420px; }
+.signup-door-preview h2 { font-size: 1.5rem; line-height: 1.25; letter-spacing: -.025em; color: var(--white); margin-bottom: 28px; }
+.signup-door-preview h2 span { color: #ff6aba; }
+
+.signup-footer { position: relative; z-index: 1; margin-top: 48px; text-align: center; font-size: var(--text-small); color: var(--muted-ink); line-height: 1.6; }
+
+/* Mission step — proof shows the name */
+.signup-mission + .signup-preview-pane .signup-door-preview h2 { margin-bottom: 20px; }
+
+@media (max-width: 959px) {
+  .signup-layout { grid-template-columns: minmax(0, 1fr); }
+  .signup-form-pane { max-width: 680px; margin: 0 auto; padding: 40px 36px 56px; }
+  .signup-preview-pane { min-height: 360px; padding: 48px 36px; }
+  .signup-door-preview { max-width: 560px; }
+}
+@media (max-width: 699px) {
+  .signup-form-pane { padding: 32px 20px 48px; }
+  .signup-brand { margin-bottom: 40px; }
+  .signup-preview-pane { min-height: 300px; padding: 40px 24px; }
+  .signup-create h1, .signup-mission h1 { font-size: clamp(1.75rem, 7vw, 2.25rem); }
+  .signup-subtitle { margin-bottom: 32px; }
+}

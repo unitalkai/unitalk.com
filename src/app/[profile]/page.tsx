@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { notFound, permanentRedirect } from "next/navigation";
 import { PublicCollaborator } from "@/components/public-collaborator";
 
@@ -23,5 +24,9 @@ export default async function PublicProfile({ params }: PageProps<"/[profile]">)
   if (profile === "@patrick" || profile === "%40patrick") permanentRedirect("/@patrick-chassany");
   if (profile !== "@patrick-chassany" && profile !== "%40patrick-chassany") notFound();
 
-  return <PublicCollaborator />;
+  return (
+    <Suspense fallback={<main id="main-content"><p role="status">Loading Patrick’s AI Collaborator…</p></main>}>
+      <PublicCollaborator />
+    </Suspense>
+  );
 }

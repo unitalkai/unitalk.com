@@ -1,6 +1,13 @@
 export type PublicLanguage = "en" | "fr";
 
 const french: Record<string, string> = {
+  "Hey, I'm Patrick's AI Collaborator. Ask me anything, book a call, or send him a message — I've got it.": "Bonjour, je suis le Collaborateur IA de Patrick. Posez-moi une question, prenez rendez-vous ou écrivez-lui un message — je vous accompagne.",
+  "Type anything — a question, a request, an idea…": "Une question, une demande, une idée…",
+  "Type your message": "Écrivez votre message",
+  "Conversation with Patrick's AI Collaborator": "Conversation avec le Collaborateur IA de Patrick",
+  "Patrick's AI Collaborator: ": "Le Collaborateur IA de Patrick : ",
+  "Voice input isn't supported in this browser. You can write your question instead.": "La dictée n’est pas disponible dans ce navigateur. Vous pouvez écrire votre question.",
+  "Voice input couldn't start. Try again or write your question.": "La dictée n’a pas pu démarrer. Réessayez ou écrivez votre question.",
   "Continue with LinkedIn": "Continuer avec LinkedIn",
   "Sign in to continue using your LinkedIn account.": "Connectez-vous avec votre compte LinkedIn pour continuer.",
   "Sign in with LinkedIn": "Se connecter avec LinkedIn",

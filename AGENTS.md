@@ -8,7 +8,15 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-## Product scope
+## Product authority — reassigned 2026-10-21
+
+- `PRODUCT.md` now defines **Unitalk.com communities powered by Buzz**, transferred from `../buzz/PRODUCT.md` by user instruction.
+- The personal AI Collaborator product belongs to **Unitalk.ai**; its brief is `../unitalk-homepage/PRODUCT.md`.
+- Application code has not moved: this checkout still contains the personal-Collaborator prototype described below. These surface notes are implementation history, not the new Unitalk.com product scope.
+- The community prototype and its implementation/design/deployment contracts remain in `../buzz/`; read its `AGENTS.md`, `SPEC.md`, `DESIGN.md`, and `DEPLOYMENT.md` before community work. Shared Clerk, Convex and Hermes code lives in `../unitalk-homepage/`; read that checkout's instructions before backend work.
+- The user-supplied target architecture is communities-first: shared Clerk/Convex, managed Nostr signing and gateway, Buzz relay and data services, and an isolated Hermes runtime per community through Dokploy and `buzz-acp`. Diagram statuses describe targets and integration work, not a completed deployment.
+
+## Personal prototype scope (now assigned to Unitalk.ai)
 
 The user requires four distinct surfaces:
 - Homepage.
@@ -19,6 +27,11 @@ The user requires four distinct surfaces:
 The user-pinned owner wireframe v1.0 has three navigation areas: `Accueil / People / Collaborator` (`Accueil / People / Moi` in mobile bottom navigation). The French experience is confirmed. These are areas of one owner dashboard, not the four product surfaces. Accueil is exceptions plus proof of work, People is narrative relationships and takeover, and Collaborator holds authority and secondary controls. Keep public, owner, and visitor experiences distinct when adding authentication.
 
 ## Current implementation and context
+
+- Public navigation now uses **For you / Your team / Your community** through `src/lib/product-navigation.ts`, shared by marketing and Patrick's profile. Team/community destinations (`/team`, `/community`, and `/fr/...`) are local interactive previews in `shared-workspace.tsx`, with separate channel/thread/canvas context. The user requested the upstream workspace interaction model without its product name in the interface. `WORKSPACES.md` records scope; no live shared services or invitations were added.
+- User correction: the homepage remains distinct at `/` and `/fr`. **For you is a commercial public-profile page** (`/for-you`, `/fr/for-you`, implemented in `marketing-for-you.tsx`), not a direct link to Patrick. Its personalized preview, benefits and creation CTA sell the visitor's own Collaborator; Patrick's real public profile is an explicitly labelled example link. Keep homepage, commercial page and working public example separate.
+- Latest positioning expands For you to prospecting by email/phone, appointments, pre-/during-/post-sales answers, sales/payment, affiliates and CRM/contact follow-up for AI Collaborators, code, content and missions. These are target capabilities, not newly connected services. `workspace-introduction.tsx` adapts Buzz.xyz's team communication/agent/Git-project content without its name in the UI. Community now illustrates fictional photography creator Léa's discussion forum: local topic/reply views, reversible sample moderation, prewritten topic-watch content and resource-grounded example answers.
+- Patrick's public page now includes the 8 Open Intelligent UI starters and all 45 upstream gallery examples, plus 7 locally authored starter programs (52 examples total). Source dependency is pinned to commit `03213439358bf3408ad61a46ec9e3230c5572e48`; `next.config.ts` transpiles it and package overrides share React/Next/OpenUI versions. `public-intelligent-*` files own catalog, lazy rendering, gallery and local starter answers. `/api/wiki`, `/api/image-search`, `/api/street-route` delegate to the pinned media services. `OPENUI-INTEGRATION.md` and `THIRD-PARTY-NOTICES.md` own integration/source details. Programs remain prewritten; optional tab restoration stores catalog IDs and bounded OpenUI state, not executable user text. Reopened sandboxed HTML games reset their own execution state.
 
 - This is one npm application. `.opencode/package.json` belongs to the coding tooling, not a second application package.
 - Routes: `/` is the homepage; `src/app/[profile]/page.tsx` renders `/@patrick-chassany`; `/@patrick` redirects to it. `/dashboard/patrick` and `/dashboard/visiteur` are distinct demo dashboards. Public routing accepts raw `@` and `%40` parameters, which this Next.js version passes during routing/prerendering; unknown profiles return 404.

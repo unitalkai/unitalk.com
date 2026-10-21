@@ -1,10 +1,11 @@
-export type ComparisonCriterion = "work" | "context" | "contacts" | "control";
+export type ComparisonCriterion = "work" | "context" | "contacts" | "control" | "ownership";
 
 export const COMPARISON_CRITERIA = [
   { id: "work", en: { label: "Work", question: "What work can I delegate?" }, fr: { label: "Travail", question: "Quel travail puis-je lui confier ?" } },
   { id: "context", en: { label: "Context", question: "What context does it keep?" }, fr: { label: "Contexte", question: "Quel contexte conserve-t-il ?" } },
   { id: "contacts", en: { label: "Contacts", question: "How does it interact with my contacts?" }, fr: { label: "Contacts", question: "Comment interagit-il avec mes contacts ?" } },
   { id: "control", en: { label: "Control", question: "Which decisions stay with me?" }, fr: { label: "Contrôle", question: "Quelles décisions restent entre mes mains ?" } },
+  { id: "ownership", en: { label: "Ownership", question: "Whose engine is it? Can I move it?" }, fr: { label: "Propriété", question: "À qui appartient le moteur ? Puis-je le déplacer ?" } },
 ] as const;
 
 export const COMPARISON_PRODUCTS: {
@@ -20,12 +21,14 @@ export const COMPARISON_PRODUCTS: {
       context: "Starts from ChatGPT memory and uses connected apps. Instructions and feedback guide ongoing work.",
       contacts: "Works in ChatGPT, Slack and Teams. Connected tools can support sharing work and coordinating with other people.",
       control: "Choose app access and custom rules: allow an action, require approval or block it. Review work, redirect or pause.",
+      ownership: "OpenAI’s platform. Dots run on OpenAI’s cloud; the underlying model and runtime are managed by the provider.",
     },
     fr: {
       work: "Responsabilités suivies, recherches, documents et projets. Dots peut continuer à travailler entre les conversations sur son ordinateur cloud.",
       context: "S’appuie sur la mémoire ChatGPT et les applications connectées. Vos consignes et retours orientent le travail dans la durée.",
       contacts: "Disponible dans ChatGPT, Slack et Teams. Les outils connectés permettent de partager le travail et de coordonner les échanges.",
       control: "Choisissez les accès et les règles : autoriser une action, demander une validation ou la bloquer. Vous pouvez réorienter ou mettre en pause.",
+      ownership: "Plateforme OpenAI. Dots fonctionnent sur le cloud d’OpenAI ; le modèle sous-jacent et l’exécution sont gérés par le fournisseur.",
     },
   },
   {
@@ -35,12 +38,14 @@ export const COMPARISON_PRODUCTS: {
       context: "Uses the files, knowledge, connectors and skills you provide. Plugins can tailor it to a role or workflow.",
       contacts: "Can prepare sales research and meeting material from connected sources. Actions in other apps depend on the available tools and permissions.",
       control: "Choose folders and tools, follow the steps and stop or redirect work. Permission settings govern significant actions; deletion needs approval.",
+      ownership: "Anthropic’s platform. Cowork runs on Anthropic’s infrastructure; deployments via AWS Bedrock, Google Cloud or Microsoft Foundry use those providers’ managed runtimes.",
     },
     fr: {
       work: "Recherche, analyse, classement de fichiers et création de documents dans vos dossiers et outils connectés. Les tâches récurrentes peuvent être planifiées.",
       context: "Utilise les fichiers, connaissances, connecteurs et compétences fournis. Des plugins l’adaptent à un métier ou à un processus.",
       contacts: "Peut préparer une recherche commerciale et des documents de rendez-vous. Les actions dans vos applications dépendent des outils et permissions disponibles.",
       control: "Choisissez les dossiers et outils, suivez les étapes, arrêtez ou réorientez le travail. Les actions importantes dépendent des permissions ; supprimer nécessite votre accord.",
+      ownership: "Plateforme Anthropic. Cowork fonctionne sur l’infrastructure d’Anthropic ; les déploiements via AWS Bedrock, Google Cloud ou Microsoft Foundry utilisent les exécutions managées de ces fournisseurs.",
     },
   },
   {
@@ -50,12 +55,14 @@ export const COMPARISON_PRODUCTS: {
       context: "Uses connected apps and Personal Intelligence. Reusable skills capture how you want recurring tasks handled.",
       contacts: "Can draft or send emails, organize meeting time and extract leads into Sheets, depending on enabled connections and access.",
       control: "Connections are off by default. You enable access, direct the work and review major actions; availability varies by plan and country.",
+      ownership: "Google’s platform. Spark runs on Google’s cloud; the Gemini model family is proprietary. No self-hosted or external-engine option is described.",
     },
     fr: {
       work: "Tâches en plusieurs étapes, organisation des emails, recherches et travail planifié dans les applications Google, dont Gmail, Agenda et Drive.",
       context: "Utilise les applications connectées et Personal Intelligence. Des compétences réutilisables retiennent vos consignes pour les tâches récurrentes.",
       contacts: "Peut préparer ou envoyer des emails, organiser des créneaux et extraire des prospects dans Sheets, selon les connexions et accès activés.",
       control: "Les connexions sont désactivées par défaut. Vous activez les accès, guidez le travail et validez les actions importantes ; disponibilité selon le forfait et le pays.",
+      ownership: "Plateforme Google. Spark fonctionne sur le cloud de Google ; la famille de modèles Gemini est propriétaire. Aucune option d’auto-hébergement ou de moteur externe n’est décrite.",
     },
   },
   {
@@ -65,12 +72,14 @@ export const COMPARISON_PRODUCTS: {
       context: "Learns from conversations and remembers preferences and details. You can ask it to forget what it has learned.",
       contacts: "You can talk to Muse in its app or WhatsApp. Connected services let it send emails or coordinate tasks on your behalf.",
       control: "Choose connected services and read/send access. Sensitive actions need approval, and an audit trail shows completed and planned work.",
+      ownership: "Meta’s platform. Muse runs on Meta’s own infrastructure. A confidential-VM option encrypts data with a key only you hold, but the runtime remains Meta-managed.",
     },
     fr: {
       work: "Tâches personnelles et objectifs suivis : emails, voyages et actions dans un navigateur. Le travail continue après la fermeture de l’application.",
       context: "Apprend des conversations et retient préférences et détails. Vous pouvez lui demander d’oublier ce qu’il a appris.",
       contacts: "Vous échangez avec Muse dans son application ou WhatsApp. Les services connectés lui permettent d’envoyer des emails ou de coordonner des tâches pour vous.",
       control: "Choisissez les services et les droits de lecture ou d’envoi. Les actions sensibles demandent une validation ; un historique montre le travail réalisé et prévu.",
+      ownership: "Plateforme Meta. Muse fonctionne sur l’infrastructure de Meta. Une option de VM confidentielle chiffre les données avec une clé que vous seul détenez, mais l’exécution reste gérée par Meta.",
     },
   },
   {
@@ -80,12 +89,14 @@ export const COMPARISON_PRODUCTS: {
       context: "Delos describes workers with their own skills, personality and persistent memory, grounded in connected company data.",
       contacts: "Workers use connected tools such as Gmail, HubSpot or Salesforce and communicate through channels including Slack and Teams.",
       control: "Configure each worker’s access and permissions. Check the approval behavior for the particular worker and integration you choose.",
+      ownership: "Delos’ SaaS platform. Workers are hosted and managed by Delos; data is held in isolated environments. No externally self-hosted engine is described.",
     },
     fr: {
       work: "Workers spécialisés en marketing, développement, finance et autres métiers. Les tâches confiées s’appuient sur des outils professionnels connectés.",
       context: "Delos décrit des workers avec compétences, personnalité et mémoire persistante, alimentés par les données de l’entreprise.",
       contacts: "Utilisent des outils connectés comme Gmail, HubSpot ou Salesforce, avec des échanges notamment dans Slack et Teams.",
       control: "Configurez les accès et permissions de chaque worker. Vérifiez les validations propres au worker et à l’intégration choisis.",
+      ownership: "Plateforme SaaS Delos. Les workers sont hébergés et gérés par Delos ; les données sont en environnements isolés. Aucun moteur externe auto-hébergé n’est décrit.",
     },
   },
   {
@@ -95,12 +106,14 @@ export const COMPARISON_PRODUCTS: {
       context: "Brings together company knowledge from tools such as Slack, Drive, Notion and Salesforce. Supports reusable skills and multiple model providers.",
       contacts: "Sales and support workflows can use customer records, log emails and next steps, or draft context-aware replies through configured tools.",
       control: "Separate permissions for agent access and who can use it, with admin controls, human review, audit logs and usage monitoring.",
+      ownership: "Dust’s SaaS platform. The platform hosts agents and supports multiple model providers; customers cannot extract the agent to run it on their own infrastructure.",
     },
     fr: {
       work: "Agents partagés pour le travail d’équipe : recherches, propositions, tri du support et suivi CRM dans les systèmes connectés de l’entreprise.",
       context: "Réunit les connaissances de Slack, Drive, Notion ou Salesforce. Propose des compétences réutilisables et plusieurs fournisseurs de modèles.",
       contacts: "Les processus commerciaux et de support peuvent exploiter les fiches clients, consigner emails et prochaines étapes ou préparer des réponses contextualisées.",
       control: "Permissions distinctes pour les accès de l’agent et ses utilisateurs, avec contrôles administrateur, revue humaine, journaux d’audit et suivi d’usage.",
+      ownership: "Plateforme SaaS Dust. Les agents sont hébergés sur la plateforme, avec plusieurs fournisseurs de modèles ; il n’est pas possible d’extraire l’agent pour l’exécuter sur sa propre infrastructure.",
     },
   },
   {
@@ -110,12 +123,14 @@ export const COMPARISON_PRODUCTS: {
       context: "Uses configured knowledge, conversation history and data from connected CRM, ticketing and calendar systems.",
       contacts: "Deployed on phone, web and messaging channels, including WhatsApp and email. Communication is central to the offering.",
       control: "Configure tools, workflows and guardrails; test with simulations and monitor transcripts and outcomes. Human handoff depends on your setup.",
+      ownership: "ElevenLabs platform. Agents are hosted by ElevenLabs; the platform is LLM-agnostic but the runtime remains provider-managed.",
     },
     fr: {
       work: "Parcours clients par voix et chat : support, qualification de prospects, prise de rendez-vous et tâches opérationnelles.",
       context: "Utilise les connaissances configurées, l’historique des conversations et les données de CRM, support et agendas connectés.",
       contacts: "Déployable par téléphone, sur le web et en messagerie, dont WhatsApp et email. La communication est au cœur de l’offre.",
       control: "Configurez outils, processus et limites ; testez par simulation et suivez les conversations et résultats. La reprise humaine dépend de votre configuration.",
+      ownership: "Plateforme ElevenLabs. Les agents sont hébergés par ElevenLabs ; la plateforme est LLM-agnostique mais l’exécution reste gérée par le fournisseur.",
     },
   },
 ];

@@ -34,7 +34,6 @@
 .compare-unitalk-criteria > div { display: grid; grid-template-columns: minmax(180px, .7fr) minmax(0, 1.5fr); gap: 32px; padding-block: 20px; border-top: 1px solid var(--ivory-line); }
 .compare-unitalk-criteria dt { font-size: var(--text-body); }
 .compare-unitalk-criteria dd { margin: 0; font-size: var(--text-control); line-height: 1.65; max-width: 68ch; }
-.compare-current-state { margin-top: 24px; padding: 20px 24px; border-radius: var(--radius-bubble); background: var(--signal-wash); font-size: var(--text-small); color: var(--ink); line-height: 1.65; }
 .compare-cta { text-align: center; padding-block: 64px 80px; border-top: 1px solid var(--ivory-line); }
 .compare-cta h2 { font-size: var(--text-headline); line-height: 1.08; letter-spacing: -.04em; }
 .compare-cta > p { margin: 20px auto 0; font-size: var(--text-body); color: var(--muted); max-width: 58ch; line-height: 1.6; }
@@ -60,5 +59,4 @@
   .compare-insight, .compare-cta { padding-block: 48px; }
   .compare-cta h2 { font-size: var(--text-dashboard); }
   .compare-cta > p { font-size: var(--text-control); }
-  .compare-current-state { padding: 16px; }
-}
+  }

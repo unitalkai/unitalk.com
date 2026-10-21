@@ -1,3 +1,76 @@
+.public-intelligent { min-height: 100svh; display: flex; flex-direction: column; }
+.public-intelligent > main { flex: 1; width: 100%; }
+.public-conversation { width: min(100% - 48px, 760px); margin: clamp(32px, 7svh, 72px) auto 24px; }
+.public-welcome { text-align: center; margin-bottom: 32px; }
+.public-welcome-avatar { display: block; margin: 0 auto 24px; border-radius: 50%; object-fit: cover; }
+.public-welcome h1 { font-size: clamp(1.875rem, 3.5vw, 2.75rem); font-weight: 400; line-height: 1.15; letter-spacing: -.035em; }
+.public-intelligent .public-hero-intro { max-width: 52ch; margin: 16px auto 0; color: var(--muted); font-size: var(--text-control); line-height: 1.6; }
+.public-intelligent .public-workspace { max-width: none; padding: 0; background: transparent; border-radius: 0; }
+.public-intelligent .presence-log { min-height: 0; max-height: none; overflow: visible; margin: 0; padding: 0; }
+.public-intelligent .presence-log[hidden] { display: none; }
+.public-intelligent .presence-message { max-width: 100%; margin-bottom: 24px; padding: 0; font-size: var(--text-control); line-height: 1.65; background: transparent; }
+.public-intelligent .presence-message-collaborator { width: 100%; }
+.public-intelligent .presence-message-visitor { max-width: 85%; width: fit-content; padding: 12px 20px; background: var(--signal-wash); }
+.public-intelligent .presence-composer { flex-direction: column; align-items: stretch; padding: 16px; gap: 8px; background: var(--white); border-radius: 24px; margin-top: 24px; }
+.public-intelligent .presence-composer:focus-within { border-color: var(--signal-deep); }
+.public-intelligent .presence-composer textarea { min-height: 64px; padding: 4px; resize: vertical; font-size: 16px; color: var(--ink); }
+.public-intelligent .presence-composer textarea::placeholder { color: var(--muted); opacity: 1; }
+.public-intelligent .presence-composer > div { justify-content: space-between; align-self: stretch; }
+.public-intelligent .presence-composer .send-button svg { transform: rotate(-90deg); }
+.public-intelligent .presence-suggestions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 20px 0 0; }
+.public-intelligent .presence-suggestions button { min-height: 64px; border: 1px solid var(--ivory-line); border-radius: 16px; padding: 16px; gap: 12px; font-size: var(--text-small); }
+.public-intelligent .presence-suggestions button > span { flex: 1; }
+.public-intelligent .presence-suggestions button > svg { flex: none; }
+.public-intelligent .presence-suggestions button > svg:first-child { color: var(--signal-deep); }
+.public-intelligent .presence-suggestions button:hover { background: var(--white); border-color: var(--signal-deep); }
+.public-about { margin: 20px auto 0; color: var(--muted); font-size: var(--text-small); line-height: 1.65; max-width: 62ch; }
+.public-about summary { width: fit-content; margin-inline: auto; min-height: 44px; padding-block: 10px; cursor: pointer; }
+.public-about > p { margin-top: 12px; }
+.public-new-chat { display: grid; place-items: center; width: 44px; height: 44px; background: transparent; border: 1px solid var(--ivory-line); border-radius: 50%; color: var(--ink); flex: none; }
+.public-new-chat:hover { background: var(--white); border-color: var(--signal-deep); color: var(--signal-deep); }
+.public-intelligent .public-inline-tool { margin: 0 0 24px; padding: 24px; background: var(--white); border: 1px solid var(--ivory-line); border-radius: 20px; }
+.public-intelligent .public-return { margin: 0 0 24px; }
+.public-intelligent .public-footer { padding-block: 16px; }
+.has-conversation { margin-top: 24px; }
+.has-conversation .public-welcome { display: grid; grid-template-columns: 48px minmax(0, 1fr); text-align: left; gap: 16px; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--ivory-line); }
+.has-conversation .public-welcome-avatar { width: 48px; height: 48px; margin: 0; }
+.has-conversation .public-welcome h1 { font-size: 1.5rem; letter-spacing: -.025em; }
+.has-conversation .public-hero-intro { display: none; }
+.public-ui-col { display: flex; flex-direction: column; gap: 20px; }
+.public-ui-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.public-ui-card, .public-ui-profile { padding: 24px; background: var(--white); border: 1px solid var(--ivory-line); border-radius: 20px; }
+.public-ui-card h3, .public-ui-profile h3 { font-size: 1.25rem; font-weight: 500; line-height: 1.3; letter-spacing: -.02em; }
+.public-ui-card p { margin-top: 8px; color: var(--muted); }
+.public-ui-profile { display: flex; align-items: center; gap: 20px; }
+.public-ui-profile > img { border-radius: 50%; flex: none; }
+.public-ui-profile > div { min-width: 0; }
+.public-ui-profile p { color: var(--muted); font-size: var(--text-small); margin-top: 4px; }
+.public-ui-profile a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--signal-deep); font-size: var(--text-small); text-decoration: underline; text-underline-offset: 4px; }
+.public-ui-profile a svg { flex: none; }
+.public-ui-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; padding: 10px 16px; border: 1px solid var(--ivory-line); border-radius: var(--radius-control); background: transparent; color: var(--ink); font-size: var(--text-small); text-align: left; }
+.public-ui-button:hover:not(:disabled) { background: var(--signal-wash); border-color: var(--signal-deep); color: var(--signal-deep); }
+.public-ui-button svg { flex: none; }
+.public-ui-button:disabled { opacity: .55; cursor: default; }
+@media (max-width: 699px) {
+  .public-conversation { width: calc(100% - 32px); margin-top: 28px; }
+  .public-intelligent .public-header .header-inner { padding-inline: 16px; gap: 12px; }
+  .public-intelligent .public-header-owner { font-size: 1rem; min-width: 0; flex: 1; }
+  .public-intelligent .public-header-actions { gap: 8px; }
+  .public-welcome-avatar { width: 72px; height: 72px; margin-bottom: 20px; }
+  .public-welcome { margin-bottom: 24px; }
+  .public-intelligent .public-hero-intro { font-size: var(--text-small); }
+  .public-intelligent .presence-composer { padding: 12px; }
+  .public-intelligent .presence-suggestions { gap: 8px; padding-top: 16px; }
+  .public-intelligent .presence-suggestions button { flex-wrap: wrap; align-content: flex-start; padding: 14px 12px; gap: 10px; }
+  .public-intelligent .presence-suggestions button > span { flex-basis: calc(100% - 32px); }
+  .public-intelligent .presence-suggestions button > svg:last-child { display: none; }
+  .public-intelligent .presence-message { font-size: 16px; }
+  .public-intelligent .public-inline-tool, .public-ui-card, .public-ui-profile { padding: 20px 16px; }
+  .public-ui-profile { align-items: flex-start; gap: 14px; }
+  .public-ui-profile > img { width: 56px; height: 56px; }
+  .has-conversation .public-welcome h1 { font-size: 1.25rem; }
+}
+
 .public-header .header-inner { gap: 20px; }
 .public-desktop-nav { display: flex; align-items: center; gap: 24px; }
 .public-desktop-nav button { position: relative; padding: 12px 0; min-height: 48px; border: 0; background: transparent; color: var(--ink); font-size: var(--text-control); }

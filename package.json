@@ -9,10 +9,22 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@openuidev/react-lang": "^1.0.1",
     "jose": "^6.2.12",
+    "lucide-react": "^0.562.0",
     "next": "16.3.8",
+    "open-intelligent-ui": "https://codeload.github.com/thesysdev/open-intelligent-ui/tar.gz/03213439358bf3408ad61a46ec9e3230c5572e48",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "zod": "^4.4.3"
+  },
+  "overrides": {
+    "open-intelligent-ui": {
+      "react": "$react",
+      "react-dom": "$react-dom",
+      "next": "$next",
+      "@openuidev/react-lang": "$@openuidev/react-lang"
+    }
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

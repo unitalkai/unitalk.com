@@ -1,240 +1,230 @@
-# Product
+# Unitalk.com — Communities Product Definition
 
 <!-- impeccable:product-schema 1 -->
+
+**Status:** approved product direction; production service not implemented in this repository.
+
+**Updated:** 2026-10-21.
+
+**Companion documents:** [community SPEC.md](../buzz/SPEC.md), [community DESIGN.md](../buzz/DESIGN.md), [community AGENTS.md](../buzz/AGENTS.md), [DEPLOYMENT.md](../buzz/DEPLOYMENT.md).
+
+## Product assignment and implementation provenance
+
+The user assigned the **Buzz-based communities product to unitalk.com**. This file is its canonical product brief, transferred from `buzz/PRODUCT.md`. The **personal AI Collaborator product belongs to unitalk.ai**, with its canonical brief in [unitalk-homepage/PRODUCT.md](../unitalk-homepage/PRODUCT.md).
+
+References below to the current repository, local implementation, README, source paths, tests, conditional Clerk integration and community design describe the [sibling `buzz/` checkout](../buzz/), where that prototype and its companion documents still live. This documentation reassignment does not move application code or establish a deployment. The current `unitalk.com/` application still contains the personal-Collaborator prototype described by the transferred Unitalk.ai brief. Community implementation status must be checked in `buzz/`; shared Clerk, Convex and Hermes integrations live in `unitalk-homepage/`.
+
+This product assignment supersedes older personal-product scope statements in this checkout's documentation. Community implementation and design contracts come from the companion documents linked above; personal prototype history is not a community requirement.
+
+### User-supplied target architecture — 2026-10-21
+
+The user supplied the **Unitalk.com — Target Architecture** diagram as context for this assignment. It maps shared Unitalk.ai Clerk accounts to the Unitalk.com portal, a session/access gateway and managed Nostr signer, then the Buzz relay backed by PostgreSQL, Redis and S3. Existing Unitalk Convex owns membership and orchestration; service metadata is to be added. Unitalk.ai budgets fund per-community allocations through Dokploy, with isolated `buzz-acp` + CLI, Hermes and channel-aware community memory. Models and authorized tools are accessed through the configured provider/tool layer.
+
+Preserve the diagram's distinction between existing components, extensions, connections and components to build/deploy. Its desktop label leaves Unitalk authentication to implement; the approved branded-desktop requirement below still applies. The maintained architecture artifact is linked from [the community checkout's README](../buzz/README.md).
 
 ## Platform
 
 web
 
-## Users
-
-Professionals who want someone to handle their professional relationships and delegated work, and the people who interact with their Collaborator.
-
-**Primary user — the owner.** A professional, founder, or expert whose relationships span LinkedIn, email and WhatsApp. They want their Collaborator to understand conversations, organize contacts and a CRM, identify what needs attention, and respond or act within the authority they give it. They meet someone who will work for them, rather than begin by configuring software.
-
-**Secondary user — the visitor.** Someone who lands on a public Collaborator profile, talks to it, gets a real answer or a real piece of work done. This is the discovery audience, and the future owner.
-
-The first public Collaborator is Patrick Chassany's (founder of Unitalk), representing his public professional knowledge: Patrick, his work, his companies, his ideas, Unitalk. It represents Patrick, not a fictional example or mascot. It is never called "Pacha"; Pacha is a future, separate Collaborator.
-
-**Implementation truth:** this repository is a frontend prototype. Sign-in is simulated, replies are predefined, validations and previews are local. There is no connected AI model, LinkedIn, email, WhatsApp, CRM, history importer, Hermes runtime, deployment service or billing integration. Product capabilities below describe the intended product, not integrations already shipped here. Demonstrations must remain visibly labelled. Hosting, intelligence and billing selectors carry preferences into the encounter without provisioning anything.
+The target service also includes **Unitalk Desktop**, a Unitalk-branded client based on the open-source Buzz desktop application, for macOS, Windows, and Linux. Mobile browser access is part of the web experience. Native iOS and Android applications are not a V1 commitment.
 
 ## Product Purpose
 
-Unitalk lets anyone meet and own an **AI Collaborator that works for them**.
+Unitalk.com makes it easy to create or join a hosted community where people and AI Collaborators communicate and work in the same shared context.
 
-An AI Collaborator connects to the owner's professional channels, learns their context, understands their relationships and handles entrusted work. It is designed to analyze conversations, find contacts, organize a CRM, surface important decisions, and respond or act for the owner. The owner intervenes where their judgment or authorization is needed. Its public presence is one surface of the product, not the whole value proposition.
+A person signs in with their Unitalk account, names a community, and arrives in a workspace with a hosted Collaborator managed by Unitalk.ai. Other people can join that community and work with the same Collaborator through the browser or Unitalk Desktop.
 
-The core promise:
+The product must make the underlying relay, keys, agent runtime, and model configuration operationally invisible to an ordinary new member. The service still explains that Unitalk manages their hosted Nostr identity; it must not claim that these users exclusively control the signing keys.
 
-> **Your AI Collaborator. It works for you. Meet your Collaborator.**
+## Users
 
-Success means a visitor moves from meeting someone else's Collaborator to owning their own. The conversion is **visitor → Collaborator owner** — not visitor → account, dashboard, or subscription. The account exists only to support ownership.
+- **Community owners:** people creating a space around a business, interest, learning group, or project.
+- **Members:** people joining an existing community to communicate, contribute, learn, or build.
+- **Teams and builders:** groups turning shared discussions into plans and digital products.
+- **Creators, trainers, and experts:** people sharing knowledge and, in later commercial phases, distributing profiles, skills, templates, training, or services.
+
+Unitalk is not limited to development teams. A community may contain people from multiple companies and multiple Clerk organizations.
 
 ## Positioning
 
-The first promise is concrete: **someone who can manage your professional relationships and work for you**.
+### Public navigation — approved 2026-10-21
 
-The intended mechanism is **connect → understand relationships → work → involve the owner when needed**, with one persistent, owned Collaborator across channels.
+The user replaced the primary public navigation with **For you / Your team / Your community** (these labels stay English). In a subsequent correction, the user required a **distinct homepage** at `/` and `/fr`, and **For you as a commercial presentation of the public AI Collaborator profile** at `/for-you` and `/fr/for-you`. It must not link directly to Patrick's profile. Patrick's `/@patrick-chassany` remains an explicitly labelled example accessible from that commercial page. Your team opens a teamspace; Your community opens a separate community workspace. The user confirmed direct interactive spaces for team/community rather than marketing-only destination pages. Team and community interactions follow the channels, threads, shared canvas and human/agent membership model of Buzz.xyz, presented entirely under Unitalk branding without mentioning the upstream name in the interface.
 
-- The homepage earns the meeting by showing work first. The user selected **“Voir le travail”**, rendered in English as **“See it do the work”**; a quieter **“Meet yours”** opens the English local encounter at `/meet`. Website, email, WhatsApp, Slack and LinkedIn remain intended connection sources. Domain input and **“Start with LinkedIn”** follow the interactive work example. A domain supplies an unanalysed reference; LinkedIn supplies an intended channel without OAuth or an account connection. Connection and authority setup belong to the intended product after the encounter.
-- Ownership applies to the Collaborator's identity, memory, knowledge, skills, tools, authority and work. A recurring Unitalk service plan must not turn that into a rented, disposable conversation. The user chooses where it runs and what powers it.
-- **A chatbot answers. A Collaborator works.** A Collaborator receives a goal and executes it using its knowledge, skills and tools, showing meaningful progress and delivering a result.
+In this checkout the new workspace destinations are explicitly local interactive previews. Authentication, relay-backed messages, invitations and live Collaborator execution remain subject to the shared-service contracts; local messages and example responses do not establish a deployed service. This navigation decision supersedes the older primary-navigation list below. Supporting pricing, store, privacy and guide routes remain reachable from the footer.
 
-The Collaborator has five complementary dimensions:
-- **KNOWS** — Knowledge Bases and memory. Knowledge is supplied context; memory comes from work and interactions.
-- **CONNECTS** — LinkedIn, email, WhatsApp, calendar and phone, within the owner's permissions.
-- **USES** — Authorized MCP connectors, tools and APIs. MCP is the connection standard, not the product name.
-- **WORKS** — Pursues an outcome autonomously and in the background, between conversations.
-- **DECIDES** — Acts within authority, asks when approval is needed, and respects explicit boundaries.
+### Commercial and audience clarification — 2026-10-21
 
-The distinction from a one-off chatbot request is an ongoing responsibility. The Dots reference informs autonomy, context, connected tools and human approval, not Unitalk's name, visual identity or vocabulary.
+- **For you** must communicate the intended end-to-end commercial role: outbound prospecting by email and phone, appointment booking, answers before/during/after sales, selling AI Collaborators/code/content/missions, collecting payment through connected services, recruiting affiliates, CRM follow-up and communication with every contact. The public profile is an entry point, not the limit of the Collaborator's work. These are approved positioning/capability targets; no new outbound, payment, affiliate or CRM integration is established by this copy update.
+- **Your team** adopts the content pillars verified on the rendered `https://buzz.xyz/` homepage: people and agents sharing a workspace, team communication, specialized-agent collaboration, and Git projects spanning plans, code, reviews and PRs. Unitalk branding is retained; no upstream product name is displayed. Git/agent/development-tool connections are still planned in this checkout.
+- **Your community** becomes a discussion group/forum illustrated by a fictional content creator, Léa, who publishes photography tutorials and a newsletter. Its benefits are moderation assistance, relevant topic monitoring/digests and answers grounded in creator resources. The preview includes topic lists and reply threads, an example review queue with reversible local hiding, a prewritten topic digest and resource-based example answers. Live monitoring and AI moderation are not connected.
 
-## Core Concepts
+**People and AI. Building together.**
 
-### The Collaborator
+The three core capabilities remain:
 
-Persistent components, all owned by the user:
+1. **Communicate with your team.** Keep people, context, decisions, and next steps together.
+2. **Bring in your AI agents.** Work with a hosted Collaborator that participates in the same conversations.
+3. **Build websites, apps, and dashboards.** Develop ideas into digital outcomes using the tools actually enabled for the Collaborator.
 
-- **Identity** — name, role, avatar, public URL, email where enabled, phone where enabled, voice.
-- **Soul** — personality, communication style, rules, values, boundaries.
-- **Knowledge** — public information, private information, documents, websites, FAQs, professional knowledge.
-- **Memory** — persistent information learned through interaction and work.
-- **Skills** — reusable ways of working: research, sales, writing, analysis, coding, lead qualification.
-- **Tools** — capabilities and external systems: web, search, email, calendar, CRM, phone, messaging, APIs, applications.
-- **Work** — the actual missions, tasks, results and history.
+The third capability is a product direction. Specific build, preview, deployment, and pull-request capabilities must be demonstrated before they are presented as available. A generic ACP connection alone does not establish a working app-building or hosting product.
 
-**Knowledge = what it knows. Memory = what it remembers.** They are different things.
+## Unitalk.com and Unitalk.ai
 
-### Public means public
+| Surface | Product responsibility |
+| --- | --- |
+| Unitalk.com | Public website, Discover, community creation and admission, community access, desktop distribution |
+| Unitalk web workspace | Community conversations and collaboration, adapted from Buzz's web client |
+| Unitalk Desktop | Branded downloadable Buzz-based client for the same hosted communities |
+| Unitalk.ai | Existing account environment and management of Collaborator resources, configuration, and budgets |
 
-A Collaborator has a public identity. People can discover it, open its profile, read about it, talk to it, give it appropriate work, and understand what it represents. Its public profile is part of the product, not an account dashboard. **The profile is alive** — it should feel more like meeting someone than visiting a settings page.
+One Clerk application provides the shared account identity. Convex manages Unitalk service metadata and orchestration. Buzz provides the community conversation substrate. Hermes supplies the hosted Collaborator runtime through the ACP bridge.
 
-### Voice
+## Confirmed Decisions
 
-Voice is a first-class product capability, not an add-on. A visitor can start a conversation, interrupt where supported, ask follow-up questions, give a task, and continue a previous conversation. The same Collaborator identity persists across supported channels — web, voice, phone, email, messaging. These are interfaces to one Collaborator, never disconnected products.
+| ID | Decision |
+| --- | --- |
+| P-01 | Reuse the existing Unitalk.ai Clerk accounts and Convex backend integration. |
+| P-02 | Community membership is independent of membership in a Clerk organization. |
+| P-03 | New communities are unlisted and invitation-only by default. |
+| P-04 | Owners may opt into Discover listing and select open or approval-based admission. Listing does not publish private conversations. |
+| P-05 | Unitalk manages Nostr keys for hosted accounts and the signing service associated with them. |
+| P-06 | Each community receives its own hosted Hermes Collaborator identity and isolated context. |
+| P-07 | Use the Buzz ACP relay bridge for the community Collaborator. |
+| P-08 | Ship a Unitalk-branded desktop client, with maintained Buzz upstream compatibility. An official Buzz download alone does not satisfy this requirement. |
+| P-09 | V1 is communities-first. Marketplace checkout, seller payments, and payouts are later phases. |
+| P-10 | Preserve the Apple-inspired Unitalk visual direction and English product copy. |
 
-### Work
+## Operating Context
 
-A Collaborator receives a goal and performs work using its knowledge, skills and tools. Progress is shown meaningfully (researching, qualifying, preparing) and ends in a delivery, not a debug console. Results are never fabricated: demo data must be clearly real or clearly simulated.
+### Create a community
 
-### Migration and runtime ownership
+1. Select **Get started free** on Unitalk.com.
+2. Complete the shared Clerk sign-in or sign-up flow if needed.
+3. Choose **Create a community** and enter a name.
+4. Confirm the suggested address; advanced settings are optional.
+5. See real preparation status for the workspace and its Collaborator.
+6. Enter the community when access is ready and send the first message.
 
-- Planned one-click history import from **ChatGPT, Claude and OpenClaw**: the user does not start from zero. The current UI states that import is planned; it does not claim to have ingested history.
-- **Hermes** is the intended autonomous open-source runtime, not the product presented first. Mention it in the ownership section as the engine supporting portability. Reference: https://github.com/NousResearch/hermes-agent (MIT). No runtime is integrated in this repository yet.
-- Hosting choices: **Unitalk Cloud**, **Your OVH server**, **Your Hostinger server**, **Your infrastructure**, **Existing Hermes**.
-- Intelligence choices: **Unitalk Credits**, **Your API keys**, **Your AI gateway**. No keys are collected by the preview and no included credit allowance has been specified.
-- Authority has three clear levels: **DO IT** (act within authority), **ASK ME** (important decisions), **NEVER DO IT** (hard boundaries).
-- Public identity is the front door. `unitalk.com/@patrick` is the short alias of Patrick's canonical public route `@patrick-chassany`, rather than a new persona.
+Defaults favor privacy and minimum setup. The user is not asked to install Hermes, configure a relay, handle a Nostr secret, or supply a model-provider key.
 
-### Workforce
+### Join an existing community
 
-Multiple Collaborators working together. The user starts with one and adds more when needed — Sales, Research, Marketing, Operations, Development. Workforce is the natural expansion and is never the first-screen pitch: **the homepage sells the first Collaborator.**
+The visitor follows an invitation or a published Discover listing. After authentication, the system evaluates the community's admission policy. Open admission may complete immediately; approval-based admission exposes a pending state; private communities require a valid invitation.
 
-## Public Collaborator scope and demo boundary
+Joining does not allocate another Collaborator, change the member's organization, grant access to the payer's business data, or make the member responsible for the community's AI charges.
 
-### Current public interaction — LinkedIn and Calendly (2026-10-08)
+### Work with the Collaborator
 
-The user confirmed the concurrent **single-conversation** page as the structure to keep. It supersedes the earlier four-space composition below. Questions and suggested requests open meeting/message tools inline; header keeps Patrick’s actual portrait/name and acquisition actions, and the compact footer keeps attribution, Compare, personal LinkedIn and EN/FR controls. Demo / Démo labels are removed only from this public page, not the rest of the application. Ask still receives predefined local replies.
+Members communicate normally and explicitly mention the Collaborator when they want help. It responds in the relevant conversation using the context it is authorized to access. Availability and work-in-progress states reflect the runtime, not a decorative presence indicator.
 
-Booking now uses the supplied `https://calendly.com/patrick-chassany`, embedded after LinkedIn account sign-in; the fabricated calendar and meeting forms are removed. Calendly manages actual booking/invitations. The calendar URL itself is public; the Unitalk page gate is not an access-control boundary for that external URL.
+The Collaborator continues to run on Unitalk infrastructure when members close their desktop clients. Its memory must not inherit the owner's personal Unitalk.ai conversations.
 
-Message composition also requires the same server-validated LinkedIn session, replacing self-entered name/email. The visitor writes a subject/message and may include conversation questions. A server route derives the sender from the authenticated session and submits to a configured HTTPS recipient webhook; the browser cannot choose the sender. No LinkedIn messaging API is implied. Without a delivery endpoint, drafts remain editable and sending is unavailable.
+### Move between browser and desktop
 
-LinkedIn uses an authorization-code OIDC flow with encrypted state/nonce, JWT signature/discovery-issuer/audience/expiry checks and a matching userinfo subject. The encrypted one-hour HttpOnly session has no provider tokens; state is ten minutes. Popup completion requires exact source/origin and preserves mounted drafts. LinkedIn authenticates an account, not a real-world identity or a dashboard role. The application credentials are **not configured**; current UI honestly reports configuration pending and does not load a calendar or claim sign-in/delivery. Setup is in `LINKEDIN-SETUP.md`.
+The user downloads Unitalk Desktop, authenticates through the system browser, and opens an authorized community. Browser and desktop expose the same community membership and relay-backed history. Installing the client creates neither a second community nor a second agent.
 
-Lint, route type generation, TypeScript, build and detector `[]` passed. Real unconfigured UI/API checks cover origin rejection, unauthenticated messages, forged cookies and failed callbacks. Cryptographic/provider success and failure checks use **in-memory fixtures**, including wrong state/nonce/issuer/audience/expiry, subject mismatch and optional email. Browser fixtures verify gated iframe/message rendering, no identity fields, draft/language continuity and logout. Real LinkedIn sign-in, Calendly booking and message delivery remain unverified until provider/recipient configuration. This section is the current truth; four-space/preview verification below is historical.
+### Manage a community
 
-Patrick's canonical public surface at `/@patrick-chassany` starts in English, with an in-page English / Français selector that updates its language wrapper, interface and future demo replies. The absolute route title remains **“Patrick Chassany — His AI Collaborator”** with canonical metadata pointing to that route. `/@patrick` remains a permanent alias redirect; both raw `@` and encoded `%40` route parameters are accepted, and unknown profiles return 404. This public interaction is independent of the French visitor chat and owner workspace.
+Owners and delegated administrators invite members, review requests, manage supported roles, and see the Collaborator's state. Owners control discoverability and admission settings. Ownership and billing changes have dedicated rules in SPEC.md.
 
-- **Four same-page spaces.** Homepage-derived cream navigation has Patrick’s name/photo on the left, four task menus and Log in / Create yours on the right. The dark hero repeats **Ask me anything / Book a meeting / Send a message / Connect with me** as four vertical action links. All four workspace panels stay mounted, with inactive panels hidden, so chat drafts and independent form/review states survive switching. The redundant workspace identity row is removed; Patrick’s photo precedes Ask’s title and a Demo label remains on every task. All sections beneath the hero are removed. The compact footer contains Powered by Unitalk, Patrick’s LinkedIn icon and English / Français. Composition belongs in the public surface brief and `src/components/public-collaborator.css`.
-- **Ask is simulated.** Free text and suggested questions receive predefined English/French replies from `src/lib/public-collaborator-demo.ts`. Public supplied knowledge stays distinct from private information and memory. Partnership, advisory, speaking and investment replies clarify an idea without claiming an engagement. Preparing a reply and listening are local interaction states; Patrick's live availability is unknown. The user removed the repeated sentence below the composer; the task Demo label remains.
-- **Voice is browser dictation.** Where SpeechRecognition is supported, speech fills an editable draft for the visitor to review before sending; it is not automatically sent. Unsupported browsers, denied microphone permission and recognition/start errors show notices and retain the written conversation path. There is no connected voice-call service or spoken Collaborator response.
-- **Meetings are local previews.** A three-step form collects discussion reason and optional context, an example 30-minute Paris-time slot, then name and email. Example times come from the next three weekdays, not Patrick's calendar. Native fields with local validation and focus feedback lead to an editable who/why/context/when preview. Meeting entries are separate from the Ask transcript. No calendar event, invitation or email is sent.
-- **Messages and connections are reviewed handoffs.** Send a message collects optional subject, name, email and message; Connect with me collects a native purpose radio choice, name, email and introduction. Validation precedes review, then an explicit local Prepare action; editing returns to the draft. When Ask contains visitor questions, a checkbox optionally includes a snapshot of those questions at review time, excluding Collaborator replies and selection entries. The context disclosure shows that snapshot rather than a live transcript. Neither flow sends to Patrick, creates a social connection or authenticates the visitor.
-- **Continuity is optional and tab-local.** When browser storage is available, `sessionStorage` under `unitalk-patrick-public-demo-v1` retains up to 80 Ask transcript messages and the supplied visitor name. After same-tab reload, restoration occurs only through Ask's Continue conversation or a new submitted question; switching to another space does not restore it. Composer drafts and structured meeting/message/introduction state are not restored on reload. Clear conversation (or Start a new conversation in the returning state) deletes the Ask transcript/tab record/name, clears its draft and notices, and cancels the pending reply timer and dictation. It leaves the independent mounted meeting/contact forms and their review snapshots intact. Storage failure leaves Ask usable without reload continuity; there is no cross-device, authenticated or backend memory.
-- **Supplied portrait and LinkedIn.** The user supplied `https://www.linkedin.com/in/patrickchassany/`; its public page identifies Patrick and provides the actual profile photograph. The locally served 200 × 200 `public/images/patrick-chassany.jpg` appears before the header name and Ask title; source is recorded in `public/images/SOURCES.md` and embedded in the JPEG. Footer/Connect link to that verified personal LinkedIn profile. No other personal social URLs are supplied. The hero biography is the user’s “Patrick Chassany is a founder, builder and investor with 37+ years building internet companies and products”, localized in French; the removed lower founder/topics sections stay removed.
-- **Language switching preserves local work.** The footer selector changes navigation, form labels/errors/reviews, the greeting and future predefined replies without remounting the panels. Existing conversation messages, user text, example time selections and review snapshots are not rewritten. Browser dictation uses en-GB or fr-FR; switching stops active dictation while retaining its draft. Homepage/login/signup links respect the selected language and Create yours uses the shared preference handoff. Language selection itself resets to English on reload; transcript restoration stays tab-local.
+## V1 Scope
 
-**Verification status — four-space redesign (2026-10-07):** targeted lint, route generation, TypeScript and production build passed; the public markup detector returned `[]`. Playwright checks passed at 1440 × 1000, 1280 × 600, 768 × 1024, 390 × 844 and 320 × 740 for navigation/current state and panel visibility, form validation and meeting preview, message context inclusion and introduction opt-out/review, form/chat state across space changes, transcript reload/clear, unsupported voice and stubbed dictation draft review, canonical/encoded/alias routes and unknown-profile 404, with no runtime errors or horizontal overflow. The fresh finish review inspected all 11 `public-redesign-*` screenshots plus source and returned **SHIP**, with no material findings, limited to this frontend demo. Documentation is reconciled; this supersedes the former headerless review. Evidence paths are in the public surface brief. Live AI, microphone permissions on actual devices, calendar, delivery, authentication, social connection and production deployment are not verified or integrated.
+### Required for the first production release
 
-**Subsequent compact-page verification (2026-10-07):** portrait loading, footer destinations, exact biography, removed lower sections/composer sentence and English/French local workflows passed at 1440 × 1000, 1280 × 600, 390 × 844 and 320 × 740. Checks include language changes during drafts/results, translated validation and replies, LinkedIn answer/link, locale-aware stub dictation without sending, stopping dictation on language change, tab restoration/clear and no overflow/runtime errors. Header checks also covered 1200px. Lint, generated route types, TypeScript and build passed; detector `[]`. Current captures are `public-final-{en,fr}-{1440,390,320}.png` in the approved temporary directory. The earlier independent SHIP verdict describes the original redesign; these later refinements received source/browser verification, not a new numeric or independent verdict.
+- Shared Clerk sign-in, sign-up, sign-out, and recovery entry points.
+- Create a private community; reserve an address; see recoverable provisioning progress.
+- My communities, invitations, admission requests, and membership removal.
+- Discover listings containing only owner-published public metadata.
+- Relay-backed conversations and supported channels in the web client.
+- One hosted, community-scoped Hermes Collaborator, with explicit mention-based interaction.
+- Managed Nostr identity and signing for both browser and desktop paths.
+- Unitalk-branded desktop packages and a tested authentication/update path.
+- Community roles, isolated data/context, truthful availability, and bounded AI usage.
 
-## Owner app scope and UX — wireframe v1.0
+### Later phases
 
-The user-pinned owner app at `/dashboard/patrick` is a French operational experience. Its three navigation areas are **Accueil / People / Collaborator**, labelled **Accueil / People / Moi** in mobile bottom navigation. These are areas of one owner dashboard; the homepage, public Collaborator, owner dashboard and visitor dashboard remain four distinct product surfaces.
+- Store purchases, entitlements, seller verification, refunds, revenue sharing, and payouts.
+- Guaranteed website/app hosting, custom-domain deployment, and broader software-delivery automation.
+- Additional installed agents, personal agents joining communities, external agent-provider catalogs.
+- Native mobile apps, broad federation, and user-managed/imported Nostr identities.
+- Organization-specific deployment or support guarantees not yet defined.
 
-- **Accueil = exceptions + proof of work.** “J’y travaille.” introduces the work, “Vous” shows three example situations requiring judgment: Sarah’s meeting slot, Acme’s proposed partnership response, and David’s missing priorities. First-person activity and a People preview follow. The exception count is contextual; there is no metrics grid or performance claim.
-- **Decide in context.** Each focused decision has a back control, context, recommendation, reasons and what the Collaborator can do. Choose Sarah’s slot, edit Acme’s draft, or supply David’s priorities. Local approval removes the exception, adds an activity outcome and updates the relationship’s next step and conversation. Resolving all three exposes the all-clear state.
-- **People = narrative relationships.** Search people or companies, read what is happening, the relationship history and next step, and inspect the simulated conversation. Take over, add a local owner reply, then let the Collaborator continue. Talking about a person opens the same owner conversation dialog, with predefined scenario responses.
-- **Authority is explicit.** Rules move between **DO IT / ASK ME / NEVER DO IT** and changes add local activity. **NEVER DO IT blocks the corresponding demo approval**; pause and relationship takeover also block it. Changing a rule to DO IT does not automatically resolve an existing exception: pending decisions still require explicit approval. Activity exposes pause/resume and labelled scenario states for working, waiting and needing the owner.
-- **Collaborator holds secondary controls.** Knowledge references can be added/removed without loading their contents; ChatGPT/Claude/OpenClaw history has a migration preview only. Capabilities and tools/MCP are planned, with local tool choices and per-channel permission previews. Memory is separate from knowledge and supports correction/deletion. Identity edits are local; opening/copying Patrick’s public URL leaves the public identity independent.
-- **Infrastructure and account stay secondary.** Hosting/intelligence and monthly/annual billing choices are previews using the existing offer. Export downloads the local demo preferences as JSON, not a durable Collaborator backup. Authentication, API keys, production backups and advanced configuration remain planned.
-- **Replay the owner onboarding.** The account menu opens a local first meeting: name, optional unanalysed website reference, mission and intended channels, then scripted work/results leading back to Patrick’s existing example relationships. LinkedIn and voice controls explain that they are planned. Replay creates no real Collaborator and does not personalize the dashboard’s scenario data.
+The Store remains in the agreed navigation. Until commerce is implemented, its presentation must clearly identify preview or future functionality; it must not simulate a completed purchase as a real transaction.
 
-**Implementation boundary:** visibly labelled demo work, conversations and results; simulated owner role, no authentication/authorization, connected AI, external action, ingestion or durable persistence. Local state survives section changes within the mounted page and resets on reload. The owner app inherits the existing WhatsApp–fuchsia world and tokens; its composition and scoped `src/app/owner.css` extend that system.
+## Capabilities and Constraints
 
-## Offer
+### Current repository: implemented application shell and prototype
 
-- **Current relationship offer (supersedes prior AI-separate/trial allowances):** one AI Collaborator for €9.99/month or €99/year, including **5 million tokens every month**. The user explicitly replaced the trial’s former 10 million allowance with **5 million tokens during the one-week free trial**, no credit card. `collaborator-offer.ts` owns the English/French labels. Twenty CRM and Chatwoot Support are optional hosted/managed applications at **+€9.99/month each** for hosting, maintenance and connection. An existing SaaS account may instead be connected with no Unitalk connection surcharge; its provider subscription remains separate. Base contact/history/next-step follow-up does not require either add-on. These are offer and local preference previews, not activated AI, subscriptions, app installations or connections. Eligible models, input/output counting, rollover and behavior after allowance exhaustion are not yet specified; Pricing/FAQ state this without inventing overage rules.
-- **User-selected trial:** one week free, **10 million tokens included**, with no credit card required. The latest user instruction adds the token allowance to the previously selected week. English/French labels are owned by `src/lib/collaborator-offer.ts` and displayed in the hero, pricing panel and price FAQ answer. This is offer copy; no trial activation, token metering, payment or AI-credit service is connected in this frontend. Model eligibility, token counting and expiry mechanics have not been specified.
-- **Collaborator — €9.99 / month**, cancel anytime.
-- **Annual — €99 / year**, marketed as **2 months free** compared with monthly billing.
-- One AI Collaborator: **Identity · Memory · Knowledge · Skills · Tools · Authority**.
-- The current homepage shows the intended offer; no payment, subscription or deployment is activated in this prototype. Price labels and validated setup choices live in `src/lib/collaborator-offer.ts`.
-- **AI usage is separate from the subscription**: Unitalk Credits are bought when needed, or the owner uses API keys/an existing gateway. Do not invent a credit allowance, credit-pack price or provider fee.
-- The Cloud price shown on the Pricing page is the same Collaborator plan, not a second subscription. Self-hosting and an existing Hermes instance are placement options, not different feature tiers. No enterprise plan or feature matrix is introduced.
-- Earlier €9/month and token-trial copy are superseded by this offer. Do not reintroduce them on the homepage.
+- Next.js App Router with a server-rendered homepage and React shell; existing JavaScript/CSS previews retain hash routing.
+- Conditional Clerk provider, sign-in/sign-up entries, protected account page and auth-status endpoint. Production settings target the existing Unitalk.ai application through Clerk's satellite flow. Live authentication has not yet been verified.
+- Marketing homepage and six use cases: communication, agents, building, communities, teaching, and selling expertise.
+- Searchable illustrative community and Store listings, including category deep links.
+- Interactive website/app/dashboard examples; output-first mobile presentation with expandable conversation.
+- Local sample or personalized space preview with Conversation and Shared brief views.
+- Local sales/seller briefs and demonstration membership selections.
+- Browser tests for prototype behavior. These are not evidence of a production collaboration service.
 
-## Homepage work demo and English marketing encounter
+When Clerk is unconfigured, preview forms remain local and account routes explicitly report setup unavailable. With a complete configuration, account CTAs route to Clerk and `/account` verifies the session server-side. No real community provisioning, Convex community connection, Buzz relay integration, managed signer, or desktop distribution is implemented here. Demo forms do not create memberships or call live agents.
 
-The homepage refinement takes inspiration from conversion-oriented landing pages through concrete work, a clear action and low-friction exploration. No conversion measurement or uplift is claimed. It extends the pinned WhatsApp–fuchsia system and retains the four core product experiences; **`/meet` is an additional English marketing encounter**, independent of Patrick's public interaction and both French demo dashboards.
+### Confirmed hosting direction
 
-- **See the work first.** The hero retains “Your AI Collaborator. It works for you.” and shows a labelled Demo follow-up ready for review. “See it do the work” anchors to `#work-example`; “Meet yours” opens `/meet?rencontre=1` with any shared offer choices. The hero places **€9.99 / month · Cancel anytime** beside the qualification **“AI usage separate. Explore the demo without payment.”**
-- **Three concrete examples.** `src/lib/work-examples.ts` supplies Follow up, Qualify a lead and Prepare a meeting. `WorkDemo` presents the request, example context, prepared draft and authority boundary with an **Interactive demo** label. Native selector buttons expose selection through `aria-pressed`. Switching examples restores that example's prewritten draft and clears editing/approval. Visitors can edit the draft, keep edits and approve locally; blank drafts cannot be approved. Editing clears approval. The result explicitly states that nothing was sent or no meeting was booked. Local approval never triggers external work.
-- **A reference, not analysis.** `HomeEntry` validates a public domain/URL and carries it to `/meet`; invalid input gets an inline error. `/meet` visibly confirms **“Website received: [hostname]”** and **“Not analysed or connected.”** An invalid URL supplied directly does not block choosing a mission. “Start with LinkedIn” carries `channel=linkedin`, which the route allowlists and renders as an intended LinkedIn channel with no connected account. There is no OAuth, crawl, ingestion or personalized website analysis.
-- **Name + mission → corresponding draft.** The English encounter requires a nonblank name and one of the three mission radios. The result greets the supplied name and mounts the matching prewritten example, with local edit/approval controls. It creates no real Collaborator, account, public identity or workspace. Completion stays on `/meet`; the back link returns to `/#work-example`.
-- **Restart is local.** Leaving the result through Start again or Try another mission unmounts its work example, clearing its draft edits and approval state; the form becomes available again and name-field focus is requested. Changing the name or mission also exits the result. The name and selected mission remain form values, while the URL/channel and setup preferences remain route context. Reload resets the encounter's in-memory inputs and result. This is not durable or authenticated memory. The restart correction passed desktop/mobile checks and the final reviewer scored it resolved.
-- **Preferences survive marketing navigation.** `CollaboratorOfferProvider` is mounted in the root layout. Hosting, intelligence and billing choices survive client navigation between marketing routes while that layout remains mounted; reload does not durably store them. `EncounterLink` merges **defaults → shared preferences → explicit `choices`**, so explicit CTA choices win only for named fields. “Bring my keys” selects `keys` even after another intelligence choice, preserving hosting and billing. Supplied query values are allowlisted by `readCollaboratorPreferences`; `/meet` shows them under Your setup choices, without provisioning, collecting keys or taking payment.
-- **Language selects the destination.** `encounterLink(..., "en")` and `EncounterLink language="en"` use `/meet?rencontre=1`; omitted language or `"fr"` uses `/dashboard/visiteur?rencontre=1`. Homepage, How it works, Pricing and shared English navigation pass English, including their hosting/intelligence/billing CTAs. The French visitor encounter remains a separate dashboard flow.
+- Next.js frontend on Vercel, serving `unitalk.com` with the same address retained in the browser.
+- Buzz on the designated Azure VM in France Central, with `buzz.unitalk.com` as the requested relay hostname.
+- Cloudflare manages DNS. Origin records and hosting-provider targets must be verified before replacement.
+- Community Hermes runtimes remain managed through Unitalk.ai/Dokploy. Infrastructure inspection does not establish a running Buzz deployment.
 
-**Verification status — this refinement only:** browser checks passed at 320px, 390px, 1280 × 600 and 1440px without horizontal overflow, including work selection/edit/approval, English encounter, website and intended LinkedIn handoff, setup preference preservation and explicit pricing overrides. `conversion-*-viewport.png` captures show the work CTA and qualified hero price visible; mobile shows only part of the artifact in the first viewport. The independent finish review accepted the visual direction and requested one restart-control correction. After desktop/mobile restart verification, its final verdict scored the correction **resolved** and returned **SHIP within the frontend-demo scope**. Lint, generated route types, TypeScript and the final production build passed. No live integration or measured conversion uplift is established.
+### Existing external foundation
 
-## Product Language
+The inspected Unitalk.ai branch provides Clerk–Convex integration, Hermes resource allocation, Dokploy management, organization budgets, and personal-agent memory synchronization. These are source observations, not a verification of deployed configuration.
 
-Always prefer **AI Collaborator**. The term **AI worker** is acceptable only when explaining the concept in plain language.
+The community service must adapt these mechanisms to a community-scoped resource. It must not use personal-agent allocation or memory import unchanged.
 
-Never use: AI agent, chatbot, assistant, copilot, bot, AI employee, digital twin.
+### Commercial constraints
 
-Never call the Collaborator a "profile" — a profile is static, a Collaborator works.
+Pricing, free-tier allowances, eligibility, per-community limits, service-level targets, and production legal policies are unresolved. **Get started free** is the approved acquisition label, not evidence of unlimited usage or a settled allowance. Production funding and limits must be agreed before opening unrestricted provisioning.
 
-## Copy Principles
+## Success Measures
 
-- **User-facing Compare (2026-10-08):** `/compare` and `/fr/compare` now use the approved “An AI Collaborator. What’s the difference?” / “Un Collaborateur IA. Qu’est-ce que ça change ?” hero. Work/context/contacts/control selectors compare official descriptions of ChatGPT Dots, Claude Cowork, Gemini Spark, Meta Muse, Delos AI Workers, Dust and ElevenLabs / ElevenAgents. A source-linked disclosure covers Fin, Zendesk and Calendly. Remove the earlier “nobody does this”, no-memory and decision-tree caricatures; competitors already provide delegated work, context and permissions. Unitalk describes its relationship/public-private focus and clearly separates its current examples from planned execution. Provider sources, checked October 8, 2026, are in `collaborator-comparison.ts` and the Compare brief. Both-language responsive, selector/disclosure, metadata, destination/language checks, lint, types and build passed. This is an editorial comparison of published offerings, not hands-on benchmarking or an exclusivity claim.
+Measure the following once real service telemetry exists; numerical targets remain to be set after the pilot:
 
-- **Sales entry in marketing navigation (2026-10-07):** “Talk to sales” / “Contacter les ventes” sits immediately before Log in / Se connecter and opens Patrick’s public AI Collaborator at `/@patrick-chassany`; its tooltip names that destination. The same link is available in the mobile navigation. This is a public conversation entry, not a newly connected sales service. English/French responsive and destination checks passed from 320px to 1440px, with lint and generated-route TypeScript checks.
+- Completion rate from authenticated creation to an accessible community.
+- Time to community access and time to the Collaborator's first useful reply, tracked separately.
+- Invitation acceptance and first contribution by a second member.
+- Provisioning recovery rate and duplicate-resource incidence.
+- Cross-client success: an existing community opens correctly in Unitalk Desktop.
+- Collaborator response reliability, usage cost per active community, and budget exhaustion experience.
 
-- **Six-example hero and Patrick footer link (2026-10-07):** the user removed Demo / Démo from the hero slide header and replaced UnitalkMark there with a drawn profile icon. Existing follow-up/reply/meeting examples are joined by Thomas’s sales-presentation email, a proposed inbox filing plan, and CRM changes prepared from email history. Each remains predefined and locally editable/approvable: there is no attachment, email ingestion/sending, mailbox filing or CRM write integration. Scenario-specific labels distinguish the two owner (“You” / “Vous”) examples; all six retain independent drafts/approvals and eight-second controlled autoplay. The homepage now reuses the sourced `working-together.jpg` across its entire desktop hero with a translucent overlay instead of a solid right-third background. The shared marketing footer includes the exact user-requested “Talk to Patrick” link to `/@patrick-chassany`. Both-language six-slide containment, timed rotation, editing/approval and destination checks passed, plus lint, types and build. This supersedes older hero Demo/header, three-example and photo descriptions.
+The first proof of value is **two people in the same community receiving a useful response from their hosted Collaborator**, with no manual relay or key setup.
 
-- **Latest hero carousel (2026-10-07):** the user requested a left-hand automatic slider and a single-row first-name header. Hero scenarios are Sarah (follow-up), Alex (reply), Emma (meeting preparation), labelled Demo / Démo on the same row as UnitalkMark and the name. Autoplay is eight seconds with manual arrows/dots and pause/resume; hovering, focus, editing/approval, hidden page/offscreen and reduced-motion prevent unwanted rotation. Local drafts/approvals persist independently across selections and reset on reload. Desktop moves proof left and copy/acquisition right; mobile keeps intro → proof → acquisition. Signup’s shared proof remains a static Sarah example. All work remains predefined and local. Responsive, interaction and build checks passed; narrow mobile CTA/offer can extend below the first viewport. This supersedes earlier hero name/header, right-proof and single-example descriptions.
+## Brand Commitments
 
-- **Latest hero continuity and hierarchy (2026-10-07):** approved “Your next follow-up, ready.” / “Votre prochaine relance, prête.” is restored. “It remembers your relationships and prepares replies, follow-ups and meetings.” / “Il garde le fil de vos relations et prépare vos réponses, relances et rendez-vous.” expands the task into ongoing relationship work; final-say copy stays. Sarah’s labelled local example explicitly links the remembered October commitment to a ready October follow-up and an editable October-specific message. Neutral outlined demo approval and underlined editing leave Start for free as the only solid hero action; the duplicate examples link is removed. The later work examples remain accessible below. French mobile breaks after “Votre prochaine” and keeps “relance, prête.” together. This supersedes older hero secondary-link, promise and filled-approval descriptions. Lint, types, build and both-language responsive/interaction checks passed; the full French narrow CTA extends 9px below the 740px first viewport but remains scrollable. No real AI memory, external delivery or measured conversion is implied.
+- Preserve the Unitalk name, English-language copy, and original Apple-inspired visual presentation.
+- Preserve **Discover → Use cases / Communities**, **Store**, **For Business**, **Log in**, and **Get started free**.
+- Unitalk.ai is not an additional top-level navigation entry; it remains the management/account foundation.
+- Make **Download Unitalk Desktop** discoverable in the product journey without silently replacing the approved navigation.
+- Distinguish planned capability, interactive example, verified upstream capability, and implemented Unitalk behavior.
+- Preserve upstream license notices. Do not imply endorsement by Block, Apple, or Nous Research.
 
-- **Approved follow-up hero (2026-10-07):** “Your AI Collaborator. Your next follow-up, ready.” / “Votre Collaborateur IA. Votre prochaine relance, prête.” Supporting copy: “It remembers where you left off and drafts the next message—so you don’t have to start from scratch.” / “Il garde le fil de vos échanges et prépare le prochain message, sans repartir de zéro.” Keep the final-say line. Sarah’s labelled example now supports editing and local approval directly in the hero; editing clears approval, blank drafts cannot be approved, and reload resets the example. Approval confirms an example draft, never delivery. This supersedes older hero promises and non-interactive-proof descriptions. The later work demo and signup remain separate. The proposed 9/10 direction is an editorial assessment, not measured conversion or a new independent review score.
+## Evidence on Hand
 
-- **Latest completed hero refinement (2026-10-07, final reviewed state):** supporting copy names contacts, remembered context and the next step, with “You keep the final say.” / “Vous gardez le dernier mot.” The promise stays in one fuchsia cartouche with natural mobile wrapping. Shared UnitalkMark and the visible “Example follow-up” / “Exemple de relance” header identify Sarah’s synthetic partnership example, without a chip: discussion two weeks ago about October → actual Thursday draft → owner review. It remains non-interactive, not live memory or sent work. Start for free / Commencer gratuitement opens the preexisting `/signup` / `/fr/signup` preview with shared offer choices, without a LinkedIn logo or forced channel; See an example / Voir un exemple anchors to `#work-example`. Mobile places complete proof before CTA and price/trial. Monthly tokens stay in pricing, not the hero. This supersedes older hero copy/channel/proof descriptions; signup still creates no authenticated account. Final review: SHIP within HERO/frontend-demo scope, 8.3/10 versus 6.5 baseline; evidence is in the homepage surface brief.
+- Local implementation: `index.html`, `src/`, `tests/`, `package.json`, and `playwright.config.js`.
+- Unitalk.ai source inspection: [unitalkai/unitalk-personal at bdebe80133406ba9a3ee684187e7b67f4c4c1b42](https://github.com/unitalkai/unitalk-personal/tree/bdebe80133406ba9a3ee684187e7b67f4c4c1b42), originally on `feat/homepage`.
+- Upstream [Buzz](https://github.com/block/buzz), [Hermes ACP bridge](https://hermes-agent.nousresearch.com/docs/user-guide/features/acp#buzz-channels-relay-bridge), and [Clerk multidomain documentation](https://clerk.com/docs/guides/dashboard/dns-domains/satellite-domains).
+- The English architecture diagram linked from README.md is a target design, not an inventory of deployed services.
 
-- **Signup routing correction:** the user explicitly renamed the marketing encounter to signup. Acquisition links now open `/signup` or `/fr/signup`, without `rencontre=1`; LinkedIn, website reference, hosting/intelligence/billing and app choices remain allowlisted query context. `signup-form.tsx` replaces `english-encounter.tsx`, with Sign up / Inscrivez-vous heading and signup-specific error/privacy copy. `/meet` and `/fr/meet` permanently redirect to the matching signup route, preserving known preferences while dropping the encounter flag. The independent French dashboard encounter retains its own `rencontre=1` route behavior. Route/language/domain handoff, metadata, validation and old-route checks passed at 1440/390/320px in both languages; lint, TypeScript and build passed. The renamed signup screen is still a frontend preview: no authenticated account, payment, AI execution or deployment is created by submission.
+No verified customer testimonials, production community counts, marketplace sales, or measured service benchmarks have been established.
 
-- **Hero offer hierarchy:** the user moved the monthly 5-million-token allowance out of the homepage hero. The hero keeps price/cancellation and one-week/no-card trial reassurance; the included-token detail stays beside the price in the homepage pricing panel and on the dedicated Pricing page, in both languages.
+## Open Decisions
 
-- **Latest approved hero:** **“Your AI Collaborator. Less chasing. More connecting.”** / **“Votre Collaborateur IA. Moins de relances. Plus d’échanges.”** Supporting copy names replies, follow-ups and meeting preparation, with **“You stay involved where it matters.”** / **“Vous intervenez là où ça compte.”** The user extended the white-on-fuchsia headline cartouche throughout the site and requested more room below the hero offer; bottom padding increases by 40px. This supersedes earlier hero wording, while the work-first product promise remains.
+SPEC.md tracks implementation dependencies, including upstream versions, desktop signing/distribution infrastructure, NIP-FI/signing interoperability, hosting capacity, personal billing ownership, and lifecycle/retention policies. They remain explicit blockers where relevant; agents must not silently turn them into commitments.
 
-- **Relationship-first update:** the user approved the differentiation through ongoing contact relationships. Hero is “Your AI Collaborator. It keeps your relationships moving.” / “Votre Collaborateur IA. Il garde le fil de vos relations.”, with context/commitments/next-step copy, base price, monthly included tokens and short trial reassurance. Trial details was removed entirely. Pricing, guide, About, FAQ and predefined price replies reflect included AI and optional applications. FAQ explains that ChatGPT/Claude/Gemini also support work, while Unitalk aims at persistent relationship responsibility; Hermes provides the engine, Unitalk the ready-to-use relationship experience. “into a useful next step” uses white text on the exact logo/action magenta, with inline cloned highlighting and route-local 32–48px heading sizing. Pricing offers native none/managed/existing application choices, carried as allowlisted twenty/chatwoot preferences into the starting form and across language navigation. The form exposes optional application choices and a local selected-app summary after submission. No billing, account link or application provisioning is activated. Both-language checks at 1440/1280×600/1024/390/320px passed for offer consistency, absence of old trial copy, exact highlight colors, application selections/query handoff/language persistence/allowlist, guide and responsive containment; lint, TypeScript and production build passed.
-- **Free-start and personal public preview:** the user approved Start for free / Commencer gratuitement for marketing acquisition CTAs (header/mobile menu, hero, pricing, guide, ownership, About, Privacy and closing). Specific provider-choice buttons and Patrick’s public-conversation action remain purpose-specific. Hero still uses the LinkedIn mark and carries the intended LinkedIn channel into the local encounter; no OAuth is connected. The title stays Your AI Collaborator. Public front-door proof now shows your_name and an example `unitalk.com/@your_name` address, with a local first-name input personalizing the greeting and normalized sample address. Entering a name does not reserve or create a URL. The encounter result reuses that preview with the supplied name. Patrick’s actual public link stays a secondary proof action. A brief privacy sentence on the homepage links to the existing Privacy page/menu. Per the user’s clarification, Unitalk Cloud has a facultative managed-service option in the starting form for an OVHcloud SecNumCloud-qualified offering; the exact service and surcharge are to be confirmed. The selection is local, not an order/provisioning step, and no 15% price or Unitalk qualification is asserted. Both-language checks at 1440/1280×600/390/320px passed for CTAs, first-name/long-name/empty preview, sample URLs, privacy navigation, preference handoff, conditional managed-cloud choice and no overflow/runtime errors; lint, TypeScript and build passed.
-- **Simplified offer, richer proof:** the user approved “enrich the examples, lighten the explanation.” The homepage keeps one Collaborator offer. Hero copy is now messages/calls/meetings → context/next step, with decisions retained by the owner. It shows price and `trialShort` (one week free, no card); `TrialDetails` discloses the 10-million-token allowance, separate AI usage and unspecified eligibility/counting/expiry, without inventing exhaustion rules. Pricing uses the same short/detail hierarchy; FAQ defines the product through work rather than the stack. Three local work scenarios are incoming enquiry (`follow-up`), prospect callback (`opportunity`) and customer support (`support`). Each shows an incoming request, classification, prepared contact/support context, next step and editable draft/brief. Changing scenarios clears edits/approval; blank drafts cannot be approved. Encounter radios reuse these three missions. Homepage hosting/intelligence controls are collapsed under a native disclosure; shared preferences and explicit keys override still work. Phone is a concise planned-channel sentence, with no invented number or live calling CTA. Twenty/Chatwoot and private-server context live in a guide disclosure and About’s architecture. Both-language checks at 1440, 1280 × 600, 390 and 320px passed for trial/choice disclosures, scenarios, editing/approval/reset, encounter, preferences/override and guide details; lint, TypeScript and production build passed.
-- **Business domain onboarding:** the user moved the domain field off the homepage and chose a local business page. `/for-businesses` and `/fr/for-businesses` now own the translated domain onboarding, reached from the top-nav business link. `business-domain-form.tsx` validates the public domain, reports inline errors and carries its URL plus shared hosting/intelligence/billing choices into `/meet` or `/fr/meet`. The website is a reference, not crawled or analysed. Each business page retains an explicit external link to https://unitalk.ai. Homepage entry is LinkedIn only; the work section retains a Start with LinkedIn action and no domain input. Browser checks passed at 1440px, 1280 × 600, 390px and 320px in both languages for homepage field removal, 10-million-token copy, business menu routing, validation, URL/preference handoff and equivalent language switching. Lint, route types, TypeScript and production build passed.
-- **Founder vision and simplified footer:** the user replaced the abstract Collaborator definition with **“Hermes Agent, supercharged”**: identity, voice, AI gateway, Honcho memory, Stalwart communication tools and desktop/messaging/terminal access. This is the intended architecture; these services are not connected in the current frontend. Both FAQ languages now name these layers. `/about` and `/fr/about` present Patrick Chassany’s vision using his supplied personal comparison: his 1999 AMEN experience selling domain names and web hosting, then making owned intelligence accessible today. 1999 is the experience date, not a revised founding date for AMEN. No unsupported anecdote or metrics were added. About links to the verified Hermes, Honcho and Stalwart sites. The footer now has logo, the single-line **“Own your intelligence.”** tagline, How it works / Pricing / Store / Privacy / About, social controls and language. FAQ, Unitalk group heading, Patrick’s Collaborator, For businesses and Customer login links were removed from the footer at the user’s request. The hero is more compact (580px tall-desktop minimum); its desktop headline stays one line. Mobile proof is in normal flow so translated text cannot be clipped. Lint, route generation, TypeScript, production build and both-language browser checks passed at 1440px, 1280 × 600, 1024px, 390px and 320px, including footer removals, About navigation/language, stack wording and full proof containment.
-- **Resource navigation and hero refinement:** the user approved bilingual Privacy and Store pages and a top-navigation For businesses link to https://unitalk.ai. `/privacy` and `/fr/privacy` explain permissions, public/private context, knowledge/memory, hosting choices and current browser storage/voice behavior, without a fabricated legal policy or privacy guarantees. `/store` and `/fr/store` are discovery directories for five verified public repositories; native All / Apps / Tools / Skills / Collaborators filters expose the selected category and result count. Source actions open repositories and no purchase/installation is implied. Voicebox explicitly credits its upstream Jamie Pine project. Privacy/Store also appear in the footer and equivalent-language mapping. The hero first line is now **“Your AI Collaborator.”** on one line at desktop widths (French: “Votre Collaborateur IA.”), with natural mobile wrapping and the promise on its own line. Hermes uses the official Hermes Agent favicon in place of the user-rejected wing mark. Header navigation collapses at 1279px for the expanded menu. Checks covered English/French at 1440, 1280 × 600, 1024, 390 and 320px: single desktop headline line, loaded logo, working navigation, Store filters/counts, Privacy and language equivalents with no overflow/runtime exceptions.
-- **Footer, FAQ and bilingual marketing:** the user pinned **“Own your intelligence”** as the shared footer tagline, including on French pages (`lang="en"` on the tagline). Grouped Explore / Unitalk links lead to the guide, pricing, homepage FAQ, Patrick’s public Collaborator, unitalk.ai for businesses and customer login. LinkedIn, X/Twitter, YouTube and GitHub icons use the user-supplied `unitalkai` accounts; each destination resolved to Unitalk during verification. A native English/Français selector opens the equivalent page and preserves source/channel/offer query values and the fragment. English routes remain `/`, `/how-it-works`, `/pricing`, `/meet`, `/login`; translated equivalents are `/fr`, `/fr/how-it-works`, `/fr/pricing`, `/fr/meet`, `/fr/login`. Server pages own localized metadata and language alternates; shared marketing components render the translated copy, controls and examples. French marketing encounter CTAs explicitly select `/fr/meet`; the separate French dashboard encounter still uses `/dashboard/visiteur`. The homepage now places a six-question native accordion FAQ between pricing and the closing CTA, covering purpose, price, ChatGPT subscription compatibility, ownership, hosting and control. Removed demo footnotes stay removed, and answers accurately distinguish planned connections. Lint, generated route types, TypeScript, production build and browser checks passed at 1440px, 1280 × 600, 390px and 320px across both languages, including FAQ keyboard toggling, language switching, French approval, setup choices and explicit API-key override.
-- **Hero and customer-entry refinement:** the hero illustration uses **“Example follow-up”** in place of its Demo badge; interactive work remains labelled. Shared desktop and mobile Log in / Se connecter links open the user-supplied **`/login`** route directly, without role/workspace choices. The dedicated customer page currently explains that sign-in is unavailable and collects no credentials; authentication is still unconnected. The hero's primary action hovers white/ink against the dark photo. Six local inline brand marks identify ChatGPT, Claude, OpenClaw, Gemini, Grok and Hermes history sources; their provenance and license are recorded under `public/brand-marks/`. Browser checks passed at 1440, 1280 × 600, 390 and 320px for hover contrast, source-mark containment, customer login routing, absent workspace choices and no overflow/runtime errors. ChatGPT subscription support is a future product option under consideration: Hermes documents an OpenAI Codex subscription OAuth path, while the standard OpenAI API is billed separately. No such connection is implemented in Unitalk.
-- **UI notice refinement:** remove repetitive demo explanations, prewritten-reply footnotes, no-account/no-send disclaimers and prototype taglines across marketing, encounter, public and dashboard surfaces. Keep compact **Demo / Démo** chips on simulated interactions, work and results, and concise availability labels on planned capabilities. The hero qualification is now **“AI usage separate.”** Website/channel handoffs display **“Website reference”** and **“Preferred channel”**; draft approval reports the approved draft without claiming delivery. This supersedes earlier quoted UI notices above. The implementation remains local and simulated. Lint, route type generation, TypeScript and browser checks passed at 1440px, 390px and 320px across seven routes, including approval, public handoff and owner conversation states, with no horizontal overflow, broken visible `aria-describedby` references or runtime errors.
-- Be direct: short sentences, simple words, concrete claims.
-- Show, don't explain. If the product can demonstrate something, demonstrate it.
-- One idea per section. Never create a section just because a feature exists.
-- Banned SaaS language: platform, ecosystem, seamless, next-generation, revolutionary, powerful, intelligent automation, all-in-one, end-to-end, unlock, transform your workflow.
-- Never oversell. The novelty of the product is strong enough.
+## Product Principles
 
-English hero: **“See it do the work”** and **“Meet yours”**. Homepage domain entry: **“Enter your domain name”** with **“Meet yours”**, or **“Start with LinkedIn”**. Header/pricing/supporting guide CTA: **“Meet your Collaborator”**. Ownership CTA: **“Meet yours with these choices”**. Patrick's public-front-door CTA: **“Talk to Patrick’s Collaborator”**. English encounter submission: **“Meet my Collaborator”**. French encounter CTA remains **“Rencontrer mon Collaborateur”**. A URL also remains an optional source inside the French visitor experience.
-
-## Constraints
-
-The homepage has one job: **make someone want to meet a Collaborator who will work for them.**
-
-Current homepage order: **WORK + DEMO PROOF → MIGRATE → OWN → CONTROL → PRESENCE + PATRICK → PRICE → CLOSE**. The concurrent homepage edit consolidated Patrick's proof into **“Your public front door”** after authority: its invitation and links open `/@patrick`, the alias of `/@patrick-chassany`. There is **no separate early Patrick proof section**. The earlier WORK → PROOF → MIGRATE → OWN → CONTROL → PRESENCE → PRICE shorthand must not be read as an instruction to restore that removed section. Use the pinned “Your AI Collaborator. It works for you.”, include the qualified monthly price under the hero actions and fuller pricing later, and retain “You don’t have to be everywhere. Your Collaborator can.” and “Own your intelligence.” Preserve the palette, **Multi cloud hosting / Multi model intelligence** labels and removed footer notices/photo credits. Local work labels and planned-capability copy remain at their points of use.
-
-Supporting English routes:
-- **`/how-it-works`** explains eight steps: connect your life; give it knowledge; give it tools; give it a job; let it work; stay in control; run it your way; give it a public presence. The owner can change permissions, pause or take over in the intended product. The current preview does not execute those capabilities.
-- **`/pricing`** explains eight planned included categories (identity, knowledge/memory, connections, tools, work, control, public, migration), followed by separately funded intelligence, hosting options, Hermes portability and one monthly/annual offer.
-- **`/meet`** is the English name-and-mission marketing encounter described above, with local examples and no account/payment requirement. Its route metadata marks it noindex/nofollow.
-- Shared navigation opens these pages rather than only scrolling the homepage. English encounter CTAs stay English and open `/meet`. Offer preferences survive client navigation in the root layout; a specific pricing CTA explicitly overrides only its named intelligence choice.
-
-**Pre-existing context drift, recorded without repair:** `AGENTS.md` still describes the homepage encounter as the French visitor-dashboard route and retains the earlier sequence shorthand; `.impeccable/review/work-first.md` records a superseded French homepage and its historical verdict. `public/images/SOURCES.md` still mentions visible illustration captions, although those captions are absent from the latest homepage source. The current history illustration lists ChatGPT, Claude, OpenClaw, Gemini, Grok and Hermes while older migration context emphasizes the first three; every displayed import remains planned. Existing stock origin records and embedded provenance are retained; this documentation task creates no assets.
-
-It is not, and must never become: a feature encyclopedia, a generic AI landing page, a chatbot comparison page, a pricing-first SaaS page, a technical architecture page, an enterprise sales page, an AI agent marketplace, a giant integration grid, or a long manifesto.
-
-Trust is part of the product. Never fake work results, online status, activity, conversations, customer numbers, revenue, testimonials, or Collaborator activity. A demo may be simulated but must be clearly identifiable as a demo.
-
-## Success Test
-
-A new visitor understands within seconds, without documentation:
-
-1. This is an AI Collaborator.
-2. Patrick has one.
-3. I can talk to it.
-4. I can meet my own Collaborator.
-5. Its intended connected work handles my professional relationships and delegated tasks.
-6. I keep control when my decision is necessary and I own the Collaborator.
-
-The ultimate test is not "does this explain Unitalk?" but **"does this make me want one?"**
-
-North-star loop: **MEET → CONNECT → UNDERSTAND → WORK → OWN.** Long-term: **CREATE → OWN → WORK → EARN → CREATE.**
+1. Make the first shared conversation easy to reach.
+2. Treat people and Collaborators as distinct participants with attributable actions.
+3. Keep community access independent from company membership and funding.
+4. Share context deliberately; never infer permission from proximity or a shared payer.
+5. Preserve a useful human workspace when the AI is unavailable.
+6. Make browser and desktop two entrances to the same hosted community.
+7. Keep product claims aligned with demonstrated behavior.

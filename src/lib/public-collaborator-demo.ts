@@ -1,10 +1,11 @@
 import { COLLABORATOR_OFFER } from "./collaborator-offer";
 import { localizedOffer } from "./marketing-language";
 import type { PublicLanguage } from "./public-collaborator-language";
+import type { PublicPresentation } from "./public-openui";
 
 export const PATRICK_LINKEDIN = "https://www.linkedin.com/in/patrickchassany/";
 
-export type PublicMessage = { id: number; role: "collaborator" | "visitor"; text: string; kind?: "selection" };
+export type PublicMessage = { id: number; role: "collaborator" | "visitor"; text: string; kind?: "selection"; presentation?: PublicPresentation; language?: PublicLanguage; exampleId?: string; uiState?: Record<string, unknown> };
 export type MeetingStage = "idle" | "reason" | "context" | "time" | "details" | "confirmed";
 export type Meeting = { reason: string; context: string; slot: string; name: string; email: string };
 export const emptyMeeting: Meeting = { reason: "", context: "", slot: "", name: "", email: "" };
@@ -64,6 +65,13 @@ export function readPublicSession(): PublicSession | null {
     const data: unknown = JSON.parse(sessionStorage.getItem(PUBLIC_SESSION_KEY) ?? "null");
     if (!data || typeof data !== "object" || !("messages" in data) || !Array.isArray(data.messages) || !("name" in data) || typeof data.name !== "string") return null;
     const messages = data.messages.slice(-80).filter((message): message is PublicMessage => Boolean(message) && typeof message === "object" && typeof message.id === "number" && (message.role === "visitor" || message.role === "collaborator") && typeof message.text === "string" && message.text.length <= 4000);
-    return messages.length ? { messages, name: data.name.slice(0, 100) } : null;
+    const normalized = messages.map(message => ({
+      id: message.id, role: message.role, text: message.text,
+      presentation: ["profile", "knowledge", "actions"].includes(message.presentation ?? "") ? message.presentation : undefined,
+      language: message.language === "fr" ? "fr" as const : "en" as const,
+      exampleId: typeof message.exampleId === "string" && /^[a-z0-9-]{1,70}$/.test(message.exampleId) ? message.exampleId : undefined,
+      uiState: message.uiState && typeof message.uiState === "object" && !Array.isArray(message.uiState) && JSON.stringify(message.uiState).length < 100000 ? message.uiState : undefined,
+    }));
+    return normalized.length ? { messages: normalized, name: data.name.slice(0, 100) } : null;
   } catch { return null; }
 }

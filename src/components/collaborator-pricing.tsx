@@ -23,6 +23,6 @@ export function CollaboratorPricing({ showComponents = true, language }: { showC
     {showComponents && <ul className="pricing-inclusions" aria-label={fr ? "Composants du Collaborateur" : "Collaborator components"}>{(fr ? ["Identité", "Mémoire", "Connaissances", "Compétences", "Outils", "Autorité"] : ["Identity", "Memory", "Knowledge", "Skills", "Tools", "Authority"]).map(item => <li key={item}>{item}</li>)}</ul>}
     <p className="pricing-yearly">{billing === "monthly" ? `${offer.annual} / ${fr ? "an" : "year"} — ${offer.annualSaving}` : `${offer.monthly} / ${fr ? "mois en facturation mensuelle" : "month with monthly billing"}`}<br /><span>{fr ? "Résiliable à tout moment." : "Cancel anytime."}</span></p>
     <p className="pricing-usage-note">{offer.trialShort}</p>
-    <EncounterLink className="button button-primary" language={language} marketing defaults={{ billing: "monthly" }}>{fr ? "Commencer gratuitement" : "Start for free"} <Icon name="arrow" /></EncounterLink>
+    <EncounterLink className="button button-primary" language={language} marketing defaults={{ billing: "monthly" }}>{fr ? "Écrivez ou parlez gratuitement" : "Chat or Talk for free"} <Icon name="arrow" /></EncounterLink>
   </div>;
 }

@@ -18,11 +18,13 @@ export function ComparePage({ language = "en" }: { language?: "en" | "fr" }) {
     "Les contacts, leur histoire, les engagements et la prochaine étape. Connaissances et mémoire restent deux éléments distincts.",
     "Un Collaborateur public que vos contacts peuvent rencontrer par un lien, relié à votre espace de suivi privé. Email, téléphone et messageries font partie des connexions prévues.",
     "DO IT / ASK ME / NEVER DO IT : définir ce qu’il peut faire, ce qui demande votre accord et vos limites absolues, avec pause et reprise humaine.",
+    "Conçu pour fonctionner sur Hermes, moteur open source autonome et interopérable. Choisissez votre hébergement, votre modèle d’IA et votre facturation. Votre Collaborateur, vos clés.",
   ] : [
     "Replies, follow-ups, meeting preparation, email filing and proposed CRM updates: work organized around your relationships.",
     "Contacts, their history, commitments and the next step. Knowledge and memory remain distinct.",
     "A public Collaborator your contacts can meet through a link, connected to your private follow-up workspace. Email, phone and messaging are planned connections.",
     "DO IT / ASK ME / NEVER DO IT: define allowed work, approvals and hard boundaries, with pause and human takeover.",
+    "Designed to run on Hermes, an autonomous open-source interoperable engine. Choose your hosting, your AI model and your billing. Your Collaborator, your keys.",
   ];
 
   return <div lang={language} className="marketing-home marketing-compare">
@@ -45,17 +47,16 @@ export function ComparePage({ language = "en" }: { language?: "en" | "fr" }) {
       </section>
 
       <section className="compare-insight content-container" aria-labelledby="compare-unitalk-title">
-        <div className="compare-section-heading"><h2 id="compare-unitalk-title">{fr ? <>Unitalk : le travail,<br /><span>autour de vos relations.</span></> : <>Unitalk: work,<br /><span>around your relationships.</span></>}</h2><p>{fr ? "Notre parti pris : un Collaborateur à vous, une porte d’entrée publique et un espace privé pour suivre les échanges. Mémoire, autonomie et permissions existent aussi ailleurs." : "Our focus: a Collaborator of your own, a public front door and a private workspace to follow through. Memory, autonomy and permissions exist elsewhere too."}</p></div>
+        <div className="compare-section-heading"><h2 id="compare-unitalk-title">{fr ? <>Unitalk : le travail,<br /><span>autour de vos relations.</span></> : <>Unitalk: work,<br /><span>around your relationships.</span></>}</h2><p>{fr ? "Notre parti pris : un Collaborateur à vous, une porte d’entrée publique et un espace privé pour suivre les échanges. Le tout sur un moteur open source interopérable, sans dépendance à un fournisseur." : "Our focus: a Collaborator of your own, a public front door and a private workspace to follow through. Built on an open-source interoperable engine, with no provider lock-in."}</p></div>
         <dl className="compare-unitalk-criteria">{COMPARISON_CRITERIA.map((item, index) => <div key={item.id}><dt>{item[language].label}</dt><dd>{unitalk[index]}</dd></div>)}</dl>
-        <p className="compare-current-state">{fr ? "Aujourd’hui, vous pouvez explorer les exemples interactifs et rencontrer le Collaborateur public de Patrick. Le travail présenté est simulé ; connexions, mémoire durable et exécution restent à intégrer." : "Today, you can explore interactive examples and meet Patrick’s public Collaborator. The work shown is simulated; connections, durable memory and execution remain to be integrated."}</p>
       </section>
 
       <section className="compare-cta content-container">
         <h2>{fr ? "Voyez ce que ça change." : "See what changes."}</h2>
-        <p>{fr ? "Rencontrez le Collaborateur de Patrick, ou commencez avec votre propre mission." : "Meet Patrick’s Collaborator, or start with a mission of your own."}</p>
+        <p>{fr ? "Rencontrez le Collaborateur de Patrick, ou créez le vôtre." : "Meet Patrick’s Collaborator, or create yours."}</p>
         <div className="compare-cta-actions">
           <Link href="/@patrick-chassany" className="button button-primary">{fr ? "Parler au Collaborateur de Patrick" : "Talk to Patrick’s Collaborator"} <Icon name="arrow" /></Link>
-          <EncounterLink language={language} marketing className="button button-outline">{fr ? "Commencer gratuitement" : "Start for free"} <Icon name="arrow" /></EncounterLink>
+          <EncounterLink language={language} marketing className="button button-outline">{fr ? "Écrivez ou parlez gratuitement" : "Chat or Talk for free"} <Icon name="arrow" /></EncounterLink>
         </div>
       </section>
     </main>
